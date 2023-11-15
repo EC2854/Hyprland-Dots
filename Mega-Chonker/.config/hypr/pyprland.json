@@ -1,0 +1,31 @@
+{
+    "pyprland":{
+        "plugins": ["scratchpads", "expose"]
+    },
+
+"scratchpads":{
+        "kitty":{
+            "command": "kitty --class scratchpad",
+            "animation": "fromTop",
+            "margin": 50,
+            "unfocus": "hide"
+        },
+        "ranger":{
+            "command": "kitty --class scratchpad -e ranger",
+            "animation": "fromTop",
+            "margin": 50
+        },
+        "spotify-tui":{
+            "command": "kitty --class scratchpad -e spt",
+            "animation": "fromTop",
+            "margin": 50
+        },
+        "nvim":{
+            "command": "kitty --class scratchpad -e nvim",
+            "animation": "fromTop",
+            "margin": 50
+        }
+
+
+    }
+}

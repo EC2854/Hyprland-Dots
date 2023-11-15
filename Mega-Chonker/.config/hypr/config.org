@@ -1,0 +1,526 @@
+#+TITLE: Hyprland Config
+#+AUTHOR: Mleciu
+#+DESCRIPTION: My hyprland config
+#+STARTUP: showeverything
+#+OPTIONS: toc:3
+
+* Table Of Contents :toc:
+- [[#monitors-config][Monitors Config]]
+- [[#apps-to-load][Apps To Load]]
+- [[#general-settings][General Settings]]
+- [[#keyboard-mouse-and-touchpad-settings][Keyboard, Mouse And Touchpad Settings]]
+- [[#windows-decorations][Windows Decorations]]
+  - [[#windows-border][Windows Border]]
+  - [[#shadow-and-blur][Shadow And Blur]]
+- [[#tiling][Tiling]]
+- [[#global-animations][Global Animations]]
+- [[#window-rules][Window Rules]]
+  - [[#kitty][Kitty]]
+  - [[#nautilus][Nautilus]]
+  - [[#discord][Discord]]
+  - [[#spotify][Spotify]]
+  - [[#steam][Steam]]
+  - [[#heroic-games-launcher][Heroic Games Launcher]]
+  - [[#pavucontrol][Pavucontrol]]
+  - [[#qpwgraph][Qpwgraph]]
+  - [[#firefox][Firefox]]
+  - [[#scratchpads][Scratchpads]]
+  - [[#other-windows][Other Windows]]
+- [[#binds][Binds]]
+  - [[#window-managment][Window Managment]]
+  - [[#workspaces][Workspaces]]
+  - [[#monitors][Monitors]]
+  - [[#execute-programs][Execute Programs]]
+  - [[#screenshots-and-color-picker][Screenshots And Color Picker]]
+  - [[#toggle-bar][Toggle Bar]]
+  - [[#toggle-blockyperformance-mode][Toggle Blocky/Performance Mode]]
+  - [[#media-binds][Media Binds]]
+  - [[#wallpaper-switch][Wallpaper Switch]]
+  - [[#shutdown-and-logout][Shutdown And Logout]]
+- [[#pyprland][Pyprland]]
+  - [[#list-of-used-plugins][List Of Used Plugins]]
+  - [[#scratchpads-1][Scratchpads]]
+
+* Monitors Config
+#+begin_src conf :tangle hyprland.conf
+monitor=HDMI-A-2,2560x1080@100,1920x0,1
+monitor=HDMI-A-1,disable
+#+end_src
+
+* Apps To Load
+#+begin_src conf :tangle hyprland.conf
+exec-once = swaync
+exec-once = blueman-applet
+exec-once = nm-applet --indicator
+exec-once=/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec-once=waybar
+exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec-once = systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec-once=swww init
+exec-once=swayosd-server
+exec-once=pypr
+#+end_src
+* General Settings
+#+begin_src conf :tangle hyprland.conf
+misc {
+  disable_splash_rendering = true
+  no_direct_scanout = true
+  disable_hyprland_logo = true
+}
+#+end_src
+* Keyboard, Mouse And Touchpad Settings
+#+begin_src conf :tangle hyprland.conf
+input {
+    kb_layout=pl
+    follow_mouse=1
+    numlock_by_default=yes
+    touchpad {
+        natural_scroll=yes
+        tap-and-drag=yes
+        disable_while_typing=no
+
+    }
+}
+gestures {
+    workspace_swipe=yes
+    workspace_swipe_fingers=3
+    workspace_swipe_numbered=yes
+}
+#+end_src
+
+* Windows Decorations
+** Windows Border
+#+begin_src conf :tangle hyprland.conf
+general {
+    gaps_in=8
+    gaps_out=15
+    border_size=3
+    col.active_border=rgb(f38ba8) rgb(fab387)
+    col.inactive_border=0xff45475a
+    col.group_border=0xff89dceb
+    col.group_border_active=0xfff9e2af
+}
+#+end_src
+
+** Shadow And Blur
+#+begin_src conf :tangle hyprland.conf
+decoration {
+    drop_shadow = true
+    shadow_range=100
+    shadow_render_power=5
+    col.shadow= 0x33000000
+    col.shadow_inactive=0x22000000
+    rounding=10
+    blur{
+        blur:enabled=true
+        blur:new_optimizations=true
+        blur:size=9
+        blur:passes=2
+        blur:contrast=1
+blur:brightness=0.59
+    }
+}
+#+end_src
+
+* Tiling
+#+begin_src conf :tangle hyprland.conf
+dwindle {
+    pseudotile=1
+    force_split=2
+}
+#+end_src
+
+* Global Animations
+#+begin_src conf :tangle hyprland.conf
+animations {
+    enabled=1
+    bezier=overshot,0.13,0.99,0.29,1.1
+    animation=windows,1,4,overshot,slide
+    animation=border,1,10,default
+    animation=fade,1,10,default
+    animation=workspaces,1,6,overshot,slidevert
+}
+#+end_src
+
+* Window Rules
+** Kitty
+#+begin_src conf :tangle hyprland.conf
+windowrule=move center,title:^(fly_is_kitty)$
+windowrule=size 800 500,title:^(fly_is_kitty)$
+windowrule=float,title:^(fly_is_kitty)$
+
+windowrule=size 1000 500,title:^(donut_is_kitty)$
+windowrule=float,title:^(donut_is_kitty)$
+
+windowrule=size 740 650,title:^(apple_is_kitty)$
+windowrule=float,title:^(apple_is_kitty)$
+
+windowrule=float,title:^(clock_is_kitty)$
+windowrule=size 418 234,title:^(clock_is_kitty)$
+
+windowrule=float,title:^(top_is_kitty)$
+windowrule=move center,title:^(top_is_kitty)$
+windowrule=size 800 500,title:^(top_is_kitty)$
+
+windowrulev2=float,class:^(update)$
+windowrulev2=move center,class:^(update)$
+windowrulev2=size 800 500,class:^(update)$
+windowrulev2=size 800 500,title:^(update)$
+windowrulev2=stayfocused,title:^(update)$
+#+end_src
+
+** Nautilus
+#+begin_src conf :tangle hyprland.conf
+windowrulev2=animation popin,class:^(org.gnome.Nautilus)$
+windowrulev2=opacity 0.8 0.8,class:^(org.gnome.Nautilus)$
+windowrule=float,^(org.gnome.Nautilus)$
+windowrulev2=size 1280 720,class:^(org.gnome.Nautilus)$
+windowrulev2=center,class:^(org.gnome.Nautilus)$
+#+end_src
+
+** Discord
+#+begin_src conf :tangle hyprland.conf
+windowrulev2=opacity 0.8 0.8,class:^(discord)$
+#+end_src
+
+** Spotify
+#+begin_src conf :tangle hyprland.conf
+windowrulev2=opacity 0.8 0.8,class:^(Spotify)$
+#+end_src
+
+** Steam
+#+begin_src conf :tangle hyprland.conf
+windowrulev2=opacity 0.80 0.80,class:^(Steam)$
+windowrulev2=opacity 0.80 0.80,class:^(steam)$
+windowrule=float,title:^(Friends List)$
+windowrule=size 450 730,title:^(Friends List)$
+#+end_src
+
+** Heroic Games Launcher
+#+begin_src conf :tangle hyprland.conf
+windowrulev2=opacity 0.8 0.8,class:^(heroic)$
+#+end_src
+
+** Pavucontrol
+#+begin_src conf :tangle hyprland.conf
+windowrulev2=opacity 0.8 0.8,class:^(pavucontrol)$
+windowrule=float,^(pavucontrol)$
+#+end_src
+
+** Qpwgraph
+#+begin_src conf :tangle hyprland.conf
+windowrulev2=opacity 0.8 0.8,class:^(org.rncbc.qpwgraph)$
+windowrule=float,^(org.rncbc.qpwgraph)$
+#+end_src
+
+** Firefox
+#+begin_src conf :tangle hyprland.conf
+windowrulev2=opacity 0.8 0.8,title:^(Firefox Developer Edition)$
+windowrule=opacity 0.8 0.8 ,title:^(.*)(DuckDuckGo — Firefox Developer Edition)$
+#+end_src
+
+** Scratchpads
+#+begin_src conf :tangle hyprland.conf
+windowrulev2=float,class:^(scratchpad)$
+windowrulev2=size 1280 720,class:^(scratchpad)$
+windowrulev2=center,class:^(scratchpad)$
+windowrulev2=workspace special silent,class:^(scratchpad)$
+#+end_src
+
+** Other Windows
+#+begin_src conf :tangle hyprland.conf
+windowrule=float,^(blueman-manager)$
+windowrule=float,^(nm-connection-editor)$
+windowrule=float, title:^(update-sys)$
+windowrulev2=opacity 0.8 0.8,class:^(blueman-manager)$
+#+end_src
+
+
+* Binds
+** Window Managment
+*** Mouse Binds
+#+begin_src conf :tangle hyprland.conf
+bindm=SUPER,mouse:272,movewindow
+bindm=SUPER,mouse:273,resizewindow
+#+end_src
+
+*** Toggle Fullscreen
+#+begin_src conf :tangle hyprland.conf
+bind=SUPERSHIFT, F, fullscreen, 0
+bind=SUPER, F, fullscreen, 1
+#+end_src
+
+*** Minimize
+#+begin_src conf :tangle hyprland.conf
+bind=SUPER,M,exec,pypr toggle_minimized
+bind = SUPERSHIFT,M,togglespecialworkspace, minimized
+#+end_src
+
+*** Toggle Floating, Pining
+#+begin_src conf :tangle hyprland.conf
+bind=SUPER, Space, togglefloating
+
+bind=SUPERSHIFT, Space, pin
+#+end_src
+
+*** Toggle Opaque
+Warning: This works only on windows which doesn't have true transparency(so kitty and emacs will stay opaque)
+#+begin_src conf :tangle hyprland.conf
+bind=SUPER,O,exec, hyprctl dispatch toggleopaque
+#+end_src
+
+*** Move Focus
+#+begin_src conf :tangle hyprland.conf
+bind=SUPER,left,movefocus,l
+bind=SUPER,down,movefocus,d
+bind=SUPER,up,movefocus,u
+bind=SUPER,right,movefocus,r
+
+bind=SUPER,h,movefocus,l
+bind=SUPER,j,movefocus,d
+bind=SUPER,k,movefocus,u
+bind=SUPER,l,movefocus,r
+#+end_src
+
+*** Move Window
+#+begin_src conf :tangle hyprland.conf
+bind=SUPERSHIFT,left,movewindow,l
+bind=SUPERSHIFT,down,movewindow,d
+bind=SUPERSHIFT,up,movewindow,u
+bind=SUPERSHIFT,right,movewindow,r
+
+bind=SUPERSHIFT,h,movewindow,l
+bind=SUPERSHIFT,j,movewindow,d
+bind=SUPERSHIFT,k,movewindow,u
+bind=SUPERSHIFT,l,movewindow,r
+#+end_src
+
+*** Resize Window
+#+begin_src conf :tangle hyprland.conf
+binde=SUPERALT,left,resizeactive,-25 0 
+binde=SUPERALT,down,resizeactive,0 25 
+binde=SUPERALT,up,resizeactive,0 -25 
+binde=SUPERALT,right,resizeactive,25 0
+
+binde=SUPERALT,h,resizeactive,-25 0 
+binde=SUPERALT,j,resizeactive,0 25 
+binde=SUPERALT,k,resizeactive,0 -25 
+binde=SUPERALT,l,resizeactive,25 0 
+#+end_src
+
+*** Close Window
+#+begin_src conf :tangle hyprland.conf
+bind=SUPER,Q,killactive
+#+end_src
+
+** Workspaces
+*** Switch To Workspace
+#+begin_src conf :tangle hyprland.conf
+bind=SUPER,1,workspace,1
+bind=SUPER,2,workspace,2
+bind=SUPER,3,workspace,3
+bind=SUPER,4,workspace,4
+bind=SUPER,5,workspace,5
+bind=SUPER,6,workspace,6
+bind=SUPER,7,workspace,7
+bind=SUPER,8,workspace,8
+bind=SUPER,9,workspace,9
+bind=SUPER,0,workspace,10
+#+end_src
+
+*** Move Window To Workspace
+#+begin_src conf :tangle hyprland.conf
+bind=SUPERSHIFT,1,movetoworkspace,1
+bind=SUPERSHIFT,2,movetoworkspace,2
+bind=SUPERSHIFT,3,movetoworkspace,3
+bind=SUPERSHIFT,4,movetoworkspace,4
+bind=SUPERSHIFT,5,movetoworkspace,5
+bind=SUPERSHIFT,6,movetoworkspace,6
+bind=SUPERSHIFT,7,movetoworkspace,7
+bind=SUPERSHIFT,8,movetoworkspace,8
+bind=SUPERSHIFT,9,movetoworkspace,9
+bind=SUPERSHIFT,0,movetoworkspace,10
+#+end_src
+
+*** Switch Workspaces With Scroll
+#+begin_src conf :tangle hyprland.conf
+bind=SUPER,mouse_down,workspace,e-1
+bind=SUPER,mouse_up,workspace,e+1
+#+end_src
+
+** Monitors
+*** Move Workspaces To Another Monitor
+#+begin_src conf :tangle hyprland.conf
+bind=SUPERCONTROL,h,movecurrentworkspacetomonitor,l
+bind=SUPERCONTROL,j,movecurrentworkspacetomonitor,p
+bind=SUPERCONTROL,k,movecurrentworkspacetomonitor,u
+bind=SUPERCONTROL,l,movecurrentworkspacetomonitor,r
+#+end_src
+
+*** Enable/Disable Monitor (DISABLED)
+Warning: This scripts are very junky. To turn off screen u need to move every workspace with opened apps to main monitor. This script can also close all opened programs. Pls if u want to use it just close all apps before. 
+#+begin_src conf
+bind=SUPER,m,exec, ~/.config/hypr/scripts/monitoroff.sh
+bind=SUPERSHIFT,m,exec, ~/.config/hypr/scripts/monitoron.sh
+#+end_src
+
+** Execute Programs
+*** Kitty
+#+begin_src conf :tangle hyprland.conf
+bind=SUPER,t,exec,kitty
+bind=SUPER,RETURN,exec, pypr toggle kitty
+#+end_src
+
+*** Neovim
+#+begin_src conf :tangle hyprland.conf
+bind=SUPER,v,exec,pypr toggle nvim
+#+end_src
+
+*** Rofi
+#+begin_src conf :tangle hyprland.conf
+bindr=SUPER, SUPER_L, exec, killall rofi || rofi -show drun
+bindr=SUPER, SUPER_R, exec, killall rofi || rofi -show drun
+
+bind=SUPER,TAB, exec, killall rofi || rofi -show window
+#+end_src
+
+*** Ranger
+#+begin_src conf :tangle hyprland.conf
+bind=SUPER,E,exec, pypr toggle ranger
+#+end_src
+
+*** Emacs(Client)
+#+begin_src conf :tangle hyprland.conf
+bind=SUPERSHIFT, E, exec, emacsclient -cq
+#+end_src
+
+*** Firefox Dev
+#+begin_src conf :tangle hyprland.conf
+bind=SUPER, W, exec, firefox-developer-edition
+#+end_src
+
+*** Sway Notificaton Center
+#+begin_src conf :tangle hyprland.conf
+bind=SUPER, N, exec, swaync-client -t
+#+end_src
+
+*** Spotify-Tui
+#+begin_src conf :tangle hyprland.conf
+bind=SUPERALT,S,exec, pypr toggle spotify-tui
+#+end_src
+
+*** Some Terminal Apps 
+#+begin_src conf :tangle hyprland.conf
+bind=CTRL,1,exec,kitty --title fly_is_kitty --hold cava
+bind=CTRL,2,exec,kitty --title top_is_kitty --hold htop
+bind=CTRL,3,exec,kitty --title donut_is_kitty --hold donut.c
+bind=CTRL,4,exec,kitty --title clock_is_kitty --hold tty-clock -C5
+bind=CTRL,5,exec,kitty --title apple_is_kitty --hold python3 ./.badapple.py
+#+end_src
+
+** Screenshots And Color Picker
+#+begin_src conf :tangle hyprland.conf
+bind=SUPER,C,exec,hyprpicker -a -n
+bind=SUPER,S,exec, grim -g "$(slurp)" - | wl-copy
+bind=SUPERSHIFT,S,exec, grim - | wl-copy
+bind=,Print,exec,grim - | wl-copy
+#+end_src
+
+** Toggle Bar
+#+begin_src conf :tangle hyprland.conf
+bind=SUPER, G, exec , killall waybar || waybar
+#+end_src
+
+** Toggle Blocky/Performance Mode
+#+begin_src conf :tangle hyprland.conf
+bind=SUPERSHIFT, G, exec , ~/.config/hypr/scripts/toggleblockymode.sh
+#+end_src
+
+** Media Binds
+#+begin_src conf :tangle hyprland.conf
+bind=,XF86AudioMute,exec,swayosd-client --output-volume mute-toggle
+bind=,XF86AudioMicMute,exec,swayosd-client --input-volume mute-toggle
+
+binde=,XF86AudioLowerVolume,exec,swayosd-client --output-volume -5
+binde=,XF86AudioRaiseVolume,exec,swayosd-client --output-volume 5
+
+bind=,XF86AudioPlay,exec,playerctl play-pause
+bind=,XF86AudioNext,exec,playerctl next
+bind=,XF86AudioPrev,exec,playerctl previous
+
+binde=,XF86MonBrightnessdown,exec, brightnessctl set 5%-
+binde=,XF86MonBrightnessup,exec, brightnessctl set 5%+
+
+bind=SUPER,MINUS,exec,playerctl previous
+binde=SUPERSHIFT,MINUS,exec,swayosd-client --output-volume -5
+binde=SUPERALT,MINUS,exec,swayosd-client --input-volume -5
+binde=SUPERCONTROL,MINUS,exec, brightnessctl set 5%-
+
+bind=SUPER,EQUAL,exec,playerctl next
+binde=SUPERSHIFT,EQUAL,exec,swayosd-client --output-volume 5
+binde=SUPERALT,EQUAL,exec,swayosd-client --input-volume 5
+binde=SUPERCONTROL,EQUAL,exec, brightnessctl set 5%+
+
+bind=SUPER,P,exec,playerctl play-pause
+bind=SUPERSHIFT,P,exec,swayosd-client --output-volume mute-toggle
+bind=SUPERALT,P,exec,swayosd-client --input-volume mute-toggle
+#+end_src
+
+** Wallpaper Switch
+#+begin_src conf :tangle hyprland.conf
+bind=SUPERALT,1,exec, swww img $HOME/Pictures/Wallpapers/background1.jpg
+bind=SUPERALT,2,exec, swww img $HOME/Pictures/Wallpapers/background2.jpg
+bind=SUPERALT,3,exec, swww img $HOME/Pictures/Wallpapers/background3.jpg
+bind=SUPERALT,4,exec, swww img $HOME/Pictures/Wallpapers/background4.jpg
+bind=SUPERALT,5,exec, swww img $HOME/Pictures/Wallpapers/background5.jpg
+bind=SUPERALT,6,exec, swww img $HOME/Pictures/Wallpapers/background6.jpg
+bind=SUPERALT,7,exec, swww img $HOME/Pictures/Wallpapers/background7.jpg
+bind=SUPERALT,8,exec, swww img $HOME/Pictures/Wallpapers/background8.jpg
+bind=SUPERALT,9,exec, swww img $HOME/Pictures/Wallpapers/background9.jpg
+bind=SUPERALT,0,exec, swww img $HOME/Pictures/Wallpapers/background10.jpg
+#+end_src
+
+** Shutdown And Logout
+#+begin_src conf :tangle hyprland.conf
+bind=SUPER, ESCAPE, exec, ~/.config/rofi/powermenu.sh
+bind=SUPER SHIFT, ESCAPE, exit 
+#+end_src
+
+* Pyprland
+** List Of Used Plugins
+#+begin_src json :tangle pyprland.json
+{
+    "pyprland":{
+        "plugins": ["scratchpads", "expose"]
+    },
+#+end_src
+
+** Scratchpads
+#+begin_src json :tangle pyprland.json
+    "scratchpads":{
+        "kitty":{
+            "command": "kitty --class scratchpad",
+            "animation": "fromTop",
+            "margin": 50,
+            "unfocus": "hide"
+        },
+        "ranger":{
+            "command": "kitty --class scratchpad -e ranger",
+            "animation": "fromTop",
+            "margin": 50
+        },
+        "spotify-tui":{
+            "command": "kitty --class scratchpad -e spt",
+            "animation": "fromTop",
+            "margin": 50
+        },
+        "nvim":{
+            "command": "kitty --class scratchpad -e nvim",
+            "animation": "fromTop",
+            "margin": 50
+        }
+
+
+    }
+}
+#+end_src

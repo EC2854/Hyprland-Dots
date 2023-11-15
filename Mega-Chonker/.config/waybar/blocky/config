@@ -1,0 +1,72 @@
+{
+    "layer": "top", 
+    "position": "top", 
+
+    "modules-left": ["hyprland/workspaces"],
+    "modules-right": ["tray","cpu","memory","battery","backlight","pulseaudio","clock"],
+    "modules-center": ["hyprland/window"],
+
+"wlr/workspaces": {
+    "format": "{icon}",
+    "format-active": " {icon} ",
+    "on-click": "activate"
+},
+
+"hyprland/window": {
+    "format": "{}",
+    "return-type": "json",
+    "max-length": 50,
+    "on-click": "hyprctl dispatch killactive",
+    "rewrite": {
+        "(.*)Firefox Developer Edition": "Firefox Developer Edition",
+    }
+},
+
+"tray": {
+    "spacing": 10,
+    "icon-size": 16
+},
+
+"cpu": {
+    "interval": 10,
+    "max-length": 10,
+    "format": "<span font='12'></span> {usage}%"
+},
+
+"memory": {
+    "interval": 30,
+    "format": "<span font='12'></span> {}%",
+    "max-length": 10,
+    "tooltip": true,
+    "tooltip-format": "Memory - {used:0.1f}GB used"
+},
+
+"pulseaudio": {
+    "format": "<span font='12'></span> {volume}%",
+    "format-bluetooth": "<span font='12'></span> {volume}%",
+    "format-muted": "<span font='12'></span>  0%",
+    "on-click": "pavucontrol",
+    "on-click-right": "qpwgraph"
+},
+
+"backlight": {
+    "format": "<span font='12'>{icon}</span> {percent}%",
+    "format-icons": ["", "", "", "", "", "", "", "", ""]
+},
+
+"battery": {
+    "states": {
+        "good": 95,
+        "warning": 30,
+        "critical": 20
+    },
+    "format-charging": "<span font='12'>󰂄</span> {capacity}%",
+    "format-plugged": "<span font='12'></span> {capacity}%",
+    "format": "<span font='12'>{icon}</span> {capacity}%",
+    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+},
+
+"clock": {
+        "format": "{:%H:%M}"
+    }
+}

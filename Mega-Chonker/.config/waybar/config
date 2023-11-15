@@ -1,0 +1,103 @@
+{
+    "layer": "top", 
+    "position": "top", 
+
+    "margin-bottom":-11,
+    "modules-left": ["hyprland/workspaces", "hyprland/window","custom/maximize","custom/close"],
+    "modules-right": ["tray","cpu","memory","battery","backlight","custom/updater","pulseaudio","clock"],
+    "modules-center": ["custom/waybar-mpris"],
+
+"wlr/workspaces": {
+    "format": "{icon}",
+    "format-active": " {icon} ",
+    "on-click": "activate"
+},
+
+"hyprland/window": {
+    "format": "{}",
+    "return-type": "json",
+    "max-length": 50,
+    "rewrite": {
+        "(.*)Firefox Developer Edition": "Firefox Developer Edition",
+    }
+},
+
+"custom/maximize": {
+    "format": "<span font='12'></span>",
+    "on-click": "hyprctl dispatch fullscreen 1",
+    "on-click-right": "hyprctl dispatch fullscreen 0"
+},
+
+"custom/close": {
+    "format": "<span font='12'></span>",
+    "on-click": "hyprctl dispatch killactive"
+},
+
+"custom/waybar-mpris": {
+    "return-type": "json",
+    "exec": "waybar-mpris --position --autofocus --order 'ARTIST:TITLE'" ,
+    "on-click": "waybar-mpris --send toggle",
+        "on-click-right": "waybar-mpris --send player-next",
+        "on-scroll-up": "waybar-mpris --send next",
+        "on-scroll-down": "waybar-mpris --send prev",
+    "escape": true
+},
+
+"tray": {
+    "spacing": 10,
+    "icon-size": 16
+},
+
+"cpu": {
+    "interval": 10,
+    "max-length": 10,
+    "format": "<span font='12'></span> {usage}%"
+},
+
+"memory": {
+    "interval": 30,
+    "format": "<span font='12'></span> {}%",
+    "max-length": 10,
+    "tooltip": true,
+    "tooltip-format": "Memory - {used:0.1f}GB used"
+},
+
+"pulseaudio": {
+    "format": "<span font='12'></span> {volume}%",
+    "format-bluetooth": "<span font='12'></span> {volume}%",
+    "format-muted": "<span font='12'></span>  0%",
+    "on-click": "pavucontrol",
+    "on-click-right": "qpwgraph"
+},
+
+"backlight": {
+    "format": "<span font='12'>{icon}</span> {percent}%",
+    "format-icons": ["", "", "", "", "", "", "", "", ""]
+},
+
+"battery": {
+    "states": {
+        "good": 95,
+        "warning": 30,
+        "critical": 20
+    },
+    "format-charging": "<span font='12'>󰂄</span> {capacity}%",
+    "format-plugged": "<span font='12'></span> {capacity}%",
+    "format": "<span font='12'>{icon}</span> {capacity}%",
+    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+},
+
+"custom/updater":{
+    "format": "<span font='12'></span>  {}",
+    "exec": "checkupdates | wc -l",
+    "exec-if": "[[ $(checkupdates | wc -l) ]]",
+    "interval": 10800,
+    "on-click": "kitty --class update -T update -o font_size=13 -e yay -Syu --noconfirm && notify-send 'The system has been updated' "
+},
+
+"clock": {
+        "format": "{:%a %b %d %H:%M}",
+        "on-click":"swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw"
+    }
+}
