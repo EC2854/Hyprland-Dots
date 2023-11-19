@@ -1,0 +1,18 @@
+- Window Manager - Hyprland
+- Panel - waybar
+- Launcher - Rofi
+- Shell - zsh
+- Prompt - Starship
+- Terminal - Kitty
+- File Manager - Ranger
+- IDE - nvim
+- IDE#2/Note taking app - emacs
+
+* Warning
+"Mega Chonker" is the main version, and the others only contain files that are different from what's in Mega Chonker.
+
+* Mega Chonker Edition
+[[./Mega-Chonker.png]]
+
+* Egg Crack Edition
+[[./Egg-Crack.png]]

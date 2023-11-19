@@ -1,0 +1,15 @@
+configuration{
+    modi: "drun,window";
+    show-icons: true;
+    terminal: "kitty";
+    icon-theme:"Papirus-Dark";
+    drun-display-format: "{icon} {name}";
+    location: 0;
+    disable-history: false;
+    hide-scrollbar: true;
+    display-drun: "   Apps ";
+    display-window: "   Window";
+    sidebar-mode: true;
+}
+
+@theme "themes/catppuccin-mocha"
