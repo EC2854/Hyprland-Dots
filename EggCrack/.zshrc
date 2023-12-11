@@ -7,6 +7,7 @@ export MANPAGER="nvim +Man!"
 eval "$(starship init zsh)"
 
 neofetch --kitty --source ~/.config/neofetch/nyarch.png
+
 # History in cache directory:
 HISTSIZE=10000
 SAVEHIST=10000
@@ -73,17 +74,20 @@ autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
 alias vim='nvim'
+alias s='sudo'
+alias v='nvim'
+alias sv='sudo nvim'
 alias grep='rg'
 alias rg='rg -p'
 alias rm='rm -rf'
 
-alias icat='kitty +kitten icat --align=left'
 
 alias ..='cd ..'
 alias .2='cd ../..'
 alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
+
 alias .r='cd /'
 alias .h='cd ~'
 alias .c='cd ~/.config/'
@@ -97,7 +101,11 @@ alias la='eza --icons=always --color=always --hyperlink --group-directories-firs
 alias ll='eza --icons=always --color=always --hyperlink --group-directories-first -la --no-time'
 alias lt='eza --icons=always --color=always --hyperlink --group-directories-first -T'
 
-alias upd='yay -Syu --noconfirm'
+alias cat='bat -P --color=always --style=plain --theme=base16 --wrap=auto'
+alias ncat='bat -P --color=always --style=numbers --theme=base16 --wrap=auto'
+alias icat='kitty +kitten icat --align=left'
+
+alias upd='yay -Syu --noconfirm --quiet'
 alias inst='yay -S --noconfirm'
 alias uninst='yay -Rns --noconfirm'
 alias rem='sudo pacman -Rns $(pacman -Qq | fzf)'

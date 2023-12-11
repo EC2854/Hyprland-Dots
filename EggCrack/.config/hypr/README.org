@@ -17,6 +17,7 @@
 - [[#window-rules][Window Rules]]
   - [[#kitty][Kitty]]
   - [[#nautilus][Nautilus]]
+  - [[#run-menu][Run Menu]]
   - [[#discord][Discord]]
   - [[#spotify][Spotify]]
   - [[#steam][Steam]]
@@ -33,6 +34,7 @@
   - [[#execute-programs][Execute Programs]]
   - [[#screenshots-and-color-picker][Screenshots And Color Picker]]
   - [[#toggle-bar][Toggle Bar]]
+  - [[#toggle-blockyperformance-mode][Toggle Blocky/Performance Mode]]
   - [[#media-binds][Media Binds]]
   - [[#wallpaper-switch][Wallpaper Switch]]
   - [[#shutdown-and-logout][Shutdown And Logout]]
@@ -177,6 +179,15 @@
    windowrulev2=center,class:^(org.gnome.Nautilus)$
    #+end_src
 
+** Run Menu
+#+begin_src conf :tangle hyprland.conf
+windowrulev2=animation popin,class:^(menu)$
+windowrule=float,^(menu)$
+windowrulev2=size 600 350,class:^(menu)$
+windowrulev2=center,class:^(menu)$
+#+end_src
+
+   
 ** Discord
    #+begin_src conf :tangle hyprland.conf
    windowrulev2=opacity 0.8 0.8,class:^(discord)$
@@ -376,9 +387,11 @@
 
 *** Rofi
     #+begin_src conf :tangle hyprland.conf
+    #bindr=SUPER, SUPER_L, exec, killall rofi || rofi -show drun
     bindr=SUPER, SUPER_L, exec, killall rofi || rofi -show drun
-    bindr=SUPER, SUPER_R, exec, killall rofi || rofi -show drun
-    
+
+    bindr=SUPER, SUPER_R, exec, kitty --class menu -e ~/.config/fzf/runmenu.sh
+
     bind=SUPER,TAB, exec, killall rofi || rofi -show window
     #+end_src
     
@@ -402,9 +415,9 @@
     bind=SUPER, N, exec, swaync-client -t
     #+end_src
     
-*** Spotify-Tui
+*** Spotify
     #+begin_src conf :tangle hyprland.conf
-    bind=SUPERALT,S,exec, pypr toggle spotify-tui
+    bind=SUPERALT,S,exec, pypr toggle spotify
     #+end_src
     
 *** Some Terminal Apps 
@@ -427,6 +440,11 @@
 ** Toggle Bar
    #+begin_src conf :tangle hyprland.conf
    bind=SUPER, G, exec , killall waybar || waybar
+   #+end_src
+
+** Toggle Blocky/Performance Mode
+   #+begin_src conf :tangle hyprland.conf
+   bind=SUPERSHIFT, G, exec , ~/.config/hypr/scripts/toggleblockymode.sh
    #+end_src
 
 ** Media Binds
@@ -502,8 +520,8 @@
                "animation": "fromTop",
                "margin": 50
            },
-           "spotify-tui":{
-               "command": "kitty --class scratchpad -e spt",
+           "spotify":{
+               "command": "spotify",
                "animation": "fromTop",
                "margin": 50
            },

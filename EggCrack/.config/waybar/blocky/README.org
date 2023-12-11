@@ -1,0 +1,185 @@
+#+TITLE: Waybar Config
+#+AUTHOR: Mleciu
+#+DESCRIPTION: My waybar config for blocky mode
+#+STARTUP: showeverything
+#+OPTIONS: toc:3
+
+* Table Of Contents :toc:
+- [[#config][Config]]
+  - [[#format-and-basic-config][Format And Basic Config]]
+- [[#style][Style]]
+  - [[#fonts][Fonts]]
+  - [[#transparency][Transparency]]
+  - [[#general-settings][General Settings]]
+  - [[#modules][Modules]]
+
+* Config
+** Format And Basic Config
+#+begin_src json :tangle config
+{
+    "layer": "top", 
+    "position": "top", 
+
+    "modules-left": ["hyprland/workspaces"],
+    "modules-right": ["tray","cpu","memory","battery","backlight","pulseaudio","clock"],
+    "modules-center": ["hyprland/window"],
+#+end_src
+
+*** Workspaces
+#+begin_src json :tangle config
+    "wlr/workspaces": {
+        "format": "{icon}",
+        "format-active": " {icon} ",
+        "on-click": "activate"
+    },
+#+end_src
+
+*** Window
+#+begin_src json :tangle config
+    "hyprland/window": {
+        "format": "{}",
+        "return-type": "json",
+        "max-length": 50,
+        "on-click": "hyprctl dispatch killactive",
+        "rewrite": {
+            "(.*)Firefox Developer Edition": "Firefox Developer Edition",
+        }
+    },
+#+end_src
+
+*** Tray
+#+begin_src json :tangle config
+    "tray": {
+        "spacing": 10,
+        "icon-size": 16
+    },
+#+end_src
+
+*** Cpu
+#+begin_src json :tangle config
+    "cpu": {
+        "interval": 10,
+        "max-length": 10,
+        "format": "<span font='12'></span> {usage}%"
+    },
+#+end_src
+
+*** Memory
+#+begin_src json :tangle config 
+    "memory": {
+        "interval": 30,
+        "format": "<span font='12'></span> {}%",
+        "max-length": 10,
+        "tooltip": true,
+        "tooltip-format": "Memory - {used:0.1f}GB used"
+    },
+#+end_src
+
+*** Audio
+#+begin_src json :tangle config
+    "pulseaudio": {
+        "format": "<span font='12'></span> {volume}%",
+        "format-bluetooth": "<span font='12'></span> {volume}%",
+        "format-muted": "<span font='12'></span>  0%",
+        "on-click": "pavucontrol",
+        "on-click-right": "qpwgraph"
+    },
+#+end_src
+
+*** Backlight
+#+begin_src json :tangle config
+    "backlight": {
+        "format": "<span font='12'>{icon}</span> {percent}%",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+#+end_src
+
+*** Battery
+#+begin_src json :tangle config
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 20
+        },
+        "format-charging": "<span font='12'>󰂄</span> {capacity}%",
+        "format-plugged": "<span font='12'></span> {capacity}%",
+        "format": "<span font='12'>{icon}</span> {capacity}%",
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    },
+
+#+end_src
+
+*** Clock
+#+begin_src json :tangle config
+    "clock": {
+        "format": "{:%H:%M}"
+    }
+}
+#+end_src
+
+* Style
+** Fonts
+#+begin_src css : tangle style.css
+*{
+    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 10px;
+}
+#+end_src
+
+** Transparency 
+#+begin_src css :tangle style.css
+window#waybar{
+    background-color: rgba(30,30,46,0.8);
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+#+end_src
+
+** General Settings
+#+begin_src css :tangle style.css
+#tray,
+#battery,
+#cpu,
+#memory,
+#battery,
+#backlight,
+#pulseaudio,
+#custom-updater,
+#workspaces button,
+#window,
+#clock{
+    color: #cdd6f4;
+
+    margin-right: 5px;
+    margin-top: 2px;
+    margin-bottom:2px;
+
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#+end_src
+** Modules
+*** Workspaces
+#+begin_src css :tangle style.css
+#workspaces button.active{
+    color: #74c7ec;
+    font-weight: bold;
+}
+#+end_src
+
+*** Battery
+#+begin_src css :tangle style.css
+#battery.critical:not(.charging){
+     color: #74c7ec;
+    font-weight: bold;
+}
+#+end_src
+
+*** PulseAudio
+#+begin_src css :tangle style.css
+#pulseaudio.muted{
+    font-weight: bold;
+    color: #74c7ec;
+}
+#+end_src

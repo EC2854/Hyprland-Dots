@@ -15,8 +15,8 @@
             "animation": "fromTop",
             "margin": 50
         },
-        "spotify-tui":{
-            "command": "kitty --class scratchpad -e spt",
+        "spotify":{
+            "command": "spotify",
             "animation": "fromTop",
             "margin": 50
         },

@@ -2,6 +2,7 @@ configuration{
     modi: "drun,window";
     show-icons: true;
     terminal: "kitty";
+    layer:"overlay";
     icon-theme:"Papirus-Dark";
     drun-display-format: "{icon} {name}";
     location: 0;
