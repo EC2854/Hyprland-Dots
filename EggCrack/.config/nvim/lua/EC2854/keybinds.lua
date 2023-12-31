@@ -39,6 +39,7 @@ bind("n", "<A-j>", ":resize -2<CR>", opts)
 bind("n", "<A-k>", ":resize +2<CR>", opts)
 bind("n", "<A-l>", ":vertical resize -2<CR>", opts)
 
+bind('n', ':', '<cmd>FineCmdline<CR>', {noremap = true})
 -- buffers
 bind("n", "X", ":Bdelete<CR>", opts)
 
