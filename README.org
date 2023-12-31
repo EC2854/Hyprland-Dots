@@ -9,7 +9,7 @@
 - IDE#2/Note taking app - emacs
 
 * Warning
-"Mega Chonker" is the main version, and the others only contain files that are different from what's in Mega Chonker.
+idk i will do readme later also pls dont use Mega Chonker.
 
 * Mega Chonker Edition
 [[./Mega-Chonker.png]]
