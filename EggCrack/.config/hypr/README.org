@@ -43,33 +43,34 @@
   - [[#scratchpads-1][Scratchpads]]
 
 * Monitors Config
-  #+begin_src conf :tangle hyprland.conf
-  monitor=HDMI-A-2,2560x1080@100,1920x0,1
-  monitor=HDMI-A-1,disable
-  #+end_src
+#+begin_src conf :tangle hyprland.conf
+monitor=HDMI-A-2,2560x1080@100,0x0,1
+# monitor=HDMI-A-1,highres,2560x0,1
+monitor=HDMI-A-1,disabled
+#+end_src
 
 * Apps To Load
-  #+begin_src conf :tangle hyprland.conf
-  exec-once = swaync
-  exec-once = blueman-applet
-  exec-once = nm-applet --indicator
-  exec-once=/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-  exec-once=waybar
-  exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-  exec-once = systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-  exec-once=swww init
-  exec-once=swayosd-server
-  exec-once=pypr
-  #+end_src
+#+begin_src conf :tangle hyprland.conf
+exec-once = swaync
+exec-once = blueman-applet
+exec-once = nm-applet --indicator
+exec-once=/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec-once=waybar
+exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec-once = systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec-once=swww init
+exec-once=swayosd-server
+exec-once=pypr
+#+end_src
 
 * General Settings
-  #+begin_src conf :tangle hyprland.conf
-  misc {
-      disable_splash_rendering = true
-      no_direct_scanout = true
-      disable_hyprland_logo = true
-  }
-  #+end_src
+#+begin_src conf :tangle hyprland.conf
+misc {
+    disable_splash_rendering = true
+    no_direct_scanout = true
+    disable_hyprland_logo = true
+}
+#+end_src
 
 * Keyboard, Mouse And Touchpad Settings
   #+begin_src conf :tangle hyprland.conf
@@ -279,18 +280,18 @@ windowrulev2=center,class:^(menu)$
     #+end_src
 
 *** Move Focus
-    #+begin_src conf :tangle hyprland.conf
-    bind=SUPER,left,movefocus,l
-    bind=SUPER,down,movefocus,d
-    bind=SUPER,up,movefocus,u
-    bind=SUPER,right,movefocus,r
-    
-    bind=SUPER,h,movefocus,l
-    bind=SUPER,j,movefocus,d
-    bind=SUPER,k,movefocus,u
-    bind=SUPER,l,movefocus,r
-    #+end_src
-    
+#+begin_src conf :tangle hyprland.conf
+bind=SUPER,left,movefocus,l
+bind=SUPER,down,movefocus,d
+bind=SUPER,up,movefocus,u
+bind=SUPER,right,movefocus,r
+
+bind=SUPER,h,movefocus,l
+bind=SUPER,j,movefocus,d
+bind=SUPER,k,movefocus,u
+bind=SUPER,l,movefocus,r
+#+end_src
+
 *** Move Window
     #+begin_src conf :tangle hyprland.conf
     bind=SUPERSHIFT,left,movewindow,l
@@ -397,7 +398,7 @@ windowrulev2=center,class:^(menu)$
     
 *** Ranger
     #+begin_src conf :tangle hyprland.conf
-    bind=SUPER,E,exec, pypr toggle ranger
+    bind=SUPER,E,exec, pypr toggle lf
     #+end_src
     
 *** Emacs(Client)
@@ -406,29 +407,20 @@ windowrulev2=center,class:^(menu)$
     #+end_src
     
 *** Firefox Dev
-    #+begin_src conf :tangle hyprland.conf
-    bind=SUPER, W, exec, firefox-developer-edition
-    #+end_src
+#+begin_src conf :tangle hyprland.conf
+bind=SUPER, W, exec, firefox-developer-edition
+#+end_src
     
 *** Sway Notificaton Center
-    #+begin_src conf :tangle hyprland.conf
-    bind=SUPER, N, exec, swaync-client -t
-    #+end_src
+#+begin_src conf :tangle hyprland.conf
+bind=SUPER, N, exec, swaync-client -t
+#+end_src
     
 *** Spotify
-    #+begin_src conf :tangle hyprland.conf
-    bind=SUPERALT,S,exec, pypr toggle spotify
-    #+end_src
+#+begin_src conf :tangle hyprland.conf
+bind=SUPERALT,S,exec, pypr toggle spotify
+#+end_src
     
-*** Some Terminal Apps 
-    #+begin_src conf :tangle hyprland.conf
-    bind=CTRL,1,exec,kitty --title fly_is_kitty --hold cava
-    bind=CTRL,2,exec,kitty --title top_is_kitty --hold htop
-    bind=CTRL,3,exec,kitty --title donut_is_kitty --hold donut.c
-    bind=CTRL,4,exec,kitty --title clock_is_kitty --hold tty-clock -C5
-    bind=CTRL,5,exec,kitty --title apple_is_kitty --hold python3 ./.badapple.py
-    #+end_src
- 
 ** Screenshots And Color Picker
    #+begin_src conf :tangle hyprland.conf
    bind=SUPER,C,exec,hyprpicker -a -n
@@ -499,39 +491,37 @@ windowrulev2=center,class:^(menu)$
    
 * Pyprland
 ** List Of Used Plugins
-   #+begin_src json :tangle pyprland.json
-   {
-       "pyprland":{
-           "plugins": ["scratchpads", "expose"]
-       },
-   #+end_src
+#+begin_src json :tangle pyprland.json
+{
+    "pyprland":{
+        "plugins": ["scratchpads", "expose"]
+    },
+#+end_src
    
 ** Scratchpads
-   #+begin_src json :tangle pyprland.json
-       "scratchpads":{
-           "kitty":{
-               "command": "kitty --class scratchpad",
-               "animation": "fromTop",
-               "margin": 50,
-               "unfocus": "hide"
-           },
-           "ranger":{
-               "command": "kitty --class scratchpad -e ranger",
-               "animation": "fromTop",
-               "margin": 50
-           },
-           "spotify":{
-               "command": "spotify",
-               "animation": "fromTop",
-               "margin": 50
-           },
-           "nvim":{
-               "command": "kitty --class scratchpad -e nvim",
-               "animation": "fromTop",
-               "margin": 50
-           }
-   
-   
-       }
-   }
-   #+end_src
+#+begin_src json :tangle pyprland.json
+    "scratchpads":{
+        "kitty":{
+            "command": "kitty --class scratchpad",
+            "animation": "fromTop",
+            "margin": 50,
+            "unfocus": "hide"
+        },
+        "lf":{
+            "command": "kitty --class scratchpad -e lf",
+            "animation": "fromTop",
+            "margin": 50
+        },
+        "spotify":{
+            "command": "spotify",
+            "animation": "fromTop",
+            "margin": 50
+        },
+        "nvim":{
+            "command": "kitty --class scratchpad -e nvim",
+            "animation": "fromTop",
+            "margin": 50
+        }
+    }
+}
+#+end_src

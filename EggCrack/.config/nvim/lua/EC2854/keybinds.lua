@@ -20,10 +20,10 @@ vim.g.maplocalleader = " "
 
 -- Normal --
 -- Better window navigation
-bind("n", "<C-h>", "<C-w>h", opts)
-bind("n", "<C-j>", "<C-w>j", opts)
-bind("n", "<C-k>", "<C-w>k", opts)
-bind("n", "<C-l>", "<C-w>l", opts)
+bind("n", "<C-h>", ":KittyNavigateLeft<cr>", opts)
+bind("n", "<C-j>", "KittyNavigateDown<cr>", opts)
+bind("n", "<C-k>", ":KittyNavigateUp<cr>", opts)
+bind("n", "<C-l>", ":KittyNavigateRight<cr>", opts)
 
 bind("n", "<S-l>", ":bnext<CR>", opts)
 bind("n", "<S-h>", ":bprevious<CR>", opts)
@@ -39,7 +39,6 @@ bind("n", "<A-j>", ":resize -2<CR>", opts)
 bind("n", "<A-k>", ":resize +2<CR>", opts)
 bind("n", "<A-l>", ":vertical resize -2<CR>", opts)
 
-bind('n', ':', '<cmd>FineCmdline<CR>', {noremap = true})
 -- buffers
 bind("n", "X", ":Bdelete<CR>", opts)
 
