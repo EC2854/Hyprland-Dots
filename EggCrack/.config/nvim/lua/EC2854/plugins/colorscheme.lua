@@ -45,6 +45,7 @@ return {
             which_key = true,
             alpha = true,
             beacon = true,
+            noice = true,
             -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
         },
     })
