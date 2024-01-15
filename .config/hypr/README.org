@@ -16,7 +16,7 @@
 - [[#global-animations][Global Animations]]
 - [[#window-rules][Window Rules]]
   - [[#kitty][Kitty]]
-  - [[#nautilus][Nautilus]]
+  - [[#run-menu][Run Menu]]
   - [[#discord][Discord]]
   - [[#spotify][Spotify]]
   - [[#steam][Steam]]
@@ -43,8 +43,9 @@
 
 * Monitors Config
 #+begin_src conf :tangle hyprland.conf
-monitor=HDMI-A-2,2560x1080@100,1920x0,1
-monitor=HDMI-A-1,disable
+monitor=HDMI-A-2,2560x1080@100,0x0,1
+# monitor=HDMI-A-1,highres,2560x0,1
+monitor=HDMI-A-1,disabled
 #+end_src
 
 * Apps To Load
@@ -60,14 +61,16 @@ exec-once=swww init
 exec-once=swayosd-server
 exec-once=pypr
 #+end_src
+
 * General Settings
 #+begin_src conf :tangle hyprland.conf
 misc {
-  disable_splash_rendering = true
-  no_direct_scanout = true
-  disable_hyprland_logo = true
+    disable_splash_rendering = true
+    no_direct_scanout = true
+    disable_hyprland_logo = true
 }
 #+end_src
+
 * Keyboard, Mouse And Touchpad Settings
 #+begin_src conf :tangle hyprland.conf
 input {
@@ -95,10 +98,8 @@ general {
     gaps_in=8
     gaps_out=15
     border_size=3
-    col.active_border=rgb(f38ba8) rgb(fab387)
+    col.active_border=rgb(74c7ec) rgb(f5c7ec)
     col.inactive_border=0xff45475a
-    col.group_border=0xff89dceb
-    col.group_border_active=0xfff9e2af
 }
 #+end_src
 
@@ -169,18 +170,18 @@ windowrulev2=size 800 500,title:^(update)$
 windowrulev2=stayfocused,title:^(update)$
 #+end_src
 
-** Nautilus
+** Run Menu
 #+begin_src conf :tangle hyprland.conf
-windowrulev2=animation popin,class:^(org.gnome.Nautilus)$
-windowrulev2=opacity 0.8 0.8,class:^(org.gnome.Nautilus)$
-windowrule=float,^(org.gnome.Nautilus)$
-windowrulev2=size 1280 720,class:^(org.gnome.Nautilus)$
-windowrulev2=center,class:^(org.gnome.Nautilus)$
+windowrulev2=animation popin,class:^(menu)$
+windowrule=float,^(menu)$
+windowrulev2=size 600 350,class:^(menu)$
+windowrulev2=center,class:^(menu)$
 #+end_src
 
+   
 ** Discord
 #+begin_src conf :tangle hyprland.conf
-windowrulev2=opacity 0.8 0.8,class:^(discord)$
+windowrulev2=opacity 0.8 0.8,class:^(VencordDesktop)$
 #+end_src
 
 ** Spotify
@@ -234,7 +235,6 @@ windowrule=float,^(nm-connection-editor)$
 windowrule=float, title:^(update-sys)$
 windowrulev2=opacity 0.8 0.8,class:^(blueman-manager)$
 #+end_src
-
 
 * Binds
 ** Window Managment
@@ -341,12 +341,12 @@ bind=SUPERSHIFT,8,movetoworkspace,8
 bind=SUPERSHIFT,9,movetoworkspace,9
 bind=SUPERSHIFT,0,movetoworkspace,10
 #+end_src
-
+    
 *** Switch Workspaces With Scroll
-#+begin_src conf :tangle hyprland.conf
-bind=SUPER,mouse_down,workspace,e-1
-bind=SUPER,mouse_up,workspace,e+1
-#+end_src
+ #+begin_src conf :tangle hyprland.conf
+ bind=SUPER,mouse_down,workspace,e-1
+ bind=SUPER,mouse_up,workspace,e+1
+ #+end_src
 
 ** Monitors
 *** Move Workspaces To Another Monitor
@@ -363,7 +363,7 @@ Warning: This scripts are very junky. To turn off screen u need to move every wo
 bind=SUPER,m,exec, ~/.config/hypr/scripts/monitoroff.sh
 bind=SUPERSHIFT,m,exec, ~/.config/hypr/scripts/monitoron.sh
 #+end_src
-
+    
 ** Execute Programs
 *** Kitty
 #+begin_src conf :tangle hyprland.conf
@@ -371,51 +371,59 @@ bind=SUPER,t,exec,kitty
 bind=SUPER,RETURN,exec, pypr toggle kitty
 #+end_src
 
-*** Neovim
-#+begin_src conf :tangle hyprland.conf
-bind=SUPER,v,exec,pypr toggle nvim
-#+end_src
-
 *** Rofi
 #+begin_src conf :tangle hyprland.conf
+#bindr=SUPER, SUPER_L, exec, killall rofi || rofi -show drun
 bindr=SUPER, SUPER_L, exec, killall rofi || rofi -show drun
-bindr=SUPER, SUPER_R, exec, killall rofi || rofi -show drun
+
+bindr=SUPER, SUPER_R, exec, kitty --class menu -e ~/.config/fzf/runmenu.sh
 
 bind=SUPER,TAB, exec, killall rofi || rofi -show window
 #+end_src
-
-*** Ranger
+    
+*** lf
 #+begin_src conf :tangle hyprland.conf
-bind=SUPER,E,exec, pypr toggle ranger
+bind=SUPER,E,exec, pypr toggle lf
 #+end_src
-
+    
 *** Emacs(Client)
 #+begin_src conf :tangle hyprland.conf
 bind=SUPERSHIFT, E, exec, emacsclient -cq
 #+end_src
-
+    
 *** Firefox Dev
 #+begin_src conf :tangle hyprland.conf
 bind=SUPER, W, exec, firefox-developer-edition
 #+end_src
-
+    
 *** Sway Notificaton Center
 #+begin_src conf :tangle hyprland.conf
 bind=SUPER, N, exec, swaync-client -t
 #+end_src
 
-*** Spotify-Tui
+*** Vencord
 #+begin_src conf :tangle hyprland.conf
-bind=SUPERALT,S,exec, pypr toggle spotify-tui
+bind=SUPER, D, exec, vencord-desktop
 #+end_src
 
-*** Some Terminal Apps 
+*** Spotify
 #+begin_src conf :tangle hyprland.conf
-bind=CTRL,1,exec,kitty --title fly_is_kitty --hold cava
-bind=CTRL,2,exec,kitty --title top_is_kitty --hold htop
-bind=CTRL,3,exec,kitty --title donut_is_kitty --hold donut.c
-bind=CTRL,4,exec,kitty --title clock_is_kitty --hold tty-clock -C5
-bind=CTRL,5,exec,kitty --title apple_is_kitty --hold python3 ./.badapple.py
+bind=SUPERALT,S,exec, pypr toggle spotify
+#+end_src
+
+*** Pavucontrol
+#+begin_src conf :tangle hyprland.conf
+bind=SUPER,A,exec, pavucontrol
+#+end_src
+    
+*** Pavucontrol
+#+begin_src conf :tangle hyprland.conf
+bind=SUPERSHIFT,A,exec, qpwgraph
+#+end_src
+
+*** Blueman
+#+begin_src conf :tangle hyprland.conf
+bind=SUPER,B,exec, blueman-manager
 #+end_src
 
 ** Screenshots And Color Picker
@@ -494,7 +502,7 @@ bind=SUPER SHIFT, ESCAPE, exit
         "plugins": ["scratchpads", "expose"]
     },
 #+end_src
-
+   
 ** Scratchpads
 #+begin_src json :tangle pyprland.json
     "scratchpads":{
@@ -504,23 +512,16 @@ bind=SUPER SHIFT, ESCAPE, exit
             "margin": 50,
             "unfocus": "hide"
         },
-        "ranger":{
-            "command": "kitty --class scratchpad -e ranger",
+        "lf":{
+            "command": "kitty --class scratchpad -e lf",
             "animation": "fromTop",
             "margin": 50
         },
-        "spotify-tui":{
-            "command": "kitty --class scratchpad -e spt",
-            "animation": "fromTop",
-            "margin": 50
-        },
-        "nvim":{
-            "command": "kitty --class scratchpad -e nvim",
+        "spotify":{
+            "command": "spotify",
             "animation": "fromTop",
             "margin": 50
         }
-
-
     }
 }
 #+end_src

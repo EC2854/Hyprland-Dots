@@ -10,22 +10,15 @@
             "margin": 50,
             "unfocus": "hide"
         },
-        "ranger":{
-            "command": "kitty --class scratchpad -e ranger",
+        "lf":{
+            "command": "kitty --class scratchpad -e lf",
             "animation": "fromTop",
             "margin": 50
         },
-        "spotify-tui":{
-            "command": "kitty --class scratchpad -e spt",
-            "animation": "fromTop",
-            "margin": 50
-        },
-        "nvim":{
-            "command": "kitty --class scratchpad -e nvim",
+        "spotify":{
+            "command": "spotify",
             "animation": "fromTop",
             "margin": 50
         }
-
-
     }
 }
