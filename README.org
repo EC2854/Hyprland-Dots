@@ -4,15 +4,8 @@
 - Shell - zsh
 - Prompt - Starship
 - Terminal - Kitty
-- File Manager - Ranger
+- File Manager - lf
 - IDE - nvim
 - IDE#2/Note taking app - emacs
 
-* Warning
-idk i will do readme later also pls dont use Mega Chonker.
-
-* Mega Chonker Edition
-[[./Mega-Chonker.png]]
-
-* Egg Crack Edition
-[[./Egg-Crack.png]]
+[[./screenshot.png]]
