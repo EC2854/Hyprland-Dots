@@ -44,8 +44,8 @@
 * Monitors Config
 #+begin_src conf :tangle hyprland.conf
 monitor=HDMI-A-2,2560x1080@100,0x0,1
-# monitor=HDMI-A-1,highres,2560x0,1
-monitor=HDMI-A-1,disabled
+monitor=HDMI-A-1,highres,2560x0,1
+# monitor=HDMI-A-1,disabled
 #+end_src
 
 * Apps To Load
