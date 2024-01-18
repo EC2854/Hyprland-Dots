@@ -2,9 +2,9 @@
 format="""
 [](bg:none fg:#74c7ec)\
 $username\
-[](bg:#f5c2e7 fg:#74c7ec)\
+[](bg:#74c7ec fg:#f5c2e7)\
 $hostname\
-[](bg:#cdd6f4 fg:#f5c2e7)\
+[](bg:#f5c2e7 fg:#cdd6f4)\
 $directory\
 [](bg:#f5c2e7 fg:#cdd6f4)\
 $git_branch\
@@ -23,18 +23,18 @@ error_symbol = "[ 󱞪](#f5c2e7)"
 vicmd_symbol = "[ 󱞪❯](#f5c2e7)"
 
 [username]
-disabled = false
+disabled = true
 show_always = true
-format = "[ $user ](bg:#74c7ec fg:#1e1e2e bold)"
+format = "[  $user ](bg:#74c7ec fg:#1e1e2e bold)"
 
 [hostname]
-disabled = false
+disabled = true
 ssh_only = false
 format = "[ 󰌽 $hostname ]( bg:#f5c2e7 fg:#1e1e2e bold)"
 
 [directory]
 disabled =false
-format = "[  $path](bg:#cdd6f4 fg:#1e1e2e bold)"
+format = "[  $path ](bg:#cdd6f4 fg:#1e1e2e bold)"
 truncation_length = 3
 truncate_to_repo=false
 
@@ -49,11 +49,11 @@ truncate_to_repo=false
 
 [git_branch]
 disabled =false
-format = '[  $branch](bg:#f5c2e7 fg:#1e1e2e bold)'
+format = '[  $branch ](bg:#f5c2e7 fg:#1e1e2e bold)'
 
 [cmd_duration]
 min_time = 4
 show_milliseconds = false
 disabled = true
-format = '[ 󱑆 $duration](bg:#74c7ec fg:#1e1e2e bold)'
+format = '[ 󱑆 $duration ](bg:#74c7ec fg:#1e1e2e bold)'
 
