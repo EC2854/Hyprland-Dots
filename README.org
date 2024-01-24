@@ -48,11 +48,11 @@
 | SUPER + S              | Take screenshot                   |
 | SUPERSHIFT + S         | Take screenshot (selected area)   |
 | SUPER + G              | Toggle waybar                     |
-| SUPER + MINUS          | Previous track / Decrease volume  |
+| SUPER + MINUS          | Previous track                    |
 | SUPERSHIFT + MINUS     | Decrease output volume            |
 | SUPERALT + MINUS       | Decrease input volume             |
 | SUPERCONTROL + MINUS   | Decrease brightness               |
-| SUPER + EQUAL          | Next track / Increase volume      |
+| SUPER + EQUAL          | Next track                        |
 | SUPERSHIFT + EQUAL     | Increase output volume            |
 | SUPERALT + EQUAL       | Increase input volume             |
 | SUPERCONTROL + EQUAL   | Increase brightness               |
