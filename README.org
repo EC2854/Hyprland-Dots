@@ -9,3 +9,7 @@
 - IDE#2/Note taking app - emacs
 
 [[./screenshot.png]]
+
+#+BEGIN_quote
+Made with <3 by [[https://github.com/EC2854][Ewa (EC2854)]]
+#+END_quote

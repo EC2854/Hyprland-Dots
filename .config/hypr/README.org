@@ -1,5 +1,5 @@
 #+TITLE: Hyprland Config
-#+AUTHOR: Mleciu
+#+AUTHOR: EC2854
 #+DESCRIPTION: My hyprland config
 #+STARTUP: showeverything
 #+OPTIONS: toc:3
@@ -23,7 +23,7 @@
   - [[#heroic-games-launcher][Heroic Games Launcher]]
   - [[#pavucontrol][Pavucontrol]]
   - [[#qpwgraph][Qpwgraph]]
-  - [[#firefox][Firefox]]
+  - [[#floorp][Floorp]]
   - [[#scratchpads][Scratchpads]]
   - [[#other-windows][Other Windows]]
 - [[#binds][Binds]]
@@ -44,8 +44,8 @@
 * Monitors Config
 #+begin_src conf :tangle hyprland.conf
 monitor=HDMI-A-2,2560x1080@100,0x0,1
-monitor=HDMI-A-1,highres,2560x0,1
-# monitor=HDMI-A-1,disabled
+# monitor=HDMI-A-1,highres,2560x0,1
+monitor=HDMI-A-1,disabled
 #+end_src
 
 * Apps To Load
@@ -214,10 +214,10 @@ windowrulev2=opacity 0.8 0.8,class:^(org.rncbc.qpwgraph)$
 windowrule=float,^(org.rncbc.qpwgraph)$
 #+end_src
 
-** Firefox
+** Floorp
 #+begin_src conf :tangle hyprland.conf
-windowrulev2=opacity 0.8 0.8,title:^(Firefox Developer Edition)$
-windowrule=opacity 0.8 0.8 ,title:^(.*)(DuckDuckGo — Firefox Developer Edition)$
+windowrulev2=opacity 0.8 0.8,title:^(Ablaze Floorp)$
+windowrule=opacity 0.8 0.8 ,title:^(.*)(DuckDuckGo — Ablaze Floorp)$
 #+end_src
 
 ** Scratchpads
@@ -357,13 +357,6 @@ bind=SUPERCONTROL,k,movecurrentworkspacetomonitor,u
 bind=SUPERCONTROL,l,movecurrentworkspacetomonitor,r
 #+end_src
 
-*** Enable/Disable Monitor (DISABLED)
-Warning: This scripts are very junky. To turn off screen u need to move every workspace with opened apps to main monitor. This script can also close all opened programs. Pls if u want to use it just close all apps before. 
-#+begin_src conf
-bind=SUPER,m,exec, ~/.config/hypr/scripts/monitoroff.sh
-bind=SUPERSHIFT,m,exec, ~/.config/hypr/scripts/monitoron.sh
-#+end_src
-    
 ** Execute Programs
 *** Kitty
 #+begin_src conf :tangle hyprland.conf
@@ -391,9 +384,9 @@ bind=SUPER,E,exec, pypr toggle lf
 bind=SUPERSHIFT, E, exec, emacsclient -cq
 #+end_src
     
-*** Firefox Dev
+*** Floorp
 #+begin_src conf :tangle hyprland.conf
-bind=SUPER, W, exec, firefox-developer-edition
+bind=SUPER, W, exec, floorp
 #+end_src
     
 *** Sway Notificaton Center
@@ -403,12 +396,12 @@ bind=SUPER, N, exec, swaync-client -t
 
 *** Vencord
 #+begin_src conf :tangle hyprland.conf
-bind=SUPER, D, exec, vencord-desktop
+bind=SUPERSHIFT, D, exec, vencord-desktop
 #+end_src
 
 *** Spotify
 #+begin_src conf :tangle hyprland.conf
-bind=SUPERALT,S,exec, pypr toggle spotify
+bind=SUPER,D,exec, pypr toggle spotify
 #+end_src
 
 *** Pavucontrol

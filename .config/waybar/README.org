@@ -1,5 +1,5 @@
 #+TITLE: Waybar Config
-#+AUTHOR: Mleciu
+#+AUTHOR: EC2854
 #+DESCRIPTION: My waybar config based on flick0 dreamy config https://github.com/flick0/dotfiles/tree/dreamy/config/hypr/component/waybar
 #+STARTUP: showeverything
 #+OPTIONS: toc:3
