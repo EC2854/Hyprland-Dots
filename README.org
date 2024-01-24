@@ -11,6 +11,9 @@
 - Browser - floorp
 - Wallpapers - swww
 
+* Screenshots
+[[./screenshot.png]]
+
 * Keybinds
 | Key Binding            | Description                       |
 |------------------------+-----------------------------------|
@@ -60,9 +63,6 @@
 | SUPER + ESCAPE         | Launch power menu                 |
 | SUPER SHIFT + ESCAPE   | Exit hyprland                     |
   
-* Screenshots
-[[./screenshot.png]]
-
 * Plans
 - switch from waybar to ags
 - ditch emacs
