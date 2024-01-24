@@ -1,3 +1,4 @@
+* Programs I use
 - Window Manager - Hyprland
 - Panel - waybar
 - Launcher - Rofi
@@ -7,9 +8,22 @@
 - File Manager - lf
 - IDE - nvim
 - IDE#2/Note taking app - emacs
-
+- Browser - floorp
+- Wallpapers - swww
+  
+* Screenshots
 [[./screenshot.png]]
 
+* Plans
+- switch from waybar to ags
+- ditch emacs
+- write a install script
+
+* Thank You
+- [[https://github.com/flick0][flick0]] for inspiration
+- [[https://github.com/end-4][end-4]] for showing me what endgame rice looks like
+- [[https://github.com/SolDoesTech][SolDoesTech]] for starting this all
+- Elysia for helping me get through rough times
 #+BEGIN_quote
 Made with <3 by [[https://github.com/EC2854][Ewa (EC2854)]]
 #+END_quote
