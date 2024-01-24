@@ -10,6 +10,55 @@
 - IDE#2/Note taking app - emacs
 - Browser - floorp
 - Wallpapers - swww
+
+* Keybinds
+| Key Binding            | Description                       |
+|------------------------+-----------------------------------|
+| SUPER + Mouse_Left     | Move active window                |
+| SUPER + Mouse_Right    | Resize active window              |
+| SUPER + F              | Toggle fullscreen                 |
+| SUPER + M              | Toggle minimize                   |
+| SUPER + Space          | Toggle floating                   |
+| SUPER + O              | Toggle opaque                     |
+| SUPER + hjkl           | Move focus                        |
+| SUPERSHIFT + hjkl      | Move window                       |
+| SUPERALT + hjkl        | Resize active window              |
+| SUPER + Q              | Close active window               |
+| SUPER + 1-9, 0         | Switch to workspaces              |
+| SUPERSHIFT + 1-9, 0    | Move window to workspace          |
+| SUPER + Scroll Up/Down | Switch workspaces                 |
+| SUPERCONTROL + hjkl    | Move workspace to another monitor |
+| SUPER + T              | Launch kitty terminal             |
+| SUPER + RETURN         | Toggle kitty terminal             |
+| SUPER                  | Launch Rofi (drun)                |
+| SUPER + TAB            | Toggle Rofi (window)              |
+| SUPER + E              | Toggle lf                         |
+| SUPERSHIFT + E         | Launch emacsclient                |
+| SUPER + W              | Launch floorp                     |
+| SUPER + N              | Launch swaync-client              |
+| SUPER + D              | Toggle Spotify                    |
+| SUPERSHIFT + D         | Launch vencord-desktop            |
+| SUPER + A              | Launch pavucontrol                |
+| SUPERSHIFT + A         | Launch qpwgraph                   |
+| SUPER + B              | Launch blueman-manager            |
+| SUPER + C              | Launch hyprpicker                 |
+| SUPER + S              | Take screenshot                   |
+| SUPERSHIFT + S         | Take screenshot (selected area)   |
+| SUPER + G              | Toggle waybar                     |
+| SUPER + MINUS          | Previous track / Decrease volume  |
+| SUPERSHIFT + MINUS     | Decrease output volume            |
+| SUPERALT + MINUS       | Decrease input volume             |
+| SUPERCONTROL + MINUS   | Decrease brightness               |
+| SUPER + EQUAL          | Next track / Increase volume      |
+| SUPERSHIFT + EQUAL     | Increase output volume            |
+| SUPERALT + EQUAL       | Increase input volume             |
+| SUPERCONTROL + EQUAL   | Increase brightness               |
+| SUPER + P              | Play/pause                        |
+| SUPERSHIFT + P         | Toggle mute (output)              |
+| SUPERALT + P           | Toggle mute (input)               |
+| SUPERALT + 1-9, 0      | Switch to wallpapers 1-10         |
+| SUPER + ESCAPE         | Launch power menu                 |
+| SUPER SHIFT + ESCAPE   | Exit hyprland                     |
   
 * Screenshots
 [[./screenshot.png]]
@@ -23,7 +72,8 @@
 - [[https://github.com/flick0][flick0]] for inspiration
 - [[https://github.com/end-4][end-4]] for showing me what endgame rice looks like
 - [[https://github.com/SolDoesTech][SolDoesTech]] for starting this all
-- Elysia for helping me get through rough times
+  
+This project is dedicated to Elysia. Thank you for everything.
 #+BEGIN_quote
 Made with <3 by [[https://github.com/EC2854][Ewa (EC2854)]]
 #+END_quote
