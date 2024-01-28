@@ -97,6 +97,7 @@ local mappings = {
         c = { "<cmd>Telescope colorscheme <CR>", "Colorscheme" },
         h = { "<cmd>nohlsearch <CR>", "No Highlight" },
         v = { "<cmd>ToggleTerm <CR>", "Toggle Terminal" },
+        t = { "<cmd>TroubleToggle <CR>", "Toggle Trouble" },
         n = { "<cmd>NvimTreeToggle <CR>", "Toggle NvimTree" },
         a = { "<cmd>Alpha <CR>", "Toggle Alpha" },
     },
