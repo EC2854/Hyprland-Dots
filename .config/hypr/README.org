@@ -1,5 +1,5 @@
 #+TITLE: Hyprland Config
-#+AUTHOR: EC2854
+#+AUTHOR: Mleciu
 #+DESCRIPTION: My hyprland config
 #+STARTUP: showeverything
 #+OPTIONS: toc:3
@@ -12,6 +12,7 @@
 - [[#windows-decorations][Windows Decorations]]
   - [[#windows-border][Windows Border]]
   - [[#shadow-and-blur][Shadow And Blur]]
+- [[#plugins][Plugins]]
 - [[#tiling][Tiling]]
 - [[#global-animations][Global Animations]]
 - [[#window-rules][Window Rules]]
@@ -60,6 +61,7 @@ exec-once = systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURR
 exec-once=swww init
 exec-once=swayosd-server
 exec-once=pypr
+exec-once=hyprpm update
 #+end_src
 
 * General Settings
@@ -118,7 +120,16 @@ decoration {
         blur:size=9
         blur:passes=2
         blur:contrast=1
-blur:brightness=0.59
+        blur:brightness=0.59
+    }
+}
+#+end_src
+
+* Plugins
+#+begin_src conf :tangle hyprland.conf
+plugin {
+    hyprtrails {
+        color = rgba(f5c2e7ff)
     }
 }
 #+end_src
