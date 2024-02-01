@@ -1,5 +1,5 @@
 #+TITLE: Hyprland Config
-#+AUTHOR: Mleciu
+#+AUTHOR: EC2854
 #+DESCRIPTION: My hyprland config
 #+STARTUP: showeverything
 #+OPTIONS: toc:3
@@ -47,6 +47,8 @@
 monitor=HDMI-A-2,2560x1080@100,0x0,1
 # monitor=HDMI-A-1,highres,2560x0,1
 monitor=HDMI-A-1,disabled
+
+# monitor=eDP-1, 1920x1080@60, 0x0,1
 #+end_src
 
 * Apps To Load
@@ -79,6 +81,7 @@ input {
     kb_layout=pl
     follow_mouse=1
     numlock_by_default=yes
+    # kb_options = ctrl:nocaps
     touchpad {
         natural_scroll=yes
         tap-and-drag=yes
@@ -142,6 +145,8 @@ plugin {
         hyprbars-button = rgb(74c7ec), 16, , hyprctl dispatch togglefloating
     }
     hycov {
+        enable_hotarea = 0 # enable mouse cursor hotarea     
+        disable_spawn = 1 # disable bind exec when in overview mode
         enable_alt_release_exit = 1 # alt swith mode arg,see readme for detail
         alt_toggle_auto_next = 0 # auto focus next window when toggle overview in alt swith mode
     }
@@ -151,8 +156,9 @@ plugin {
 * Tiling
 #+begin_src conf :tangle hyprland.conf
 dwindle {
-    pseudotile=1
-    force_split=2
+    pseudotile = 1
+    force_split = 2
+    split_width_multiplier = 1.5
 }
 #+end_src
 
