@@ -34,7 +34,7 @@
   - [[#execute-programs][Execute Programs]]
   - [[#screenshots-and-color-picker][Screenshots And Color Picker]]
   - [[#toggle-bar][Toggle Bar]]
-  - [[#toggle-blockyperformance-mode][Toggle Blocky/Performance Mode]]
+  - [[#toggle-plugins][Toggle Plugins]]
   - [[#media-binds][Media Binds]]
   - [[#wallpaper-switch][Wallpaper Switch]]
   - [[#shutdown-and-logout][Shutdown And Logout]]
@@ -130,6 +130,20 @@ decoration {
 plugin {
     hyprtrails {
         color = rgba(f5c2e7ff)
+    }
+    hyprbars {
+        bar_height = 20
+        bar_color = rgba(1e1e2eff)
+        # example buttons (R -> L)
+        # hyprbars-button = color, size, on-click
+        hyprbars-button = rgb(f38ba8), 16, 󰖭, hyprctl dispatch killactive
+        hyprbars-button = rgb(a6e3a1), 16, 󰐕, hyprctl dispatch fullscreen 1
+        hyprbars-button = rgb(f9e2af), 16, 󰖰, pypr toggle_minimized
+        hyprbars-button = rgb(74c7ec), 16, , hyprctl dispatch togglefloating
+    }
+    hycov {
+        enable_alt_release_exit = 1 # alt swith mode arg,see readme for detail
+        alt_toggle_auto_next = 0 # auto focus next window when toggle overview in alt swith mode
     }
 }
 #+end_src
@@ -282,15 +296,16 @@ bind=SUPER,O,exec, hyprctl dispatch toggleopaque
 
 *** Move Focus
 #+begin_src conf :tangle hyprland.conf
-bind=SUPER,left,movefocus,l
-bind=SUPER,down,movefocus,d
-bind=SUPER,up,movefocus,u
-bind=SUPER,right,movefocus,r
+bind=SUPER,h,hycov:movefocus,l
+bind=SUPER,j,hycov:movefocus,d
+bind=SUPER,k,hycov:movefocus,u
+bind=SUPER,l,hycov:movefocus,r
 
-bind=SUPER,h,movefocus,l
-bind=SUPER,j,movefocus,d
-bind=SUPER,k,movefocus,u
-bind=SUPER,l,movefocus,r
+bind=SUPER,left,hycov:movefocus,l
+bind=SUPER,right,hycov:movefocus,r
+bind=SUPER,up,hycov:movefocus,u
+bind=SUPER,down,hycov:movefocus,d
+
 #+end_src
 
 *** Move Window
@@ -322,6 +337,7 @@ binde=SUPERALT,l,resizeactive,25 0
 *** Close Window
 #+begin_src conf :tangle hyprland.conf
 bind=SUPER,Q,killactive
+bind = ALT,tab,hycov:toggleoverview
 #+end_src
 
 ** Workspaces
@@ -443,9 +459,15 @@ bind=,Print,exec,grim - | wl-copy
 bind=SUPER, G, exec , killall waybar || waybar
 #+end_src
 
-** Toggle Blocky/Performance Mode
+** Toggle Plugins
+*** Hyprbars
 #+begin_src conf :tangle hyprland.conf
-bind=SUPERSHIFT, G, exec , ~/.config/hypr/scripts/toggleblockymode.sh
+bind=SUPERSHIFT, G, exec ,  ~/.config/hypr/scripts/toggleplugin.sh hyprbars
+#+end_src
+
+*** Hyprtrails
+#+begin_src conf :tangle hyprland.conf
+bind=SUPERALT, G, exec ,  ~/.config/hypr/scripts/toggleplugin.sh hyprtrails
 #+end_src
 
 ** Media Binds

@@ -1,5 +1,5 @@
 #+TITLE: Waybar Config
-#+AUTHOR: EC2854
+#+AUTHOR: Mleciu
 #+DESCRIPTION: My waybar config based on flick0 dreamy config https://github.com/flick0/dotfiles/tree/dreamy/config/hypr/component/waybar
 #+STARTUP: showeverything
 #+OPTIONS: toc:3
@@ -21,7 +21,7 @@
     "position": "top", 
 
     "margin-bottom":-11,
-    "modules-left": ["hyprland/workspaces", "hyprland/window","custom/maximize","custom/close"],
+    "modules-left": ["hyprland/workspaces", "hyprland/window"],
     "modules-right": ["tray","cpu","memory","battery","backlight","custom/updater","pulseaudio","clock"],
     "modules-center": ["custom/waybar-mpris"],
 #+end_src
@@ -63,26 +63,6 @@
         "format": "{}",
         "return-type": "json",
         "max-length": 50,
-        "rewrite": {
-            "(.*)Firefox Developer Edition": "Firefox Developer Edition",
-        }
-    },
-#+end_src
-
-*** Maximize
-#+begin_src json :tangle config
-    "custom/maximize": {
-        "format": "<span font='12'></span>",
-        "on-click": "hyprctl dispatch fullscreen 1",
-        "on-click-right": "hyprctl dispatch fullscreen 0"
-    },
-#+end_src
-
-*** Close
-#+begin_src json :tangle config
-    "custom/close": {
-        "format": "<span font='12'></span>",
-        "on-click": "hyprctl dispatch killactive"
     },
 #+end_src
 
@@ -302,10 +282,7 @@ window#waybar{
 }
 
 #window{
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+    border-radius: 15px;
     background-color: #1e1e2e;
     color: #cdd6f4;
 
@@ -315,39 +292,9 @@ window#waybar{
     padding-left: 20px;
     padding-top: 4px;
     padding-bottom: 4px;
-    padding-right: 4px;
+    padding-right: 20px;
 
     font-weight: bolder;
-}
-#+end_src
-
-*** Maximize
-#+begin_src css :tangle style.css
-#custom-maximize{
-    background-color: #1e1e2e;
-    color: #74c7ec;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding-right: 4px;
-    padding-left: 4px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-}
-#+end_src
-
-*** Close
-#+begin_src css :tangle style.css
-#custom-close{
-    background-color: #1e1e2e;
-    color: #f5c2e7;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding-right: 20px;
-    padding-left: 4px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
 }
 #+end_src
 
