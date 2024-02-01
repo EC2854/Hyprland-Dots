@@ -14,6 +14,12 @@
 * Screenshots
 [[./screenshot.png]]
 
+* Installation
+idk if it will work if not just chmod +100 install.sh
+#+begin_src sh 
+git clone https://github.com/EC2854/Hyprland-Dots.git Dots && cd Dots && ./install.sh
+#+end_src
+
 * Keybinds
 | Key Binding            | Description                       |
 |------------------------+-----------------------------------|
