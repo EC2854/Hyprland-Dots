@@ -66,7 +66,7 @@
 * Plans
 - switch from waybar to ags
 - ditch emacs
-- write a install script
+- write better install script (add yay)
 
 * Thank You
 - [[https://github.com/flick0][flick0]] for inspiration
