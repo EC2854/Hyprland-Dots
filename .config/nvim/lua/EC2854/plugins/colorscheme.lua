@@ -46,6 +46,10 @@ return {
             alpha = true,
             beacon = true,
             noice = true,
+            mini = {
+                enabled = true,
+                indentscope_color = "", -- catppuccin color (eg. `lavender`) Default: text
+            },
             -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
         },
     })

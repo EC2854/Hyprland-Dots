@@ -100,6 +100,9 @@ local mappings = {
         t = { "<cmd>TroubleToggle <CR>", "Toggle Trouble" },
         n = { "<cmd>NvimTreeToggle <CR>", "Toggle NvimTree" },
         a = { "<cmd>Alpha <CR>", "Toggle Alpha" },
+        m = { "<cmd>TableModeToggle <CR>", "Toggle Table Mode" },
+        b = { "<cmd>lua require('barbecue.ui').toggle() <CR>", "Toggle Barbecue" },
+        M = { "<cmd>lua MiniMap.toggle() <CR>", "Toggle MiniMap" },
     },
     b = {
         name = "Buffers",
