@@ -74,7 +74,7 @@ git clone https://github.com/EC2854/Hyprland-Dots.git Dots && cd Dots && ./insta
   
 * Plans
 - switch from waybar to ags
-- ditch emacs (PLS NVIM RELAESE 0.10.0 ALREADY)
+- ditch emacs (PLS NVIM RELEASE 0.10.0 ALREADY)
 
 * Thank You
 - [[https://github.com/flick0][flick0]] for inspiration
