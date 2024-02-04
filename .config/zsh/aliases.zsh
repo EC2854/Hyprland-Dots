@@ -1,3 +1,6 @@
+# aliases for zsh and bash
+# this file in sourced in .zshrc and .bashrc
+
 # misc
 alias vim='nvim'
 alias v='nvim'
@@ -56,6 +59,9 @@ alias toggle-host='starship toggle hostname'
 alias toggle-dir='starship toggle directory'
 alias toggle-git='starship toggle git_branch'
 alias toggle-duration='starship toggle cmd_duration'
+
+# Convert Command
+alias convert='ffmpeg -i $1 $2 > /dev/null 2>&1'
 
 # Silly
 alias fucking='sudo'

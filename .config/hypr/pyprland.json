@@ -1,6 +1,6 @@
 {
     "pyprland":{
-        "plugins": ["scratchpads", "expose"]
+        "plugins": ["scratchpads"]
     },
 
 "scratchpads":{
@@ -9,11 +9,6 @@
             "animation": "fromTop",
             "margin": 50,
             "unfocus": "hide"
-        },
-        "lf":{
-            "command": "kitty --class scratchpad -e lf",
-            "animation": "fromTop",
-            "margin": 50
         },
         "spotify":{
             "command": "spotify",

@@ -1,9 +1,10 @@
+# variables for zsh and bash
+# this file in sourced in .zshrc and .bashrc
+
 # Default Apps
 export EDITOR="nvim"
 export VISUAL="nvim"
 export TERMINAL="kitty"
-export BROWSER="firefox-developer-edition"
-export IMAGE="swappy"
 export TERM="xterm-256color"
 
 # Manpager
