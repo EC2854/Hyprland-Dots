@@ -43,7 +43,7 @@ print_info() {
 # Install programs (Arch linux only)
 not_arch_btw=false # variable to skip installing packages 
 packages_to_install=( # list of packages to install
-    "hyprland" "swww" "hyprpicker-git" "thunar" "mpv" "polkit-gnome" "pyprland"
+    "hyprland" "swww" "hyprpicker-git" "thunar" "mpv" "polkit-gnome" "pyprland" "aylurs-gtk-shell-git"
     "networkmanager" "blueman" 
     "bibata-cursor-theme" "papirus-icon-theme" "papirus-folders-catppuccin-git" "ttf-jetbrains-mono-nerd" "pavucontrol"
     "zsh" "eza" "bat" "ripgrep" "fzf" "lf" "kitty" "neovim" "neofetch" "starship"
