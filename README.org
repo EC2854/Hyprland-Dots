@@ -73,13 +73,14 @@ git clone https://github.com/EC2854/Hyprland-Dots.git Dots && cd Dots && ./insta
 | SUPER SHIFT + ESCAPE   | Exit hyprland                     |
   
 * Plans
-- switch from waybar to ags
+- switch from waybar to ags (soon. very soon. )
 - ditch emacs (PLS NVIM RELEASE 0.10.0 ALREADY)
 
 * Thank You
 - [[https://github.com/flick0][flick0]] for inspiration
 - [[https://github.com/end-4][end-4]] for showing me what endgame rice looks like
 - [[https://github.com/SolDoesTech][SolDoesTech]] for starting this all
+- [[https://github.com/exoess][Winter]] for a base ags config
   
 This project is dedicated to Elysia. Thank you for everything.
 #+BEGIN_quote

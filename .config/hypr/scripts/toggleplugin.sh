@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 get_state() {
     local state=$(hyprpm list | grep -A 1 "$1" | tail -n 1 | awk -F ':' '{print $2}')
