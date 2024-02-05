@@ -1,6 +1,6 @@
 * Programs I use
 - Window Manager - Hyprland
-- Panel - waybar
+- Panel - ags
 - Launcher - Rofi
 - Shell - zsh
 - Prompt - Starship
