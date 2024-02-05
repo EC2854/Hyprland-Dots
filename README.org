@@ -73,7 +73,7 @@ git clone https://github.com/EC2854/Hyprland-Dots.git Dots && cd Dots && ./insta
 | SUPER SHIFT + ESCAPE   | Exit hyprland                     |
   
 * Plans
-- switch from waybar to ags (soon. very soon. )
+- Make more widgets in ags(app launcher, notifications, osd, control center)
 - ditch emacs (PLS NVIM RELEASE 0.10.0 ALREADY)
 
 * Thank You

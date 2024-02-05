@@ -1,0 +1,19 @@
+.sysinfo {
+    color: #cdd6f4;
+    background-color: #1e1e2e;
+    border-radius: 15px;
+    padding: 4px 15px;
+    font-weight: bold;
+    margin-right: 10px;
+    &:hover {
+        color: #f5c2e7;
+    }
+
+}
+.volume {
+    margin-left: 8px;
+}
+
+.bluetooth {
+    margin-left: 8px;
+}

@@ -1,0 +1,76 @@
+*:not(selection):not(tooltip) {
+  all: unset; }
+
+.workspaces_pill {
+  background: #1e1e2e;
+  padding: 4px 15px;
+  border-radius: 15px; }
+
+.workspaces {
+  margin: 3px 0; }
+  .workspaces button {
+    margin: 0 3px;
+    min-width: 16px;
+    min-height: 16px;
+    border-radius: 24px;
+    background: #cdd6f4;
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1); }
+    .workspaces button:hover {
+      min-width: 24px;
+      background: #f5c2e7; }
+    .workspaces button.focused {
+      min-width: 32px;
+      background: #74c7ec; }
+
+.clock {
+  color: #cdd6f4;
+  background-color: #1e1e2e;
+  border-radius: 15px;
+  padding: 4px 15px;
+  font-weight: bold; }
+
+.media {
+  background-color: #1e1e2e;
+  font-weight: bold;
+  border-radius: 15px;
+  padding: 4px 15px;
+  color: #cdd6f4; }
+  .media:hover {
+    color: #f5c2e7; }
+
+.title {
+  background: #1e1e2e;
+  color: #cdd6f4;
+  padding: 4px 15px;
+  border-radius: 15px;
+  margin-left: 10px;
+  font-weight: bold; }
+
+.sysinfo {
+  color: #cdd6f4;
+  background-color: #1e1e2e;
+  border-radius: 15px;
+  padding: 4px 15px;
+  font-weight: bold;
+  margin-right: 10px; }
+  .sysinfo:hover {
+    color: #f5c2e7; }
+
+.volume {
+  margin-left: 8px; }
+
+.bluetooth {
+  margin-left: 8px; }
+
+.tray {
+  color: #cdd6f4;
+  background-color: #1e1e2e;
+  border-radius: 15px;
+  padding: 4px 11px;
+  font-weight: bold;
+  margin-right: 10px; }
+  .tray > * {
+    margin: 0 4px; }
+
+.bar {
+  font-family: JetBrains Mono Nerd Font; }
