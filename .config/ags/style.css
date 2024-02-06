@@ -28,6 +28,8 @@
   border-radius: 15px;
   padding: 4px 15px;
   font-weight: bold; }
+  .clock:hover {
+    color: #f5c2e7; }
 
 .media {
   background-color: #1e1e2e;
@@ -59,7 +61,7 @@
 .volume {
   margin-left: 8px; }
 
-.bluetooth {
+.bluetoothindicator {
   margin-left: 8px; }
 
 .tray {
@@ -74,3 +76,62 @@
 
 .bar {
   font-family: JetBrains Mono Nerd Font; }
+
+.volumeSlider {
+  padding: 12px;
+  border-radius: 15px;
+  background: #1e1e2e; }
+
+.volLabel {
+  margin-bottom: 6px; }
+
+.volIcon {
+  margin-right: 6px; }
+
+.volSlider {
+  min-width: 250px; }
+  .volSlider slider {
+    background: none; }
+  .volSlider trough {
+    min-height: 16px;
+    border-radius: 24px;
+    background: #313244; }
+  .volSlider highlight {
+    min-width: 16px;
+    border-radius: 24px;
+    background: #74c7ec; }
+    .volSlider highlight:hover {
+      background: #f5c2e7; }
+
+.wbbox {
+  padding: 16px 12px;
+  border-radius: 15px;
+  background: #1e1e2e;
+  margin-bottom: 10px; }
+
+.wifi {
+  background: #74c7ec;
+  margin-right: 10px;
+  padding: 12px;
+  min-width: 105px;
+  border-radius: 15px; }
+  .wifi.off {
+    background: #313244; }
+
+.bluetooth {
+  background: #74c7ec;
+  padding: 12px;
+  min-width: 105px;
+  border-radius: 15px; }
+  .bluetooth.off {
+    background: #313244; }
+
+.wifiIcon {
+  margin-right: 6px; }
+
+.bluetoothIcon {
+  margin-right: 6px; }
+
+.dashboard {
+  min-width: 300px;
+  font-weight: bold; }

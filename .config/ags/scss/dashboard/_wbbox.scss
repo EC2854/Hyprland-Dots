@@ -1,0 +1,34 @@
+.wbbox { 
+    padding: 16px 12px;
+    border-radius: 15px;
+    background: #1e1e2e;
+    margin-bottom: 10px;
+    
+}
+.wifi {
+    background: #74c7ec;
+    margin-right: 10px;
+    padding: 12px;
+    min-width: 105px;
+    border-radius: 15px;
+    &.off {
+        background: #313244;
+    }
+}
+
+.bluetooth {
+    background: #74c7ec;
+    padding: 12px;
+    min-width: 105px;
+    border-radius: 15px;
+    &.off {
+        background: #313244;
+    }
+    
+}
+.wifiIcon {
+    margin-right: 6px;
+}
+.bluetoothIcon {
+    margin-right: 6px;
+}

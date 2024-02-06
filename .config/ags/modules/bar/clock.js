@@ -1,8 +1,9 @@
 import { Widget, Utils } from "../../imports.js";
 const { execAsync } = Utils;
-const { Label, Box } = Widget;
+const {  Box } = Widget;
 
-const clock = () => Label({
+const clock = () => Widget.Button({
+    className: "clock",
     setup: (self) => {
         self.poll(1000, (self) =>
             execAsync(["date", "+%a %b %d %H:%M"])
@@ -13,6 +14,5 @@ const clock = () => Label({
 });
 
 export const Clock = () => Box({
-    className: "clock",
     children: [clock()],
 });

@@ -12,6 +12,6 @@ const bluetooth = () => Box({
 })
 
 export const BluetoothWidget = () => Box({
-    class_name: 'bluetooth',
+    class_name: 'bluetoothindicator',
     children: [bluetooth()],
 });

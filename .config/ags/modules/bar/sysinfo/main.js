@@ -6,6 +6,7 @@ const { Box } = Widget;
 
 const sysinfo = () => Widget.Button({
     class_name: 'sysinfo',
+    onClicked: () => App.toggleWindow("dashboard"),
     child: Box({
         children: [
             NetworkWidget(),
