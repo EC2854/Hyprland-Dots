@@ -54,6 +54,7 @@ git clone https://github.com/EC2854/Hyprland-Dots.git Dots && cd Dots && ./insta
 | SUPER + C              | Launch hyprpicker                 |
 | SUPER + S              | Take screenshot  (selected area)  |
 | SUPERSHIFT + S         | Take screenshot                   |
+| SUPER + X              | Toggle dashboard                  | 
 | SUPER + G              | Toggle waybar                     |
 | SUPERSHIFT + G         | Toggle window tars                |
 | SUPERALT + G           | Toggle window trail               |
