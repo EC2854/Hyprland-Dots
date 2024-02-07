@@ -25,5 +25,5 @@ applyScss();
 // Main config
 export default {
     style: `${App.configDir}/style.css`,
-    windows: [Bar(), Dashboard()],
+    windows: [Bar(), Dashboard() ],
 };

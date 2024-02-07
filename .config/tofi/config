@@ -1,0 +1,99 @@
+font = "Jetbrains Mono Nerd Font"
+
+font-size = 11
+font-variations = "wght 900"
+
+hint-font = true
+
+text-color = #cdd6f4
+
+prompt-background-padding = 0
+prompt-background-corner-radius = 0
+
+placeholder-color = #bdc6e4
+placeholder-background-padding = 0
+placeholder-background-corner-radius = 0
+
+input-background-padding = 0
+input-background-corner-radius = 0
+
+default-result-background-padding = 0
+default-result-background-corner-radius = 0
+
+
+selection-color = #1e1e2e
+selection-background = #74c7ec
+selection-background-padding = 1, 10
+selection-background-corner-radius = 10
+
+text-cursor-style = bar
+
+
+prompt-text = "  "
+
+prompt-padding = 2
+
+# Placeholder input text.
+placeholder-text = "Run... "
+
+num-results = 0
+
+result-spacing = 10
+
+horizontal = true
+
+min-input-width = 200
+
+width = 2497
+height = 30
+
+background-color = #1e1e2e
+
+outline-width = 0
+
+border-width = 0
+
+corner-radius = 0
+
+padding-top = 4
+padding-bottom = 4
+padding-left = 8
+padding-right = 8
+
+clip-to-padding = true
+
+scale = true
+
+output = ""
+
+anchor = top
+
+exclusive-zone = -1
+
+margin-top = 10
+
+hide-cursor = false
+
+text-cursor = true
+
+history = true
+matching-algorithm = fuzzy
+
+require-match = true
+auto-accept-single = false
+
+hide-input = false
+
+hidden-character = "*"
+
+physical-keybindings = true
+
+print-index = false
+
+drun-launch = true
+
+late-keyboard-init = false
+
+multi-instance = false
+
+ascii-input = false

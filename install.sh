@@ -43,11 +43,11 @@ print_info() {
 # Install programs (Arch linux only)
 not_arch_btw=false # variable to skip installing packages 
 packages_to_install=( # list of packages to install
-    "hyprland" "swww" "hyprpicker-git" "thunar" "mpv" "polkit-gnome" "pyprland" "aylurs-gtk-shell-git"
+    "hyprland" "swww" "hyprpicker-git" "thunar" "mpv" "polkit-gnome" "pyprland" "aylurs-gtk-shell-git" "tofi-git"
     "networkmanager" "blueman" 
     "bibata-cursor-theme" "papirus-icon-theme" "papirus-folders-catppuccin-git" "ttf-jetbrains-mono-nerd" "pavucontrol"
     "zsh" "eza" "bat" "ripgrep" "fzf" "lf" "kitty" "neovim" "neofetch" "starship"
-    "spotify"
+    "spotify" "spicetify-cli"
 ) 
 install_packages() { 
     print_info "installing packages"
@@ -142,7 +142,8 @@ clone_kitty() {
 
 # confirmation
 ask_for_confirmation() {
-    print_warning "This script will overwrite configuration files for certain programs. \e[36mTIP:\e[0m check the resolution under ./.config/hypr/hyprland.conf before running this script."
+    # TODO add 1080p preset to tofi 
+    print_warning "Caution: This script overwrites config files. If your monitor isn't 2560x1080, change resolution in ./config/hypr/hyprland.conf and ./config/tofi/config. there are 1080p presets, but I really suggest to do hyprland.conf yourself. RTFM: https://wiki.hyprland.org/Configuring/Monitors/
     read -p "Do you want to continue? (y/n): " choice
     case "$choice" in 
         y|Y ) return 0 ;; # Continue
