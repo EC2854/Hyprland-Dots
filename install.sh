@@ -143,7 +143,7 @@ clone_kitty() {
 # confirmation
 ask_for_confirmation() {
     # TODO add 1080p preset to tofi 
-    print_warning "Caution: This script overwrites config files. If your monitor isn't 2560x1080, change resolution in ./config/hypr/hyprland.conf and ./config/tofi/config. there are 1080p presets, but I really suggest to do hyprland.conf yourself. RTFM: https://wiki.hyprland.org/Configuring/Monitors/
+    print_warning "Caution: This script overwrites config files. If your monitor isn't 2560x1080, change resolution in ./config/hypr/hyprland.conf and ./config/tofi/config. there are 1080p presets, but I really suggest to do hyprland.conf yourself. RTFM: https://wiki.hyprland.org/Configuring/Monitors/"
     read -p "Do you want to continue? (y/n): " choice
     case "$choice" in 
         y|Y ) return 0 ;; # Continue

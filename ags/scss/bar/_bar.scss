@@ -1,0 +1,10 @@
+@import "workspaces";
+@import "clock";
+@import "media";
+@import "title";
+@import "sysinfo";
+@import "tray";
+
+.bar {
+    font-family: $font;
+}
