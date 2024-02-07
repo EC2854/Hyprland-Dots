@@ -1,18 +1,18 @@
 * Programs I use
-- Window Manager - Hyprland
-- Panel - ags
-- Launcher - Rofi
-- Shell - zsh
-- Prompt - Starship
-- Terminal - Kitty
-- File Manager - lf
-- IDE - nvim
-- IDE#2/Note taking app - emacs
-- Browser - floorp
-- Wallpapers - swww
+- Window Manager - [[https://github.com/hyprwm/Hyprland][Hyprland]]
+- Panel - [[https://github.com/Aylur/ags][ags]]
+- Launcher - [[https://github.com/philj56/tofi][Tofi]]
+- Shell - [[https://github.com/zsh-users/zsh][zsh]]
+- Prompt - [[https://github.com/starship/starship][Starship]]
+- Terminal - [[https://github.com/kovidgoyal/kitty][Kitty]]
+- File Manager - [[https://github.com/gokcehan/lf][lf]]
+- IDE - [[https://github.com/neovim/neovim][neovim]]
+- Browser - [[https://github.com/Floorp-Projects/Floorp][floorp]]
+- Wallpapers - [[https://github.com/LGFae/swww][swww]]
 
 * Screenshots
-[[./screenshot.png]]
+[[./screenshots/nvim-ags-shork-zsh.png]]
+[[./screenshots/tofi-lf-spotify.png]]
 
 * Installation
 install yay and run this command: 
@@ -40,8 +40,7 @@ git clone https://github.com/EC2854/Hyprland-Dots.git Dots && cd Dots && ./insta
 | SUPERCONTROL + hjkl    | Move workspace to another monitor |
 | SUPER + T              | Launch kitty terminal             |
 | SUPER + RETURN         | Toggle kitty terminal             |
-| SUPER                  | Launch Rofi (drun)                |
-| SUPER + TAB            | Toggle Rofi (window)              |
+| SUPER                  | Launch tofi (drun)                |
 | SUPER + E              | Toggle lf                         |
 | SUPERSHIFT + E         | Launch emacsclient                |
 | SUPER + W              | Launch floorp                     |
@@ -74,7 +73,7 @@ git clone https://github.com/EC2854/Hyprland-Dots.git Dots && cd Dots && ./insta
 | SUPER SHIFT + ESCAPE   | Exit hyprland                     |
   
 * Plans
-- Make more widgets in ags(app launcher, notifications, osd, control center)
+- Make more widgets in ags(notifications, osd)
 - ditch emacs (PLS NVIM RELEASE 0.10.0 ALREADY)
 
 * Thank You
