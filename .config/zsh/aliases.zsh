@@ -5,7 +5,6 @@
 alias vim='nvim'
 alias v='nvim'
 alias s='sudo'
-alias grep='rg'
 alias rg='rg -p' 
 alias cls='clear'
 alias rm='rm -rf' # I know im a psychopath
@@ -27,8 +26,8 @@ alias gp='cd ~/Pictures/'
 alias gv='cd ~/Videos/'
 
 # Even faster movement
-alias g='cd "$(find . -type d -print | fzf)"'
-alias gf='cd "$(find ~ -type d -print | fzf)"'
+alias g='cd "$(find . -maxdepth 5 -type d -print | fzf)"'
+alias gf='cd "$(find ~ -maxdepth 5 -type d -print | fzf)"'
 
 # Replacing ls with eza
 alias ls='eza --icons=always --color=always --hyperlink --group-directories-first'
