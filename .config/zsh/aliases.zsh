@@ -62,6 +62,9 @@ alias toggle-duration='starship toggle cmd_duration'
 # Convert Command
 alias convert='ffmpeg -i $1 $2 > /dev/null 2>&1'
 
+# Run Amberol
+alias amb="nohup amberol . 2>/dev/null &"
+
 # Silly
 alias fucking='sudo'
 alias okpa='systemctl poweroff'

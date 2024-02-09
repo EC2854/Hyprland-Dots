@@ -6,7 +6,7 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 export TERMINAL="kitty"
 export TERM="xterm-256color"
-
+export GTK_THEME="Catppuccin-Mocha-Standard-Sapphire-Dark:dark"
 # Manpager
 export MANPAGER="nvim +Man!"
 

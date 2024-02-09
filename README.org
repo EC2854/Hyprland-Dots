@@ -15,7 +15,7 @@
 [[./screenshots/tofi-lf-spotify.png]]
 
 * Installation
-Warning: ags config for laptop is under ./ags (it adds battery, brightness itp. )
+Warning: ags config for laptop is under ./ags (it adds battery, brightness itp. ). 
 install yay and run this command: 
 #+begin_src sh 
 git clone https://github.com/EC2854/Hyprland-Dots.git Dots && cd Dots && ./install.sh

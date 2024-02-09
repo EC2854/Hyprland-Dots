@@ -43,11 +43,13 @@ print_info() {
 # Install programs (Arch linux only)
 not_arch_btw=false # variable to skip installing packages 
 packages_to_install=( # list of packages to install
-    "hyprland" "swww" "hyprpicker-git" "thunar" "mpv" "polkit-gnome" "pyprland" "aylurs-gtk-shell-git" "tofi-git"
+    "hyprland" "swww" "hyprpicker-git" "polkit-gnome" "pyprland" "aylurs-gtk-shell-git" "tofi-git" # Most important stuff
     "networkmanager" "blueman" 
-    "bibata-cursor-theme" "papirus-icon-theme" "papirus-folders-catppuccin-git" "ttf-jetbrains-mono-nerd" "pavucontrol"
-    "zsh" "eza" "bat" "ripgrep" "fzf" "lf" "kitty" "neovim" "neofetch" "starship"
-    "spotify" "spicetify-cli"
+    "bibata-cursor-theme" "papirus-icon-theme" "papirus-folders-catppuccin-git" "ttf-jetbrains-mono-nerd" # Themes
+    "totem" "loupe" "amberol"  "nautilus" # Gnome Stuff
+    "zsh" "eza" "bat" "ripgrep" "fzf" "lf" "kitty" "neovim" "neofetch" "starship" # terminal stuff
+    "helvum" "easyeffects" "lsp-plugins" "calf" "playerctl" "pavucontrol"  # nerdy audio stuff u can remove this if u want
+    "spotify" "spicetify-cli" # Spotify. i added it only because i have spotify scratchpad
 ) 
 install_packages() { 
     print_info "installing packages"
@@ -177,7 +179,6 @@ if ! ls $(pwd)/install.sh &>/dev/null; then
     exit 1
 fi
 
-print_warning "This script wont install waybar and rofi because im rewriting my bar in ags rn. " # TODO
 # Ask for confirmation before continuing
 ask_for_confirmation
 
@@ -213,6 +214,8 @@ sleep 1
 # Copy Wallpapers
 copy_folder ./Wallpapers ~/Pictures/Wallpapers/
 sleep 1
+# Quick fix for gtk 4
+ln -sf /usr/share/themes/Catppuccin-Mocha-Standard-Pink-Dark/gtk-4.0 $HOME/.config/gtk-4.0
 
 # Hyprland Plugins
 print_info "Plugins time! Now u will need to do something(just click y twice when needed). "
