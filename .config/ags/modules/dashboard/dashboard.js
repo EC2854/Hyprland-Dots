@@ -64,7 +64,7 @@ export const Dashboard = () =>  PopupWindow({
                                 ]   
                             }),
                             VolumeSlider(),
-                            BrightnessSlider(),
+                            // BrightnessSlider(),
                         ],
                     }),
                     Box({
