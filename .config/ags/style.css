@@ -97,6 +97,17 @@
   .tray > * {
     margin: 0 4px; }
 
+menu menuitem {
+  padding: 5px;
+  color: #cdd6f4;
+  background-color: #1e1e2e;
+  border-radius: 15px;
+  margin: 1px;
+  border: 3px solid #11111b; }
+  menu menuitem:hover {
+    color: #f5c2e7;
+    border: 3px solid #f5c2e7; }
+
 .bar {
   font-family: JetBrains Mono Nerd Font; }
 
