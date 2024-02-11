@@ -1,0 +1,13 @@
+.calendar {
+    background-color: #1e1e2e;
+    border: 3px solid #74c7ec;
+    color: #cdd6f4;
+    border-radius: 16px;
+    padding: 10px;
+}
+.calendarWidget {
+    padding: 3px;
+    &:selected {
+        color: #74c7ec;
+    }
+}

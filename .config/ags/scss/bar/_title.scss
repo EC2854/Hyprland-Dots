@@ -1,8 +1,13 @@
 .title {
     background: #1e1e2e;
     color: #cdd6f4;
-    padding: 4px 15px;
+    padding: 1px 15px;
+    border: 3px solid #74c7ec;
     border-radius: 15px;
     margin-left: 10px;
     font-weight: bold;
+    &:hover {
+        color: #f5c2e7;
+        border: 3px solid #f5c2e7;
+    }
 }

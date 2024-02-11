@@ -1,12 +1,25 @@
+@keyframes lowBlink {
+  0% {
+    color: #f5c2e7;
+  }
+  50% {
+    color: #cdd6f4;
+  }
+  100% {
+    color: #f5c2e7;
+  }
+}
 .sysinfo {
     color: #cdd6f4;
     background-color: #1e1e2e;
     border-radius: 15px;
-    padding: 4px 15px;
+    padding: 1px 15px;
     font-weight: bold;
     margin-right: 10px;
+    border: 3px solid #74c7ec;
     &:hover {
         color: #f5c2e7;
+        border: 3px solid #f5c2e7;
     }
 
 }
@@ -16,4 +29,11 @@
 
 .bluetoothindicator {
     margin-left: 8px;
+}
+.batIcon {
+    margin-left: 8px;
+    margin-right: 4px;
+    &.low {
+        animation: lowBlink 2s infinite;
+    }
 }

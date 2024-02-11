@@ -50,7 +50,11 @@ export const VolumeSlider = () => Box({
             hpack: "start",
         }),
         Box({
-            children: [Icon(), Slider()],
+            children: [
+                Icon(), 
+                Slider()
+            ],
+
         }),
     ],
 });

@@ -1,7 +1,9 @@
-import { Widget, Hyprland } from "../../imports.js";
+import { Widget, Hyprland, Utils } from "../../imports.js";
+const { execAsync } = Utils;
 const { Box } = Widget;
 
-const ClientTitle = () => Widget.Label({
+const ClientTitle = () => Widget.Button({
+    className: 'title',
     label: Hyprland.active.client.bind('title').transform(title => {
         const maxCharacters = 40;
         if (title.length > maxCharacters) {
@@ -10,8 +12,10 @@ const ClientTitle = () => Widget.Label({
             return title;
         }
     }),
+    onClicked: () => {
+        execAsync(['bash', '-c', 'hyprctl dispatch killactive', '&']);
+    },
 });
 export const Title = () => Box({
-    className: 'title',
     children: [ClientTitle()],
 });

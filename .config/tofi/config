@@ -1,6 +1,6 @@
-# Width = ur width - 63px
+# Width = ur width - 63px (not anymore xD)
 # width = 1857
-width = 2497
+width = 2530
 height = 30
 
 font = "Jetbrains Mono Nerd Font"
@@ -57,10 +57,10 @@ outline-width = 0
 
 border-width = 0
 
-corner-radius = 0
+corner-radius = 14
 
-padding-top = 4
-padding-bottom = 4
+padding-top = 0
+padding-bottom = 0
 padding-left = 8
 padding-right = 8
 

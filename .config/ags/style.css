@@ -3,8 +3,9 @@
 
 .workspaces_pill {
   background: #1e1e2e;
-  padding: 4px 15px;
-  border-radius: 15px; }
+  padding: 1px 15px;
+  border-radius: 15px;
+  border: 3px solid #74c7ec; }
 
 .workspaces {
   margin: 3px 0; }
@@ -26,37 +27,52 @@
   color: #cdd6f4;
   background-color: #1e1e2e;
   border-radius: 15px;
-  padding: 4px 15px;
+  padding: 1px 15px;
+  border: 3px solid #74c7ec;
   font-weight: bold; }
-  .clock:hover {
-    color: #f5c2e7; }
 
 .media {
   background-color: #1e1e2e;
   font-weight: bold;
   border-radius: 15px;
-  padding: 4px 15px;
+  padding: 1px 15px;
+  border: 3px solid #74c7ec;
   color: #cdd6f4; }
   .media:hover {
-    color: #f5c2e7; }
+    color: #f5c2e7;
+    border: 3px solid #f5c2e7; }
 
 .title {
   background: #1e1e2e;
   color: #cdd6f4;
-  padding: 4px 15px;
+  padding: 1px 15px;
+  border: 3px solid #74c7ec;
   border-radius: 15px;
   margin-left: 10px;
   font-weight: bold; }
+  .title:hover {
+    color: #f5c2e7;
+    border: 3px solid #f5c2e7; }
+
+@keyframes lowBlink {
+  0% {
+    color: #f5c2e7; }
+  50% {
+    color: #cdd6f4; }
+  100% {
+    color: #f5c2e7; } }
 
 .sysinfo {
   color: #cdd6f4;
   background-color: #1e1e2e;
   border-radius: 15px;
-  padding: 4px 15px;
+  padding: 1px 15px;
   font-weight: bold;
-  margin-right: 10px; }
+  margin-right: 10px;
+  border: 3px solid #74c7ec; }
   .sysinfo:hover {
-    color: #f5c2e7; }
+    color: #f5c2e7;
+    border: 3px solid #f5c2e7; }
 
 .volume {
   margin-left: 8px; }
@@ -64,13 +80,20 @@
 .bluetoothindicator {
   margin-left: 8px; }
 
+.batIcon {
+  margin-left: 8px;
+  margin-right: 4px; }
+  .batIcon.low {
+    animation: lowBlink 2s infinite; }
+
 .tray {
   color: #cdd6f4;
   background-color: #1e1e2e;
   border-radius: 15px;
-  padding: 4px 11px;
+  padding: 1px 11px;
   font-weight: bold;
-  margin-right: 10px; }
+  margin-right: 10px;
+  border: 3px solid #74c7ec; }
   .tray > * {
     margin: 0 4px; }
 
@@ -80,7 +103,9 @@
 .volumeSlider {
   padding: 12px;
   border-radius: 15px;
-  background: #1e1e2e; }
+  background: #1e1e2e;
+  border: 3px solid #74c7ec;
+  margin-bottom: 15px; }
 
 .volLabel {
   margin-bottom: 6px; }
@@ -100,37 +125,85 @@
     min-width: 16px;
     border-radius: 24px;
     background: #74c7ec; }
-    .volSlider highlight:hover {
-      background: #f5c2e7; }
 
-.wbbox {
-  padding: 16px 12px;
+.brightnessSlider {
+  padding: 12px;
   border-radius: 15px;
   background: #1e1e2e;
-  margin-bottom: 10px; }
+  border: 3px solid #74c7ec;
+  margin-bottom: 15px; }
+
+.brtLabel {
+  margin-bottom: 6px; }
+
+.brtIcon {
+  margin-right: 6px; }
+
+.brtSlider {
+  min-width: 300px; }
+  .brtSlider slider {
+    background: none; }
+  .brtSlider trough {
+    min-height: 16px;
+    border-radius: 24px;
+    background: #313244; }
+  .brtSlider highlight {
+    min-width: 16px;
+    border-radius: 24px;
+    background: #74c7ec; }
+    .brtSlider highlight:hover {
+      background: #f5c2e7; }
+
+.quicktoggles {
+  padding: 20px 20px;
+  border-radius: 15px;
+  background: #1e1e2e;
+  margin-bottom: 15px;
+  min-width: 300px;
+  border: 3px solid #74c7ec; }
+
+.buttons {
+  margin-top: 10px; }
+
+.bluetooth, .wifi {
+  background: #74c7ec;
+  padding: 12px;
+  min-width: 125px;
+  border-radius: 24px; }
+  .bluetooth.off, .wifi.off {
+    background: #313244; }
 
 .wifi {
-  background: #74c7ec;
-  margin-right: 10px;
-  padding: 12px;
-  min-width: 133px;
-  border-radius: 24px; }
-  .wifi.off {
-    background: #313244; }
+  margin-right: 10px; }
 
-.bluetooth {
-  background: #74c7ec;
-  padding: 12px;
-  min-width: 133px;
-  border-radius: 24px; }
-  .bluetooth.off {
-    background: #313244; }
-
-.wifiIcon {
+.wifiIcon, .bluetoothIcon {
   margin-right: 6px; }
 
-.bluetoothIcon {
-  margin-right: 6px; }
+.Icon {
+  min-width: 32px;
+  min-height: 32px;
+  margin-left: 5px;
+  background: #313244;
+  border-radius: 50%; }
+
+.calendar {
+  background-color: #1e1e2e;
+  border: 3px solid #74c7ec;
+  color: #cdd6f4;
+  border-radius: 16px;
+  padding: 10px; }
+
+.calendarWidget {
+  padding: 3px; }
+  .calendarWidget:selected {
+    color: #74c7ec; }
+
+.notifications {
+  background-color: #1e1e2e;
+  border: 3px solid #74c7ec;
+  margin-bottom: 15px;
+  border-radius: 15px;
+  min-height: 410px; }
 
 .dashboard {
   font-weight: bold; }
