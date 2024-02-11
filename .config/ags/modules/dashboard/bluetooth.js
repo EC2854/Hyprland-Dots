@@ -1,9 +1,14 @@
-import { Widget, Bluetooth } from "../../imports.js";
+import { Widget, Bluetooth, Utils } from "../../imports.js";
+const { execAsync } = Utils
 const { Box } = Widget;
 
 export const BluetoothWidget = () =>
 	Widget.Button({
 		onClicked: () => Bluetooth.toggle(),
+        onSecondaryClickRelease: () => {
+            execAsync(['bash', '-c', 'blueman-manager', '&']);
+            App.closeWindow('dashboard');
+        },
 		child: Box({
 			className: "bluetooth",
 			vpack: "center",

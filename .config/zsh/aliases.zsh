@@ -18,7 +18,7 @@ alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
 alias gr='cd /'
-alias gh='cd ~'
+# alias gh='cd ~'
 alias gc='cd ~/.config/'
 alias gd='cd ~/Documents/'
 alias gD='cd ~/Downloads/'
@@ -26,7 +26,7 @@ alias gp='cd ~/Pictures/'
 alias gv='cd ~/Videos/'
 
 # Even faster movement
-alias g='cd "$(find . -maxdepth 5 -type d -print | fzf)"'
+alias f='cd "$(find . -maxdepth 5 -type d -print | fzf)"'
 alias gf='cd "$(find ~ -maxdepth 5 -type d -print | fzf)"'
 
 # Replacing ls with eza

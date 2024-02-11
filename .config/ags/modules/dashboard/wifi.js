@@ -1,10 +1,15 @@
-import { Widget, Network } from "../../imports.js";
+import { Widget, Network, Utils } from "../../imports.js";
+const { execAsync } = Utils
 const { Box } = Widget;
 
 export const WiFi = () =>
 	Widget.Button({
 		onClicked: () => Network.toggleWifi(),
-		child: Box({
+        onSecondaryClickRelease: () => {
+            execAsync(['bash', '-c', 'XDG_CURRENT_DESKTOP="gnome" gnome-control-center wifi', '&']);
+            App.closeWindow('dashboard');
+        },
+        child: Box({
 			className: "wifi",
 			vpack: "center",
 			vexpand: true,
