@@ -62,8 +62,11 @@ alias toggle-duration='starship toggle cmd_duration'
 # Convert Command
 alias convert='ffmpeg -i $1 $2 > /dev/null 2>&1'
 
+alias commit='git add . && git commit -m $1'
+alias push='git push -u origin main'
+
 # Run Amberol
-alias amb="nohup amberol . 2>/dev/null &"
+alias amb="nohup amberol . > /dev/null 2>&1 &"
 
 # Silly
 alias fucking='sudo'
