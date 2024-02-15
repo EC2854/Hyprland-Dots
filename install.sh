@@ -43,10 +43,10 @@ print_info() {
 # Install programs (Arch linux only)
 not_arch_btw=false # variable to skip installing packages 
 packages_to_install=( # list of packages to install
-    "hyprland" "swww" "hyprpicker-git" "polkit-gnome" "pyprland" "aylurs-gtk-shell-git" "tofi-git" # Most important stuff
+    "hyprland" "swww" "hyprpicker-git" "polkit-gnome" "pyprland" "aylurs-gtk-shell-git" "tofi-git" # important stuff
     "networkmanager" "blueman" 
     "bibata-cursor-theme" "papirus-icon-theme" "papirus-folders-catppuccin-git" "ttf-jetbrains-mono-nerd" # Themes
-    "totem" "loupe" "amberol"  "nautilus" # Gnome Stuff
+    "totem" "loupe" "amberol"  "nautilus" "gnome-control-center" # Gnome Stuff
     "zsh" "eza" "bat" "ripgrep" "fzf" "lf" "kitty" "neovim" "neofetch" "starship" # terminal stuff
     "helvum" "easyeffects" "lsp-plugins" "calf" "playerctl" "pavucontrol"  # nerdy audio stuff u can remove this if u want
     "spotify" "spicetify-cli" # Spotify. i added it only because i have spotify scratchpad
@@ -163,8 +163,8 @@ fi
 
 # Check for yay
 if ! command -v yay &>/dev/null; then
-    print_warning "Yay is not installed. You can still run this script, but it won't install any packages."
-    not_arch_btw=true
+    print_info "Installing yay"
+    git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 fi
 
 # Check for internet connection
@@ -186,36 +186,31 @@ ask_for_confirmation
 if [[ $not_arch_btw == false ]]; then
     install_packages
 fi
-sleep 1
 
 # Copy files to ~/.config directory
 copy_folder ./.config ~/.config/
-sleep 1
 
 # Copy .zshrc
 copy_files ./.zshrc ~/
 
 # Copy Bashrc
 copy_files ./.bashrc ~/
-sleep 1 
 
 # Clone zsh plugins
 clone_repository https://github.com/Aloxaf/fzf-tab ~/.config/zsh/fzf-tab
 clone_repository https://github.com/zsh-users/zsh-autosuggestions.git ~/.config/zsh/zsh-autosuggestions
 clone_repository https://github.com/zsh-users/zsh-history-substring-search.git ~/.config/zsh/zsh-history-substring-search
 clone_repository https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.config/zsh/zsh-syntax-highlighting
-sleep 1
 
 # Install Kitty plugins
 clone_kitty https://github.com/knubie/vim-kitty-navigator
 clone_kitty https://github.com/yurikhan/kitty-smart-tab
-sleep 1
 
 # Copy Wallpapers
 copy_folder ./Wallpapers ~/Pictures/Wallpapers/
-sleep 1
+
 # Quick fix for gtk 4
-ln -sf /usr/share/themes/Catppuccin-Mocha-Standard-Pink-Dark/gtk-4.0 $HOME/.config/gtk-4.0
+ln -sf /usr/share/themes/Catppuccin-Mocha-Standard-Sapphire-Dark/gtk-4.0 $HOME/.config/gtk-4.0
 
 # Hyprland Plugins
 print_info "Plugins time! Now u will need to do something(just click y twice when needed). "
