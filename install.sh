@@ -48,7 +48,7 @@ packages_to_install=( # list of packages to install
     "bibata-cursor-theme" "papirus-icon-theme" "papirus-folders-catppuccin-git" "ttf-jetbrains-mono-nerd" # Themes
     "totem" "loupe" "amberol"  "nautilus" "gnome-control-center" # Gnome Stuff
     "zsh" "eza" "bat" "ripgrep" "fzf" "lf" "kitty" "neovim" "neofetch" "starship" # terminal stuff
-    "helvum" "easyeffects" "lsp-plugins" "calf" "playerctl" "pavucontrol"  # nerdy audio stuff u can remove this if u want
+    "helvum" "easyeffects" "lsp-plugins" "calf" "playerctl" "pavucontrol" "ffmpeg"  # nerdy audio stuff u can remove this if u want
     "spotify" "spicetify-cli" # Spotify. i added it only because i have spotify scratchpad
 ) 
 install_packages() { 
