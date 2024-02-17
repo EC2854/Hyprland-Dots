@@ -4,7 +4,7 @@ const { Box } = Widget;
 
 const Icon = () =>
 	Widget.Label({
-		className: "brtIcon",
+		className: "sldIcon",
 		setup: (self) => {
 			self.hook(Brightness, (self) => {
 				const icons = ["󰃚", "󰃛", "󰃜", "󰃝", "󰃞", "󰃟", "󰃠"];
@@ -17,7 +17,7 @@ const Icon = () =>
 
 const Slider = () =>
 	Widget.Slider({
-		className: "brtSlider",
+		className: "sldSlider",
 		drawValue: false,
 		onChange: ({ value }) => (Brightness.screen = value),
 		setup: (self) => {
@@ -27,12 +27,12 @@ const Slider = () =>
 
 export const BrightnessSlider = () =>
 	Box({
-		className: "brightnessSlider",
+		className: "Slider",
 		vertical: true,
 		children: [
 			Widget.Label({
-				className: "brtLabel",
-				label: "Brightness",
+				className: "sldLabel",
+				label: "󰃠 Brightness",
 				hpack: "start",
 			}),
 			Box({

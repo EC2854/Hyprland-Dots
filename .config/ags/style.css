@@ -86,6 +86,15 @@
   .batIcon.low {
     animation: lowBlink 2s infinite; }
 
+.barNotification {
+  color: #cdd6f4;
+  background-color: #1e1e2e;
+  border-radius: 15px;
+  padding: 1px 15px;
+  font-weight: bold;
+  margin-right: 10px;
+  border: 3px solid #11111b; }
+
 .tray {
   color: #cdd6f4;
   background-color: #1e1e2e;
@@ -111,59 +120,31 @@ menu menuitem {
 .bar {
   font-family: JetBrains Mono Nerd Font; }
 
-.volumeSlider {
+.Slider {
   padding: 12px;
   border-radius: 15px;
   background: #1e1e2e;
   border: 3px solid #11111b;
   margin-bottom: 15px; }
 
-.volLabel {
+.sldLabel {
   margin-bottom: 6px; }
 
-.volIcon {
+.sldIcon {
   margin-right: 6px; }
 
-.volSlider {
+.sldSlider {
   min-width: 300px; }
-  .volSlider slider {
+  .sldSlider slider {
     background: none; }
-  .volSlider trough {
+  .sldSlider trough {
     min-height: 16px;
     border-radius: 24px;
     background: #313244; }
-  .volSlider highlight {
+  .sldSlider highlight {
     min-width: 16px;
     border-radius: 24px;
     background: #74c7ec; }
-
-.brightnessSlider {
-  padding: 12px;
-  border-radius: 15px;
-  background: #1e1e2e;
-  border: 3px solid #11111b;
-  margin-bottom: 15px; }
-
-.brtLabel {
-  margin-bottom: 6px; }
-
-.brtIcon {
-  margin-right: 6px; }
-
-.brtSlider {
-  min-width: 300px; }
-  .brtSlider slider {
-    background: none; }
-  .brtSlider trough {
-    min-height: 16px;
-    border-radius: 24px;
-    background: #313244; }
-  .brtSlider highlight {
-    min-width: 16px;
-    border-radius: 24px;
-    background: #74c7ec; }
-    .brtSlider highlight:hover {
-      background: #f5c2e7; }
 
 .quicktoggles {
   padding: 20px 20px;
@@ -209,12 +190,36 @@ menu menuitem {
   .calendarWidget:selected {
     color: #74c7ec; }
 
-.notifications {
+.notificationList {
   background-color: #1e1e2e;
   border: 3px solid #11111b;
+  padding: 10px;
   margin-bottom: 15px;
+  border-radius: 15px; }
+
+.notificationEmpty {
+  font-size: 80px;
+  color: #313244; }
+
+.notificationImage {
+  font-size: 40px;
+  color: #cdd6f4; }
+
+.notification {
+  background-color: #313244;
   border-radius: 15px;
-  min-height: 505px; }
+  padding: 10px; }
+
+.notificationTitle {
+  color: #cdd6f4; }
+
+.notificationDescription {
+  color: #bac2de; }
 
 .dashboard {
   font-weight: bold; }
+
+.powermenu {
+  background: #ffff00;
+  min-width: 200px;
+  min-height: 200px; }

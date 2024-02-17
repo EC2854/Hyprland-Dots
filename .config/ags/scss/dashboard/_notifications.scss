@@ -1,8 +1,26 @@
-.notifications {
+.notificationList {
     background-color: #1e1e2e;
     border: 3px solid #11111b;
+    padding: 10px;
     margin-bottom: 15px;
     border-radius: 15px;
-    min-height: 505px;
-    // min-height: 410px;
+}
+.notificationEmpty {
+    font-size: 80px;
+    color: #313244;
+}
+.notificationImage {
+    font-size: 40px;
+    color: #cdd6f4;
+}
+.notification {
+    background-color: #313244;
+    border-radius: 15px;
+    padding:10px;
+}
+.notificationTitle {
+    color: #cdd6f4;
+}
+.notificationDescription { 
+    color: #bac2de;
 }

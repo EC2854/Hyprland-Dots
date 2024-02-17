@@ -5,6 +5,7 @@ export const PowerIcon = () => Widget.Button({
     className: 'Icon',
     child: Widget.Label({ label:"⏻" }),
     onClicked: () => {
+        App.openWindow('powermenu');
         App.closeWindow('dashboard');
     },
 })

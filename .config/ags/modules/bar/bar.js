@@ -5,8 +5,9 @@ const { Window, Box, CenterBox } = Widget;
 import { Workspaces } from "./workspaces.js";
 import { Clock } from "./clock.js";
 import { Media } from "./media.js";
+import { Notification } from "./notification.js"
 import { Title } from "./title.js";
-import { SysInfo } from "./sysinfo/main.js";
+import { SysInfo } from "./sysinfo/sysinfo.js";
 import { sysTray } from "./tray.js";
 
 const Left = () => Box({
@@ -19,7 +20,7 @@ const Center = () => Box({
 
 const Right = () => Box({
     hpack: "end",
-    children: [sysTray(), SysInfo(), Clock()],
+    children: [Notification(), sysTray(), SysInfo(), Clock()],
 });
 
 export const Bar = () => Window({

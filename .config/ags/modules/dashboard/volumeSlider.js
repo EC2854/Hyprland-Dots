@@ -2,7 +2,7 @@ import { Widget, Audio } from "../../imports.js";
 const { Box } = Widget;
 
 const Icon = () => Widget.Label({
-    className: "volIcon",
+    className: "sldIcon",
     setup: (self) => {
         self.hook(
             Audio,
@@ -24,7 +24,7 @@ const Icon = () => Widget.Label({
 });
 
 const Slider = () => Widget.Slider({
-    className: "volSlider",
+    className: "sldSlider",
     drawValue: false,
     onChange: ({ value }) => (Audio.speaker.volume = value),
     setup: (self) => {
@@ -41,12 +41,12 @@ const Slider = () => Widget.Slider({
   });
 
 export const VolumeSlider = () => Box({
-    className: "volumeSlider",
+    className: "Slider",
     vertical: true,
     children: [
         Widget.Label({
-            className: "volLabel",
-            label: "Volume",
+            className: "sldLabel",
+            label: "󰕾 Volume",
             hpack: "start",
         }),
         Box({
