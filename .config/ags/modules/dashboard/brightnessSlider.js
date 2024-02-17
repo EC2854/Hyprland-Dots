@@ -32,7 +32,7 @@ export const BrightnessSlider = () =>
 		children: [
 			Widget.Label({
 				className: "sldLabel",
-				label: "󰃠 Brightness",
+				label: "Brightness",
 				hpack: "start",
 			}),
 			Box({

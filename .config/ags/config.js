@@ -3,7 +3,6 @@ import { Utils, App } from "./imports.js";
 // Windows
 import { Bar } from "./modules/bar/bar.js";
 import { Dashboard } from "./modules/dashboard/dashboard.js";
-import { PowerMenu } from "./modules/powermenu/powermenu.js";
 
 // Apply css
 const applyScss = () => {
@@ -26,5 +25,5 @@ applyScss();
 // Main config
 export default {
     style: `${App.configDir}/style.css`,
-    windows: [Bar(), Dashboard(), PowerMenu() ],
+    windows: [Bar(), Dashboard()  ],
 };

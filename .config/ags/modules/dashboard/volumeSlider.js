@@ -46,7 +46,7 @@ export const VolumeSlider = () => Box({
     children: [
         Widget.Label({
             className: "sldLabel",
-            label: "󰕾 Volume",
+            label: "Volume",
             hpack: "start",
         }),
         Box({

@@ -5,8 +5,8 @@ export const PowerIcon = () => Widget.Button({
     className: 'Icon',
     child: Widget.Label({ label:"⏻" }),
     onClicked: () => {
-        App.openWindow('powermenu');
         App.closeWindow('dashboard');
+        execAsync(['bash', '-c', '~/.config/tofi/powermenu.sh', '&']);
     },
 })
 export const TerminalIcon = () => Widget.Button({

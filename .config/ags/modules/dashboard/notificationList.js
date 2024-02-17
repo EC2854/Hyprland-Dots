@@ -28,7 +28,7 @@ const Notifs = Widget.Box({
                             spacing: 20,
                             children: [
                                 Widget.Label({
-                                    label: " 󰍡 ",
+                                    label: "󰍡",
                                     class_name: "notificationImage"
                                 }),
                                 Box({
@@ -89,12 +89,12 @@ export const NotificationList = () => Widget.Box({
     children: [
         Widget.CenterBox({
             start_widget: Widget.Label({
-                label: "󰍩 Notifications",
+                label: "Notifications",
                 hpack: 'start',
                 class_name: "nt"
             }),
             end_widget: Widget.Button({
-                label: "󰎟",
+                label: "  ",
                 hpack: 'end',
                 class_name: "icon ni",
                 on_clicked: () => {
