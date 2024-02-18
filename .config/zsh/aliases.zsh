@@ -18,7 +18,7 @@ alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
 alias gr='cd /'
-# alias gh='cd ~'
+alias gh='cd ~'
 alias gc='cd ~/.config/'
 alias gd='cd ~/Documents/'
 alias gD='cd ~/Downloads/'
@@ -30,14 +30,13 @@ alias f='cd "$(find . -maxdepth 5 -type d -print | fzf)"'
 alias gf='cd "$(find ~ -maxdepth 5 -type d -print | fzf)"'
 
 # Replacing ls with eza
-alias ls='eza --icons=always --color=always --hyperlink --group-directories-first'
+alias l='eza --icons=always --color=always --hyperlink --group-directories-first'
 alias la='eza --icons=always --color=always --hyperlink --group-directories-first -a'
 alias ll='eza --icons=always --color=always --hyperlink --group-directories-first -la --no-time'
 alias lt='eza --icons=always --color=always --hyperlink --group-directories-first -T'
 
 # Replacing cat with bat and kitty's image preview
-alias cat='bat -P --color=always --style=plain --theme=base16 --wrap=auto'
-alias ncat='bat -P --color=always --style=numbers --theme=base16 --wrap=auto'
+alias c='bat -P --color=always --style=plain --theme=base16 --wrap=auto'
 alias icat='kitty +kitten icat --align=left'
 
 # Package Managment
@@ -71,5 +70,6 @@ alias amb="nohup amberol . > /dev/null 2>&1 &"
 # Silly
 alias fucking='sudo'
 alias okpa='systemctl poweroff'
-alias nekofetch="neofetch --kitty --source ~/.config/neofetch/nyarch.png"
+alias nekofetch="neofetch --kitty  ~/.config/neofetch/nyarch.png"
+alias susefetch="neofetch --kitty  ~/Pictures/gigaroman.png"
 alias shork="~/blahaj/display3d ~/blahaj/blahaj.obj -t 0,0,6"
