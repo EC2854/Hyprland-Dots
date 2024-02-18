@@ -45,15 +45,6 @@ export const BluetoothWidget = () =>
 							label: "Bluetooth",
 							hpack: "start",
 						}),
-						/*Widget.Label({
-						className: "deviceLabel",
-						label: "N/A",
-						setup: (self) => {
-							self.hook(Bluetooth, (self) => {
-								self.label = `${Bluetooth.devices[0]}`;
-							});
-						},
-					}),*/
 					],
 				}),
 			],

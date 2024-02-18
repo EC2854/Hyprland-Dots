@@ -1,9 +1,7 @@
-import Mpris from 'resource:///com/github/Aylur/ags/service/mpris.js';
-import { Widget, Utils } from "../../imports.js";
-const { Box } = Widget;
+import { Widget, Utils, Mpris } from "../../imports.js";
 const { execAsync } = Utils
 
-const media = () => Widget.Button({
+export const Media = () => Widget.Button({
     class_name: 'media',
     on_primary_click: () => Mpris.getPlayer('')?.playPause(),
     onSecondaryClickRelease: () => {
@@ -19,9 +17,4 @@ const media = () => Widget.Button({
             self.label = 'Nothing is playing';
         }
     }, 'player-changed'),
-});
-
-
-export const Media = () => Box({
-    children: [media()],
 });

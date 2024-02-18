@@ -1,12 +1,6 @@
 import { Widget, Notifications, Utils } from "../../imports.js";
 const { Box } = Widget;
 
-// export const NotificationList = () => Box({
-//     vpack: 'fill',
-//     vexpand: true,
-//     vertical: true,
-//     className: "notifications",
-// })
 const Notifs = Widget.Box({
     class_name: "panel-notifs",
     spacing: 20,

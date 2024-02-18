@@ -1,4 +1,3 @@
-
 import Gtk from 'gi://Gtk';
 import { Widget } from "../../imports.js";
 const { Box } = Widget;

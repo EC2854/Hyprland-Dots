@@ -1,11 +1,12 @@
 import { Widget } from "../../../imports.js"
-import{ Volume } from "./volume.js"
-import{ BluetoothWidget } from "./bluetooth.js"
-import{ NetworkWidget } from "./network.js"
-import{ BatteryWidget } from "./battery.js"
 const { Box } = Widget;
 
-const sysinfo = () => Widget.Button({
+import{ NetworkWidget } from "./network.js"
+import{ BluetoothWidget } from "./bluetooth.js"
+import{ Volume } from "./volume.js"
+import{ BatteryWidget } from "./battery.js"
+
+export const SysInfo = () => Widget.Button({
     class_name: 'sysinfo',
     onClicked: () => App.toggleWindow("dashboard"),
     child: Box({
@@ -14,11 +15,6 @@ const sysinfo = () => Widget.Button({
             BluetoothWidget(),
             Volume(), 
             // BatteryWidget(),
-
         ]
     }),
-});
-
-export const SysInfo = () => Box({
-    children: [sysinfo()],
 });

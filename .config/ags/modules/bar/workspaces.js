@@ -34,8 +34,6 @@ export const Workspaces = () => Box({
 						btn.visible = Hyprland.workspaces.some(
 							(ws) => ws.id === btn.attribute.index,
 						);
-						/*btn.label =
-								btn._index === Hyprland.active.workspace.id ? "󰣐" : "󱢠";*/
 					}),
 				);
 			},

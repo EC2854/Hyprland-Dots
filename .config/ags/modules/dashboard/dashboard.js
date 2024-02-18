@@ -4,12 +4,12 @@ const { execAsync } = Utils;
 import PopupWindow from "../../utils/popupWindow.js";
 
 import { PowerIcon, TerminalIcon } from "./iconButtons.js"
-import { VolumeSlider } from "./volumeSlider.js"
 import { WiFi } from "./wifi.js";
 import { BluetoothWidget } from "./bluetooth.js";
+import { VolumeSlider } from "./volumeSlider.js"
 import { BrightnessSlider } from "./brightnessSlider.js";
-import { CalendarWidget } from "./calendar.js";
 import { NotificationList } from "./notificationList.js";
+import { CalendarWidget } from "./calendar.js";
 
 const uptime = Box({
     children: [

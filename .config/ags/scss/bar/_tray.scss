@@ -2,22 +2,22 @@
     > * {
         margin: 0 4px;
     }
-    color: #cdd6f4;
     background-color: #1e1e2e;
     border-radius: 15px;
-    padding: 1px 11px;
+    border: 3px solid #11111b;
+    color: #cdd6f4;
     font-weight: bold;
     margin-right: 10px;
-    border: 3px solid #11111b;
+    padding: 1px 11px;
 }
 menu {
     menuitem {
-        padding: 5px;
-        color: #cdd6f4;
         background-color: #1e1e2e;
         border-radius: 15px;
-        margin: 1px;
         border: 3px solid #11111b;
+        color: #cdd6f4;
+        margin: 1px;
+        padding: 5px;
         &:hover {
             color: #f5c2e7;
             border: 3px solid #f5c2e7;

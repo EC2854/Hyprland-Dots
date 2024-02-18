@@ -1,58 +1,33 @@
 *:not(selection):not(tooltip) {
   all: unset; }
 
-.workspaces_pill {
-  background: #1e1e2e;
-  padding: 1px 15px;
-  border-radius: 15px;
-  border: 3px solid #11111b; }
-
-.workspaces {
-  margin: 3px 0; }
-  .workspaces button {
-    margin: 0 3px;
-    min-width: 16px;
-    min-height: 16px;
-    border-radius: 24px;
-    background: #cdd6f4;
-    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1); }
-    .workspaces button:hover {
-      min-width: 24px;
-      background: #f5c2e7; }
-    .workspaces button.focused {
-      min-width: 32px;
-      background: #74c7ec; }
-
 .clock {
-  color: #cdd6f4;
   background-color: #1e1e2e;
   border-radius: 15px;
-  padding: 1px 15px;
   border: 3px solid #11111b;
-  font-weight: bold; }
+  color: #cdd6f4;
+  font-weight: bold;
+  padding: 1px 15px; }
 
 .media {
   background-color: #1e1e2e;
-  font-weight: bold;
   border-radius: 15px;
-  padding: 1px 15px;
   border: 3px solid #11111b;
-  color: #cdd6f4; }
+  color: #cdd6f4;
+  font-weight: bold;
+  padding: 1px 15px; }
   .media:hover {
     color: #f5c2e7;
     border: 3px solid #f5c2e7; }
 
-.title {
-  background: #1e1e2e;
-  color: #cdd6f4;
-  padding: 1px 15px;
-  border: 3px solid #11111b;
+.barNotification {
+  background-color: #1e1e2e;
   border-radius: 15px;
-  margin-left: 10px;
-  font-weight: bold; }
-  .title:hover {
-    color: #f5c2e7;
-    border: 3px solid #f5c2e7; }
+  border: 3px solid #11111b;
+  color: #cdd6f4;
+  font-weight: bold;
+  margin-right: 10px;
+  padding: 1px 15px; }
 
 @keyframes lowBlink {
   0% {
@@ -63,13 +38,13 @@
     color: #f5c2e7; } }
 
 .sysinfo {
-  color: #cdd6f4;
   background-color: #1e1e2e;
   border-radius: 15px;
-  padding: 1px 15px;
+  border: 3px solid #11111b;
+  color: #cdd6f4;
   font-weight: bold;
   margin-right: 10px;
-  border: 3px solid #11111b; }
+  padding: 1px 15px; }
   .sysinfo:hover {
     color: #f5c2e7;
     border: 3px solid #f5c2e7; }
@@ -86,46 +61,71 @@
   .batIcon.low {
     animation: lowBlink 2s infinite; }
 
-.barNotification {
-  color: #cdd6f4;
-  background-color: #1e1e2e;
+.title {
+  background: #1e1e2e;
   border-radius: 15px;
-  padding: 1px 15px;
+  border: 3px solid #11111b;
+  color: #cdd6f4;
   font-weight: bold;
-  margin-right: 10px;
-  border: 3px solid #11111b; }
+  margin-left: 10px;
+  padding: 1px 15px; }
+  .title:hover {
+    color: #f5c2e7;
+    border: 3px solid #f5c2e7; }
 
 .tray {
-  color: #cdd6f4;
   background-color: #1e1e2e;
   border-radius: 15px;
-  padding: 1px 11px;
+  border: 3px solid #11111b;
+  color: #cdd6f4;
   font-weight: bold;
   margin-right: 10px;
-  border: 3px solid #11111b; }
+  padding: 1px 11px; }
   .tray > * {
     margin: 0 4px; }
 
 menu menuitem {
-  padding: 5px;
-  color: #cdd6f4;
   background-color: #1e1e2e;
   border-radius: 15px;
+  border: 3px solid #11111b;
+  color: #cdd6f4;
   margin: 1px;
-  border: 3px solid #11111b; }
+  padding: 5px; }
   menu menuitem:hover {
     color: #f5c2e7;
     border: 3px solid #f5c2e7; }
+
+.workspaces_pill {
+  background: #1e1e2e;
+  border-radius: 15px;
+  border: 3px solid #11111b;
+  padding: 1px 15px; }
+
+.workspaces {
+  margin: 3px 0; }
+  .workspaces button {
+    background: #cdd6f4;
+    border-radius: 24px;
+    margin: 0 3px;
+    min-height: 16px;
+    min-width: 16px;
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1); }
+    .workspaces button:hover {
+      background: #f5c2e7;
+      min-width: 24px; }
+    .workspaces button.focused {
+      background: #74c7ec;
+      min-width: 32px; }
 
 .bar {
   font-family: JetBrains Mono Nerd Font; }
 
 .Slider {
-  padding: 12px;
-  border-radius: 15px;
   background: #1e1e2e;
+  border-radius: 15px;
   border: 3px solid #11111b;
-  margin-bottom: 15px; }
+  margin-bottom: 15px;
+  padding: 12px; }
 
 .sldLabel {
   margin-bottom: 6px; }
@@ -138,51 +138,19 @@ menu menuitem {
   .sldSlider slider {
     background: none; }
   .sldSlider trough {
-    min-height: 16px;
+    background: #313244;
     border-radius: 24px;
-    background: #313244; }
+    min-height: 16px; }
   .sldSlider highlight {
-    min-width: 16px;
+    background: #74c7ec;
     border-radius: 24px;
-    background: #74c7ec; }
-
-.quicktoggles {
-  padding: 20px 20px;
-  border-radius: 15px;
-  background: #1e1e2e;
-  margin-bottom: 15px;
-  min-width: 300px;
-  border: 3px solid #11111b; }
-
-.buttons {
-  margin-top: 10px; }
-
-.bluetooth, .wifi {
-  background: #74c7ec;
-  padding: 9px;
-  min-width: 125px;
-  border-radius: 24px; }
-  .bluetooth.off, .wifi.off {
-    background: #313244; }
-
-.wifi {
-  margin-right: 10px; }
-
-.wifiIcon, .bluetoothIcon {
-  margin-right: 6px; }
-
-.Icon {
-  min-width: 32px;
-  min-height: 32px;
-  margin-left: 5px;
-  background: #313244;
-  border-radius: 50%; }
+    min-width: 16px; }
 
 .calendar {
   background-color: #1e1e2e;
+  border-radius: 16px;
   border: 3px solid #11111b;
   color: #cdd6f4;
-  border-radius: 16px;
   padding: 10px; }
 
 .calendarWidget {
@@ -192,18 +160,18 @@ menu menuitem {
 
 .notificationList {
   background-color: #1e1e2e;
+  border-radius: 15px;
   border: 3px solid #11111b;
-  padding: 10px;
   margin-bottom: 15px;
-  border-radius: 15px; }
+  padding: 10px; }
 
 .notificationEmpty {
-  font-size: 80px;
-  color: #313244; }
+  color: #313244;
+  font-size: 80px; }
 
 .notificationImage {
-  font-size: 40px;
-  color: #cdd6f4; }
+  color: #cdd6f4;
+  font-size: 40px; }
 
 .notification {
   background-color: #313244;
@@ -215,6 +183,38 @@ menu menuitem {
 
 .notificationDescription {
   color: #bac2de; }
+
+.quicktoggles {
+  background: #1e1e2e;
+  border-radius: 15px;
+  border: 3px solid #11111b;
+  margin-bottom: 15px;
+  min-width: 300px;
+  padding: 20px 20px; }
+
+.buttons {
+  margin-top: 10px; }
+
+.bluetooth, .wifi {
+  background: #74c7ec;
+  border-radius: 24px;
+  min-width: 125px;
+  padding: 9px; }
+  .bluetooth.off, .wifi.off {
+    background: #313244; }
+
+.wifi {
+  margin-right: 10px; }
+
+.wifiIcon, .bluetoothIcon {
+  margin-right: 6px; }
+
+.Icon {
+  background: #313244;
+  border-radius: 50%;
+  margin-left: 5px;
+  min-height: 32px;
+  min-width: 32px; }
 
 .dashboard {
   font-weight: bold; }

@@ -1,9 +1,9 @@
 .Slider {
-    padding: 12px;
-    border-radius: 15px;
     background: #1e1e2e;
+    border-radius: 15px;
     border: 3px solid #11111b;
     margin-bottom: 15px;
+    padding: 12px;
 }
 .sld {
     &Label {
@@ -18,14 +18,14 @@
             background: none;
         }
         & trough {
-            min-height: 16px;
-            border-radius: 24px;
             background: #313244;
+            border-radius: 24px;
+            min-height: 16px;
         }
         & highlight {
-            min-width: 16px;
-            border-radius: 24px;
             background: #74c7ec;
+            border-radius: 24px;
+            min-width: 16px;
         }
     }
 }

@@ -1,29 +1,29 @@
 *{
     all: unset; 
+    color: #cdd6f4;
     font-family: "JetBrainsMono Nerd Font";
     font-weight: bold;
-    color: #cdd6f4;
 }
 #window{ 
     background-color: transparent;
 }
 #entry{
+    background-color: #1e1e2e;
+    border-radius: 15px;
+    border: 3px solid #11111b;
     font-size: 16px;
     margin-top: 10px;
-    background-color: #1e1e2e;
     padding: 1px 15px;
-    border: 3px solid #11111b;
-    border-radius: 15px;
 }
 #match {
-    padding: 1px 15px;
-    margin-top: 2px;
     margin-bottom: 2px;
+    margin-top: 2px;
+    padding: 1px 15px;
 }
 #match-desc{
     color: #bac2de;
-    font-weight: normal;
     font-size: 12px;
+    font-weight: normal;
 }
 #match:selected {
     background: #313244;
@@ -31,10 +31,10 @@
 }
 #plugin{
     background-color: #1e1e2e;
-    border: 3px solid #11111b;
     border-radius: 15px;
-    padding: 10px 1px;
+    border: 3px solid #11111b;
     margin-top:10px;
+    padding: 10px 1px;
 }
 #plugin > *{
     all:unset;

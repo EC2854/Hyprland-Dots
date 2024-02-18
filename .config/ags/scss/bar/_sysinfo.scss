@@ -10,13 +10,13 @@
   }
 }
 .sysinfo {
-    color: #cdd6f4;
     background-color: #1e1e2e;
     border-radius: 15px;
-    padding: 1px 15px;
+    border: 3px solid #11111b;
+    color: #cdd6f4;
     font-weight: bold;
     margin-right: 10px;
-    border: 3px solid #11111b;
+    padding: 1px 15px;
     &:hover {
         color: #f5c2e7;
         border: 3px solid #f5c2e7;
