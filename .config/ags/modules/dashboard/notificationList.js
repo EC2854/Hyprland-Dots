@@ -1,4 +1,4 @@
-import { Widget, Notifications, Utils, App } from "../../imports.js";
+import { Widget, Notifications, Utils } from "../../imports.js";
 const { Box } = Widget;
 
 // export const NotificationList = () => Box({

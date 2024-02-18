@@ -1,10 +1,14 @@
 import Mpris from 'resource:///com/github/Aylur/ags/service/mpris.js';
-import { Widget } from "../../imports.js";
+import { Widget, Utils } from "../../imports.js";
 const { Box } = Widget;
+const { execAsync } = Utils
 
 const media = () => Widget.Button({
     class_name: 'media',
     on_primary_click: () => Mpris.getPlayer('')?.playPause(),
+    onSecondaryClickRelease: () => {
+        execAsync(['bash', '-c', 'anyrun', '&']);
+    },
     on_scroll_up: () => Mpris.getPlayer('')?.next(),
     on_scroll_down: () => Mpris.getPlayer('')?.previous(),
     child: Widget.Label('-').hook(Mpris, self => {

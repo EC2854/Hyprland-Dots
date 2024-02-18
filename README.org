@@ -1,7 +1,7 @@
 * Programs I use
 - Window Manager - [[https://github.com/hyprwm/Hyprland][Hyprland]]
 - Panel - [[https://github.com/Aylur/ags][ags]]
-- Launcher - [[https://github.com/philj56/tofi][Tofi]]
+- Launcher - [[https://github.com/Kirottu/anyrun][anyrun]]
 - Shell - [[https://github.com/zsh-users/zsh][zsh]]
 - Prompt - [[https://github.com/starship/starship][Starship]]
 - Terminal - [[https://github.com/kovidgoyal/kitty][Kitty]]
@@ -12,7 +12,7 @@
 
 * Screenshots
 [[./screenshots/nvim-ags-shork-zsh.png]]
-[[./screenshots/tofi-lf-spotify.png]]
+[[./screenshots/anyrun-lf-spotify.png]]
 
 * Installation
 Warning: ags config for laptop is under ./ags (it adds battery, brightness itp. ). 

@@ -1,0 +1,41 @@
+*{
+    all: unset; 
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: bold;
+    color: #cdd6f4;
+}
+#window{ 
+    background-color: transparent;
+}
+#entry{
+    font-size: 16px;
+    margin-top: 10px;
+    background-color: #1e1e2e;
+    padding: 1px 15px;
+    border: 3px solid #11111b;
+    border-radius: 15px;
+}
+#match {
+    padding: 1px 15px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+#match-desc{
+    color: #bac2de;
+    font-weight: normal;
+    font-size: 12px;
+}
+#match:selected {
+    background: #313244;
+    border-radius: 15px;
+}
+#plugin{
+    background-color: #1e1e2e;
+    border: 3px solid #11111b;
+    border-radius: 15px;
+    padding: 10px 1px;
+    margin-top:10px;
+}
+#plugin > *{
+    all:unset;
+}
