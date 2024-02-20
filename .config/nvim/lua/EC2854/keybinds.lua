@@ -25,8 +25,8 @@ bind("n", "<C-j>", "KittyNavigateDown<cr>", opts)
 bind("n", "<C-k>", ":KittyNavigateUp<cr>", opts)
 bind("n", "<C-l>", ":KittyNavigateRight<cr>", opts)
 
-bind("n", "<S-l>", ":bnext<CR>", opts)
-bind("n", "<S-h>", ":bprevious<CR>", opts)
+bind("n", "<C-n>", ":bnext<CR>", opts)
+bind("n", "<C-p>", ":bprevious<CR>", opts)
 
 
 bind("n", "j", "gj", opts)
