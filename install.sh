@@ -43,10 +43,10 @@ print_info() {
 # Install programs (Arch linux only)
 not_arch_btw=false # variable to skip installing packages 
 packages_to_install=( # list of packages to install
-    "hyprland" "swww" "hyprpicker-git" "polkit-gnome" "pyprland" "aylurs-gtk-shell-git" "tofi-git" # important stuff
+    "hyprland" "swww" "hyprpicker-git" "polkit-gnome" "pyprland" "aylurs-gtk-shell-git" "anyrun-git" # important stuff
     "networkmanager" "blueman" 
     "bibata-cursor-theme" "papirus-icon-theme" "papirus-folders-catppuccin-git" "ttf-jetbrains-mono-nerd" # Themes
-    "totem" "loupe" "amberol"  "nautilus" "gnome-control-center" # Gnome Stuff
+    "totem" "loupe" "amberol" "nautilus" "gnome-control-center" # Gnome Stuff
     "zsh" "eza" "bat" "ripgrep" "fzf" "lf" "kitty" "neovim" "neofetch" "starship" # terminal stuff
     "helvum" "easyeffects" "lsp-plugins" "calf" "playerctl" "pavucontrol" "ffmpeg"  # nerdy audio stuff u can remove this if u want
     "spotify" "spicetify-cli" # Spotify. i added it only because i have spotify scratchpad
@@ -145,7 +145,7 @@ clone_kitty() {
 # confirmation
 ask_for_confirmation() {
     # TODO add 1080p preset to tofi 
-    print_warning "Caution: This script overwrites config files. If your monitor isn't 2560x1080, change resolution in ./config/hypr/hyprland.conf and ./config/tofi/config. there are 1080p presets, but I really suggest to do hyprland.conf yourself. RTFM: https://wiki.hyprland.org/Configuring/Monitors/"
+    print_warning "Caution: This script overwrites config files. If your monitor isn't 2560x1080, change resolution in ./config/hypr/hyprland.conf. there are 1080p presets, but I really suggest to do hyprland.conf yourself. RTFM: https://wiki.hyprland.org/Configuring/Monitors/"
     read -p "Do you want to continue? (y/n): " choice
     case "$choice" in 
         y|Y ) return 0 ;; # Continue
@@ -163,8 +163,8 @@ fi
 
 # Check for yay
 if ! command -v yay &>/dev/null; then
-    print_info "Installing yay"
-    git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+    print_warning "yay not found"
+    not_arch_btw=true
 fi
 
 # Check for internet connection
