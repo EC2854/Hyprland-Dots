@@ -53,7 +53,7 @@ local setup = {
         height = { min = 4, max = 25 }, -- min and max height of the columns
         width = { min = 20, max = 50 }, -- min and max width of the columns
         spacing = 3, -- spacing between columns
-        align = "left", -- align columns left, center or right
+        align = "center", -- align columns left, center or right
     },
     ignore_missing = true, -- enable this to hide mappings for which you didn't specify a label
     hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
@@ -94,23 +94,23 @@ local mappings = {
     },
     t = {
         name = "Toggle/Change",
+        a = { "<cmd>Alpha <CR>", "Toggle Alpha" },
+        b = { "<cmd>lua require('barbecue.ui').toggle() <CR>", "Toggle Barbecue" },
         c = { "<cmd>Telescope colorscheme <CR>", "Colorscheme" },
         h = { "<cmd>nohlsearch <CR>", "No Highlight" },
-        v = { "<cmd>ToggleTerm <CR>", "Toggle Terminal" },
-        t = { "<cmd>TroubleToggle <CR>", "Toggle Trouble" },
-        n = { "<cmd>NvimTreeToggle <CR>", "Toggle NvimTree" },
-        a = { "<cmd>Alpha <CR>", "Toggle Alpha" },
-        m = { "<cmd>TableModeToggle <CR>", "Toggle Table Mode" },
-        b = { "<cmd>lua require('barbecue.ui').toggle() <CR>", "Toggle Barbecue" },
         M = { "<cmd>lua MiniMap.toggle() <CR>", "Toggle MiniMap" },
+        m = { "<cmd>TableModeToggle <CR>", "Toggle Table Mode" },
+        n = { "<cmd>NvimTreeToggle <CR>", "Toggle NvimTree" },
+        t = { "<cmd>TroubleToggle <CR>", "Toggle Trouble" },
+        v = { "<cmd>ToggleTerm <CR>", "Toggle Terminal" },
     },
     b = {
         name = "Buffers",
         i = { "<cmd> Telescope buffers <CR>", "ibuffer"},
         k = { ":Bdelete <CR>", "Kill This Buffer" },
-        s = { ":w! <CR>", "Save This Buffer" },
-        p = { ":bprevious<CR>", "Previous Buffer" },
         n = { ":bnext<CR>", "Next Buffer" },
+        p = { ":bprevious<CR>", "Previous Buffer" },
+        s = { ":w! <CR>", "Save This Buffer" },
     },
     w = {
         name = "Windows",
@@ -140,7 +140,13 @@ local vopts = {
     nowait = true, -- use `nowait` when creating keymaps
 }
 local vmappings = {
-    ["/"] = { "<ESC><CMD>lua require(\"Comment.api\").toggle_linewise_op(vim.fn.visualmode())<CR>", "Comment" },
+    s = {
+        name = "Sort",
+        s = { ":!sort<CR>","Sort" },
+        r = { ":!sort -r<CR>","Reverse Sort" },
+        n = { ":!sort -n<CR>","Numeric Sort" },
+    },
+    ["S"] = { ":Silicon<CR>", "Screenshot"},
 }
 
 which_key.setup(setup)
