@@ -4,8 +4,8 @@
 - Launcher - [[https://github.com/Kirottu/anyrun][anyrun]]
 - Shell - [[https://github.com/zsh-users/zsh][zsh]]
 - Prompt - [[https://github.com/starship/starship][Starship]]
-- Terminal - [[https://github.com/kovidgoyal/kitty][Kitty]]
-- File Manager - [[https://github.com/gokcehan/lf][lf]]
+- Terminal - [[https://github.com/kovidgoyal/kitty][Kitty]] 
+- File Manager - [[https://github.com/sxyazi/yazi][yazi]] 
 - IDE - [[https://github.com/neovim/neovim][neovim]]
 - Browser - [[https://github.com/Floorp-Projects/Floorp][floorp]]
 - Wallpapers - [[https://github.com/LGFae/swww][swww]]
@@ -15,7 +15,7 @@
 [[./screenshots/anyrun-lf-spotify.png]]
 
 * Installation
-Warning: ags config for laptop is under ./ags (it adds battery, brightness itp. ). 
+Warning: Don't use an install script it is outdated
 install yay and run this command: 
 #+begin_src sh 
 git clone https://github.com/EC2854/Hyprland-Dots.git Dots && cd Dots && ./install.sh
@@ -74,7 +74,7 @@ git clone https://github.com/EC2854/Hyprland-Dots.git Dots && cd Dots && ./insta
 | SUPER SHIFT + ESCAPE   | Exit hyprland                     |
   
 * Plans
-- Make more widgets in ags(notifications, osd)
+- Make osd in ags
 - ditch emacs (PLS NVIM RELEASE 0.10.0 ALREADY)
 
 * Thank You

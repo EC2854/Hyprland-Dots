@@ -156,7 +156,7 @@ ask_for_confirmation() {
     esac
 }
 # Check Distro
-if [[ $(lsb_release -si) != "Arch" ]]; then
+if ! command -v  pacman &>/dev/null; then
     print_warning "This script is intended for Arch Linux. You can still run this script, but it won't install any packages."
     not_arch_btw=true
 fi

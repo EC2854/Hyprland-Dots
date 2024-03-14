@@ -24,8 +24,8 @@ source ~/.config/zsh/env.zsh
 source ~/.config/zsh/aliases.zsh
 
 # neofetch --kitty ~/.config/neofetch/nyarch.png
-# neofetch --kitty ~/Pictures/gigaroman.png --size 140px
-neofetch --kitty $(find ~/Pictures/Anime-Girls-Holding-Programming-Books -type f | shuf -n 1) --size 140px
+neofetch --kitty ~/Pictures/gigaroman.png --size 140px
+# neofetch --kitty $(find ~/Pictures/Anime-Girls-Holding-Programming-Books -type f | shuf -n 1) --size 140px
 
 # History in cache directory:
 HISTSIZE=10000
@@ -43,11 +43,15 @@ zmodload zsh/complist
 compinit
 _comp_options+=(globdots) # Include hidden files.
 
-# Use lf to switch directories and bind it to ctrl-o
-lfcd () {
-    cd "$(command lf -print-last-dir "$@")"
+yazicd() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
 }
-bindkey -s '^o' 'lfcd\n'
+bindkey -s '^o' 'yazicd\n'
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
