@@ -13,10 +13,9 @@
 * Screenshots
 [[./screenshots/nvim-ags-shork-zsh.png]]
 [[./screenshots/anyrun-lf-spotify.png]]
-
+[[./screenshots/purple!.png]]
 * Installation
-Warning: Don't use an install script it is outdated
-install yay and run this command: 
+idk if it will work. I will update install script later :3
 #+begin_src sh 
 git clone https://github.com/EC2854/Hyprland-Dots.git Dots && cd Dots && ./install.sh
 #+end_src

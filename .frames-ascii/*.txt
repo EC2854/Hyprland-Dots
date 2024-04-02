@@ -1,2 +1,0 @@
-Error: unable to open file: open *: no such file or directory
-
