@@ -16,12 +16,11 @@
         transition: all 0.3s $materialStandard;
 
         &:hover {
-            background: #f5c2e7;
             min-width: 24px;
         }
 
         &.focused {
-            background: #74c7ec;
+            background: $accent;
             min-width: 32px;
         }
     }

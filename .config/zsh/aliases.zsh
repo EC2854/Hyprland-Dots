@@ -40,9 +40,9 @@ alias c='bat -P --color=always --style=plain --theme=base16 --wrap=auto'
 alias icat='kitty +kitten icat --align=left'
 
 # Package Managment
-alias upd='yay -Syu --noconfirm --quiet'
-alias inst='yay -S --noconfirm'
-alias uninst='yay -Rns --noconfirm'
+alias upd='paru -Syu --noconfirm --quiet'
+alias inst='paru -S --noconfirm'
+alias uninst='paru -Rns --noconfirm'
 alias rem='sudo pacman -Rns $(pacman -Qq | fzf)'
 alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
 
@@ -58,8 +58,6 @@ alias toggle-dir='starship toggle directory'
 alias toggle-git='starship toggle git_branch'
 alias toggle-duration='starship toggle cmd_duration'
 
-# Convert Command
-alias convert='ffmpeg -i $1 $2 > /dev/null 2>&1'
 
 alias commit='git add . && git commit -m $1'
 alias push='git push -u origin main'

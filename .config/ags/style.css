@@ -17,8 +17,8 @@
   font-weight: bold;
   padding: 1px 15px; }
   .media:hover {
-    color: #f5c2e7;
-    border: 3px solid #f5c2e7; }
+    color: #74C7EC;
+    border: 3px solid #74C7EC; }
 
 .barNotification {
   background-color: #1e1e2e;
@@ -31,11 +31,11 @@
 
 @keyframes lowBlink {
   0% {
-    color: #f5c2e7; }
+    color: #74C7EC; }
   50% {
     color: #cdd6f4; }
   100% {
-    color: #f5c2e7; } }
+    color: #74C7EC; } }
 
 .sysinfo {
   background-color: #1e1e2e;
@@ -46,8 +46,8 @@
   margin-right: 10px;
   padding: 1px 15px; }
   .sysinfo:hover {
-    color: #f5c2e7;
-    border: 3px solid #f5c2e7; }
+    color: #74C7EC;
+    border: 3px solid #74C7EC; }
 
 .volume {
   margin-left: 8px; }
@@ -70,8 +70,8 @@
   margin-left: 10px;
   padding: 1px 15px; }
   .title:hover {
-    color: #f5c2e7;
-    border: 3px solid #f5c2e7; }
+    color: #74C7EC;
+    border: 3px solid #74C7EC; }
 
 .tray {
   background-color: #1e1e2e;
@@ -92,8 +92,8 @@ menu menuitem {
   margin: 1px;
   padding: 5px; }
   menu menuitem:hover {
-    color: #f5c2e7;
-    border: 3px solid #f5c2e7; }
+    color: #74C7EC;
+    border: 3px solid #74C7EC; }
 
 .workspaces_pill {
   background: #1e1e2e;
@@ -111,10 +111,9 @@ menu menuitem {
     min-width: 16px;
     transition: all 0.3s cubic-bezier(0.2, 0, 0, 1); }
     .workspaces button:hover {
-      background: #f5c2e7;
       min-width: 24px; }
     .workspaces button.focused {
-      background: #74c7ec;
+      background: #74C7EC;
       min-width: 32px; }
 
 .bar {
@@ -142,7 +141,7 @@ menu menuitem {
     border-radius: 24px;
     min-height: 16px; }
   .sldSlider highlight {
-    background: #74c7ec;
+    background: #74C7EC;
     border-radius: 24px;
     min-width: 16px; }
 
@@ -156,7 +155,7 @@ menu menuitem {
 .calendarWidget {
   padding: 3px; }
   .calendarWidget:selected {
-    color: #74c7ec; }
+    color: #74C7EC; }
 
 .notificationList {
   background-color: #1e1e2e;
@@ -196,7 +195,7 @@ menu menuitem {
   margin-top: 10px; }
 
 .bluetooth, .wifi {
-  background: #74c7ec;
+  background: #74C7EC;
   border-radius: 24px;
   min-width: 125px;
   padding: 9px; }

@@ -19,8 +19,8 @@ menu {
         margin: 1px;
         padding: 5px;
         &:hover {
-            color: #f5c2e7;
-            border: 3px solid #f5c2e7;
+            color: $accent;
+            border: 3px solid $accent;
         }
     }
 }

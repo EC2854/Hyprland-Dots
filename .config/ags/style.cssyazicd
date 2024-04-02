@@ -1,0 +1,219 @@
+*:not(selection):not(tooltip) {
+  all: unset; }
+
+.clock {
+  background-color: #1e1e2e;
+  border-radius: 15px;
+  border: 3px solid #11111b;
+  color: #cdd6f4;
+  font-weight: bold;
+  padding: 1px 15px; }
+
+.media {
+  background-color: #1e1e2e;
+  border-radius: 15px;
+  border: 3px solid #11111b;
+  color: #cdd6f4;
+  font-weight: bold;
+  padding: 1px 15px; }
+  .media:hover {
+    color: #f5c2e7;
+    border: 3px solid #f5c2e7; }
+
+.barNotification {
+  background-color: #1e1e2e;
+  border-radius: 15px;
+  border: 3px solid #11111b;
+  color: #cdd6f4;
+  font-weight: bold;
+  margin-right: 10px;
+  padding: 1px 15px; }
+
+@keyframes lowBlink {
+  0% {
+    color: #f5c2e7; }
+  50% {
+    color: #cdd6f4; }
+  100% {
+    color: #f5c2e7; } }
+
+.sysinfo {
+  background-color: #1e1e2e;
+  border-radius: 15px;
+  border: 3px solid #11111b;
+  color: #cdd6f4;
+  font-weight: bold;
+  margin-right: 10px;
+  padding: 1px 15px; }
+  .sysinfo:hover {
+    color: #f5c2e7;
+    border: 3px solid #f5c2e7; }
+
+.volume {
+  margin-left: 8px; }
+
+.bluetoothindicator {
+  margin-left: 8px; }
+
+.batIcon {
+  margin-left: 8px;
+  margin-right: 4px; }
+  .batIcon.low {
+    animation: lowBlink 2s infinite; }
+
+.title {
+  background: #1e1e2e;
+  border-radius: 15px;
+  border: 3px solid #11111b;
+  color: #cdd6f4;
+  font-weight: bold;
+  margin-left: 10px;
+  padding: 1px 15px; }
+  .title:hover {
+    color: #f5c2e7;
+    border: 3px solid #f5c2e7; }
+
+.tray {
+  background-color: #1e1e2e;
+  border-radius: 15px;
+  border: 3px solid #11111b;
+  color: #cdd6f4;
+  font-weight: bold;
+  margin-right: 10px;
+  padding: 1px 11px; }
+  .tray > * {
+    margin: 0 4px; }
+
+menu menuitem {
+  background-color: #1e1e2e;
+  border-radius: 15px;
+  border: 3px solid #11111b;
+  color: #cdd6f4;
+  margin: 1px;
+  padding: 5px; }
+  menu menuitem:hover {
+    color: #f5c2e7;
+    border: 3px solid #f5c2e7; }
+
+.workspaces_pill {
+  background: #1e1e2e;
+  border-radius: 15px;
+  border: 3px solid #11111b;
+  padding: 1px 15px; }
+
+.workspaces {
+  margin: 3px 0; }
+  .workspaces button {
+    background: #cdd6f4;
+    border-radius: 24px;
+    margin: 0 3px;
+    min-height: 16px;
+    min-width: 16px;
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1); }
+    .workspaces button:hover {
+      min-width: 24px; }
+    .workspaces button.focused {
+      background: #f5c2e7;
+      min-width: 32px; }
+
+.bar {
+  font-family: JetBrains Mono Nerd Font; }
+
+.Slider {
+  background: #1e1e2e;
+  border-radius: 15px;
+  border: 3px solid #11111b;
+  margin-bottom: 15px;
+  padding: 12px; }
+
+.sldLabel {
+  margin-bottom: 6px; }
+
+.sldIcon {
+  margin-right: 6px; }
+
+.sldSlider {
+  min-width: 300px; }
+  .sldSlider slider {
+    background: none; }
+  .sldSlider trough {
+    background: #313244;
+    border-radius: 24px;
+    min-height: 16px; }
+  .sldSlider highlight {
+    background: #f5c2e7;
+    border-radius: 24px;
+    min-width: 16px; }
+
+.calendar {
+  background-color: #1e1e2e;
+  border-radius: 16px;
+  border: 3px solid #11111b;
+  color: #cdd6f4;
+  padding: 10px; }
+
+.calendarWidget {
+  padding: 3px; }
+  .calendarWidget:selected {
+    color: #74c7ec; }
+
+.notificationList {
+  background-color: #1e1e2e;
+  border-radius: 15px;
+  border: 3px solid #11111b;
+  margin-bottom: 15px;
+  padding: 10px; }
+
+.notificationEmpty {
+  color: #313244;
+  font-size: 80px; }
+
+.notificationImage {
+  color: #cdd6f4;
+  font-size: 40px; }
+
+.notification {
+  background-color: #313244;
+  border-radius: 15px;
+  padding: 10px; }
+
+.notificationTitle {
+  color: #cdd6f4; }
+
+.notificationDescription {
+  color: #bac2de; }
+
+.quicktoggles {
+  background: #1e1e2e;
+  border-radius: 15px;
+  border: 3px solid #11111b;
+  margin-bottom: 15px;
+  min-width: 300px;
+  padding: 20px 20px; }
+
+.buttons {
+  margin-top: 10px; }
+
+.bluetooth, .wifi {
+  background: #f5c2e7;
+  border-radius: 24px;
+  min-width: 125px;
+  padding: 9px; }
+  .bluetooth.off, .wifi.off {
+    background: #313244; }
+
+.wifi {
+  margin-right: 10px; }
+
+.wifiIcon, .bluetoothIcon {
+  margin-right: 6px; }
+
+.Icon {
+  background: #313244;
+  border-radius: 50%;
+  margin-left: 5px;
+  min-height: 32px;
+  min-width: 32px; }
+
+.dashboard {
+  font-weight: bold; }

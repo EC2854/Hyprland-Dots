@@ -8,6 +8,6 @@
 .calendarWidget {
     padding: 3px;
     &:selected {
-        color: #74c7ec;
+        color: $accent;
     }
 }
