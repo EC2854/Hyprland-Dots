@@ -10,6 +10,9 @@
 - Browser - [[https://github.com/Floorp-Projects/Floorp][floorp]]
 - Wallpapers - [[https://github.com/LGFae/swww][swww]]
 
+* Color Changing
+Recently I created a accent color changer that chooses color that matches ur wallpaper (~/.config/hypr/scripts/changeaccent.sh <path_to_wallpaper>). Its junky and it needs sudo but it works. 
+
 * Screenshots
 [[./screenshots/nvim-ags-shork-zsh.png]]
 [[./screenshots/anyrun-lf-spotify.png]]
