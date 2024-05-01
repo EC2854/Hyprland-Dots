@@ -3,17 +3,17 @@
     color: $accent;
   }
   50% {
-    color: #cdd6f4;
+    color: $text;
   }
   100% {
     color: $accent;
   }
 }
 .sysinfo {
-    background-color: #1e1e2e;
+    background-color: $base;
     border-radius: 15px;
-    border: 3px solid #11111b;
-    color: #cdd6f4;
+    border: 3px solid $base0;
+    color: $text;
     font-weight: bold;
     margin-right: 10px;
     padding: 1px 15px;

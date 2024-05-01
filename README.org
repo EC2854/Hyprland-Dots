@@ -10,9 +10,6 @@
 - Browser - [[https://github.com/Floorp-Projects/Floorp][floorp]]
 - Wallpapers - [[https://github.com/LGFae/swww][swww]]
 
-* Color Changing
-Recently I created a accent color changer that chooses color that matches ur wallpaper (~/.config/hypr/scripts/changeaccent.sh <path_to_wallpaper>). Its junky and it needs sudo but it works. 
-
 * Screenshots
 [[./screenshots/nvim-ags-shork-zsh.png]]
 [[./screenshots/anyrun-lf-spotify.png]]
@@ -24,60 +21,56 @@ git clone https://github.com/EC2854/Hyprland-Dots.git Dots && cd Dots && ./insta
 #+end_src
 
 * Keybinds
-| Key Binding            | Description                       |
-|------------------------+-----------------------------------|
-| SUPER + Mouse_Left     | Move active window                |
-| SUPER + Mouse_Right    | Resize active window              |
-| SUPER + F              | Toggle fullscreen                 |
-| SUPER + M              | Toggle minimize                   |
-| SUPER + Space          | Toggle floating                   |
-| SUPERSHIFT + Space     | Pin window                        |
-| SUPER + O              | Toggle opaque                     |
-| SUPER + hjkl           | Move focus                        |
-| SUPERSHIFT + hjkl      | Move window                       |
-| SUPERALT + hjkl        | Resize active window              |
-| SUPER + Q              | Close active window               |
-| SUPER + 1-0            | Switch to workspaces              |
-| SUPERSHIFT + 1-0       | Move window to workspace          |
-| SUPER + Scroll Up/Down | Switch workspaces                 |
-| SUPERCONTROL + hjkl    | Move workspace to another monitor |
-| SUPER + T              | Launch kitty terminal             |
-| SUPER + RETURN         | Toggle kitty terminal             |
-| SUPER                  | Launch tofi (drun)                |
-| SUPER + E              | Toggle lf                         |
-| SUPERSHIFT + E         | Launch emacsclient                |
-| SUPER + W              | Launch floorp                     |
-| SUPER + N              | Launch swaync-client              |
-| SUPER + D              | Toggle Spotify                    |
-| SUPERSHIFT + D         | Launch vencord-desktop            |
-| SUPER + A              | Launch pavucontrol                |
-| SUPERSHIFT + A         | Launch qpwgraph                   |
-| SUPER + B              | Launch blueman-manager            |
-| SUPER + C              | Launch hyprpicker                 |
-| SUPER + S              | Take screenshot  (selected area)  |
-| SUPERSHIFT + S         | Take screenshot                   |
-| SUPER + X              | Toggle dashboard                  | 
-| SUPER + G              | Toggle waybar                     |
-| SUPERSHIFT + G         | Toggle window tars                |
-| SUPERALT + G           | Toggle window trail               |
-| SUPER + MINUS          | Previous track                    |
-| SUPERSHIFT + MINUS     | Decrease output volume            |
-| SUPERALT + MINUS       | Decrease input volume             |
-| SUPERCONTROL + MINUS   | Decrease brightness               |
-| SUPER + EQUAL          | Next track                        |
-| SUPERSHIFT + EQUAL     | Increase output volume            |
-| SUPERALT + EQUAL       | Increase input volume             |
-| SUPERCONTROL + EQUAL   | Increase brightness               |
-| SUPER + P              | Play/pause                        |
-| SUPERSHIFT + P         | Toggle mute (output)              |
-| SUPERALT + P           | Toggle mute (input)               |
-| SUPERALT + 1-0         | Switch to wallpapers 1-10         |
-| SUPER + ESCAPE         | Launch power menu                 |
-| SUPER SHIFT + ESCAPE   | Exit hyprland                     |
-  
-* Plans
-- Make osd in ags
-- ditch emacs (PLS NVIM RELEASE 0.10.0 ALREADY)
+| Key Binding            | Description                                   |
+|------------------------+-----------------------------------------------|
+| SUPER + Mouse_Left     | Move active window                            |
+| SUPER + Mouse_Right    | Resize active window                          |
+| SUPER + F              | Toggle fullscreen                             |
+| SUPER + M              | Toggle minimize                               |
+| SUPER + Space          | Toggle floating                               |
+| SUPERSHIFT + Space     | Pin window                                    |
+| SUPER + O              | Toggle opaque                                 |
+| SUPER + hjkl           | Move focus                                    |
+| SUPERSHIFT + hjkl      | Move window                                   |
+| SUPERALT + hjkl        | Resize active window                          |
+| SUPER + Q              | Close active window                           |
+| SUPER + 1-0            | Switch to workspaces                          |
+| SUPERSHIFT + 1-0       | Move window to workspace                      |
+| SUPER + Scroll Up/Down | Switch workspaces                             |
+| SUPERCONTROL + hjkl    | Move workspace to another monitor             |
+| SUPER + T              | Launch kitty terminal                         |
+| SUPER + RETURN         | Toggle kitty terminal                         |
+| SUPER                  | Launch tofi (drun)                            |
+| SUPER + E              | Toggle lf                                     |
+| SUPERSHIFT + E         | Launch emacsclient                            |
+| SUPER + W              | Launch floorp                                 |
+| SUPER + N              | Launch swaync-client                          |
+| SUPER + D              | Toggle Spotify                                |
+| SUPERSHIFT + D         | Launch vencord-desktop                        |
+| SUPER + A              | Launch pavucontrol                            |
+| SUPERSHIFT + A         | Launch qpwgraph                               |
+| SUPER + B              | Launch blueman-manager                        |
+| SUPER + C              | Launch hyprpicker                             |
+| SUPER + S              | Take screenshot  (selected area)              |
+| SUPERSHIFT + S         | Take screenshot                               |
+| SUPER + X              | Toggle dashboard                              |
+| SUPER + G              | Toggle waybar                                 |
+| SUPERSHIFT + G         | Toggle window tars                            |
+| SUPERALT + G           | Toggle window trail                           |
+| SUPER + MINUS          | Previous track                                |
+| SUPERSHIFT + MINUS     | Decrease output volume                        |
+| SUPERALT + MINUS       | Decrease input volume                         |
+| SUPERCONTROL + MINUS   | Decrease brightness                           |
+| SUPER + EQUAL          | Next track                                    |
+| SUPERSHIFT + EQUAL     | Increase output volume                        |
+| SUPERALT + EQUAL       | Increase input volume                         |
+| SUPERCONTROL + EQUAL   | Increase brightness                           |
+| SUPER + P              | Play/pause                                    |
+| SUPERSHIFT + P         | Toggle mute (output)                          |
+| SUPERALT + P           | Toggle mute (input)                           |
+| SUPERALT +W            | Change Wallpaper(be careful script is shitty) |
+| SUPER + ESCAPE         | Launch power menu                             |
+| SUPER SHIFT + ESCAPE   | Exit hyprland                                 |
 
 * Thank You
 - [[https://github.com/flick0][flick0]] for inspiration

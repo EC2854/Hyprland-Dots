@@ -1,21 +1,32 @@
 #!/bin/sh
-wallpaper_colors=$(convert $1 +dither -colors 6 -unique-colors txt: | tail -n 6 | awk -F " " '{print $3}' | tr -d "#")
-swww img $1 -t wave 
+echo "$1"
+if [[ $1 == "" ]]; then
+    wallpaper="$(find ~/Pictures -type f | fzf --color=bg+:#1e1e2e,bg:#1e1e2e,spinner:#74c7ec,hl:#f5c2e7 --color=fg:#cdd6f4,header:#f5c2e7,info:#74c7ec,pointer:#f5c2e7 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#74c7ec,hl+:#f5c2e7 --ansi  --no-scrollbar)"
+else
+    wallpaper=$1
+fi
 
+# Get wallpaper colors 
+wallpaper_colors=$(convert $wallpaper +dither -colors 6 -unique-colors txt: | tail -n 6 | awk -F " " '{print $3}' | tr -d "#")
+
+# Set Wallpaper
+swww img $wallpaper -t wave 
 
 max_delta=0
 min_difference=1000000
 
+# Better colors for calculations
 colors=(
-    FF6666
-    9966FF
-    FFA833
-    FFFF66
-    FF99AA
-    66FF66
-    6699FF
+    FF6666 # Red
+    9966FF # Purple
+    FFA833 # Orange
+    FFFF66 # Yellow
+    FF99AA # Pink
+    66FF66 # Green
+    6699FF # Blue
 )
 
+# Pick most saturated color 
 for color in $wallpaper_colors; do
     r=$(echo "ibase=16;${color:0:2}" | bc)
     g=$(echo "ibase=16;${color:2:2}" | bc)
@@ -31,6 +42,7 @@ for color in $wallpaper_colors; do
     fi
 done
 
+# Pick color
 for c in "${colors[@]}"; do
     r=$(echo "ibase=16;${c:0:2}" | bc)
     g=$(echo "ibase=16;${c:2:2}" | bc)
@@ -51,8 +63,8 @@ for c in "${colors[@]}"; do
         min_difference=$difference
     fi
 done
-rm ~/.config/gtk-4.0
 
+# Translate to catppuccin pallette
 case "$accent_color" in
     "FF6666") accent_name="red" accent_hex="F38BA8";;
     "9966FF") accent_name="mauve" accent_hex="CBA6F7";;
@@ -63,13 +75,22 @@ case "$accent_color" in
     "6699FF") accent_name="sapphire" accent_hex="74C7EC";;
 esac
 
-echo "general{
+# hypr stuff
+echo "
+general{
     col.active_border=rgb($accent_hex)
+}
+plugin {
+    hyprtrails {
+        color = rgba(${accent_hex}C0)
+    }
 }" > ~/.config/hypr/border.conf
 
+# Change icons
 papirus-folders -C cat-mocha-$accent_name -t Papirus-Dark
 
 # gtk 4 stuff
+rm ~/.config/gtk-4.0
 sudo ln -sf /usr/share/themes/Catppuccin-Mocha-Standard-${accent_name^}-Dark/gtk-4.0 ~/.config/gtk-4.0
 
 # gtk 3 stuff
@@ -78,6 +99,5 @@ gsettings set org.gnome.desktop.interface gtk-theme "Catppuccin-Mocha-Standard-$
 
 # ags!!! 
 echo "\$accent: #$accent_hex;" > ~/.config/ags/scss/_colors.scss
-sassc ~/.config/ags/scss/main.scss ~/.config/ags/style.css
 killall ags 
-ags &
+hyprctl dispatch exec ags

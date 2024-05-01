@@ -1,4 +1,4 @@
-*{
+* {
     all: unset; 
     color: #cdd6f4;
     font-family: "JetBrainsMono Nerd Font";
@@ -21,7 +21,7 @@
     padding: 1px 15px;
 }
 #match-desc{
-    color: #bac2de;
+    color: #adb6d4;
     font-size: 12px;
     font-weight: normal;
 }

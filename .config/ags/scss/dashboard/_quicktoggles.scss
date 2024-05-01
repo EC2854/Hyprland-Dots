@@ -1,7 +1,7 @@
 .quicktoggles {
-    background: #1e1e2e;
+    background: $base;
     border-radius: 15px;
-    border: 3px solid #11111b;
+    border: 3px solid $base0;
     margin-bottom: 15px;
     min-width: 300px;
     padding: 20px 20px;
@@ -17,7 +17,7 @@
     min-width: 125px;
     padding: 9px;
     &.off {
-        background: #313244;
+        background: $base1;
     }
 }
 .wifi {
@@ -29,7 +29,7 @@
     }
 }
 .Icon {
-    background: #313244;
+    background: $base1;
     border-radius: 50%;
     margin-left: 5px;
     min-height: 32px;

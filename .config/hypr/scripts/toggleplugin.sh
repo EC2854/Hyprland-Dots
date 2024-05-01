@@ -10,8 +10,8 @@ state=$(get_state "$plugin_name")
 
 if [[ "$state" == *"false"* ]]; then
     hyprpm enable "$plugin_name" > /dev/null 2>&1
-    notify-send "$plugin_name Enabled"
+    notify-send "$plugin_name enabled"
 else 
     hyprpm disable "$plugin_name" > /dev/null 2>&1 
-    notify-send "$plugin_name Disabled"
+    notify-send "$plugin_name disabled"
 fi

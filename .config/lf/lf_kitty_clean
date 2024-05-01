@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-
-kitty +kitten icat --clear --stdin no --silent --transfer-mode file < /dev/null > /dev/tty
-
-pkill -f "mpv --no-video --really-quiet --no-terminal --force-window=no --input-terminal=no --volume=50"

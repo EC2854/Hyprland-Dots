@@ -13,7 +13,7 @@ scrolloff      = 5
 tab_size        = 2
 max_width       = 600
 max_height      = 900
-cache_dir       = ""
+cache_dir       = "~/.cache/yazi/"
 image_filter    = "triangle"
 image_quality   = 80
 

@@ -1,4 +1,4 @@
-wallpaper=$(cat ~/.cache/swww/$(ls ~/.cache/swww | tail -n 1) | awk -F '%' '{print $1}')
+wallpaper=$(swww query | awk -F "image: " '{print $2}')
 destination=~/Pictures/Wallpapers/hyprlock.png
 
 ffmpeg -y -v 0 -i $wallpaper $destination

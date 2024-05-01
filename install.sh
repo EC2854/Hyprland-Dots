@@ -43,20 +43,18 @@ print_info() {
 # Install programs (Arch linux only)
 not_arch_btw=false # variable to skip installing packages 
 packages_to_install=( # list of packages to install
-    "hyprland" "swww" "hyprpicker-git" "polkit-gnome" "pyprland" "aylurs-gtk-shell-git" "anyrun-git" # important stuff
+    "hyprland" "swww" "hyprpicker-git" "polkit-gnome" "aylurs-gtk-shell-git" "anyrun-git" # important stuff
     "networkmanager" "blueman" 
     "bibata-cursor-theme" "papirus-icon-theme" "papirus-folders-catppuccin-git" "ttf-jetbrains-mono-nerd" # Themes
     "totem" "loupe" "amberol" "nautilus" "gnome-control-center" # Gnome Stuff
-    "zsh" "eza" "bat" "ripgrep" "fzf" "lf" "kitty" "neovim" "neofetch" "starship" # terminal stuff
-    "helvum" "easyeffects" "lsp-plugins" "calf" "playerctl" "pavucontrol" "ffmpeg"  # nerdy audio stuff u can remove this if u want
-    "spotify" "spicetify-cli" # Spotify. i added it only because i have spotify scratchpad
+    "zsh" "eza" "bat" "ripgrep" "fzf" "yazi" "kitty" "neovim" "neofetch" "starship" # terminal stuff
 ) 
 install_packages() { 
     print_info "installing packages"
     for package in "${packages_to_install[@]}"; do
         if ! pacman -Qq | grep "$package" &>/dev/null; then # Check if package is installed 
             print_info "Installing $package"
-            yay -S --noconfirm "$package"
+            paru -S --noconfirm "$package"
         else
             print_info "$package is already installed. skipping... "
         fi
@@ -144,8 +142,7 @@ clone_kitty() {
 
 # confirmation
 ask_for_confirmation() {
-    # TODO add 1080p preset to tofi 
-    print_warning "Caution: This script overwrites config files. If your monitor isn't 2560x1080, change resolution in ./config/hypr/hyprland.conf. there are 1080p presets, but I really suggest to do hyprland.conf yourself. RTFM: https://wiki.hyprland.org/Configuring/Monitors/"
+    print_warning "Caution: This script overwrites config files. Change resolution in ./config/hypr/hyprland.conf. RTFM: https://wiki.hyprland.org/Configuring/Monitors/"
     read -p "Do you want to continue? (y/n): " choice
     case "$choice" in 
         y|Y ) return 0 ;; # Continue
@@ -162,8 +159,8 @@ if ! command -v  pacman &>/dev/null; then
 fi
 
 # Check for yay
-if ! command -v yay &>/dev/null; then
-    print_warning "yay not found"
+if ! command -v paru &>/dev/null; then
+    print_warning "paru not found"
     not_arch_btw=true
 fi
 
@@ -216,13 +213,9 @@ ln -sf /usr/share/themes/Catppuccin-Mocha-Standard-Sapphire-Dark/gtk-4.0 $HOME/.
 print_info "Plugins time! Now u will need to do something(just click y twice when needed). "
 
 install_plugin https://github.com/hyprwm/hyprland-plugins
-install_plugin https://github.com/DreamMaoMao/hycov
-
-# enable hycov
-if ! hyprpm enable hycov; then 
-    print_warning "There is an error while enabling hacov run '\e[33mhyprpm enable hycov\e[0m' after logging back in."
-fi
+install_plugin https://github.com/KZDKM/Hyprspace
 
 # Final message
-print_info "That's it! Uncopied files are: .badapple.py, .frames-ascii, and web folder"
+print_info "That's it! Uncopied files are: web folder"
 print_info "Logout and log back in."
+print_info "Run 'hyprpm enable Hyprspace' after installation"
