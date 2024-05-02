@@ -47,7 +47,7 @@ packages_to_install=( # list of packages to install
     "networkmanager" "blueman" 
     "bibata-cursor-theme" "papirus-icon-theme" "papirus-folders-catppuccin-git" "ttf-jetbrains-mono-nerd" # Themes
     "totem" "loupe" "amberol" "nautilus" "gnome-control-center" # Gnome Stuff
-    "zsh" "eza" "bat" "ripgrep" "fzf" "yazi" "kitty" "neovim" "neofetch" "starship" # terminal stuff
+    "zsh" "eza" "bat" "ripgrep" "fzf" "yazi" "kitty" "neovim" "fastfetch" "starship" # terminal stuff
 ) 
 install_packages() { 
     print_info "installing packages"

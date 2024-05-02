@@ -68,6 +68,6 @@ alias amb="nohup amberol . > /dev/null 2>&1 &"
 # Silly
 alias fucking='sudo'
 alias okpa='systemctl poweroff'
-alias nekofetch="neofetch --kitty  ~/.config/neofetch/nyarch.png"
-alias susefetch="neofetch --kitty  ~/Pictures/gigaroman.png"
+alias nekofetch="fastfetch --logo-height 6 --logo ~/.config/fastfetch/nyarch.png"
+alias susefetch="neofetch --kitty  fastfetch --logo-height 6 --logo ~/Pictures/gigaroman.png"
 alias shork="~/blahaj/display3d ~/blahaj/blahaj.obj -t 0,0,6"
