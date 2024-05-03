@@ -49,16 +49,9 @@ packages_to_install=( # list of packages to install
     "totem" "loupe" "amberol" "nautilus" "gnome-control-center" # Gnome Stuff
     "zsh" "eza" "bat" "ripgrep" "fzf" "yazi" "kitty" "neovim" "fastfetch" "starship" # terminal stuff
 ) 
-install_packages() { 
+install_packages() {
     print_info "installing packages"
-    for package in "${packages_to_install[@]}"; do
-        if ! pacman -Qq | grep "$package" &>/dev/null; then # Check if package is installed 
-            print_info "Installing $package"
-            paru -S --noconfirm "$package"
-        else
-            print_info "$package is already installed. skipping... "
-        fi
-    done
+    paru -S --noconfirm ${packages_to_install[@]}
 }
 
 # clone function
@@ -128,7 +121,7 @@ clone_kitty() {
         exit 1
     fi
 
-    print_info "Moving .py files to ~.config/kitty/"
+    print_info "Moving .py files to ~/.config/kitty/"
     if mv -f ./tmp/*.py ~/.config/kitty/; then # move python files to kitty config folder
         print_success "Files moved successfully"
     else
@@ -184,7 +177,7 @@ if [[ $not_arch_btw == false ]]; then
     install_packages
 fi
 
-# Copy files to ~/.config directory
+Copy files to ~/.config directory
 copy_folder ./.config ~/.config/
 
 # Copy .zshrc
@@ -210,12 +203,12 @@ copy_folder ./Wallpapers ~/Pictures/Wallpapers/
 ln -sf /usr/share/themes/Catppuccin-Mocha-Standard-Sapphire-Dark/gtk-4.0 $HOME/.config/gtk-4.0
 
 # Hyprland Plugins
-print_info "Plugins time! Now u will need to do something(just click y twice when needed). "
+print_info "Plugins time!"
 
 install_plugin https://github.com/hyprwm/hyprland-plugins
 install_plugin https://github.com/KZDKM/Hyprspace
 
 # Final message
-print_info "That's it! Uncopied files are: web folder"
+print_info "That's it! Uncopied stuff is: web folder and sddm theme (catppuccin-minimal-sddm)"
 print_info "Logout and log back in."
-print_info "Run 'hyprpm enable Hyprspace' after installation"
+print_warning "Run 'hyprpm enable Hyprspace' after installation"

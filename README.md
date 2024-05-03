@@ -1,14 +1,14 @@
 # Programs I use
-- Window Manager - [https://github.com/hyprwm/Hyprland](Hyprland)
-- Panel - [https://github.com/Aylur/ags](ags)
-- Launcher - [https://github.com/Kirottu/anyrun](anyrun)
-- Shell - [https://github.com/zsh-users/zsh](zsh)
-- Prompt - [https://github.com/starship/starship](Starship)
-- Terminal - [https://github.com/kovidgoyal/kitty](Kitty)
-- File Manager - [https://github.com/sxyazi/yazi](yazi)
-- IDE - [https://github.com/neovim/neovim](neovim)
-- Browser - [https://github.com/Floorp-Projects/Floorp](floorp)
-- Wallpapers - [https://github.com/LGFae/swww](swww)
+- Window Manager - [Hyprland](https://github.com/hyprwm/Hyprland)
+- Panel - [ags](https://github.com/Aylur/ags)
+- Launcher - [anyrun](https://github.com/Kirottu/anyrun)
+- Shell - [zsh](https://github.com/zsh-users/zsh)
+- Prompt - [starship](https://github.com/starship/starship)
+- Terminal - [kitty](https://github.com/kovidgoyal/kitty)
+- File Manager - [yazi](https://github.com/sxyazi/yazi)
+- IDE - [neovim](https://github.com/neovim/neovim)
+- Browser - [floorp](https://github.com/Floorp-Projects/Floorp)
+- Wallpapers - [swww](https://github.com/LGFae/swww)
 
 # Screenshots
 ![img 1](./screenshots/nvim-ags-shork-zsh.png) 
@@ -21,8 +21,8 @@ git clone https://github.com/EC2854/Hyprland-Dots.git Dots && cd Dots && ./insta
 ```
 
 # Thank You
-- [https://github.com/flick0](flick0) for inspiration
-- [https://github.com/SolDoesTech](SolDoesTech) for starting this all
-- [https://github.com/exoess](Winter) for a base ags config
+- [flick0](https://github.com/flick0) for inspiration
+- [SolDoesTech](https://github.com/SolDoesTech) for starting this all
+- [Winter](https://github.com/exoess) for a base ags config
 
-> Made with <3 by [https://github.com/EC2854](EC2854)
+> Made with <3 by [Ewa (EC2854)](https://github.com/EC2854)
