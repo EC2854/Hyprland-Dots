@@ -1,5 +1,5 @@
-import { Widget, Notifications, Utils } from "../../imports.js";
 const { Box } = Widget;
+const Notifications = await Service.import("notifications");
 
 const Notifs = Widget.Box({
     class_name: "panel-notifs",
@@ -12,7 +12,6 @@ const Notifs = Widget.Box({
                 class_name: "notification",
                 vertical: true,
                 children: [
-
                     Widget.Button({
                         on_clicked: () => {
                             n.close()
@@ -62,18 +61,18 @@ const NotifBox = Widget.Scrollable({
 })
 
 const Empty = Widget.Box({
-  class_name: "notificationEmpty",
-  spacing: 20,
-  hpack: "center",
-  vpack: "center",
-  vertical: true,
-  children: [
-    Widget.Label({
-      label: ` 󱙎 `,
-      vpack: "center",
-      vexpand: true,
-    })
-  ]
+    class_name: "notificationEmpty",
+    spacing: 20,
+    hpack: "center",
+    vpack: "center",
+    vertical: true,
+    children: [
+        Widget.Label({
+            label: ` 󱙎 `,
+            vpack: "center",
+            vexpand: true,
+        })
+    ]
 })
 
 export const NotificationList = () => Widget.Box({
@@ -103,10 +102,10 @@ export const NotificationList = () => Widget.Box({
         Widget.Stack({
             transition: 'crossfade',
             transitionDuration: 150,
-            items: [
-                ['empty', Empty],
-                ['list', NotifBox]
-            ],
+            children: {
+                'empty': Empty,
+                'list': NotifBox,
+            },
             setup: (self) => {
                 self.hook(Notifications, (self) => {
                     self.shown = (Notifications.notifications.length == 0 ? 'empty' : 'list')

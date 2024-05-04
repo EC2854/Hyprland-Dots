@@ -1,5 +1,3 @@
-import { Utils, App } from "./imports.js";
-
 // Windows
 import { Bar } from "./modules/bar/bar.js";
 import { Dashboard } from "./modules/dashboard/dashboard.js";
@@ -23,7 +21,7 @@ applyScss();
 
 
 // Main config
-export default {
+App.config({
     style: `${App.configDir}/style.css`,
-    windows: [Bar(), Dashboard()  ],
-};
+    windows: [Bar(), Dashboard() ],
+});

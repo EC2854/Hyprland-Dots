@@ -1,5 +1,4 @@
-import { Widget } from "../../../imports.js";
-import { Bluetooth } from "../../../imports.js";
+const Bluetooth = await Service.import("bluetooth");
 const { Box } = Widget;
 
 export const BluetoothWidget = () => Box({

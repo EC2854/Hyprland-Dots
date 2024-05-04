@@ -1,5 +1,6 @@
-import { SystemTray } from "../../imports.js"
-import { Widget } from "../../imports.js";
+// import { SystemTray } from "../../imports.js"
+// import { Widget } from "../../imports.js";
+const SystemTray = await Service.import("systemtray");
 const { Box } = Widget;
 
 const SysTrayItem = item => Widget.Button({

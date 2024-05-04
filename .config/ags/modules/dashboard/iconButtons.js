@@ -1,4 +1,3 @@
-import { Widget, Utils } from "../../imports.js"
 const { execAsync } = Utils;
 
 export const PowerIcon = () => Widget.Button({
@@ -15,7 +14,6 @@ export const TerminalIcon = () => Widget.Button({
     onClicked: () => {
         execAsync(['bash', '-c', 'kitty', '&']);
         App.closeWindow('dashboard');
-
     },
 
 })

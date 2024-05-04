@@ -1,6 +1,3 @@
-import { App, Widget, Utils } from "../imports.js";
-const { Box, Revealer, Window } = Widget;
-
 export default ({
   onOpen = () => {},
   onClose = () => {},
@@ -11,20 +8,20 @@ export default ({
   transitionDuration = 250,
   ...props
 }) => {
-  const window = Window({
+  const window = Widget.Window({
     name,
     visible: false,
     ...props,
 
-    child: Box({
+    child: Widget.Box({
       css: `min-height: 2px;
             min-width: 2px;`,
-      child: Revealer({
+      child: Widget.Revealer({
         transition,
         transitionDuration,
         hexpand: true,
         vexpand: true,
-        child: child || Box(),
+        child: child || Widget.Box(),
         setup: (self) => {
           self.hook(App, (rev, currentName, isOpen) => {
             if (currentName === name) {
@@ -46,7 +43,8 @@ export default ({
   window.getChild = () => window.child.children[0].child;
   window.setChild = (newChild) => {
     window.child.children[0].child = newChild;
-    window.child.children[0].show_all(); };
+    window.child.children[0].show_all();
+  };
 
   return window;
 };

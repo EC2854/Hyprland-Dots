@@ -10,10 +10,16 @@
 - Browser - [floorp](https://github.com/Floorp-Projects/Floorp)
 - Wallpapers - [swww](https://github.com/LGFae/swww)
 
+# Laptops 
+> [!WARNING]
+> There is a ags config for laptops that adds battery indicator and brightness slider.
+> to enable them uncomment lines in `./.config/ags/modules/bar/sysinfo/sysinfo.js`(line 16) and `./.config/ags/modules/dashboard/dashboard.js`(line 21)
+
 # Screenshots
 ![img 1](./screenshots/nvim-ags-shork-zsh.png) 
 ![img 2](./screenshots/anyrun-lf-spotify.png)
 ![img 3](./screenshots/purple!.png)
+
 # Installation
 idk if it will work. I will update install script later :3
 ``` sh

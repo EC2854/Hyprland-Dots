@@ -1,5 +1,6 @@
-import { Widget, Notifications } from "../../imports.js"
+// import { Widget, Notifications } from "../../imports.js"
 
+const Notifications = await Service.import("notifications");
 const { Box } = Widget
 
 export const Notification = () => Box({

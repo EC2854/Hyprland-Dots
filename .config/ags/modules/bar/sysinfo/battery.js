@@ -1,4 +1,4 @@
-import { Widget, Utils, Battery } from "../../../imports.js";
+const Battery = await Service.import("battery");
 const { Box } = Widget;
 
 export const BatteryWidget = () => Box({

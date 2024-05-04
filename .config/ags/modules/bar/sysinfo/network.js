@@ -1,5 +1,4 @@
-import { Network } from "../../../imports.js"
-import { Widget } from "../../../imports.js";
+const Network = await Service.import("network");
 
 const WifiIndicator = () => Widget.Box({
     children: [
@@ -15,9 +14,9 @@ const WiredIndicator = () => Widget.Icon({
 
 export const NetworkWidget = () => Widget.Stack({
     class_name: 'network',
-    items: [
-        ['wifi', WifiIndicator()],
-        ['wired', WiredIndicator()],
-    ],
+    children: {
+        'wifi': WifiIndicator(),
+        'wired': WiredIndicator(),
+    },
     shown: Network.bind('primary').transform(p => p || 'wifi'),
 })

@@ -1,4 +1,4 @@
-import { Widget } from "../../imports.js";
+// import { Widget } from "../../imports.js";
 const { Window, Box, CenterBox } = Widget;
 
 // Widgets

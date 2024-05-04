@@ -1,4 +1,5 @@
-import { Widget, Hyprland, Utils } from "../../imports.js";
+// import { Widget, Hyprland, Utils } from "../../imports.js";
+const Hyprland = await Service.import("hyprland");
 const { execAsync } = Utils;
 
 export const Title = () => Widget.Button({

@@ -1,4 +1,4 @@
-import { Widget, Audio } from "../../imports.js";
+const Audio = await Service.import("audio");
 const { Box } = Widget;
 
 const Icon = () => Widget.Label({

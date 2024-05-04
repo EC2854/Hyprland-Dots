@@ -1,4 +1,3 @@
-import { Widget } from "../../imports.js";
 import Brightness from "../../services/brightness.js";
 const { Box } = Widget;
 

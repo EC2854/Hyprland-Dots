@@ -1,4 +1,5 @@
-import { Widget, Utils, Mpris } from "../../imports.js";
+// import { Widget, Utils, Mpris } from "../../imports.js";
+const Mpris = await Service.import("mpris");
 const { execAsync } = Utils;
 
 export const Media = () => Widget.Button({

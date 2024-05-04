@@ -11,21 +11,17 @@
     margin-top: 10px;
 }
 
-.bluetooth, .wifi {
+.fullbutton {
     background: $accent;
     border-radius: 24px;
     min-width: 125px;
     padding: 9px;
-    &.off {
-        background: $base1;
-    }
-}
-.wifi {
     margin-right: 10px;
-}
-.wifi, .bluetooth, {
     &Icon {
         margin-right: 6px;
+    }
+    &.off {
+        background: $base1;
     }
 }
 .Icon {
