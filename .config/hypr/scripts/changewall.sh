@@ -1,16 +1,28 @@
 #!/bin/sh
-echo "$1"
+fzf_style="--color=bg+:#1e1e2e,bg:#1e1e2e,spinner:#74c7ec,hl:#f5c2e7 --color=fg:#cdd6f4,header:#f5c2e7,info:#74c7ec,pointer:#f5c2e7 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#74c7ec,hl+:#f5c2e7 --ansi  --no-scrollbar"
+
+
+
+print_message() {
+    echo -e "\e[1;36m \e[0m$1\e[0m"
+}
 if [[ $1 == "" ]]; then
-    wallpaper="$(find ~/Pictures -type f | fzf --color=bg+:#1e1e2e,bg:#1e1e2e,spinner:#74c7ec,hl:#f5c2e7 --color=fg:#cdd6f4,header:#f5c2e7,info:#74c7ec,pointer:#f5c2e7 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#74c7ec,hl+:#f5c2e7 --ansi  --no-scrollbar)"
+    wallpaper="$(find ~/Pictures -type f | fzf $fzf_style)"
 else
     wallpaper=$1
 fi
 
-# Get wallpaper colors 
-wallpaper_colors=$(convert $wallpaper +dither -colors 6 -unique-colors txt: | tail -n 6 | awk -F " " '{print $3}' | tr -d "#")
+nohup swww img $wallpaper -t wave > /dev/null 2>&1 &
 
 # Set Wallpaper
-swww img $wallpaper -t wave 
+print_message "Setting Wallpaper to $wallpaper"
+
+# Get wallpaper colors 
+print_message "Extracting colors from $wallpaper"
+ffmpeg -y -i $wallpaper -vf "scale=320:-1" ~/Pictures/tmp_dont_look_at_it.jpg > /dev/null 2>&1 
+wallpaper_colors=$(convert ~/Pictures/tmp_dont_look_at_it.jpg +dither -colors 6 -unique-colors txt: | tail -n 6 | awk -F " " '{print $3}' | tr -d "#")
+rm ~/Pictures/tmp_dont_look_at_it.jpg &
+
 
 max_delta=0
 min_difference=1000000
@@ -41,6 +53,7 @@ for color in $wallpaper_colors; do
         max_delta=$delta
     fi
 done
+print_message "Picked most saturated color (#$wallpaper_color)"
 
 # Pick color
 for c in "${colors[@]}"; do
@@ -74,6 +87,7 @@ case "$accent_color" in
     "66FF66") accent_name="green" accent_hex="A6E3A1";;
     "6699FF") accent_name="sapphire" accent_hex="74C7EC";;
 esac
+print_message "Picked matching catppuccin color ($accent_name)"
 
 # hypr stuff
 echo "
@@ -84,20 +98,25 @@ plugin {
     hyprtrails {
         color = rgba(${accent_hex}C0)
     }
-}" > ~/.config/hypr/border.conf
+}" > ~/.config/hypr/border.conf &
+print_message "Changed border and trail colors"
 
 # Change icons
-papirus-folders -C cat-mocha-$accent_name -t Papirus-Dark
+papirus-folders -C cat-mocha-$accent_name -t Papirus-Dark > /dev/null
+print_message "Changed icon colors"
 
 # gtk 4 stuff
-rm ~/.config/gtk-4.0
-sudo ln -sf /usr/share/themes/Catppuccin-Mocha-Standard-${accent_name^}-Dark/gtk-4.0 ~/.config/gtk-4.0
+rm ~/.config/gtk-4.0 &
+ln -sf /usr/share/themes/Catppuccin-Mocha-Standard-${accent_name^}-Dark/gtk-4.0 ~/.config/gtk-4.0 &
+print_message "Changed gtk 4 theme"
 
 # gtk 3 stuff
-sed -i "s/gtk-theme-name=$(awk -F'=' '/^gtk-theme-name/{print $2}' ~/.config/gtk-3.0/settings.ini)/gtk-theme-name=Catppuccin-Mocha-Standard-${accent_name^}-Dark/" ~/.config/gtk-3.0/settings.ini
-gsettings set org.gnome.desktop.interface gtk-theme "Catppuccin-Mocha-Standard-${accent_name^}-Dark"
+sed -i "s/gtk-theme-name=$(awk -F'=' '/^gtk-theme-name/{print $2}' ~/.config/gtk-3.0/settings.ini)/gtk-theme-name=Catppuccin-Mocha-Standard-${accent_name^}-Dark/" ~/.config/gtk-3.0/settings.ini &
+gsettings set org.gnome.desktop.interface gtk-theme "Catppuccin-Mocha-Standard-${accent_name^}-Dark" &
+print_message "Changed gtk 3 theme"
 
 # ags!!! 
 echo "\$accent: #$accent_hex;" > ~/.config/ags/scss/_colors.scss
-killall ags 
+killall ags  
 hyprctl dispatch exec ags
+print_message "Changed ags theme"
