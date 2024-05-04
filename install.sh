@@ -43,7 +43,7 @@ print_info() {
 # Install programs (Arch linux only)
 not_arch_btw=false # variable to skip installing packages 
 packages_to_install=( # list of packages to install
-    "hyprland" "swww" "hyprpicker-git" "polkit-gnome" "aylurs-gtk-shell-git" "anyrun-git" # important stuff
+    "hyprland" "swww" "hyprpicker-git" "polkit-gnome" "aylurs-gtk-shell-git" "anyrun-git" "cpio" "sddm" # important stuff
     "networkmanager" "blueman" 
     "bibata-cursor-theme" "papirus-icon-theme" "papirus-folders-catppuccin-git" "ttf-jetbrains-mono-nerd" # Themes
     "totem" "loupe" "amberol" "nautilus" "gnome-control-center" # Gnome Stuff
@@ -153,7 +153,7 @@ fi
 
 # Check for yay
 if ! command -v paru &>/dev/null; then
-    print_warning "paru not found"
+    print_warning "paru not found. You can still run this script, but it won't install any packages."
     not_arch_btw=true
 fi
 
@@ -200,7 +200,7 @@ clone_kitty https://github.com/yurikhan/kitty-smart-tab
 copy_folder ./Wallpapers ~/Pictures/Wallpapers/
 
 # Quick fix for gtk 4
-ln -sf /usr/share/themes/Catppuccin-Mocha-Standard-Sapphire-Dark/gtk-4.0 $HOME/.config/gtk-4.0
+ln -sf /usr/share/themes/Catppuccin-Mocha-Standard-Mauve-Dark/gtk-4.0 $HOME/.config/gtk-4.0
 
 # Hyprland Plugins
 print_info "Plugins time!"
@@ -208,7 +208,10 @@ print_info "Plugins time!"
 install_plugin https://github.com/hyprwm/hyprland-plugins
 install_plugin https://github.com/KZDKM/Hyprspace
 
+print_info "Systemctl time"
+sudo systemctl enable sddm
+
 # Final message
 print_info "That's it! Uncopied stuff is: web folder and sddm theme (catppuccin-minimal-sddm)"
-print_info "Logout and log back in."
+print_info "Reboot ur system :3"
 print_warning "Run 'hyprpm enable Hyprspace' after installation"
