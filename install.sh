@@ -151,7 +151,7 @@ if ! command -v  pacman &>/dev/null; then
     not_arch_btw=true
 fi
 
-# Check for yay
+# Check for paru
 if ! command -v paru &>/dev/null; then
     print_warning "paru not found. You can still run this script, but it won't install any packages."
     not_arch_btw=true
@@ -177,7 +177,7 @@ if [[ $not_arch_btw == false ]]; then
     install_packages
 fi
 
-Copy files to ~/.config directory
+# Copy files to ~/.config directory
 copy_folder ./.config ~/.config/
 
 # Copy .zshrc
@@ -204,6 +204,8 @@ ln -sf /usr/share/themes/Catppuccin-Mocha-Standard-Mauve-Dark/gtk-4.0 $HOME/.con
 
 # Hyprland Plugins
 print_info "Plugins time!"
+print_warning "this part can fail. i don't know what to do about it."
+print_info "if it will fail install hyprland-plugins and Hyprspace plugins manually"
 
 install_plugin https://github.com/hyprwm/hyprland-plugins
 install_plugin https://github.com/KZDKM/Hyprspace
