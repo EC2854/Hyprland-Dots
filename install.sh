@@ -210,9 +210,6 @@ print_info "if it will fail install hyprland-plugins and Hyprspace plugins manua
 install_plugin https://github.com/hyprwm/hyprland-plugins
 install_plugin https://github.com/KZDKM/Hyprspace
 
-print_info "sddm time"
-sudo systemctl enable sddm
-sudo copy_folder ./catppuccin-minimal-sddm /usr/share/sddm/themes/
 
 sudo echo "[Theme]
 Current=catppuccin-minimal-sddm" > /etc/sddm.conf

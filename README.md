@@ -26,6 +26,9 @@ idk if it will work. I will update install script later :3
 git clone https://github.com/EC2854/Hyprland-Dots.git Dots && cd Dots && ./install.sh
 ```
 
+# SDDM
+To install sddm theme copy `./sddm.conf` to `/etc` and `./catppuccin-minimal-sddm` to `/usr/share/sddm/themes`
+
 # Thank You
 - [flick0](https://github.com/flick0) for inspiration
 - [SolDoesTech](https://github.com/SolDoesTech) for starting this all
