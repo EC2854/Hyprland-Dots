@@ -210,10 +210,14 @@ print_info "if it will fail install hyprland-plugins and Hyprspace plugins manua
 install_plugin https://github.com/hyprwm/hyprland-plugins
 install_plugin https://github.com/KZDKM/Hyprspace
 
-print_info "Systemctl time"
+print_info "sddm time"
 sudo systemctl enable sddm
+sudo copy_folder ./catppuccin-minimal-sddm /usr/share/sddm/themes/
+
+sudo echo "[Theme]
+Current=catppuccin-minimal-sddm" > /etc/sddm.conf
 
 # Final message
-print_info "That's it! Uncopied stuff is: web folder and sddm theme (catppuccin-minimal-sddm)"
+print_info "That's it! Uncopied stuff is: web folder"
 print_info "Reboot ur system :3"
 print_warning "Run 'hyprpm enable Hyprspace' after installation"
