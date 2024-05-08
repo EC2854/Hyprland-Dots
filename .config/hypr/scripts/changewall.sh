@@ -116,7 +116,7 @@ gsettings set org.gnome.desktop.interface gtk-theme "Catppuccin-Mocha-Standard-$
 print_message "Changed gtk 3 theme"
 
 # vesktop
-sed -i "s/$(awk -F 'mocha-' '/https:/{print $2}' ~/.config/vesktop/settings/settings.json | head -n 1 | awk -F '.' '{print $1}')/$accent_name/g" ~/.config/vesktop/settings/settings.json &
+echo "@import 'https://catppuccin.github.io/discord/dist/catppuccin-mocha-$accent_name.theme.css'" > ~/.config/vesktop/settings/quickCss.css
 print_message "Changed vesktop theme"
 
 # ags!!! 
