@@ -115,6 +115,10 @@ sed -i "s/gtk-theme-name=$(awk -F'=' '/^gtk-theme-name/{print $2}' ~/.config/gtk
 gsettings set org.gnome.desktop.interface gtk-theme "Catppuccin-Mocha-Standard-${accent_name^}-Dark" &
 print_message "Changed gtk 3 theme"
 
+# vesktop
+sed -i "s/$(awk -F 'mocha-' '/https:/{print $2}' ~/.config/vesktop/settings/settings.json | head -n 1 | awk -F '.' '{print $1}')/$accent_name/g" ~/.config/vesktop/settings/settings.json &
+print_message "Changed vesktop theme"
+
 # ags!!! 
 echo "\$accent: #$accent_hex;" > ~/.config/ags/scss/_colors.scss
 killall ags  
