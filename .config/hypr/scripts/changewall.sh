@@ -119,6 +119,12 @@ print_message "Changed gtk 3 theme"
 echo "@import 'https://catppuccin.github.io/discord/dist/catppuccin-mocha-$accent_name.theme.css'" > ~/.config/vesktop/settings/quickCss.css
 print_message "Changed vesktop theme"
 
+# Spicetify
+cp ~/.config/spicetify/Themes/catppuccin/dynamic.ini ~/.config/spicetify/Themes/catppuccin/color.ini
+sed -i "s/col1/$accent_hex/g" ~/.config/spicetify/Themes/catppuccin/color.ini
+nohup spicetify apply > /dev/null 2>&1 &
+print_message "Changed spicetify theme"
+
 # ags!!! 
 echo "\$accent: #$accent_hex;" > ~/.config/ags/scss/_colors.scss
 killall ags  
