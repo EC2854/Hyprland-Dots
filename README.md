@@ -15,10 +15,14 @@
 > There is a ags config for laptops that adds battery indicator and brightness slider.
 > to enable them uncomment lines in `./.config/ags/modules/bar/sysinfo/sysinfo.js`(line 16) and `./.config/ags/modules/dashboard/dashboard.js`(line 21)
 
+# Terminal
+To use dynamic accent color in terminal (prompt, fastfetch). u need to set config files to dynamic. U can use chprompt(alias for ~/.config/starship/changeprompt.sh) to set both of them
+
 # Screenshots
 ![img 1](./screenshots/nvim-ags-shork-zsh.png) 
 ![img 2](./screenshots/anyrun-lf-spotify.png)
 ![img 3](./screenshots/purple!.png)
+![img 4](./screenshots/green.png)
 
 # Installation
 idk if it will work. I will update install script later :3

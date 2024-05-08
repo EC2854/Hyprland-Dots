@@ -1,0 +1,59 @@
+# acc
+format="""
+[](bg:none fg:col1)\
+$username\
+[](bg:col1 fg:col2)\
+$hostname\
+[](bg:col2 fg:col3)\
+$directory\
+[](bg:col2 fg:col3)\
+$git_branch\
+[](bg:col1 fg:col2)\
+$cmd_duration\
+[](bg:none fg:col1)\
+$line_break\
+$character\
+"""
+add_newline = false 
+
+# Prompt symbols 
+[character]
+success_symbol = "[ 󱞪](col1)"
+error_symbol = "[ 󱞪](col2)"
+vicmd_symbol = "[ 󱞪❯](col2)"
+
+[username]
+disabled = true
+show_always = true
+format = "[  $user ](bg:col1 fg:#1e1e2e bold)"
+
+[hostname]
+disabled = true
+ssh_only = false
+format = "[ 󰌽 $hostname ]( bg:col2 fg:#1e1e2e bold)"
+
+[directory]
+disabled =false
+format = "[  $path ](bg:col3 fg:#1e1e2e bold)"
+truncation_length = 3
+truncate_to_repo=false
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+"Videos" = " "
+"iso" = "󰌽 "
+".config" = ""
+
+[git_branch]
+disabled =false
+format = '[  $branch ](bg:col2 fg:#1e1e2e bold)'
+
+[cmd_duration]
+min_time = 4
+show_milliseconds = false
+disabled = true
+format = '[ 󱑆 $duration ](bg:col1 fg:#1e1e2e bold)'
+

@@ -1,0 +1,44 @@
+// acc
+{
+    "logo": {
+    "source": "~/.config/fastfetch/nyarch.txt",
+    "color": {
+        "1": "col1"
+    },
+    "padding": {
+        "left": 1,
+        "right": 1
+    }
+    },
+    "display": {
+        "disableLinewrap": true,
+        "separator": " : ",
+    },
+    "modules": [
+        {
+            "type": "os",
+            "key": "\u001b[col1m"
+        },
+        {
+            "type": "kernel",
+            "key": "\u001b[col1m󰌽"
+        },
+        {
+            "type": "packages",
+            "key": "\u001b[col1m"
+        },
+        {
+            "type": "shell",
+            "key": "\u001b[col1m"
+        },
+        {
+            "type": "wm",
+            "key": "\u001b[col1m"
+        },
+        {
+            "key": " ",
+            "type": "colors",
+            "symbol": "circle"
+        }
+    ]
+}

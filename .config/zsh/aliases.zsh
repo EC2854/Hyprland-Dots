@@ -57,6 +57,7 @@ alias toggle-host='starship toggle hostname'
 alias toggle-dir='starship toggle directory'
 alias toggle-git='starship toggle git_branch'
 alias toggle-duration='starship toggle cmd_duration'
+alias chprompt='~/.config/starship/changeprompt.sh'
 
 
 alias commit='git add . && git commit -m $1'

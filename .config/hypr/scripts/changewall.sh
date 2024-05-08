@@ -79,13 +79,13 @@ done
 
 # Translate to catppuccin pallette
 case "$accent_color" in
-    "FF6666") accent_name="red" accent_hex="F38BA8";;
-    "9966FF") accent_name="mauve" accent_hex="CBA6F7";;
-    "FFA833") accent_name="peach" accent_hex="FAB387";;
-    "FFFF66") accent_name="yellow" accent_hex="F9E2AF";;
-    "FF99AA") accent_name="pink" accent_hex="F5C2E7";;
-    "66FF66") accent_name="green" accent_hex="A6E3A1";;
-    "6699FF") accent_name="sapphire" accent_hex="74C7EC";;
+    "FF6666") accent_name="red" accent_hex="F38BA8" accent_ansi="31";;
+    "9966FF") accent_name="mauve" accent_hex="CBA6F7" accent_ansi="35";;
+    "FFA833") accent_name="peach" accent_hex="FAB387" accent_ansi="33";;
+    "FFFF66") accent_name="yellow" accent_hex="F9E2AF" accent_ansi="33";;
+    "FF99AA") accent_name="pink" accent_hex="F5C2E7" accent_ansi="35";;
+    "66FF66") accent_name="green" accent_hex="A6E3A1" accent_ansi="32";;
+    "6699FF") accent_name="sapphire" accent_hex="74C7EC" accent_ansi="34";;
 esac
 print_message "Picked matching catppuccin color ($accent_name)"
 
@@ -102,12 +102,12 @@ plugin {
 print_message "Changed border and trail colors"
 
 # Change icons
-papirus-folders -C cat-mocha-$accent_name -t Papirus-Dark > /dev/null
+papirus-folders -C cat-mocha-$accent_name -t Papirus-Dark > /dev/null 2>&1 # TODO make it faster
 print_message "Changed icon colors"
 
 # gtk 4 stuff
-rm ~/.config/gtk-4.0 &
-ln -sf /usr/share/themes/Catppuccin-Mocha-Standard-${accent_name^}-Dark/gtk-4.0 ~/.config/gtk-4.0 &
+rm ~/.config/gtk-4.0
+ln -sf /usr/share/themes/Catppuccin-Mocha-Standard-${accent_name^}-Dark/gtk-4.0 ~/.config/gtk-4.0 
 print_message "Changed gtk 4 theme"
 
 # gtk 3 stuff
@@ -120,3 +120,21 @@ echo "\$accent: #$accent_hex;" > ~/.config/ags/scss/_colors.scss
 killall ags  
 hyprctl dispatch exec ags
 print_message "Changed ags theme"
+
+# Terminal
+
+## Starship 
+if [[ $(head -n 1 ~/.config/starship.toml | tr -d "# ") == "acc" ]]; then
+    cp ~/.config/starship/dynamic.toml ~/.config/starship.toml # copy template
+    sed -i "s/col1/#$accent_hex/g" ~/.config/starship.toml
+    sed -i "s/col2/#cdd6f4/g" ~/.config/starship.toml
+    sed -i "s/col3/#$accent_hex/g" ~/.config/starship.toml
+    print_message "Changed starship theme"
+fi
+## fastfetch
+if [[ $(head -n 1 ~/.config/fastfetch/config.jsonc | tr -d "/ ") == "acc" ]]; then
+    cp ~/.config/fastfetch/configs/dynamic.jsonc ~/.config/fastfetch/config.jsonc
+    sed -i "s/col1/$accent_ansi/g" ~/.config/fastfetch/config.jsonc 
+    print_message "Changed fastfetch theme"
+fi
+
