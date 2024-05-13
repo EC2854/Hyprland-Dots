@@ -120,8 +120,8 @@ echo "@import 'https://catppuccin.github.io/discord/dist/catppuccin-mocha-$accen
 print_message "Changed vesktop theme"
 
 # Spicetify
-cp ~/.config/spicetify/Themes/catppuccin/dynamic.ini ~/.config/spicetify/Themes/catppuccin/color.ini
-sed -i "s/col1/$accent_hex/g" ~/.config/spicetify/Themes/catppuccin/color.ini
+cp ~/.config/spicetify/Themes/tui/dynamic.ini ~/.config/spicetify/Themes/tui/color.ini
+sed -i "s/col1/$accent_hex/g" ~/.config/spicetify/Themes/tui/color.ini
 nohup spicetify apply > /dev/null 2>&1 &
 print_message "Changed spicetify theme"
 

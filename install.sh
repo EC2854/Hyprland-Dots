@@ -210,10 +210,6 @@ print_info "if it will fail install hyprland-plugins and Hyprspace plugins manua
 install_plugin https://github.com/hyprwm/hyprland-plugins
 install_plugin https://github.com/KZDKM/Hyprspace
 
-
-sudo echo "[Theme]
-Current=catppuccin-minimal-sddm" > /etc/sddm.conf
-
 # Final message
 print_info "That's it! Uncopied stuff is: web folder"
 print_info "Reboot ur system :3"
