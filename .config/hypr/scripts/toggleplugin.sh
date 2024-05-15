@@ -1,17 +1,12 @@
 #!/bin/bash
 
+plugin_name="$1"
 get_state() {
-    local state=$(hyprpm list | grep -A 1 "$1" | tail -n 1 | awk -F ':' '{print $2}')
-    echo "$state"
+    hyprpm list | grep -A 1 $plugin_name | grep false > /dev/null 2>&1
+}
+plugin() {
+    hyprpm $1 $plugin_name > /dev/null 2>&1 && notify-send "$plugin_name ${1}d"
 }
 
-plugin_name="$1"
-state=$(get_state "$plugin_name")
+get_state $plugin_name && plugin enable || plugin disable
 
-if [[ "$state" == *"false"* ]]; then
-    hyprpm enable "$plugin_name" > /dev/null 2>&1
-    notify-send "$plugin_name enabled"
-else 
-    hyprpm disable "$plugin_name" > /dev/null 2>&1 
-    notify-send "$plugin_name disabled"
-fi

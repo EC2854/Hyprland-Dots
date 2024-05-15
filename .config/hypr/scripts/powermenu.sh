@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 chosen=$(printf "  Power Off\n  Restart\n  Suspend\n  Lock\n󰍃  Log Out" | anyrun --plugins libstdin.so --show-results-immediately true)
 

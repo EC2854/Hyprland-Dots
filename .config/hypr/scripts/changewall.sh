@@ -2,20 +2,15 @@
 fzf_style="--color=bg+:#1e1e2e,bg:#1e1e2e,spinner:#74c7ec,hl:#f5c2e7 --color=fg:#cdd6f4,header:#f5c2e7,info:#74c7ec,pointer:#f5c2e7 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#74c7ec,hl+:#f5c2e7 --ansi  --no-scrollbar"
 
 
-
 print_message() {
     echo -e "\e[1;36m \e[0m$1\e[0m"
 }
-if [[ $1 == "" ]]; then
-    wallpaper="$(find ~/Pictures -type f | fzf $fzf_style)"
-else
-    wallpaper=$1
-fi
+[ -z $1  ] && wallpaper="$(find ~/Pictures -type f | fzf $fzf_style)" || wallpaper=$1
 
+print_message "Setting Wallpaper to $wallpaper"
 nohup swww img $wallpaper -t wave > /dev/null 2>&1 &
 
 # Set Wallpaper
-print_message "Setting Wallpaper to $wallpaper"
 
 # Get wallpaper colors 
 print_message "Extracting colors from $wallpaper"
@@ -48,10 +43,7 @@ for color in $wallpaper_colors; do
     min_color=$(printf "%d\n" $r $g $b | sort -n | head -n 1)
     delta=$((max_color - min_color))
 
-    if [ $delta -gt $max_delta ]; then
-        wallpaper_color=$color
-        max_delta=$delta
-    fi
+    [ $delta -gt $max_delta ] && wallpaper_color=$color && max_delta=$delta
 done
 print_message "Picked most saturated color (#$wallpaper_color)"
 
@@ -71,10 +63,7 @@ for c in "${colors[@]}"; do
    
    difference=$(echo "$dr + $dg + $db" | bc )
 
-    if [ $difference -lt $min_difference ]; then
-        accent_color=$c
-        min_difference=$difference
-    fi
+   [ $difference -lt $min_difference ] && accent_color=$c && min_difference=$difference
 done
 
 # Translate to catppuccin pallette

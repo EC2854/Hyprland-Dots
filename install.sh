@@ -60,51 +60,30 @@ clone_repository() {
     local destination="$2"
 
     print_info "Cloning $repository_url..."
-    if git clone --quiet "$repository_url" "$destination"; then # clone repo
-        print_success "Cloned $destination successfully"
-    else
-        print_error "Error cloning $repository_url to $destination"
-        exit 1
-    fi
+    git clone --quiet "$repository_url" "$destination" && print_success "Cloned $destination successfully" && print_error "Error cloning $repository_url to $destination"
 }
 # copy function
 copy_folder() {
     local source=("$1"/*)  # Capture the list of files and directories
     local destination="$2"
 
-    if ! ls "$destination" &>/dev/null; then # if folder is missing create it
-        mkdir -p $destination
-    fi
+    ls "$destination" &>/dev/null || mkdir -p $destination
 
     print_info "Copying files from $1 to $destination"
-    if cp -rf "${source[@]}" "$destination"; then # copy folder
-        print_success "Files copied successfully to $destination"
-    else
-        print_error "Error while copying to $destination"
-        exit 1
-    fi
+    cp -f "${source[@]}" "$destination" && print_success "Files copied successfully to $destination" || print_error "Error while copying to $destination"
 }
 copy_files() {
     local source=$1 
     local destination="$2"
 
     print_info "Copying files from $1 to $destination"
-    if cp -f "$source" "$destination"; then # copy file
-        print_success "Files copied successfully to $destination"
-    else
-        print_error "Error while copying to $destination"
-        exit 1
-    fi
+    cp -f "$source" "$destination" && print_success "Files copied successfully to $destination" && print_error "Error while copying to $destination"
 }
 # Install Hyprland Plugins
 install_plugin() {
     local name=$1
     
-    if hyprpm add $name; then # install plugin 
-        print_success "$name installed successfully"
-    else
-        print_error "Error while installing $name"
-    fi
+    hyprpm add $name && print_success "$name installed successfully" || print_error "Error while installing $name"
 }
 #Install Kitty Plugins
 clone_kitty() {
@@ -114,20 +93,9 @@ clone_kitty() {
     mkdir ./tmp && print_success "Folder Created successfully" # create tmp folder
 
     print_info "Cloning $repository_url..."
-    if git clone --quiet "$repository_url" ./tmp; then # clone repo into tmp folder
-        print_success "Cloned $repository_url successfully"
-    else
-        print_error "Error cloning $repository_url"
-        exit 1
-    fi
-
+    git clone --quiet "$repository_url" && print_success "Cloned $repository_url successfully" && print_error "Error cloning $repository_url"
     print_info "Moving .py files to ~/.config/kitty/"
-    if mv -f ./tmp/*.py ~/.config/kitty/; then # move python files to kitty config folder
-        print_success "Files moved successfully"
-    else
-        print_error "Error moving files"
-        exit 1
-    fi
+    mv -f ./tmp/*.py ~/.config/kitty/ && print_success "Files moved successfully" || print_error "Error moving files"
 
     print_info "Removing tmp folder"
     rm -rf "./tmp" && print_success "Folder removed successfully" # remove tmp folder
@@ -146,28 +114,16 @@ ask_for_confirmation() {
     esac
 }
 # Check Distro
-if ! command -v  pacman &>/dev/null; then
-    print_warning "This script is intended for Arch Linux. You can still run this script, but it won't install any packages."
-    not_arch_btw=true
-fi
+command -v  pacman &>/dev/null || print_warning "This script is intended for Arch Linux. You can still run this script, but it won't install any packages." && not_arch_btw=true
 
 # Check for paru
-if ! command -v paru &>/dev/null; then
-    print_warning "paru not found. You can still run this script, but it won't install any packages."
-    not_arch_btw=true
-fi
+command -v paru &>/dev/null || print_warning "paru not found. You can still run this script, but it won't install any packages." && not_arch_btw=true
 
 # Check for internet connection
-if ! ping -q -c 1 -W 1 github.com &>/dev/null; then
-    print_error "No internet connection. Exiting..."
-    exit 1
-fi
+ping -q -c 1 -W 1 github.com &>/dev/null || print_error "No internet connection. Exiting..." && exit 1
 
 # Check Folder
-if ! ls $(pwd)/install.sh &>/dev/null; then
-    print_error "Please open folder with this script before running it"
-    exit 1
-fi
+ls $(pwd)/install.sh &>/dev/null || print_error "Please open folder with this script before running it" && exit 1
 
 # Ask for confirmation before continuing
 ask_for_confirmation
@@ -182,7 +138,6 @@ copy_folder ./.config ~/.config/
 
 # Copy .zshrc
 copy_files ./.zshrc ~/
-
 # Copy Bashrc
 copy_files ./.bashrc ~/
 
