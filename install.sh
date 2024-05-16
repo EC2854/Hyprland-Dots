@@ -47,7 +47,7 @@ packages_to_install=( # list of packages to install
     "networkmanager" "blueman" 
     "bibata-cursor-theme" "papirus-icon-theme" "papirus-folders-catppuccin-git" "ttf-jetbrains-mono-nerd" # Themes
     "totem" "loupe" "amberol" "nautilus" "gnome-control-center" # Gnome Stuff
-    "zsh" "eza" "bat" "ripgrep" "fzf" "yazi" "kitty" "neovim" "fastfetch" "starship" # terminal stuff
+    "zsh" "eza" "bat" "ripgrep" "fzf" "yazi" "foot" "neovim" "fastfetch" "starship" # terminal stuff
 ) 
 install_packages() {
     print_info "installing packages"
@@ -86,20 +86,20 @@ install_plugin() {
     hyprpm add $name && print_success "$name installed successfully" || print_error "Error while installing $name"
 }
 #Install Kitty Plugins
-clone_kitty() {
-    local  repository_url=$1
-    
-    print_info "Creating tmp folder"
-    mkdir ./tmp && print_success "Folder Created successfully" # create tmp folder
-
-    print_info "Cloning $repository_url..."
-    git clone --quiet "$repository_url" && print_success "Cloned $repository_url successfully" && print_error "Error cloning $repository_url"
-    print_info "Moving .py files to ~/.config/kitty/"
-    mv -f ./tmp/*.py ~/.config/kitty/ && print_success "Files moved successfully" || print_error "Error moving files"
-
-    print_info "Removing tmp folder"
-    rm -rf "./tmp" && print_success "Folder removed successfully" # remove tmp folder
-}
+# clone_kitty() {
+#     local  repository_url=$1
+#     
+#     print_info "Creating tmp folder"
+#     mkdir ./tmp && print_success "Folder Created successfully" # create tmp folder
+# 
+#     print_info "Cloning $repository_url..."
+#     git clone --quiet "$repository_url" && print_success "Cloned $repository_url successfully" && print_error "Error cloning $repository_url"
+#     print_info "Moving .py files to ~/.config/kitty/"
+#     mv -f ./tmp/*.py ~/.config/kitty/ && print_success "Files moved successfully" || print_error "Error moving files"
+# 
+#     print_info "Removing tmp folder"
+#     rm -rf "./tmp" && print_success "Folder removed successfully" # remove tmp folder
+# }
 
 # confirmation
 ask_for_confirmation() {
@@ -148,8 +148,8 @@ clone_repository https://github.com/zsh-users/zsh-history-substring-search.git ~
 clone_repository https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.config/zsh/zsh-syntax-highlighting
 
 # Install Kitty plugins
-clone_kitty https://github.com/knubie/vim-kitty-navigator
-clone_kitty https://github.com/yurikhan/kitty-smart-tab
+# clone_kitty https://github.com/knubie/vim-kitty-navigator
+# clone_kitty https://github.com/yurikhan/kitty-smart-tab
 
 # Copy Wallpapers
 copy_folder ./Wallpapers ~/Pictures/Wallpapers/

@@ -30,14 +30,13 @@ alias f='cd "$(find . -maxdepth 5 -type d -print | fzf)"'
 alias gf='cd "$(find ~ -maxdepth 5 -type d -print | fzf)"'
 
 # Replacing ls with eza
-alias l='eza --icons=always --color=always --hyperlink --group-directories-first'
-alias la='eza --icons=always --color=always --hyperlink --group-directories-first -a'
-alias ll='eza --icons=always --color=always --hyperlink --group-directories-first -la --no-time'
-alias lt='eza --icons=always --color=always --hyperlink --group-directories-first -T'
+alias l='eza --icons=always --color=always --group-directories-first'
+alias la='eza --icons=always --color=always --group-directories-first -a'
+alias ll='eza --icons=always --color=always --group-directories-first -la --no-time'
+alias lt='eza --icons=always --color=always --group-directories-first -T'
 
-# Replacing cat with bat and kitty's image preview
+# Replacing cat with bat
 alias c='bat -P --color=always --style=plain --theme=base16 --wrap=auto'
-alias icat='kitty +kitten icat --align=left'
 
 # Package Managment
 alias upd='paru -Syu --noconfirm --quiet'
@@ -69,6 +68,6 @@ alias amb="nohup amberol . > /dev/null 2>&1 &"
 # Silly
 alias fucking='sudo'
 alias okpa='systemctl poweroff'
-alias nekofetch="fastfetch --logo-height 6 --logo ~/.config/fastfetch/nyarch.png"
-alias susefetch="neofetch --kitty  fastfetch --logo-height 6 --logo ~/Pictures/gigaroman.png"
+alias nekofetch="fastfetch --logo-height 6 --sixel ~/.config/fastfetch/nyarch.png"
+alias susefetch="fastfetch --logo-height 6 --sixel ~/Pictures/gigaroman.png"
 alias shork="~/blahaj/display3d ~/blahaj/blahaj.obj -t 0,0,6"

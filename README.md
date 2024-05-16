@@ -4,7 +4,7 @@
 - Launcher - [anyrun](https://github.com/Kirottu/anyrun)
 - Shell - [zsh](https://github.com/zsh-users/zsh)
 - Prompt - [starship](https://github.com/starship/starship)
-- Terminal - [kitty](https://github.com/kovidgoyal/kitty)
+- Terminal - [foot](https://codeberg.org/dnkl/foot)
 - File Manager - [yazi](https://github.com/sxyazi/yazi)
 - IDE - [neovim](https://github.com/neovim/neovim)
 - Browser - [floorp](https://github.com/Floorp-Projects/Floorp)
