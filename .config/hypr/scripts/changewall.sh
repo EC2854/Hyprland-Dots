@@ -1,11 +1,11 @@
 #!/bin/sh
-fzf_style="--color=bg+:#1e1e2e,bg:#1e1e2e,spinner:#74c7ec,hl:#f5c2e7 --color=fg:#cdd6f4,header:#f5c2e7,info:#74c7ec,pointer:#f5c2e7 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#74c7ec,hl+:#f5c2e7 --ansi  --no-scrollbar"
-
+fzf_style="--color=bg+:#1e1e2e,bg:#1e1e2e,spinner:#74c7ec,hl:#f5c2e7 --color=fg:#cdd6f4,header:#f5c2e7,info:#74c7ec,pointer:#f5c2e7 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#74c7ec,hl+:#f5c2e7 --ansi  --no-scrollbar "
+dir=~/Pictures/Wallpapers
 
 print_message() {
     echo -e "\e[1;36m \e[0m$1\e[0m"
 }
-[ -z $1  ] && wallpaper="$(find ~/Pictures -type f | fzf $fzf_style)" || wallpaper=$1
+[ -z $1  ] && wallpaper="$(find $dir -type f | fzf $fzf_style --preview 'chafa -f sixel --size 60 --animate no {}')" || wallpaper=$1
 
 print_message "Setting Wallpaper to $wallpaper"
 nohup swww img $wallpaper -t wave > /dev/null 2>&1 &
