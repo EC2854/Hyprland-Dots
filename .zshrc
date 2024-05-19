@@ -23,9 +23,9 @@ source ~/.config/zsh/env.zsh
 # import aliases
 source ~/.config/zsh/aliases.zsh
 
-# fastfetch --logo-height 6 --logo ~/.config/fastfetch/nyarch.png
-# fastfetch --logo-height 6 --logo ~/Pictures/gigaroman.png
-fastfetch --logo-height 6 --logo $(find ~/Pictures/Anime-Girls-Holding-Programming-Books -type f | shuf -n 1)
+# fastfetch --logo-height 6 --sixel ~/.config/fastfetch/nyarch.png
+# fastfetch --logo-height 6 --sixel ~/Pictures/gigaroman.png
+fastfetch --logo-height 6 --sixel "$(find ~/Pictures/Anime-Girls-Holding-Programming-Books -type f | shuf -n 1)"
 
 # History in cache directory:
 HISTSIZE=10000
@@ -39,6 +39,9 @@ bindkey '^[[B' history-substring-search-down
 # Basic auto/tab complete:
 autoload -U compinit
 zstyle ':completion:*' menu select
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --icons=always --color=always --group-directories-first -a -1 $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza --icons=always --color=always --group-directories-first -a -1 $realpath'
+
 zmodload zsh/complist
 compinit
 _comp_options+=(globdots) # Include hidden files.
@@ -47,7 +50,7 @@ yazicd() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
 	yazi "$@" --cwd-file="$tmp"
 	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		cd -- "$cwd"
+		cd "$cwd"
 	fi
 	rm -f -- "$tmp"
 }
@@ -66,3 +69,6 @@ source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.config/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 source ~/.config/zsh/fzf-tab/fzf-tab.zsh
+
+# Zoxide 
+eval "$(zoxide init --cmd cd zsh)"

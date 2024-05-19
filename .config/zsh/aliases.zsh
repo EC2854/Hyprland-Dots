@@ -10,7 +10,6 @@ alias cls='clear'
 alias rm='rm -rf' # I know im a psychopath
 
 # Faster movement
-
 alias ..='cd ..'
 alias .2='cd ../..'
 alias .3='cd ../../..'
@@ -26,8 +25,8 @@ alias gp='cd ~/Pictures/'
 alias gv='cd ~/Videos/'
 
 # Even faster movement
-alias f='cd "$(find . -maxdepth 5 -type d -print | fzf)"'
-alias gf='cd "$(find ~ -maxdepth 5 -type d -print | fzf)"'
+alias f='cd "$(find . -maxdepth 5 -type d -print | fzf --preview "eza --icons=always --color=always --group-directories-first -1 {}")"'
+alias gf='cd "$(find ~ -maxdepth 5 -type d -print | fzf --preview "eza --icons=always --color=always --group-directories-first -1 {}")"'
 
 # Replacing ls with eza
 alias l='eza --icons=always --color=always --group-directories-first'
