@@ -1,6 +1,7 @@
 #!/bin/sh
 fzf_style="--color=bg+:#1e1e2e,bg:#1e1e2e,spinner:#74c7ec,hl:#f5c2e7 --color=fg:#cdd6f4,header:#f5c2e7,info:#74c7ec,pointer:#f5c2e7 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#74c7ec,hl+:#f5c2e7 --ansi  --no-scrollbar "
 dir=~/Pictures/Wallpapers
+tmp_image=$(mktemp /tmp/wall-low.XXXXXX.jpg)
 
 print_message() {
     echo -e "\e[1;36m \e[0m$1\e[0m"
@@ -8,16 +9,26 @@ print_message() {
 [ -z $1  ] && wallpaper="$(find $dir -type f | fzf $fzf_style --preview 'chafa -f sixel --size 60 --animate no {}')" || wallpaper=$1
 
 print_message "Setting Wallpaper to $wallpaper"
-nohup swww img $wallpaper -t wave > /dev/null 2>&1 &
 
-# Set Wallpaper
+# Set Wallpaper 
+
+[[ "$wallpaper" = *".gif" ]] && {
+    tmp_wallpaper=$(mktemp /tmp/wall.XXXXXX.jpg)
+
+    ffmpeg -y -i "$wallpaper" -vf "scale=-1:1080" "$tmp_wallpaper" > /dev/null 2>&1
+    swww img $tmp_wallpaper -t wave > /dev/null 2>&1 &
+
+    nohup swww img $wallpaper -t none > /dev/null 2>&1 &
+} || {
+    nohup swww img $wallpaper -t wave > /dev/null 2>&1 &
+}
 
 # Get wallpaper colors 
-print_message "Extracting colors from $wallpaper"
-ffmpeg -y -i $wallpaper -vf "scale=320:-1" ~/Pictures/tmp_dont_look_at_it.jpg > /dev/null 2>&1 
-wallpaper_colors=$(convert ~/Pictures/tmp_dont_look_at_it.jpg +dither -colors 6 -unique-colors txt: | tail -n 6 | awk -F " " '{print $3}' | tr -d "#")
-rm ~/Pictures/tmp_dont_look_at_it.jpg &
+ffmpeg -y -i "$wallpaper" -vf "scale=320:-1" "$tmp_image" > /dev/null 2>&1
+wallpaper_colors=$(convert "$tmp_image" +dither -colors 6 -unique-colors txt: | tail -n 6 | awk -F " " '{print $3}' | tr -d "#")
 
+rm "$tmp_image"
+[ -z $tmp_wallpaper ] || rm "$tmp_wallpaper"
 
 max_delta=0
 min_difference=1000000
@@ -76,64 +87,73 @@ case "$accent_color" in
     "66FF66") accent_name="green" accent_hex="A6E3A1" accent_ansi="32";;
     "6699FF") accent_name="sapphire" accent_hex="74C7EC" accent_ansi="34";;
 esac
+
+gtk_theme="Catppuccin-Mocha-Standard-${accent_name^}-Dark"
+
 print_message "Picked matching catppuccin color ($accent_name)"
 
 # hypr stuff
-echo "
-general{
+cat << EOF > ~/.config/hypr/border.conf
+general {
     col.active_border=rgb($accent_hex)
 }
 plugin {
     hyprtrails {
         color = rgba(${accent_hex}C0)
     }
-}" > ~/.config/hypr/border.conf &
+}
+EOF
 print_message "Changed border and trail colors"
 
 # Change icons
-papirus-folders -C cat-mocha-$accent_name -t Papirus-Dark > /dev/null 2>&1 # TODO make it faster
-print_message "Changed icon colors"
+#
 
-# gtk 4 stuff
-rm ~/.config/gtk-4.0
-ln -sf /usr/share/themes/Catppuccin-Mocha-Standard-${accent_name^}-Dark/gtk-4.0 ~/.config/gtk-4.0 
-print_message "Changed gtk 4 theme"
-
-# gtk 3 stuff
-sed -i "s/gtk-theme-name=$(awk -F'=' '/^gtk-theme-name/{print $2}' ~/.config/gtk-3.0/settings.ini)/gtk-theme-name=Catppuccin-Mocha-Standard-${accent_name^}-Dark/" ~/.config/gtk-3.0/settings.ini &
-gsettings set org.gnome.desktop.interface gtk-theme "Catppuccin-Mocha-Standard-${accent_name^}-Dark" &
-print_message "Changed gtk 3 theme"
-
+{
+    sed -i "s/^gtk-theme-name=.*/gtk-theme-name=$gtk_theme/" ~/.config/gtk-3.0/settings.ini
+    gsettings set org.gnome.desktop.interface gtk-theme "$gtk_theme" &
+    print_message "Changed gtk 3 theme"
+} &
+{
+    rm -rf ~/.config/gtk-4.0
+    ln -sf "/usr/share/themes/$gtk_theme/gtk-4.0" ~/.config/gtk-4.0
+    print_message "Changed gtk 4 theme"
+} &
 # vesktop
-echo "@import 'https://catppuccin.github.io/discord/dist/catppuccin-mocha-$accent_name.theme.css'" > ~/.config/vesktop/settings/quickCss.css
-print_message "Changed vesktop theme"
-
+{
+    echo "@import 'https://catppuccin.github.io/discord/dist/catppuccin-mocha-$accent_name.theme.css'" > ~/.config/vesktop/settings/quickCss.css
+    print_message "Changed vesktop theme"
+} &
 # Spicetify
-cp ~/.config/spicetify/Themes/tui/dynamic.ini ~/.config/spicetify/Themes/tui/color.ini
-sed -i "s/col1/$accent_hex/g" ~/.config/spicetify/Themes/tui/color.ini
-nohup spicetify apply > /dev/null 2>&1 &
-print_message "Changed spicetify theme"
+{
+    cp ~/.config/spicetify/Themes/tui/dynamic.ini ~/.config/spicetify/Themes/tui/color.ini
+    sed -i "s/col1/$accent_hex/g" ~/.config/spicetify/Themes/tui/color.ini
+    nohup spicetify apply > /dev/null 2>&1 &
+    print_message "Changed spicetify theme"
+} &
 
 # ags!!! 
-echo "\$accent: #$accent_hex;" > ~/.config/ags/scss/_colors.scss
-killall ags  
-hyprctl dispatch exec ags
-print_message "Changed ags theme"
-
+{
+    echo "\$accent: #$accent_hex;" > ~/.config/ags/scss/_colors.scss
+    killall ags  
+    hyprctl dispatch exec ags > /dev/null
+    print_message "Changed ags theme"
+} &
 # Terminal
 
 ## Starship 
-if [[ $(head -n 1 ~/.config/starship.toml | tr -d "# ") == "acc" ]]; then
+head -n 1 ~/.config/starship.toml | grep -q acc && {
     cp ~/.config/starship/dynamic.toml ~/.config/starship.toml # copy template
     sed -i "s/col1/#$accent_hex/g" ~/.config/starship.toml
     sed -i "s/col2/#cdd6f4/g" ~/.config/starship.toml
     sed -i "s/col3/#$accent_hex/g" ~/.config/starship.toml
     print_message "Changed starship theme"
-fi
+} &
 ## fastfetch
-if [[ $(head -n 1 ~/.config/fastfetch/config.jsonc | tr -d "/ ") == "acc" ]]; then
+head -n 1 ~/.config/fastfetch/config.jsonc | grep -q acc && {
     cp ~/.config/fastfetch/configs/dynamic.jsonc ~/.config/fastfetch/config.jsonc
     sed -i "s/col1/$accent_ansi/g" ~/.config/fastfetch/config.jsonc 
     print_message "Changed fastfetch theme"
-fi
+} &
 
+papirus-folders -C cat-mocha-$accent_name -t Papirus-Dark > /dev/null 2>&1 
+print_message "Changed icon colors"
