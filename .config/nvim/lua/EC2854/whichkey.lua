@@ -94,7 +94,6 @@ local mappings = {
     },
     t = {
         name = "Toggle/Change",
-        a = { "<cmd>Alpha <CR>", "Toggle Alpha" },
         b = { "<cmd>lua require('barbecue.ui').toggle() <CR>", "Toggle Barbecue" },
         c = { "<cmd>Telescope colorscheme <CR>", "Colorscheme" },
         h = { "<cmd>nohlsearch <CR>", "No Highlight" },

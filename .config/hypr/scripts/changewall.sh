@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 fzf_style="--color=bg+:#1e1e2e,bg:#1e1e2e,spinner:#74c7ec,hl:#f5c2e7 --color=fg:#cdd6f4,header:#f5c2e7,info:#74c7ec,pointer:#f5c2e7 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#74c7ec,hl+:#f5c2e7 --ansi  --no-scrollbar "
 dir=~/Pictures/Wallpapers
 tmp_image=$(mktemp /tmp/wall-low.XXXXXX.jpg)
@@ -11,7 +11,6 @@ print_message() {
 print_message "Setting Wallpaper to $wallpaper"
 
 # Set Wallpaper 
-
 [[ "$wallpaper" = *".gif" ]] && {
     tmp_wallpaper=$(mktemp /tmp/wall.XXXXXX.jpg)
 
@@ -63,7 +62,7 @@ for c in "${colors[@]}"; do
     r=$(echo "ibase=16;${c:0:2}" | bc)
     g=$(echo "ibase=16;${c:2:2}" | bc)
     b=$(echo "ibase=16;${c:4:2}" | bc)
-    
+
     wr=$(echo "ibase=16;${wallpaper_color:0:2}" | bc)
     wg=$(echo "ibase=16;${wallpaper_color:2:2}" | bc)
     wb=$(echo "ibase=16;${wallpaper_color:4:2}" | bc)
@@ -71,10 +70,10 @@ for c in "${colors[@]}"; do
     dr=$(echo "$wr - $r" | bc | tr -d '-')
     dg=$(echo "$wg - $g" | bc | tr -d '-')
     db=$(echo "$wb - $b" | bc | tr -d '-')
-   
-   difference=$(echo "$dr + $dg + $db" | bc )
 
-   [ $difference -lt $min_difference ] && accent_color=$c && min_difference=$difference
+    difference=$(echo "$dr + $dg + $db" | bc )
+
+    [ $difference -lt $min_difference ] && accent_color=$c && min_difference=$difference
 done
 
 # Translate to catppuccin pallette
@@ -87,7 +86,6 @@ case "$accent_color" in
     "66FF66") accent_name="green" accent_hex="A6E3A1" accent_ansi="32";;
     "6699FF") accent_name="sapphire" accent_hex="74C7EC" accent_ansi="34";;
 esac
-
 gtk_theme="Catppuccin-Mocha-Standard-${accent_name^}-Dark"
 
 print_message "Picked matching catppuccin color ($accent_name)"
@@ -106,8 +104,6 @@ EOF
 print_message "Changed border and trail colors"
 
 # Change icons
-#
-
 {
     sed -i "s/^gtk-theme-name=.*/gtk-theme-name=$gtk_theme/" ~/.config/gtk-3.0/settings.ini
     gsettings set org.gnome.desktop.interface gtk-theme "$gtk_theme" &
@@ -153,6 +149,13 @@ head -n 1 ~/.config/fastfetch/config.jsonc | grep -q acc && {
     cp ~/.config/fastfetch/configs/dynamic.jsonc ~/.config/fastfetch/config.jsonc
     sed -i "s/col1/$accent_ansi/g" ~/.config/fastfetch/config.jsonc 
     print_message "Changed fastfetch theme"
+} &
+
+# Neovim intro
+{
+    cp ~/.config/nvim/templates/intro.lua ~/.config/nvim/lua/EC2854/plugins/intro.lua
+    sed -i "s/col1/$accent_name/g" ~/.config/nvim/lua/EC2854/plugins/intro.lua
+    print_message "Changed Neovim theme"
 } &
 
 papirus-folders -C cat-mocha-$accent_name -t Papirus-Dark > /dev/null 2>&1 
