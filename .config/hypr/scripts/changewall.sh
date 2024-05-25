@@ -151,6 +151,14 @@ head -n 1 ~/.config/fastfetch/config.jsonc | grep -q acc && {
     print_message "Changed fastfetch theme"
 } &
 
+## Yazi
+
+head -n 1 ~/.config/yazi/theme.toml | grep -q acc && {
+    cp ~/.config/yazi/themes/dynamic.toml ~/.config/yazi/theme.toml
+    sed -i "s/col1/#$accent_hex/g" ~/.config/yazi/theme.toml 
+    print_message "Changed fastfetch theme"
+} &
+
 # Neovim intro
 {
     cp ~/.config/nvim/templates/intro.lua ~/.config/nvim/lua/EC2854/plugins/intro.lua

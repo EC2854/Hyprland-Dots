@@ -48,7 +48,7 @@ separator_close = ""
 separator_style = { fg = "#45475a", bg = "#45475a" }
 
 # Mode
-mode_normal = { fg = "#1e1e2e", bg = "#CBA6F7", bold = true }
+mode_normal = { fg = "#1e1e2e", bg = "col1", bold = true }
 mode_select = { fg = "#1e1e2e", bg = "#a6e3a1", bold = true }
 mode_unset  = { fg = "#1e1e2e", bg = "#f2cdcd", bold = true }
 

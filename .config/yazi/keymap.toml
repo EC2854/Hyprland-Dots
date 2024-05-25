@@ -52,7 +52,7 @@ keymap = [
 	{ on = [ "r" ],         run = "rename --cursor=before_ext", desc = "Rename a file or directory" },
 	{ on = [ ":" ],         run = "shell",                      desc = "Run a shell command" },
 	{ on = [ "." ],         run = "hidden toggle",              desc = "Toggle the visibility of hidden files" },
-	{ on = [ "f" ],         run = "jump fzf",                   desc = "Jump to a directory, or reveal a file using fzf" },
+	{ on = [ "f" ],         run = "plugin fzf",                   desc = "Jump to a directory, or reveal a file using fzf" },
 
 	# Linemode
 	{ on = [ "m", "s" ], run = "linemode size",        desc = "Set linemode to size" },
