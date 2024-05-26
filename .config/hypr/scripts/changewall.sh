@@ -24,7 +24,7 @@ print_message "Setting Wallpaper to $wallpaper"
 
 # Get wallpaper colors 
 ffmpeg -y -i "$wallpaper" -vf "scale=320:-1" "$tmp_image" > /dev/null 2>&1
-wallpaper_colors=$(convert "$tmp_image" +dither -colors 6 -unique-colors txt: | tail -n 6 | awk -F " " '{print $3}' | tr -d "#")
+wallpaper_colors=$(magick "$tmp_image" +dither -colors 6 -unique-colors txt: | tail -n 6 | awk -F " " '{print $3}' | tr -d "#")
 
 rm "$tmp_image"
 [ -z $tmp_wallpaper ] || rm "$tmp_wallpaper"
