@@ -66,7 +66,6 @@ clone_repository() {
 copy() {
     local source=$1 
     local destination="$2"
-
     print_info "Copying files from $1 to $destination"
     cp -rf "$source" "$destination" && print_success "Files copied successfully to $destination" || print_error "Error while copying to $destination"
 }
@@ -117,8 +116,7 @@ ask_for_confirmation
 [[ $not_arch_btw == false ]] && install_packages
 
 # Copy files to ~/.config directory
-copy ./.config ~/.config/
-
+copy ./.config ~/
 # Copy .zshrc
 copy ./.zshrc ~/
 # Copy Bashrc
