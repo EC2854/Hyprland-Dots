@@ -121,7 +121,6 @@ copy ./.config ~/
 copy ./.zshrc ~/
 # Copy Bashrc
 copy ./.bashrc ~/
-
 # install zsh plugins
 clone_repository https://github.com/Aloxaf/fzf-tab ~/.config/zsh/fzf-tab
 clone_repository https://github.com/zsh-users/zsh-autosuggestions.git ~/.config/zsh/zsh-autosuggestions
@@ -133,11 +132,9 @@ clone_repository https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.con
 # clone_kitty https://github.com/yurikhan/kitty-smart-tab
 
 # Copy Wallpapers
-copy ./Wallpapers ~/Pictures/Wallpapers/
 
 # Quick fix for gtk 4
 ln -sf /usr/share/themes/Catppuccin-Mocha-Standard-Mauve-Dark/gtk-4.0 ~/.config/gtk-4.0
-
 # Hyprland Plugins
 print_info "Plugins time!"
 print_warning "this part can fail. i don't know what to do about it."

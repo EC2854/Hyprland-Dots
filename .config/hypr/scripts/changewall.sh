@@ -86,7 +86,7 @@ case "$accent_color" in
     "66FF66") accent_name="green" accent_hex="A6E3A1" accent_ansi="32";;
     "6699FF") accent_name="sapphire" accent_hex="74C7EC" accent_ansi="34";;
 esac
-gtk_theme="Catppuccin-Mocha-Standard-${accent_name^}-Dark"
+gtk_theme="catppuccin-mocha-${accent_name}-standard+default-dark"
 
 print_message "Picked matching catppuccin color ($accent_name)"
 
