@@ -16,6 +16,20 @@
 # ⡿⠾⠇⠀⣿⡐⣨⣧⣾⣿⣿⡇⠈⢻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 # ⡗⡟⠀⠀⣿⣿⣾⣿⣿⣿⠉⢰⡄⠘⢷⣮⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 
+release="v1.0.2" # release version of gtk theme
+tmp_dir=$(mktemp -d /tmp/install_themes.XXXXXX) # tmp folder for themes
+mkdir $tmp_dir/zip # sub-folder for zips 
+mkdir $tmp_dir/themes
+
+not_arch_btw=false # variable to skip installing packages 
+packages_to_install=( # list of packages to install
+    "hyprland" "swww" "hyprpicker-git" "polkit-gnome" "aylurs-gtk-shell-git" "anyrun-git" "cpio" "sddm" "bc" # important stuff
+    "networkmanager" "blueman" 
+    "bibata-cursor-theme" "papirus-icon-theme" "ttf-jetbrains-mono-nerd" # Themes
+    "totem" "loupe" "amberol" "nautilus" "gnome-control-center" # Gnome Stuff
+    "zsh" "eza" "bat" "ripgrep" "fzf" "yazi" "foot" "neovim" "fastfetch" "starship" # terminal stuff
+) 
+
 # Print Functions
 print_message() {
     local color="$1"
@@ -41,14 +55,6 @@ print_info() {
 }
 
 # Install programs (Arch linux only)
-not_arch_btw=false # variable to skip installing packages 
-packages_to_install=( # list of packages to install
-    "hyprland" "swww" "hyprpicker-git" "polkit-gnome" "aylurs-gtk-shell-git" "anyrun-git" "cpio" "sddm" "bc" # important stuff
-    "networkmanager" "blueman" 
-    "bibata-cursor-theme" "papirus-icon-theme" "ttf-jetbrains-mono-nerd" # Themes
-    "totem" "loupe" "amberol" "nautilus" "gnome-control-center" # Gnome Stuff
-    "zsh" "eza" "bat" "ripgrep" "fzf" "yazi" "foot" "neovim" "fastfetch" "starship" # terminal stuff
-) 
 install_packages() {
     print_info "installing packages"
     paru -S --noconfirm ${packages_to_install[@]}
@@ -74,6 +80,26 @@ install_plugin() {
     local name=$1
     hyprpm add $name && print_success "$name installed successfully" || print_error "Error while installing $name"
 }
+
+
+
+# Install gtk theme
+install_theme() {
+    ls ~/.themes > /dev/null 2>&1 || mkdir ~/.themes
+    local accent="$1"
+    local file="catppuccin-mocha-${accent}-Dark"
+
+    print_info "installing $file gtk theme"
+    # sanity check
+    [ -z $tmp_dir ] && print_error "tmp file not found" || {
+        curl -fsSL "https://github.com/catppuccin/gtk/releases/download/${release}/catppuccin-mocha-${accent}-standard+default.zip" --output $tmp_dir/zip/${file}.zip
+        unzip -qq $tmp_dir/zip/${file}.zip -d $tmp_dir/themes/
+        rm -r $tmp_dir/themes/*hdpi
+        mv $tmp_dir/themes/$(ls $tmp_dir/themes | head -n 1) ~/.themes/${file}
+        print_success "Installed $file theme "
+    }
+}
+
 # confirmation
 ask_for_confirmation() {
     print_warning "Caution: This script overwrites config files. Change resolution in ./config/hypr/hyprland.conf. RTFM: https://wiki.hyprland.org/Configuring/Monitors/"
@@ -115,10 +141,8 @@ ask_for_confirmation
 
 [[ $not_arch_btw == false ]] && install_packages
 
-# Copy files to ~/.config directory
+Copy files to ~/.config directory
 copy ./.config ~/
-# Copy themes
-copy ./.themes ~/
 # Copy .zshrc
 copy ./.zshrc ~/
 # Copy Bashrc
@@ -129,11 +153,18 @@ clone_repository https://github.com/zsh-users/zsh-autosuggestions.git ~/.config/
 clone_repository https://github.com/zsh-users/zsh-history-substring-search.git ~/.config/zsh/zsh-history-substring-search
 clone_repository https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.config/zsh/zsh-syntax-highlighting
 
+# install gtk themes
+install_theme "red"
+install_theme "mauve"
+install_theme "peach"
+install_theme "yellow"
+install_theme "pink"
+install_theme "green"
+install_theme "sapphire"
+
 # Install Kitty plugins
 # clone_kitty https://github.com/knubie/vim-kitty-navigator
 # clone_kitty https://github.com/yurikhan/kitty-smart-tab
-
-# Copy Wallpapers
 
 # Quick fix for gtk 4
 ln -sf ~/.themes/catppuccin-mocha-mauve-Dark/gtk-4.0 ~/.config/gtk-4.0
@@ -144,6 +175,10 @@ print_info "if it will fail install hyprland-plugins and Hyprspace plugins manua
 
 install_plugin https://github.com/hyprwm/hyprland-plugins
 install_plugin https://github.com/KZDKM/Hyprspace
+
+# Cleaning
+rm -r $tmp_dir
+
 
 # Final message
 print_info "That's it!"
