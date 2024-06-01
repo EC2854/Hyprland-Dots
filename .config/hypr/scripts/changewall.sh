@@ -86,7 +86,7 @@ case "$accent_color" in
     "66FF66") accent_name="green" accent_hex="A6E3A1" accent_ansi="32";;
     "6699FF") accent_name="sapphire" accent_hex="74C7EC" accent_ansi="34";;
 esac
-gtk_theme="catppuccin-mocha-${accent_name}-standard+default-dark"
+gtk_theme="catppuccin-mocha-${accent_name}-Dark"
 
 print_message "Picked matching catppuccin color ($accent_name)"
 
@@ -111,8 +111,7 @@ print_message "Changed border and trail colors"
 } &
 {
     rm -rf ~/.config/gtk-4.0
-    ln -sf "/usr/share/themes/$gtk_theme/gtk-4.0" ~/.config/gtk-4.0
-    print_message "Changed gtk 4 theme"
+    ln -sf ~/.themes/$gtk_theme/gtk-4.0 ~/.config/gtk-4.0 && print_message "Changed gtk 4 theme"
 } &
 # vesktop
 {

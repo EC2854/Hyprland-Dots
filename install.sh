@@ -45,7 +45,7 @@ not_arch_btw=false # variable to skip installing packages
 packages_to_install=( # list of packages to install
     "hyprland" "swww" "hyprpicker-git" "polkit-gnome" "aylurs-gtk-shell-git" "anyrun-git" "cpio" "sddm" "bc" # important stuff
     "networkmanager" "blueman" 
-    "bibata-cursor-theme" "papirus-icon-theme" "papirus-folders-catppuccin-git" "ttf-jetbrains-mono-nerd" # Themes
+    "bibata-cursor-theme" "papirus-icon-theme" "ttf-jetbrains-mono-nerd" # Themes
     "totem" "loupe" "amberol" "nautilus" "gnome-control-center" # Gnome Stuff
     "zsh" "eza" "bat" "ripgrep" "fzf" "yazi" "foot" "neovim" "fastfetch" "starship" # terminal stuff
 ) 
@@ -117,6 +117,8 @@ ask_for_confirmation
 
 # Copy files to ~/.config directory
 copy ./.config ~/
+# Copy themes
+copy ./.themes ~/
 # Copy .zshrc
 copy ./.zshrc ~/
 # Copy Bashrc
@@ -134,7 +136,7 @@ clone_repository https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.con
 # Copy Wallpapers
 
 # Quick fix for gtk 4
-ln -sf /usr/share/themes/Catppuccin-Mocha-Standard-Mauve-Dark/gtk-4.0 ~/.config/gtk-4.0
+ln -sf ~/.themes/catppuccin-mocha-mauve-Dark/gtk-4.0 ~/.config/gtk-4.0
 # Hyprland Plugins
 print_info "Plugins time!"
 print_warning "this part can fail. i don't know what to do about it."
