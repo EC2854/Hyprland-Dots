@@ -1,12 +1,15 @@
 #!/bin/bash
-fzf_style="--color=bg+:#1e1e2e,bg:#1e1e2e,spinner:#74c7ec,hl:#f5c2e7 --color=fg:#cdd6f4,header:#f5c2e7,info:#74c7ec,pointer:#f5c2e7 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#74c7ec,hl+:#f5c2e7 --ansi  --no-scrollbar "
+fzf_style="--color=bg+:#1e1e2e,bg:#1e1e2e,spinner:#74c7ec,hl:#f5c2e7 --color=fg:#cdd6f4,header:#f5c2e7,info:#74c7ec,pointer:#f5c2e7 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#74c7ec,hl+:#f5c2e7 --ansi"
 dir=~/Pictures/Wallpapers
 tmp_image=$(mktemp /tmp/wall-low.XXXXXX.jpg)
+
+# select="yad --file --add-preview --large-preview --image-filter --title 'Choose Wallpaper' --filename '~/Pictures/Wallpapers'"
+
 
 print_message() {
     echo -e "\e[1;36m \e[0m$1\e[0m"
 }
-[ -z $1  ] && wallpaper="$(find $dir -type f | fzf $fzf_style --preview 'chafa -f sixel --size 60 --animate no {}')" || wallpaper=$1
+[ -z $1  ] && wallpaper="$( find $dir -type f |  fzf $fzf_style --no-scrollbar --preview 'chafa -f sixel --size 60 --animate no {}')" || wallpaper=$1
 
 print_message "Setting Wallpaper to $wallpaper"
 
@@ -45,9 +48,9 @@ colors=(
 
 # Pick most saturated color 
 for color in $wallpaper_colors; do
-    r=$(echo "ibase=16;${color:0:2}" | bc)
-    g=$(echo "ibase=16;${color:2:2}" | bc)
-    b=$(echo "ibase=16;${color:4:2}" | bc)
+    r=$(bc <<< "ibase=16;${color:0:2}")
+    g=$(bc <<< "ibase=16;${color:2:2}")
+    b=$(bc <<< "ibase=16;${color:4:2}")
 
     max_color=$(printf "%d\n" $r $g $b | sort -nr | head -n 1)
     min_color=$(printf "%d\n" $r $g $b | sort -n | head -n 1)
@@ -59,19 +62,19 @@ print_message "Picked most saturated color (#$wallpaper_color)"
 
 # Pick color
 for c in "${colors[@]}"; do
-    r=$(echo "ibase=16;${c:0:2}" | bc)
-    g=$(echo "ibase=16;${c:2:2}" | bc)
-    b=$(echo "ibase=16;${c:4:2}" | bc)
+    r=$(bc <<< "ibase=16;${c:0:2}")
+    g=$(bc <<< "ibase=16;${c:2:2}")
+    b=$(bc <<< "ibase=16;${c:4:2}")
 
-    wr=$(echo "ibase=16;${wallpaper_color:0:2}" | bc)
-    wg=$(echo "ibase=16;${wallpaper_color:2:2}" | bc)
-    wb=$(echo "ibase=16;${wallpaper_color:4:2}" | bc)
+    wr=$(bc <<< "ibase=16;${wallpaper_color:0:2}")
+    wg=$(bc <<< "ibase=16;${wallpaper_color:2:2}")
+    wb=$(bc <<< "ibase=16;${wallpaper_color:4:2}")
 
-    dr=$(echo "$wr - $r" | bc | tr -d '-')
-    dg=$(echo "$wg - $g" | bc | tr -d '-')
-    db=$(echo "$wb - $b" | bc | tr -d '-')
+    dr=$(bc <<< "$wr - $r" | tr -d '-')
+    dg=$(bc <<< "$wg - $g" | tr -d '-')
+    db=$(bc <<< "$wb - $b" | tr -d '-')
 
-    difference=$(echo "$dr + $dg + $db" | bc )
+    difference=$(bc <<< "$dr + $dg + $db")
 
     [ $difference -lt $min_difference ] && accent_color=$c && min_difference=$difference
 done
@@ -105,65 +108,66 @@ print_message "Changed border and trail colors"
 
 # Change icons
 {
-    sed -i "s/^gtk-theme-name=.*/gtk-theme-name=$gtk_theme/" ~/.config/gtk-3.0/settings.ini
-    gsettings set org.gnome.desktop.interface gtk-theme "$gtk_theme" &
-    print_message "Changed gtk 3 theme"
+    sed -i "s/^gtk-theme-name=.*/gtk-theme-name=$gtk_theme/" ~/.config/gtk-3.0/settings.ini &&
+    gsettings set org.gnome.desktop.interface gtk-theme "$gtk_theme" &&
+    print_message "Changed gtk 3 theme" 
 } &
 {
     rm -rf ~/.config/gtk-4.0
-    ln -sf ~/.themes/$gtk_theme/gtk-4.0 ~/.config/gtk-4.0 && print_message "Changed gtk 4 theme"
+    ln -sf ~/.themes/$gtk_theme/gtk-4.0 ~/.config/gtk-4.0 && 
+    print_message "Changed gtk 4 theme"
 } &
 # vesktop
 {
-    echo "@import 'https://catppuccin.github.io/discord/dist/catppuccin-mocha-$accent_name.theme.css'" > ~/.config/vesktop/settings/quickCss.css
+    echo "@import 'https://catppuccin.github.io/discord/dist/catppuccin-mocha-$accent_name.theme.css'" > ~/.config/vesktop/settings/quickCss.css &&
     print_message "Changed vesktop theme"
 } &
 # Spicetify
 {
-    cp ~/.config/spicetify/Themes/tui/dynamic.ini ~/.config/spicetify/Themes/tui/color.ini
-    sed -i "s/col1/$accent_hex/g" ~/.config/spicetify/Themes/tui/color.ini
-    nohup spicetify apply > /dev/null 2>&1 &
-    print_message "Changed spicetify theme"
+    cp ~/.config/spicetify/Themes/tui/dynamic.ini ~/.config/spicetify/Themes/tui/color.ini &&
+    sed -i "s/col1/$accent_hex/g" ~/.config/spicetify/Themes/tui/color.ini &&
+    print_message "Changed spicetify theme" &&
+    nohup spicetify apply > /dev/null 2>&1
 } &
 
 # ags!!! 
 {
-    echo "\$accent: #$accent_hex;" > ~/.config/ags/scss/_colors.scss
-    killall ags  
-    hyprctl dispatch exec ags > /dev/null
+    echo "\$accent: #$accent_hex;" > ~/.config/ags/scss/_colors.scss &&
+    killall ags &&
+    hyprctl dispatch exec ags > /dev/null &&
     print_message "Changed ags theme"
 } &
 # Terminal
 
 ## Starship 
 head -n 1 ~/.config/starship.toml | grep -q acc && {
-    cp ~/.config/starship/dynamic.toml ~/.config/starship.toml # copy template
-    sed -i "s/col1/#$accent_hex/g" ~/.config/starship.toml
-    sed -i "s/col2/#cdd6f4/g" ~/.config/starship.toml
-    sed -i "s/col3/#$accent_hex/g" ~/.config/starship.toml
+    cp ~/.config/starship/dynamic.toml ~/.config/starship.toml && # Copy template 
+    sed -i "s/col1/#$accent_hex/g" ~/.config/starship.toml &&
+    sed -i "s/col2/#cdd6f4/g" ~/.config/starship.toml &&
+    sed -i "s/col3/#$accent_hex/g" ~/.config/starship.toml &&
     print_message "Changed starship theme"
 } &
 ## fastfetch
 head -n 1 ~/.config/fastfetch/config.jsonc | grep -q acc && {
-    cp ~/.config/fastfetch/configs/dynamic.jsonc ~/.config/fastfetch/config.jsonc
-    sed -i "s/col1/$accent_ansi/g" ~/.config/fastfetch/config.jsonc 
+    cp ~/.config/fastfetch/configs/dynamic.jsonc ~/.config/fastfetch/config.jsonc &&
+    sed -i "s/col1/$accent_ansi/g" ~/.config/fastfetch/config.jsonc  &&
     print_message "Changed fastfetch theme"
 } &
 
 ## Yazi
 
 head -n 1 ~/.config/yazi/theme.toml | grep -q acc && {
-    cp ~/.config/yazi/themes/dynamic.toml ~/.config/yazi/theme.toml
-    sed -i "s/col1/#$accent_hex/g" ~/.config/yazi/theme.toml 
-    print_message "Changed fastfetch theme"
+    cp ~/.config/yazi/themes/dynamic.toml ~/.config/yazi/theme.toml &&
+    sed -i "s/col1/#$accent_hex/g" ~/.config/yazi/theme.toml  &&
+    print_message "Changed yazi theme"
 } &
 
 # Neovim intro
 {
-    cp ~/.config/nvim/templates/intro.lua ~/.config/nvim/lua/EC2854/plugins/intro.lua
-    sed -i "s/col1/$accent_name/g" ~/.config/nvim/lua/EC2854/plugins/intro.lua
+    cp ~/.config/nvim/templates/intro.lua ~/.config/nvim/lua/EC2854/plugins/intro.lua &&
+    sed -i "s/col1/$accent_name/g" ~/.config/nvim/lua/EC2854/plugins/intro.lua &&
     print_message "Changed Neovim theme"
 } &
 
-papirus-folders -C cat-mocha-$accent_name -t Papirus-Dark > /dev/null 2>&1 
+papirus-folders -C cat-mocha-$accent_name -t Papirus-Dark > /dev/null 2>&1 &&
 print_message "Changed icon colors"

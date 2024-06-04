@@ -23,6 +23,7 @@ packages_to_install=( # list of packages to install
     "bibata-cursor-theme" "papirus-icon-theme" "ttf-jetbrains-mono-nerd" # Themes
     "totem" "loupe" "amberol" "nautilus" "gnome-control-center" # Gnome Stuff
     "zsh" "eza" "bat" "ripgrep" "fzf" "yazi" "foot" "neovim" "fastfetch" "starship" # terminal stuff
+    "pavucontrol" "helvum" 
 ) 
 
 # Print Functions
@@ -60,39 +61,21 @@ clone_repository() {
     local repository_url="$1"
     local destination="$2"
 
-    print_info "Cloning $repository_url..."
+    print_info "Cloning $repository_url"
     git clone --quiet "$repository_url" "$destination" && print_success "Cloned $destination successfully" || print_error "Error cloning $repository_url to $destination"
+    ls $destination/.git >/dev/null 2>&1 && rm -rf $destination/.git
 }
 # copy function
 copy() {
     local source=$1 
     local destination="$2"
-    print_info "Copying files from $1 to $destination"
+    print_info "Copying files from $source to $destination"
     cp -rf "$source" "$destination" && print_success "Files copied successfully to $destination" || print_error "Error while copying to $destination"
 }
 # Install Hyprland Plugins
 install_plugin() {
     local name=$1
     hyprpm add $name && print_success "$name installed successfully" || print_error "Error while installing $name"
-}
-
-
-
-# Install gtk theme
-install_theme() {
-    ls ~/.themes > /dev/null 2>&1 || mkdir ~/.themes
-    local accent="$1"
-    local file="catppuccin-mocha-${accent}-Dark"
-
-    print_info "installing $file gtk theme"
-    # sanity check
-    [ -z $tmp_dir ] && print_error "tmp file not found" || {
-        curl -fsSL "https://github.com/catppuccin/gtk/releases/download/${release}/catppuccin-mocha-${accent}-standard+default.zip" --output $tmp_dir/zip/${file}.zip
-        unzip -qq $tmp_dir/zip/${file}.zip -d $tmp_dir/themes/
-        rm -r $tmp_dir/themes/*hdpi
-        mv $tmp_dir/themes/$(ls $tmp_dir/themes | head -n 1) ~/.themes/${file}
-        print_success "Installed $file theme "
-    }
 }
 
 # confirmation
@@ -136,26 +119,27 @@ ask_for_confirmation
 
 [[ $not_arch_btw == false ]] && install_packages
 
-Copy files to ~/.config directory
-copy ./.config ~/
+# Copy files to ~/.config directory
+copy ./.config ~/ &
 # Copy .zshrc
-copy ./.zshrc ~/
+copy ./.zshrc ~/ &
 # Copy Bashrc
-copy ./.bashrc ~/
+copy ./.bashrc ~/ &
+
 # install zsh plugins
-clone_repository https://github.com/Aloxaf/fzf-tab ~/.config/zsh/fzf-tab
-clone_repository https://github.com/zsh-users/zsh-autosuggestions.git ~/.config/zsh/zsh-autosuggestions
-clone_repository https://github.com/zsh-users/zsh-history-substring-search.git ~/.config/zsh/zsh-history-substring-search
-clone_repository https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.config/zsh/zsh-syntax-highlighting
+clone_repository https://github.com/Aloxaf/fzf-tab ~/.config/zsh/fzf-tab &
+clone_repository https://github.com/zsh-users/zsh-autosuggestions.git ~/.config/zsh/zsh-autosuggestions &
+clone_repository https://github.com/zsh-users/zsh-history-substring-search.git ~/.config/zsh/zsh-history-substring-search &
+clone_repository https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.config/zsh/zsh-syntax-highlighting &
+
+# Clone Wallpapers
+clone_repository https://github.com/EC2854/wallpapers ~/Pictures/Wallpapers &
 
 # install gtk themes
-clone_repository https://github.com/EC2854/catppuccin-mocha-gtk ~/.themes && rm -r ~/.themes/.git
-
-# Install Kitty plugins
-# clone_kitty https://github.com/knubie/vim-kitty-navigator
-# clone_kitty https://github.com/yurikhan/kitty-smart-tab
-
+clone_repository https://github.com/EC2854/catppuccin-mocha-gtk ~/.themes
+# set temporary gtk theme
 ln -sf ~/.themes/catppuccin-mocha-mauve-Dark/gtk-4.0 ~/.config/gtk-4.0
+
 # Hyprland Plugins
 print_info "Plugins time!"
 print_warning "this part can fail. i don't know what to do about it."
@@ -163,10 +147,6 @@ print_info "if it will fail install hyprland-plugins and Hyprspace plugins manua
 
 install_plugin https://github.com/hyprwm/hyprland-plugins
 install_plugin https://github.com/KZDKM/Hyprspace
-
-# Cleaning
-rm -r $tmp_dir
-
 
 # Final message
 print_info "That's it!"

@@ -23,9 +23,9 @@ source ~/.config/zsh/env.zsh
 # import aliases
 source ~/.config/zsh/aliases.zsh
 
-# fastfetch --logo-height 6 --sixel ~/.config/fastfetch/nyarch.png
+fastfetch --logo-height 6 --sixel ~/.config/fastfetch/nyarch.png
 # fastfetch --logo-height 6 --sixel ~/Pictures/gigaroman.png
-fastfetch --logo-height 6 --sixel "$(find ~/Pictures/Anime-Girls-Holding-Programming-Books -type f | shuf -n 1)"
+# fastfetch --logo-height 6 --sixel "$(find ~/Pictures/Anime-Girls-Holding-Programming-Books -type f | shuf -n 1)"
 
 # History in cache directory:
 HISTSIZE=10000
