@@ -16,11 +16,6 @@
 # ⡿⠾⠇⠀⣿⡐⣨⣧⣾⣿⣿⡇⠈⢻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 # ⡗⡟⠀⠀⣿⣿⣾⣿⣿⣿⠉⢰⡄⠘⢷⣮⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 
-release="v1.0.2" # release version of gtk theme
-tmp_dir=$(mktemp -d /tmp/install_themes.XXXXXX) # tmp folder for themes
-mkdir $tmp_dir/zip # sub-folder for zips 
-mkdir $tmp_dir/themes
-
 not_arch_btw=false # variable to skip installing packages 
 packages_to_install=( # list of packages to install
     "hyprland" "swww" "hyprpicker-git" "polkit-gnome" "aylurs-gtk-shell-git" "anyrun-git" "cpio" "sddm" "bc" # important stuff
@@ -154,19 +149,12 @@ clone_repository https://github.com/zsh-users/zsh-history-substring-search.git ~
 clone_repository https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.config/zsh/zsh-syntax-highlighting
 
 # install gtk themes
-install_theme "red"
-install_theme "mauve"
-install_theme "peach"
-install_theme "yellow"
-install_theme "pink"
-install_theme "green"
-install_theme "sapphire"
+clone_repository https://github.com/EC2854/catppuccin-mocha-gtk ~/.themes && rm -r ~/.themes/.git
 
 # Install Kitty plugins
 # clone_kitty https://github.com/knubie/vim-kitty-navigator
 # clone_kitty https://github.com/yurikhan/kitty-smart-tab
 
-# Quick fix for gtk 4
 ln -sf ~/.themes/catppuccin-mocha-mauve-Dark/gtk-4.0 ~/.config/gtk-4.0
 # Hyprland Plugins
 print_info "Plugins time!"
