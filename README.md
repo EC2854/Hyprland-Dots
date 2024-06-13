@@ -10,6 +10,7 @@
 - Browser - [floorp](https://github.com/Floorp-Projects/Floorp)
 - Wallpapers - [swww](https://github.com/LGFae/swww)
 
+
 # Laptops 
 > [!WARNING]
 > There is a ags config for laptops that adds battery indicator and brightness slider.

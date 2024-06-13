@@ -37,23 +37,14 @@ min_distance=1000000
 
 # Better colors for calculations
 colors=(
-    f5e0dc #  
-    f2cdcd # 
-    f5c2e7 # 
-    cba6f7 # 
-    f38ba8 # 
-    eba0ac # 
-    fab387 # 
-    f9e2af # 
-    a6e3a1 # 
-    94e2d5 # 
-    89dceb # 
-    74c7ec # 
-    89b4fa # 
-    b4befe # 
-
+    FF6666 # Red
+    9966FF # Purple
+    FFA833 # Orange
+    FFFF66 # Yellow
+    FF99AA # Pink
+    66FF66 # Green
+    6699FF # Blue
 )
-
 
 # Convert a hex color to its RGB components
 hex_to_rgb() {
@@ -101,21 +92,16 @@ done
 
 # Translate to catppuccin pallette
 case "$accent_color" in
-    "f5e0dc") accent_name="rosewater" accent_ansi="31";;
-    "f2cdcd") accent_name="flamingo"  accent_ansi="31";;
-    "f5c2e7") accent_name="pink"      accent_ansi="35";;
-    "cba6f7") accent_name="mauve"     accent_ansi="35";;
-    "f38ba8") accent_name="red"       accent_ansi="31";;
-    "eba0ac") accent_name="maroon"    accent_ansi="31";;
-    "fab387") accent_name="peach"     accent_ansi="33";;
-    "f9e2af") accent_name="yellow"    accent_ansi="33";;
-    "a6e3a1") accent_name="green"     accent_ansi="32";;
-    "94e2d5") accent_name="teal"      accent_ansi="36";;
-    "89dceb") accent_name="sky"       accent_ansi="36";;
-    "74c7ec") accent_name="sapphire"  accent_ansi="34";;
-    "89b4fa") accent_name="blue"      accent_ansi="34";;
-    "b4befe") accent_name="lavender"  accent_ansi="34";;
+   "FF6666") accent_name="red"      accent_color="F38BA8" accent_ansi="31";;
+   "9966FF") accent_name="mauve"    accent_color="CBA6F7" accent_ansi="35";;
+   "FFA833") accent_name="peach"    accent_color="FAB387" accent_ansi="33";;
+   "FFFF66") accent_name="yellow"   accent_color="F9E2AF" accent_ansi="33";;
+   "FF99AA") accent_name="pink"     accent_color="F5C2E7" accent_ansi="35";;
+   "66FF66") accent_name="green"    accent_color="A6E3A1" accent_ansi="32";;
+   "6699FF") accent_name="sapphire" accent_color="74C7EC" accent_ansi="34";;
 esac
+
+
 gtk_theme="catppuccin-mocha-${accent_name}-Dark"
 
 print_message "Picked matching catppuccin color ($accent_name)"
