@@ -7,7 +7,7 @@
 - Terminal - [foot](https://codeberg.org/dnkl/foot)
 - File Manager - [yazi](https://github.com/sxyazi/yazi)
 - IDE - [neovim](https://github.com/neovim/neovim)
-- Browser - [floorp](https://github.com/Floorp-Projects/Floorp)
+- Browser - firefox + [ShyFox](https://github.com/Naezr/ShyFox)
 - Wallpapers - [swww](https://github.com/LGFae/swww)
 
 
