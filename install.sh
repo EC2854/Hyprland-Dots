@@ -136,9 +136,9 @@ clone_repository https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.con
 clone_repository https://github.com/EC2854/wallpapers ~/Pictures/Wallpapers &
 
 # install gtk themes
-clone_repository https://github.com/EC2854/catppuccin-mocha-gtk ~/.themes
+clone_repository https://github.com/EC2854/catppuccin-mocha-gtk ~/.local/share/themes
 # set temporary gtk theme
-ln -sf ~/.themes/catppuccin-mocha-mauve-Dark/gtk-4.0 ~/.config/gtk-4.0
+ln -sf ~/.local/share/themes/catppuccin-mocha-mauve-Dark/gtk-4.0 ~/.config/gtk-4.0
 
 # Hyprland Plugins
 print_info "Plugins time!"

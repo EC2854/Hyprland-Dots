@@ -1,21 +1,34 @@
 # variables for zsh and bash
 # this file in sourced in .zshrc and .bashrc
 
+#fzf settings 
+source ~/.config/zsh/fzf-style.zsh
+
 # Default Apps
 export EDITOR="nvim"
 export VISUAL="nvim"
-export TERMINAL="kitty"
 export TERM="xterm-256color"
-export GTK_THEME="Catppuccin-Mocha-Standard-Sapphire-Dark:dark"
+
 # Manpager
 export MANPAGER="nvim +Man!"
 
-# fzf settings
-export FZF_DEFAULT_OPTS=" \
---color=bg+:#1e1e2e,bg:#1e1e2e,spinner:#74c7ec,hl:#f5c2e7  \
---color=fg:#cdd6f4,header:#f5c2e7,info:#74c7ec,pointer:#f5c2e7  \
---color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#74c7ec,hl+:#f5c2e7
---ansi  --no-scrollbar"
+# XDG variables
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_STATE_HOME="$HOME/.local/state"
+
+# Cleaning ~
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+
+export GOPATH="$XDG_DATA_HOME"/go
+
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+
 
 # lf icons
 export LF_ICONS="\

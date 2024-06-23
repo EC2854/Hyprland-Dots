@@ -127,7 +127,7 @@ print_message "Changed border and trail colors"
 } &
 {
     rm -rf ~/.config/gtk-4.0
-    ln -sf ~/.themes/$gtk_theme/gtk-4.0 ~/.config/gtk-4.0 && 
+    ln -sf ~/.local/share/themes/$gtk_theme/gtk-4.0 ~/.config/gtk-4.0 && 
     print_message "Changed gtk 4 theme"
 } &
 # vesktop
