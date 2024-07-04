@@ -1,3 +1,6 @@
+-- acc
+-- .config/nvim/templates/intro.lua
+
 return {
     "OXY2DEV/intro.nvim",
     dependencies = {

@@ -1,13 +1,15 @@
+// acc
+// .config/fastfetch/configs/dynamic.jsonc
 {
     "logo": {
-    "source": "~/.config/fastfetch/nyarch.txt",
-    "color": {
-        "1": "34"
-    },
-    "padding": {
-        "left": 1,
-        "right": 1
-    }
+        "source": "~/.config/fastfetch/nyarch.txt",
+        "color": {
+            "1": "35"
+        },
+        "padding": {
+            "left": 1,
+            "right": 1
+        }
     },
     "display": {
         "disableLinewrap": true,
@@ -16,7 +18,7 @@
     "modules": [
         {
             "type": "os",
-            "key": "\u001b[34m"
+            "key": "\u001b[35m"
         },
         {
             "type": "kernel",
@@ -24,7 +26,7 @@
         },
         {
             "type": "packages",
-            "key": "\u001b[37m"
+            "key": "\u001b[35m"
         },
         {
             "type": "shell",
@@ -32,7 +34,7 @@
         },
         {
             "type": "wm",
-            "key": "\u001b[34m"
+            "key": "\u001b[35m"
         },
         {
             "key": " ",

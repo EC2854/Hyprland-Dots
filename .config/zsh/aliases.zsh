@@ -38,11 +38,12 @@ alias lt='eza --icons=always --color=always --group-directories-first -T'
 alias c='bat -P --color=always --style=plain --theme=base16 --wrap=auto'
 
 # Package Managment
-alias upd='paru -Syu --noconfirm --quiet'
-alias inst='paru -S --noconfirm'
-alias uninst='paru -Rns --noconfirm'
-alias rem='sudo pacman -Rns $(pacman -Qq | fzf)'
-alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
+alias paru='paru --color always'
+alias upd='paru -Syu --noconfirm --quiet --color always'
+alias inst='paru -S --noconfirm --color always'
+alias uninst='paru -Rns --noconfirm --color always'
+alias rem='sudo pacman -Rns $(pacman -Qq | fzf) --color always'
+alias cleanup='sudo pacman -Rns $(pacman -Qtdq) --color always'
 
 # Change Shells
 alias tobash="sudo chsh $USER -s /bin/bash && bash"
@@ -55,7 +56,7 @@ alias toggle-host='starship toggle hostname'
 alias toggle-dir='starship toggle directory'
 alias toggle-git='starship toggle git_branch'
 alias toggle-duration='starship toggle cmd_duration'
-alias chprompt='~/.config/starship/changeprompt.sh'
+alias chprompt='~/.config/zsh/scripts/changeprompt.sh'
 
 
 alias commit='git add . && git commit -m $1'

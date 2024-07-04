@@ -1,13 +1,13 @@
 {
     "logo": {
-    "source": "~/.config/fastfetch/nyarch.txt",
-    "color": {
-        "1": "34"
-    },
-    "padding": {
-        "left": 1,
-        "right": 1
-    }
+        "source": "~/.config/fastfetch/nyarch.txt",
+        "color": {
+            "1": "34"
+        },
+        "padding": {
+            "left": 1,
+            "right": 1
+        }
     },
     "display": {
         "disableLinewrap": true,

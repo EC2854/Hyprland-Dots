@@ -1,5 +1,5 @@
 #!/bin/bash
-fzf_style="--color=bg+:#1e1e2e,bg:#1e1e2e,spinner:#74c7ec,hl:#f5c2e7 --color=fg:#cdd6f4,header:#f5c2e7,info:#74c7ec,pointer:#f5c2e7 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#74c7ec,hl+:#f5c2e7 --ansi --no-scrollbar"
+source ~/.config/zsh/fzf-style.zsh # import fzf settings 
 dir=~/Pictures/Wallpapers
 tmp_image=$(mktemp /tmp/wall-low.XXXXXX.jpg)
 
@@ -9,8 +9,10 @@ tmp_image=$(mktemp /tmp/wall-low.XXXXXX.jpg)
 print_message() {
     echo -e "\e[1;36m \e[0m$1\e[0m"
 }
-[ -z $1  ] && wallpaper="$( find $dir -type f |  fzf $fzf_style --preview 'chafa -f sixel --size 60 --animate no {}')" || wallpaper=$1
+[ -z $1  ] && wallpaper="$( find $dir -type f |  fzf --preview 'chafa -f sixel --size 60 --animate no {}')" || wallpaper=$1
 
+# ctrl c exit
+[ -z $wallpaper ] && exit 0
 print_message "Setting Wallpaper to $wallpaper"
 
 # Set Wallpaper 
@@ -135,14 +137,6 @@ print_message "Changed border and trail colors"
     echo "@import 'https://catppuccin.github.io/discord/dist/catppuccin-mocha-$accent_name.theme.css'" > ~/.config/vesktop/settings/quickCss.css &&
     print_message "Changed vesktop theme"
 } &
-# Spicetify
-{
-    cp ~/.config/spicetify/Themes/tui/dynamic.ini ~/.config/spicetify/Themes/tui/color.ini &&
-    sed -i "s/col1/$accent_color/g" ~/.config/spicetify/Themes/tui/color.ini &&
-    print_message "Changed spicetify theme" &&
-    nohup spicetify apply > /dev/null 2>&1
-} &
-
 # ags!!! 
 {
     echo "\$accent: #$accent_color;" > ~/.config/ags/scss/_colors.scss &&
@@ -150,37 +144,27 @@ print_message "Changed border and trail colors"
     hyprctl dispatch exec ags > /dev/null &&
     print_message "Changed ags theme"
 } &
-# Terminal
 
-## Starship 
-head -n 1 ~/.config/starship.toml | grep -q acc && {
-    cp ~/.config/starship/dynamic.toml ~/.config/starship.toml && # Copy template 
-    sed -i "s/col1/#$accent_color/g" ~/.config/starship.toml &&
-    sed -i "s/col2/#cdd6f4/g" ~/.config/starship.toml &&
-    sed -i "s/col3/#$accent_color/g" ~/.config/starship.toml &&
-    print_message "Changed starship theme"
-} &
-## fastfetch
-head -n 1 ~/.config/fastfetch/config.jsonc | grep -q acc && {
-    cp ~/.config/fastfetch/configs/dynamic.jsonc ~/.config/fastfetch/config.jsonc &&
-    sed -i "s/col1/$accent_ansi/g" ~/.config/fastfetch/config.jsonc  &&
-    print_message "Changed fastfetch theme"
-} &
+# function for template based changes
+template_change() {
+    local directory=$1
+    local template_directory=$(head -n 2 $directory | tail -n 1 | awk -F ' ' '{print $2}')
+    local color=$2
 
-## Yazi
+    head -n 1 $directory | grep -q acc && {
+        cp ~/$template_directory $directory # Copy template 
+        sed -i "s/col1/$color/g" $directory
+        [ -z $3 ] || sed -i "s/col2/$3/g" $directory &&
+        [ -z $4 ] || sed -i "s/col3/$4/g" $directory 
+    }
+}
 
-head -n 1 ~/.config/yazi/theme.toml | grep -q acc && {
-    cp ~/.config/yazi/themes/dynamic.toml ~/.config/yazi/theme.toml &&
-    sed -i "s/col1/#$accent_color/g" ~/.config/yazi/theme.toml  &&
-    print_message "Changed yazi theme"
-} &
-
-# Neovim intro
-{
-    cp ~/.config/nvim/templates/intro.lua ~/.config/nvim/lua/EC2854/plugins/intro.lua &&
-    sed -i "s/col1/$accent_name/g" ~/.config/nvim/lua/EC2854/plugins/intro.lua &&
-    print_message "Changed Neovim theme"
-} &
+template_change ~/.config/spicetify/Themes/tui/color.ini  "#$accent_color" && print_message "Changed spicetify theme" &
+template_change ~/.config/starship.toml "#$accent_color" "#cdd6f4" "#$accent_color" && print_message "Changed Starship theme" &
+template_change ~/.config/fastfetch/config.jsonc "$accent_ansi" && print_message "Changed fastfetch theme" &
+template_change ~/.config/zsh/fzf-style.zsh  "#$accent_color" && print_message "Changed fzf theme" &
+template_change ~/.config/yazi/theme.toml "#$accent_color"&& print_message "Changed Yazi theme"&
+template_change ~/.config/nvim/lua/EC2854/plugins/intro.lua "#$accent_color" && print_message "Changed Neovim theme" &
 
 papirus-folders -C cat-mocha-$accent_name -t Papirus-Dark > /dev/null 2>&1 &&
 print_message "Changed icon colors"

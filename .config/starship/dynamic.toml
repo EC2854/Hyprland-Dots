@@ -1,4 +1,5 @@
 # acc
+# .config/starship/dynamic.toml
 format="""
 [](bg:none fg:col1)\
 $username\

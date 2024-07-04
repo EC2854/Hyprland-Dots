@@ -1,14 +1,15 @@
 // acc
+// .config/fastfetch/configs/dynamic.jsonc
 {
     "logo": {
-    "source": "~/.config/fastfetch/nyarch.txt",
-    "color": {
-        "1": "col1"
-    },
-    "padding": {
-        "left": 1,
-        "right": 1
-    }
+        "source": "~/.config/fastfetch/nyarch.txt",
+        "color": {
+            "1": "col1"
+        },
+        "padding": {
+            "left": 1,
+            "right": 1
+        }
     },
     "display": {
         "disableLinewrap": true,
