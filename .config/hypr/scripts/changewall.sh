@@ -159,7 +159,7 @@ template_change() {
     }
 }
 
-template_change ~/.config/spicetify/Themes/tui/color.ini  "#$accent_color" && print_message "Changed spicetify theme" &
+template_change ~/.config/spicetify/Themes/tui/color.ini  "$accent_color" && spicetify apply && print_message "Changed spicetify theme" &
 template_change ~/.config/starship.toml "#$accent_color" "#cdd6f4" "#$accent_color" && print_message "Changed Starship theme" &
 template_change ~/.config/fastfetch/config.jsonc "$accent_ansi" && print_message "Changed fastfetch theme" &
 template_change ~/.config/zsh/fzf-style.zsh  "#$accent_color" && print_message "Changed fzf theme" &
