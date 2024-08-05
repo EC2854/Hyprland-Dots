@@ -21,6 +21,7 @@ alias gh='cd ~'
 alias gc='cd ~/.config/'
 alias gd='cd ~/Documents/'
 alias gD='cd ~/Downloads/'
+alias gm='cd ~/Music/'
 alias gp='cd ~/Pictures/'
 alias gv='cd ~/Videos/'
 
@@ -42,13 +43,22 @@ alias paru='paru --color always'
 alias upd='paru -Syu --noconfirm --quiet --color always'
 alias inst='paru -S --noconfirm --color always'
 alias uninst='paru -Rns --noconfirm --color always'
-alias rem='sudo pacman -Rns $(pacman -Qq | fzf) --color always'
+alias rem='sudo pacman -Rns $(pacman -Qq | fzf -m) --color always'
 alias cleanup='sudo pacman -Rns $(pacman -Qtdq) --color always'
 
 # Change Shells
 alias tobash="sudo chsh $USER -s /bin/bash && bash"
 alias tozsh="sudo chsh $USER -s /bin/zsh && zsh"
 alias tofish="sudo chsh $USER -s /bin/fish && fish"
+
+# Systemctl 
+alias ss="sudo systemctl"
+alias sss="sudo systemctl status"
+alias ssr="sudo systemctl restart"
+
+alias us="systemctl --user"
+alias uss="systemctl --user status"
+alias usr="sudo systemctl --user restart"
 
 # Toggle Starship Modules
 alias toggle-user='starship toggle username'
