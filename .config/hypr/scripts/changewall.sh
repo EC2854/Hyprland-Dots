@@ -163,7 +163,6 @@ template_change ~/.config/starship.toml "#$accent_color" "#cdd6f4" "#$accent_col
 template_change ~/.config/fastfetch/config.jsonc "$accent_ansi" && print_message "Changed fastfetch theme" &
 template_change ~/.config/zsh/fzf-style.zsh  "#$accent_color" && print_message "Changed fzf theme" &
 template_change ~/.config/yazi/theme.toml "#$accent_color"&& print_message "Changed Yazi theme"&
-template_change ~/.config/nvim/lua/EC2854/plugins/intro.lua "$accent_name" && print_message "Changed Neovim theme" &
 
 papirus-folders -C cat-mocha-$accent_name -t Papirus-Dark > /dev/null 2>&1 &&
 print_message "Changed icon colors"

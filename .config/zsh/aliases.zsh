@@ -26,8 +26,7 @@ alias gp='cd ~/Pictures/'
 alias gv='cd ~/Videos/'
 
 # Even faster movement
-alias f='cd "$(find . -maxdepth 5 -type d -print | fzf --preview "eza --icons=always --color=always --group-directories-first -1 {}")"'
-alias gf='cd "$(find ~ -maxdepth 5 -type d -print | fzf --preview "eza --icons=always --color=always --group-directories-first -1 {}")"'
+alias f='cd "$(find . -maxdepth 5 -type d -print | fzf --preview "eza --icons=always --color=always --group-directories-first -1 {}")"' alias gf='cd "$(find ~ -maxdepth 5 -type d -print | fzf --preview "eza --icons=always --color=always --group-directories-first -1 {}")"'
 
 # Replacing ls with eza
 alias l='eza --icons=always --color=always --group-directories-first'
@@ -81,3 +80,6 @@ alias okpa='systemctl poweroff'
 alias nekofetch="fastfetch --logo-height 6 --sixel ~/.config/fastfetch/nyarch.png"
 alias susefetch="fastfetch --logo-height 6 --sixel ~/Pictures/gigaroman.png"
 alias shork="~/blahaj/display3d ~/blahaj/blahaj.obj -t 0,0,6"
+
+# No .wget_hsts
+alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
