@@ -2,51 +2,12 @@
 source ~/.config/zsh/fzf-style.zsh # import fzf settings 
 dir=~/Pictures/Wallpapers
 tmp_image=$(mktemp /tmp/wall-low.XXXXXX.jpg)
-
 # select="yad --file --add-preview --large-preview --image-filter --title 'Choose Wallpaper' --filename '~/Pictures/Wallpapers'"
-
-
+#
 print_message() {
     echo -e "\e[1;36m \e[0m$1\e[0m"
 }
 [ -z $1  ] && wallpaper="$( find $dir -type f |  fzf --preview 'chafa -f sixel --size 60 --animate no {}')" || wallpaper=$1
-
-# ctrl c exit
-[ -z $wallpaper ] && exit 0
-print_message "Setting Wallpaper to $wallpaper"
-
-# Set Wallpaper 
-[[ "$wallpaper" = *".gif" ]] && {
-    tmp_wallpaper=$(mktemp /tmp/wall.XXXXXX.jpg)
-
-    ffmpeg -y -i "$wallpaper" -vf "scale=-1:1080" "$tmp_wallpaper" > /dev/null 2>&1
-    swww img $tmp_wallpaper -t wave > /dev/null 2>&1 &
-
-    nohup swww img $wallpaper -t none > /dev/null 2>&1 &
-} || {
-    nohup swww img $wallpaper -t wave > /dev/null 2>&1 &
-}
-
-# Get wallpaper colors 
-ffmpeg -y -i "$wallpaper" -vf "scale=320:-1" "$tmp_image" > /dev/null 2>&1
-wallpaper_colors=$(magick "$tmp_image" +dither -colors 6 -unique-colors txt: | tail -n 6 | awk -F " " '{print $3}' | tr -d "#")
-
-rm "$tmp_image"
-[ -z $tmp_wallpaper ] || rm "$tmp_wallpaper"
-
-max_delta=0
-min_distance=1000000
-
-# Better colors for calculations
-colors=(
-    FF6666 # Red
-    9966FF # Purple
-    FFA833 # Orange
-    FFFF66 # Yellow
-    FF99AA # Pink
-    66FF66 # Green
-    6699FF # Blue
-)
 
 # Convert a hex color to its RGB components
 hex_to_rgb() {
@@ -59,48 +20,93 @@ color_distance() {
     bc <<< "($r1 - $r2)^2 + ($g1 - $g2)^2 + ($b1 - $b2)^2"
 }
 
-# Pick most saturated color 
-for color in $wallpaper_colors; do
-    # Convert hex color to RGB components
-    read r g b <<< $(hex_to_rgb $color)
+# ctrl c exit
+[ -z "$wallpaper" ] && exit 0
+print_message "Setting Wallpaper to $wallpaper"
 
-    # Find the max and min RGB components
-    max_color=$r
-    min_color=$r
-    [ $g -gt $max_color ] && max_color=$g
-    [ $b -gt $max_color ] && max_color=$b
-    [ $g -lt $min_color ] && min_color=$g
-    [ $b -lt $min_color ] && min_color=$b
+# Set Wallpaper 
+[[ "$wallpaper" = *".gif" ]] && {
+    tmp_wallpaper=$(mktemp /tmp/wall.XXXXXX.jpg)
 
-    # Calculate delta
-    delta=$( bc <<< "$max_color - $min_color")
+    ffmpeg -y -i "$wallpaper" -vf "scale=-1:1080" "$tmp_wallpaper" > /dev/null 2>&1
+    swww img "$tmp_wallpaper" -t wave > /dev/null 2>&1 &
 
-    # Compare to previous delta
-    [ $delta -gt $max_delta ] && {
-        max_delta=$delta
-        wallpaper_color=$color
-    } 
-done
-print_message "Picked most saturated color (#$wallpaper_color)"
+    nohup swww img "$wallpaper" -t none > /dev/null 2>&1 &
+} || {
+    nohup swww img "$wallpaper" -t wave > /dev/null 2>&1 &
+}
 
-# Pick the closest color
-for color in "${colors[@]}"; do
-    distance=$(color_distance $(hex_to_rgb $wallpaper_color) $(hex_to_rgb $color))
-    [ "$distance" -lt "$min_distance" ] && {
-        min_distance=$distance
-        accent_color=$color
-    } 
-done
+# Get wallpaper colors from database 
+grep "$wallpaper" ~/.cache/wall/data >/dev/null 2>&1 && {
+accent_color=$(grep "$wallpaper" ~/.cache/wall/data | awk -F ';' '{print $2}')
+} || {
+
+    ffmpeg -y -i "$wallpaper" -vf "scale=320:-1" "$tmp_image" > /dev/null 2>&1
+    wallpaper_colors=$(magick "$tmp_image" +dither -colors 6 -unique-colors txt: | tail -n 6 | awk -F " " '{print $3}' | tr -d "#")
+
+    rm "$tmp_image"
+    [ -z $tmp_wallpaper ] || rm "$tmp_wallpaper"
+
+    max_delta=0
+    min_distance=1000000
+
+    # Better colors for calculations
+    colors=(
+        FF6666 # Red
+        9966FF # Purple
+        FFA833 # Orange
+        FFFF66 # Yellow
+        FF99AA # Pink
+        66FF66 # Green
+        6699FF # Blue
+    )
+
+    # Pick most saturated color 
+    for color in $wallpaper_colors; do
+        # Convert hex color to RGB components
+        read r g b <<< $(hex_to_rgb $color)
+
+        # Find the max and min RGB components
+        max_color=$r
+        min_color=$r
+        [ $g -gt $max_color ] && max_color=$g
+        [ $b -gt $max_color ] && max_color=$b
+        [ $g -lt $min_color ] && min_color=$g
+        [ $b -lt $min_color ] && min_color=$b
+
+        # Calculate delta
+        delta=$( bc <<< "$max_color - $min_color")
+
+        # Compare to previous delta
+        [ $delta -gt $max_delta ] && {
+            max_delta=$delta
+            wallpaper_color=$color
+        } 
+    done
+    print_message "Picked most saturated color (#$wallpaper_color)"
+
+    # Pick the closest color
+    for color in "${colors[@]}"; do
+        distance=$(color_distance $(hex_to_rgb $wallpaper_color) $(hex_to_rgb $color))
+        [ "$distance" -lt "$min_distance" ] && {
+            min_distance=$distance
+            accent_color=$color
+        } 
+    done 
+    echo "$wallpaper;$accent_color" >> ~/.cache/wall/data
+
+}
+
 
 # Translate to catppuccin pallette
 case "$accent_color" in
-   "FF6666") accent_name="red"      accent_color="F38BA8" accent_ansi="31";;
-   "9966FF") accent_name="mauve"    accent_color="CBA6F7" accent_ansi="35";;
-   "FFA833") accent_name="peach"    accent_color="FAB387" accent_ansi="33";;
-   "FFFF66") accent_name="yellow"   accent_color="F9E2AF" accent_ansi="33";;
-   "FF99AA") accent_name="pink"     accent_color="F5C2E7" accent_ansi="35";;
-   "66FF66") accent_name="green"    accent_color="A6E3A1" accent_ansi="32";;
-   "6699FF") accent_name="sapphire" accent_color="74C7EC" accent_ansi="34";;
+   "FF6666") accent_name="red"      accent_color="F38BA8" accent_ansi="31" accent_kraken_shitty_color="250,120,130";;
+   "9966FF") accent_name="mauve"    accent_color="CBA6F7" accent_ansi="35" accent_kraken_shitty_color="210,160,250";;
+   "FFA833") accent_name="peach"    accent_color="FAB387" accent_ansi="33" accent_kraken_shitty_color="250,210,50";;
+   "FFFF66") accent_name="yellow"   accent_color="F9E2AF" accent_ansi="33" accent_kraken_shitty_color="200,250,70";;
+   "FF99AA") accent_name="pink"     accent_color="F5C2E7" accent_ansi="35" accent_kraken_shitty_color="250,210,190";;
+   "66FF66") accent_name="green"    accent_color="A6E3A1" accent_ansi="32" accent_kraken_shitty_color="130,250,70";;
+   "6699FF") accent_name="sapphire" accent_color="74C7EC" accent_ansi="34" accent_kraken_shitty_color="120,200,210";;
 esac
 
 
@@ -166,3 +172,6 @@ template_change ~/.config/yazi/theme.toml "#$accent_color"&& print_message "Chan
 
 papirus-folders -C cat-mocha-$accent_name -t Papirus-Dark > /dev/null 2>&1 &&
 print_message "Changed icon colors"
+
+# Kraken pump (nzxt doesnt know how to hex)
+# colctl -m solidall -c 0,0,0 $(for i in {0..7}; do echo -n "-c$i $accent_kraken_shitty_color "; done) 
