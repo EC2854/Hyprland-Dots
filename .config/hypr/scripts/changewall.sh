@@ -40,11 +40,11 @@ type=$(file -Lb --mime-type "$wallpaper")
 case $type in
     "image/gif" | "video"* )
         ffmpeg -y -i "$wallpaper" -vf "scale=-1:1080" -vframes 1 $tmp_wallpaper > /dev/null 2>&1
-        swww img $tmp_wallpaper -t wave --transition-duration 3 &
+        swww img $tmp_wallpaper -t wave --transition-duration=3 > /dev/null 2>&1 &
 
         sleep 3
         if [[ "$type" = "image/gif" ]]; then
-            nohup swww img $wallpaper -t none &
+            nohup swww img $wallpaper -t none > /dev/null 2>&1 &
             rm $tmp_wallpaper
         else
             killall swww-daemon
@@ -52,7 +52,7 @@ case $type in
         fi
         ;;
     *)
-        nohup swww img "$wallpaper" -t wave --transition-duration 3 &
+        nohup swww img "$wallpaper" -t wave --transition-duration=3 > /dev/null 2>&1 &
         ;;
 esac
 
