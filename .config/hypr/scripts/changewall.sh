@@ -7,7 +7,7 @@ tmp_image=$(mktemp /tmp/wall-low.XXXXXX.jpg)
 print_message() {
     echo -e "\e[1;36m \e[0m$1\e[0m"
 }
-[ -z $1  ] && wallpaper="$( find $dir -type f |  fzf --preview 'chafa -f sixel --size 60 --animate no {}')" || wallpaper=$1
+[ -z $1  ] && wallpaper="$( find $dir -type f |  fzf --preview 'chafa -f sixel --size 60 --animate no {}')" || wallpaper="$1"
 
 # Convert a hex color to its RGB components
 hex_to_rgb() {
@@ -20,21 +20,41 @@ color_distance() {
     bc <<< "($r1 - $r2)^2 + ($g1 - $g2)^2 + ($b1 - $b2)^2"
 }
 
+tmp_wallpaper=~/.cache/wall/wall.png
 # ctrl c exit
 [ -z "$wallpaper" ] && exit 0
 print_message "Setting Wallpaper to $wallpaper"
 
-# Set Wallpaper 
-[[ "$wallpaper" = *".gif" ]] && {
-    tmp_wallpaper=$(mktemp /tmp/wall.XXXXXX.jpg)
-
-    ffmpeg -y -i "$wallpaper" -vf "scale=-1:1080" "$tmp_wallpaper" > /dev/null 2>&1
-    swww img "$tmp_wallpaper" -t wave > /dev/null 2>&1 &
-
-    nohup swww img "$wallpaper" -t none > /dev/null 2>&1 &
-} || {
-    nohup swww img "$wallpaper" -t wave > /dev/null 2>&1 &
+# 
+ps -ax | grep -v "grep" | grep "mpvpaper" > /dev/null 2>&1 && {
+    hyprctl dispatch exec swww-daemon 
+    killall -s KILL mpvpaper
+    rm $tmp_wallpaper
 }
+
+# Set Wallpaper 
+echo "$wallpaper" > ~/.cache/wall/current_wall
+
+type=$(file -Lb --mime-type "$wallpaper")
+
+case $type in
+    "image/gif" | "video"* )
+        ffmpeg -y -i "$wallpaper" -vf "scale=-1:1080" -vframes 1 $tmp_wallpaper > /dev/null 2>&1
+        swww img $tmp_wallpaper -t wave --transition-duration 3 &
+
+        sleep 3
+        if [[ "$type" = "image/gif" ]]; then
+            nohup swww img $wallpaper -t none &
+            rm $tmp_wallpaper
+        else
+            killall swww-daemon
+            nohup mpvpaper -sf -o "no-audio loop panscan=1.0 " "*" "$wallpaper" > /dev/null 2>&1 &
+        fi
+        ;;
+    *)
+        nohup swww img "$wallpaper" -t wave --transition-duration 3 &
+        ;;
+esac
 
 # Get wallpaper colors from database 
 grep "$wallpaper" ~/.cache/wall/data >/dev/null 2>&1 && {
@@ -45,7 +65,6 @@ accent_color=$(grep "$wallpaper" ~/.cache/wall/data | awk -F ';' '{print $2}')
     wallpaper_colors=$(magick "$tmp_image" +dither -colors 6 -unique-colors txt: | tail -n 6 | awk -F " " '{print $3}' | tr -d "#")
 
     rm "$tmp_image"
-    [ -z $tmp_wallpaper ] || rm "$tmp_wallpaper"
 
     max_delta=0
     min_distance=1000000
@@ -174,4 +193,4 @@ papirus-folders -C cat-mocha-$accent_name -t Papirus-Dark > /dev/null 2>&1 &&
 print_message "Changed icon colors"
 
 # Kraken pump (nzxt doesnt know how to hex)
-# colctl -m solidall -c 0,0,0 $(for i in {0..7}; do echo -n "-c$i $accent_kraken_shitty_color "; done) 
+colctl -m solidall -c 0,0,0 $(for i in {0..7}; do echo -n "-c$i $accent_kraken_shitty_color "; done) 
