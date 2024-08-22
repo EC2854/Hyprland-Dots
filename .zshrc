@@ -50,15 +50,8 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --icons=always --color=always -
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza --icons=always --color=always --group-directories-first -a -1 $realpath'
 
 # Yazicd
-yazicd() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		cd "$cwd"
-	fi
-	rm -f -- "$tmp"
-}
-bindkey -s '^o' 'yazicd\n'
+alias lfcd='cd $(lf -print-last-dir)'
+bindkey -s '^o' 'lfcd\n'
 
 # Edit line in Vim with ctrl-e
 autoload edit-command-line
@@ -71,4 +64,3 @@ source "$XDG_CONFIG_HOME"/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source "$XDG_CONFIG_HOME"/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source "$XDG_CONFIG_HOME"/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 source "$XDG_CONFIG_HOME"/zsh/fzf-tab/fzf-tab.zsh
-

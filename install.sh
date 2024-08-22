@@ -18,11 +18,11 @@
 
 not_arch_btw=false # variable to skip installing packages 
 packages_to_install=( # list of packages to install
-    "hyprland" "swww" "hyprpicker-git" "avizo" "polkit-gnome" "aylurs-gtk-shell-git" "anyrun-git" "cpio" "sddm" "bc" # important stuff
+    "hyprland" "swww" "hyprpicker-git" "avizo" "polkit-gnome" "aylurs-gtk-shell-git" "anyrun-git" "cpio" "sddm" "bc" "wget" # important stuff
     "networkmanager" "blueman" 
-    "bibata-cursor-theme" "papirus-icon-theme" "ttf-jetbrains-mono-nerd" # Themes
+    "bibata-cursor-theme" "ttf-jetbrains-mono-nerd" # Themes
     "totem" "loupe" "amberol" "nautilus" "gnome-control-center" # Gnome Stuff
-    "zsh" "eza" "bat" "ripgrep" "fzf" "yazi" "foot" "neovim" "fastfetch" "starship" # terminal stuff
+    "zsh" "eza" "bat" "ripgrep" "fzf" "lf" "foot" "neovim" "fastfetch" "starship" # terminal stuff
     "pavucontrol" "helvum" 
 ) 
 
@@ -76,6 +76,23 @@ copy() {
 install_plugin() {
     local name=$1
     hyprpm add $name && print_success "$name installed successfully" || print_error "Error while installing $name"
+}
+
+install_icons() {
+    wget -qO- https://git.io/papirus-icon-theme-install | env DESTDIR="$HOME/.local/share/icons" sh
+    rm -r ~/.local/share/icons/Papirus-Dark ~/.local/share/icons/Papirus-Light ~/.local/share/icons/ePapirus*
+    cat_folder=$(mktemp -d /tmp/cat-folder.XXXXXX)
+    clone_repository https://github.com/catppuccin/papirus-folders "$cat_folder"
+    [ -z $cat_folder ] && exit 1
+    for icon in $(ls $cat_folder/src/); do
+         rm ${cat_folder}/src/${icon}/places/*latte*
+         rm ${cat_folder}/src/${icon}/places/*frappe*
+         rm ${cat_folder}/src/${icon}/places/*macchiato*
+    done
+    cp -r ${cat_folder}/src/* ~/.local/share/icons/Papirus
+    curl -Lo ~/.local/share/icons/papirus-folders https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-folders/master/papirus-folders 
+    chmod +100 ~/.local/share/icons/papirus-folders
+    rm -r $cat_folder
 }
 
 # confirmation
@@ -137,6 +154,11 @@ clone_repository https://github.com/EC2854/wallpapers ~/Pictures/Wallpapers &
 
 # install gtk themes
 clone_repository https://github.com/EC2854/catppuccin-mocha-gtk ~/.local/share/themes
+
+
+# Install icons
+install_icons
+
 # set temporary gtk theme
 ln -sf ~/.local/share/themes/catppuccin-mocha-mauve-Dark/gtk-4.0 ~/.config/gtk-4.0
 

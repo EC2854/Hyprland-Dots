@@ -5,7 +5,7 @@
 - Shell - [zsh](https://github.com/zsh-users/zsh)
 - Prompt - [starship](https://github.com/starship/starship)
 - Terminal - [foot](https://codeberg.org/dnkl/foot)
-- File Manager - [yazi](https://github.com/sxyazi/yazi)
+- File Manager - [lf](https://github.com/gokcehan/lf)
 - IDE - [neovim](https://github.com/neovim/neovim)
 - Browser - firefox + [ShyFox](https://github.com/Naezr/ShyFox)
 - Wallpapers - [swww](https://github.com/LGFae/swww)

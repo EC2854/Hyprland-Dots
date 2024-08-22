@@ -1,9 +1,8 @@
 #!/bin/bash
 source ~/.config/zsh/fzf-style.zsh # import fzf settings 
 dir=~/Pictures/Wallpapers
-tmp_image=$(mktemp /tmp/wall-low.XXXXXX.jpg)
 # select="yad --file --add-preview --large-preview --image-filter --title 'Choose Wallpaper' --filename '~/Pictures/Wallpapers'"
-#
+
 print_message() {
     echo -e "\e[1;36m \e[0m$1\e[0m"
 }
@@ -60,7 +59,7 @@ esac
 grep "$wallpaper" ~/.cache/wall/data >/dev/null 2>&1 && {
 accent_color=$(grep "$wallpaper" ~/.cache/wall/data | awk -F ';' '{print $2}')
 } || {
-
+    tmp_image=$(mktemp /tmp/wall-low.XXXXXX.jpg)
     ffmpeg -y -i "$wallpaper" -vf "scale=320:-1" "$tmp_image" > /dev/null 2>&1
     wallpaper_colors=$(magick "$tmp_image" +dither -colors 6 -unique-colors txt: | tail -n 6 | awk -F " " '{print $3}' | tr -d "#")
 
@@ -187,9 +186,8 @@ template_change() {
 template_change ~/.config/starship.toml "#$accent_color" "#cdd6f4" "#$accent_color" && print_message "Changed Starship theme" &
 template_change ~/.config/fastfetch/config.jsonc "$accent_ansi" && print_message "Changed fastfetch theme" &
 template_change ~/.config/zsh/fzf-style.zsh  "#$accent_color" && print_message "Changed fzf theme" &
-template_change ~/.config/yazi/theme.toml "#$accent_color"&& print_message "Changed Yazi theme"&
 
-papirus-folders -C cat-mocha-$accent_name -t Papirus-Dark > /dev/null 2>&1 &&
+~/.local/share/icons/papirus-folders -C cat-mocha-$accent_name -t Papirus > /dev/null 2>&1 &&
 print_message "Changed icon colors"
 
 # Kraken pump (nzxt doesnt know how to hex)

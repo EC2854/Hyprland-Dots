@@ -1,0 +1,115 @@
+set shell sh
+set hidden false
+set ignorecase true
+set icons true
+# set icons false
+set drawbox true
+set preview true
+set sixel true
+
+
+set previewer ~/.config/lf/lf_preview
+
+set shellopts '-eu'
+
+set ifs "\n"
+set scrolloff 10
+
+cmd mk ${{
+    printf "Create: "
+    read ans
+    if [[ "$ans" == */ ]]; then
+        mkdir -p "$ans"
+
+    else
+        touch "$ans"
+    fi
+}}
+cmd fzf_jump ${{
+    res="$(find . -maxdepth 5 | fzf --reverse --header='Jump to location')"
+    if [ -f "$res" ]; then
+        cmd="select"
+    elif [ -d "$res" ]; then
+        cmd="cd"
+    fi
+    lf -remote "send $id $cmd \"$res\""
+}}
+
+cmd open &{{
+    case $(file --mime-type -Lb $f) in
+        text/*) lf -remote "send $id \$$EDITOR \$fx";;
+        *) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
+    esac
+}}
+cmd bulk-rename ${{
+    old="$(mktemp)"
+    new="$(mktemp)"
+    if [ -n "$fs" ]; then
+        fs="$(basename -a -- $fs)"
+    else
+        fs="$(ls)"
+    fi
+    printf '%s\n' "$fs" > "$old"
+    printf '%s\n' "$fs" > "$new"
+    $EDITOR "$new"
+    [ "$(wc -l < "$new")" -ne "$(wc -l < "$old")" ] && exit
+    paste "$old" "$new" | while IFS= read -r names; do
+        src="$(printf '%s' "$names" | cut -f1)"
+        dst="$(printf '%s' "$names" | cut -f2)"
+        if [ "$src" = "$dst" ] || [ -e "$dst" ]; then
+            continue
+        fi
+        mv -- "$src" "$dst"
+    done
+    rm -- "$old" "$new"
+    lf -remote "send $id unselect"
+}}
+# There is a problem with copying images other than *.png
+cmd clipboard-copy &{{
+    type=$(file -Lb --mime-type "$f")
+
+    [[ "$type" = "image/"* ]] && {
+        [[ "$type" != "image/png" ]] && {
+            tmp_image=$(mktemp /tmp/lf-copy.XXXXXX.png)
+            ffmpeg -y -v 0 -i "$f" "$tmp_image"
+            f="$tmp_image"
+        }
+    } 
+
+    wl-copy < "$f" 
+    [ -n "$tmp_image" ] && rm "$tmp_image"
+}}
+cmd clipboard-paste &{{
+    wl-paste > "pasted"
+}}
+
+cmd set-wall &{{
+    ~/.config/hypr/scripts/changewall.sh "$f"
+}}
+
+map R bulk-rename
+map s shell
+map . set hidden!
+map D delete
+map a mk
+map Y clipboard-copy
+map P clipboard-paste
+map w set-wall
+
+map <enter> open
+map o open
+
+map f fzf_jump
+
+map gh cd ~
+map gm cd ~/Music 
+map gv cd ~/Videos 
+map gd cd ~/Documents
+map gD cd ~/Downloads 
+map gp cd ~/Pictures 
+map gr cd ~/Repos
+
+map gc cd ~/.config 
+map ga cd ~/.cache 
+map gl cd ~/.local/share
+

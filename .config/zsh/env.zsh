@@ -7,11 +7,13 @@ source ~/.config/zsh/fzf-style.zsh
 # Default Apps
 export EDITOR="nvim"
 export VISUAL="nvim"
+export BROWSER="firefox-developer-edition"
 export TERM="xterm-256color"
 
 # Manpager
 export MANPAGER="nvim +Man!"
 
+export GCM_CREDENTIAL_STORE="cache"
 # XDG variables
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -28,7 +30,6 @@ export GOPATH="$XDG_DATA_HOME"/go
 
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
-
 
 # lf icons
 export LF_ICONS="\
