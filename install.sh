@@ -163,14 +163,14 @@ install_icons
 ln -sf ~/.local/share/themes/catppuccin-mocha-mauve-Dark/gtk-4.0 ~/.config/gtk-4.0
 
 # Hyprland Plugins
-print_info "Plugins time!"
-print_warning "this part can fail. i don't know what to do about it."
-print_info "if it will fail install hyprland-plugins and Hyprspace plugins manually (or rerun script inside hyprland)"
+# print_info "Plugins time!"
+# print_warning "this part can fail. i don't know what to do about it."
+# print_info "if it will fail install hyprland-plugins and Hyprspace plugins manually (or rerun script inside hyprland)"
 
-install_plugin https://github.com/hyprwm/hyprland-plugins
-install_plugin https://github.com/KZDKM/Hyprspace
+# install_plugin https://github.com/hyprwm/hyprland-plugins
+# install_plugin https://github.com/KZDKM/Hyprspace
 
 # Final message
 print_info "That's it!"
 print_info "Reboot ur system :3"
-print_warning "Run 'hyprpm enable Hyprspace' after installation"
+# print_warning "Run 'hyprpm enable Hyprspace' after installation"

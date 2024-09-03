@@ -1,8 +1,0 @@
-[SddmGreeterTheme]
-Name=Catppuccin Minimal SDDM
-
-MainScript=Main.qml
-ConfigFile=theme.conf
-TranslationsDirectory=translations
-Theme-Id=catppuccin-minimal-sddm
-Theme-API=2.2

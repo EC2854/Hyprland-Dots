@@ -2,7 +2,7 @@
 - Window Manager - [Hyprland](https://github.com/hyprwm/Hyprland)
 - Panel - [ags](https://github.com/Aylur/ags)
 - Launcher - [anyrun](https://github.com/Kirottu/anyrun)
-- Shell - [zsh](https://github.com/zsh-users/zsh)
+- Shell - [zsh](https://zsh.org)
 - Prompt - [starship](https://github.com/starship/starship)
 - Terminal - [foot](https://codeberg.org/dnkl/foot)
 - File Manager - [lf](https://github.com/gokcehan/lf)
@@ -10,7 +10,6 @@
 - Browser - firefox + [ShyFox](https://github.com/Naezr/ShyFox)
 - Wallpapers - [swww](https://github.com/LGFae/swww)
 
-# 
 > [!WARNING]
 > u can install used font here: [Meslo Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Meslo.zip)
 
@@ -30,14 +29,10 @@ To use dynamic accent color in terminal (prompt, fastfetch). u need to set confi
 ![img 5](./screenshots/spotify.png)
 
 # Installation
-idk if it will work. I will update install script later :3
+
 ``` sh
 git clone https://github.com/EC2854/Hyprland-Dots.git Dots && cd Dots && ./install.sh
 ```
-
-# SDDM
-To install sddm theme copy `./sddm.conf` to `/etc` and `./catppuccin-minimal-sddm` to `/usr/share/sddm/themes`
-
 # Thank You
 - [flick0](https://github.com/flick0) for inspiration
 - [SolDoesTech](https://github.com/SolDoesTech) for starting this all
