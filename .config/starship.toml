@@ -1,32 +1,17 @@
-# ⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⣿⡿⠻⣟⣻⣻⠿⣿⣿⣿⣿⣿⣿⣿⣿  _____ ____ ____  ___ ____  _  _   
-# ⣿⣿⣿⣿⣿⣿⣿⢿⣿⣾⣿⣿⣿⣷⣜⢉⣟⣾⡷⣽⡻⣿⣿⣿⣿⣿ | ____/ ___|___ \( _ ) ___|| || |  
-# ⣿⣿⣿⣿⣿⡿⣡⣾⣿⣿⣿⣿⡿⢿⣿⣷⡩⡽⣛⢷⣿⡪⡻⣿⣿⣿ |  _|| |     __) / _ \___ \| || |_ 
-# ⣿⣿⣿⣿⡟⡾⡋⣼⣿⡿⠛⣩⣾⣿⡿⣫⣶⣿⡾⣿⣮⣿⡦⡙⣿⣿ | |__| |___ / __/ (_) |__) |__   _|
-# ⣿⣿⣿⣿⢁⠞⣼⡏⡷⣡⡬⡿⣹⡿⣹⣿⢹⣧⢿⢨⡹⢨⡺⢷⡹⣿ |_____\____|_____\___/____/   |_|  
-# ⣿⣿⣿⡟⢪⣸⣿⠸⣉⡟⠜⡵⡟⣼⣿⡇⣿⣿⣿⢸⡍⣔⢸⣸⢷⢹ -----------------------------------
-# ⣿⣿⣿⣷⣎⠟⢸⣸⣭⠁⡞⣁⡇⣿⡿⣹⣿⣿⡻⠀⡇⣿⠎⢼⠺⢸ Ewa (EC2854)
-# ⣿⣿⣿⣿⡛⠸⡇⢹⡏⠀⠈⠭⠘⡘⢣⠟⢡⠃⠑⠀⢸⠏⠚⠘⡆⣸ https://github.com/EC2854
-# ⣿⣿⣿⣿⣷⡀⠩⡸⠁⢲⣤⣼⣷⠃⣀⡄⣠⣀⣸⠆⠀⠀⡄⣸⣷⣿ https://www.reddit.com/user/EC2854
-# ⣿⣿⣿⣿⣿⣿⡦⠀⠨⡂⠨⣛⣧⣾⣯⢾⣿⣛⠁⠀⠀⠀⣿⣿⣿⣿ -----------------------------------
-# ⣿⣿⣿⣿⣿⡿⣡⣶⣿⣷⣶⡌⣙⣛⣓⣾⡭⠁⠀⠀⢠⢰⣿⣿⣿⣿ Very cis starship prompt. please add aliases to toggle modules in starship. without this this prompt is very basic. 
-# ⣿⣿⣿⡿⢏⣾⣿⣿⣿⣿⣿⣷⠘⠿⣻⣥⡀⣀⣴⣧⣿⣿⣿⣿⣿⣿ u can find aliases for prompt here: https://github.com/EC2854/Hyprland-Dots/blob/main/.config/zsh/aliases.zsh
-# ⣿⣟⣽⠊⣾⠟⠀⢀⢹⣿⣿⣿⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿ 
-# ⡿⠾⠇⠀⣿⡐⣨⣧⣾⣿⣿⡇⠈⢻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿ Part of https://github.com/EC2854/Hyprland-Dots
-# ⡗⡟⠀⠀⣿⣿⣾⣿⣿⣿⠉⢰⡄⠘⢷⣮⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-
-# Setups
+# acc
+# .config/starship/dynamic.toml
 format="""
-[](bg:none fg:#74c7ec)\
+[](bg:none fg:#CBA6F7)\
 $username\
-[](bg:#74c7ec fg:#f5c2e7)\
+[](bg:#CBA6F7 fg:#cdd6f4)\
 $hostname\
-[](bg:#f5c2e7 fg:#cdd6f4)\
+[](bg:#cdd6f4 fg:#CBA6F7)\
 $directory\
-[](bg:#f5c2e7 fg:#cdd6f4)\
+[](bg:#cdd6f4 fg:#CBA6F7)\
 $git_branch\
-[](bg:#74c7ec fg:#f5c2e7)\
+[](bg:#CBA6F7 fg:#cdd6f4)\
 $cmd_duration\
-[](bg:none fg:#74c7ec)\
+[](bg:none fg:#CBA6F7)\
 $line_break\
 $character\
 """
@@ -34,23 +19,23 @@ add_newline = false
 
 # Prompt symbols 
 [character]
-success_symbol = "[ 󱞪](#74c7ec)"
-error_symbol = "[ 󱞪](#f5c2e7)"
-vicmd_symbol = "[ 󱞪❯](#f5c2e7)"
+success_symbol = "[ 󱞪](#CBA6F7)"
+error_symbol = "[ 󱞪](#cdd6f4)"
+vicmd_symbol = "[ 󱞪❯](#cdd6f4)"
 
 [username]
 disabled = true
 show_always = true
-format = "[  $user ](bg:#74c7ec fg:#1e1e2e bold)"
+format = "[  $user ](bg:#CBA6F7 fg:#1e1e2e bold)"
 
 [hostname]
 disabled = true
 ssh_only = false
-format = "[ 󰌽 $hostname ]( bg:#f5c2e7 fg:#1e1e2e bold)"
+format = "[ 󰌽 $hostname ]( bg:#cdd6f4 fg:#1e1e2e bold)"
 
 [directory]
 disabled =false
-format = "[  $path ](bg:#cdd6f4 fg:#1e1e2e bold)"
+format = "[  $path ](bg:#CBA6F7 fg:#1e1e2e bold)"
 truncation_length = 3
 truncate_to_repo=false
 
@@ -65,11 +50,11 @@ truncate_to_repo=false
 
 [git_branch]
 disabled =false
-format = '[  $branch ](bg:#f5c2e7 fg:#1e1e2e bold)'
+format = '[  $branch ](bg:#cdd6f4 fg:#1e1e2e bold)'
 
 [cmd_duration]
 min_time = 4
 show_milliseconds = false
 disabled = true
-format = '[ 󱑆 $duration ](bg:#74c7ec fg:#1e1e2e bold)'
+format = '[ 󱑆 $duration ](bg:#CBA6F7 fg:#1e1e2e bold)'
 

@@ -10,6 +10,9 @@
 - Browser - firefox + [ShyFox](https://github.com/Naezr/ShyFox)
 - Wallpapers - [swww](https://github.com/LGFae/swww)
 
+# 
+> [!WARNING]
+> u can install used font here: [Meslo Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Meslo.zip)
 
 # Laptops 
 > [!WARNING]

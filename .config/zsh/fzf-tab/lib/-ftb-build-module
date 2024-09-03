@@ -1,0 +1,30 @@
+#!/hint/zsh
+emulate -LR zsh -o extended_glob -o err_return
+
+local zsh_version=${1:-${FZF_TAB_ZSH_SRC_VERSION:-$ZSH_VERSION}}
+
+# macos check
+local ret bundle nproc
+[[ $OSTYPE == darwin* ]] && {
+  [[ -n ${module_path[1]}/**/*.bundle(#qN) ]] && bundle=true
+  nproc=$(sysctl -n hw.logicalcpu)
+} || {
+  nproc=$(nproc)
+}
+
+# clone zsh source code if not exists
+[[ -d ./zsh/$zsh_version ]] || {
+  git clone --depth=1 --branch zsh-$zsh_version https://github.com/zsh-users/zsh ./zsh/$zsh_version
+}
+
+ln -sf $PWD/Src/fzftab.c   ./zsh/$zsh_version/Src/Modules/
+ln -sf $PWD/Src/fzftab.mdd ./zsh/$zsh_version/Src/Modules/
+
+# build zsh
+cd -q ./zsh/$zsh_version
+[[ -f ./configure ]] || ./Util/preconfig
+[[ -f ./Makefile ]] || ./configure --disable-gdbm --disable-pcre --without-tcsetpgrp --prefix=/tmp/zsh-fzf-tab-module ${bundle:+DL_EXT=bundle}
+make -j$nproc
+
+# we only need aloxaf/fzftab.so
+mv ./Src/Modules/fzftab.(so|bundle) $FZF_TAB_HOME/modules/Src/aloxaf/

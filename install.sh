@@ -20,8 +20,8 @@ not_arch_btw=false # variable to skip installing packages
 packages_to_install=( # list of packages to install
     "hyprland" "swww" "hyprpicker-git" "avizo" "polkit-gnome" "aylurs-gtk-shell-git" "anyrun-git" "cpio" "sddm" "bc" "wget" # important stuff
     "networkmanager" "blueman" 
-    "bibata-cursor-theme" "ttf-jetbrains-mono-nerd" # Themes
-    "totem" "loupe" "amberol" "nautilus" "gnome-control-center" # Gnome Stuff
+    "bibata-cursor-theme" # Themes
+    "loupe" "nautilus" # Gnome Stuff
     "zsh" "eza" "bat" "ripgrep" "fzf" "lf" "foot" "neovim" "fastfetch" "starship" # terminal stuff
     "pavucontrol" "helvum" 
 ) 
