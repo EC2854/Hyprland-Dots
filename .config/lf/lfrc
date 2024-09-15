@@ -41,6 +41,20 @@ cmd open &{{
         *) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
     esac
 }}
+cmd nnn-mode %{{
+    if [ "$lf_preview" = true ]; then
+        lf -remote "send $id :set preview false; set ratios 1"
+    else
+        lf -remote "send $id :set ratios 1:2:3; set preview true"
+    fi
+}}
+cmd nnn-preview %{{
+    if [ "$lf_preview" = true ]; then
+        lf -remote "send $id :set preview false; set ratios 1"
+    else
+        lf -remote "send $id :set ratios 1:1; set preview true"
+    fi
+}}
 cmd bulk-rename ${{
     old="$(mktemp)"
     new="$(mktemp)"
@@ -95,6 +109,10 @@ map a mk
 map Y clipboard-copy
 map P clipboard-paste
 map w set-wall
+
+map n
+map nm nnn-mode
+map np nnn-preview
 
 map <enter> open
 map o open
