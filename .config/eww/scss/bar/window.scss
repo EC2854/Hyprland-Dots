@@ -1,0 +1,16 @@
+.window {
+    border-radius: 16px;
+    margin: 0 10px; 
+    padding: 6px 10px;
+    background-color: $surface;
+}
+.close_button {
+    padding: 0 10px;
+    transition: 0.3s;
+    border-radius: 16px;
+    color: $text;
+    &:hover {
+        background-color: $error;
+        color: $error_text;
+    }
+}

@@ -1,17 +1,15 @@
-# acc
-# .config/starship/dynamic.toml
 format="""
-[](bg:none fg:#CBA6F7)\
+[](bg:none fg:#c4c0ff)\
 $username\
-[](bg:#CBA6F7 fg:#cdd6f4)\
+[](bg:#c4c0ff fg:#c7c4dc)\
 $hostname\
-[](bg:#cdd6f4 fg:#CBA6F7)\
+[](bg:#c7c4dc fg:#c4c0ff)\
 $directory\
-[](bg:#cdd6f4 fg:#CBA6F7)\
+[](bg:#c7c4dc fg:#c4c0ff)\
 $git_branch\
-[](bg:#CBA6F7 fg:#cdd6f4)\
+[](bg:#c4c0ff fg:#c7c4dc)\
 $cmd_duration\
-[](bg:none fg:#CBA6F7)\
+[](bg:none fg:#c4c0ff)\
 $line_break\
 $character\
 """
@@ -19,42 +17,41 @@ add_newline = false
 
 # Prompt symbols 
 [character]
-success_symbol = "[ 󱞪](#CBA6F7)"
-error_symbol = "[ 󱞪](#cdd6f4)"
-vicmd_symbol = "[ 󱞪❯](#cdd6f4)"
+success_symbol = "[](#c4c0ff)"
+error_symbol = "[](#c7c4dc)"
+vicmd_symbol = "[](#c7c4dc)"
 
 [username]
 disabled = true
 show_always = true
-format = "[  $user ](bg:#CBA6F7 fg:#1e1e2e bold)"
+format = "[  $user ](bg:#c4c0ff fg:#2c2960 bold)"
 
 [hostname]
 disabled = true
 ssh_only = false
-format = "[ 󰌽 $hostname ]( bg:#cdd6f4 fg:#1e1e2e bold)"
+format = "[ 󰌽 $hostname ]( bg:#c7c4dc fg:#2f2e42 bold)"
 
 [directory]
 disabled =false
-format = "[  $path ](bg:#CBA6F7 fg:#1e1e2e bold)"
+format = "[  $path ](bg:#c4c0ff fg:#2c2960 bold)"
 truncation_length = 3
-truncate_to_repo=false
+truncate_to_repo=true
 
 [directory.substitutions]
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = " "
-"Pictures" = " "
-"Videos" = " "
-"iso" = "󰌽 "
+"Documents" = "󰈙"
+"Downloads" = ""
+"Music" = ""
+"Pictures" = ""
+"Videos" = ""
+"iso" = "󰌽"
 ".config" = ""
 
 [git_branch]
 disabled =false
-format = '[  $branch ](bg:#cdd6f4 fg:#1e1e2e bold)'
+format = '[  $branch ](bg:#c7c4dc fg:#2f2e42 bold)'
 
 [cmd_duration]
 min_time = 4
 show_milliseconds = false
 disabled = true
-format = '[ 󱑆 $duration ](bg:#CBA6F7 fg:#1e1e2e bold)'
-
+format = '[ 󱑆 $duration ](bg:#c4c0ff fg:#2c2960 bold)'

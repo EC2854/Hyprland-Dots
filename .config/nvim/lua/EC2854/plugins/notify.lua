@@ -2,7 +2,7 @@ return {
     "rcarriga/nvim-notify",
     config = function ()
     require("notify").setup({
-            background_colour = "#1e1e2e",
+            background_colour = "#000",
             fps = 30,
             icons = {
                 DEBUG = "",
@@ -19,7 +19,7 @@ return {
                 notification = "%T",
                 notification_history = "%FT%T"
             },
-            timeout = 5000,
+            timeout = 4000,
             top_down = true
         })
     end

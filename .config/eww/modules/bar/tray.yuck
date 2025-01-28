@@ -1,0 +1,11 @@
+(defwidget tray[]
+    (box :class "tray" :space-evenly "false" :orientation "h" :spacing "3" 
+        (eventbox :onscroll "scripts/change_volume.sh {} SINK"
+            (button :onclick "wpctl set-mute @DEFAULT_SINK@ toggle" :class 'button${volume_muted ? "_muted" : ""}' volume_icon)
+        )
+        (eventbox :onscroll "scripts/change_volume.sh {} SOURCE"
+            (button :onclick "wpctl set-mute @DEFAULT_SOURCE@ toggle" :class 'button${mic_muted ? "_muted" : ""}' mic_icon )
+        )
+    )
+
+)

@@ -4,9 +4,6 @@ return {
     build = ":TSUpdate",
     dependencies = {
         "nvim-treesitter/nvim-treesitter-textobjects",
-        "windwp/nvim-ts-autotag",
-        "JoosepAlviste/nvim-ts-context-commentstring",
-        "p00f/nvim-ts-rainbow",
         "HiPhish/rainbow-delimiters.nvim",
         { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} }
     },
@@ -16,14 +13,17 @@ return {
             highlight = {
                 enable = true,
             },
-            -- enable indentation
-            indent = { enable = false },
+            indent = { 
+                enable = false
+            },
             -- enable autotagging (w/ nvim-ts-autotag plugin)
             autotag = {
               enable = true,
             },
             -- ensure these language parsers are installed
-            ensure_installed = "all",
+            ensure_installed = {
+                "bash", "c", "go", "lua", "css", "scss", "python", "markdown"
+            },
             incremental_selection = {
                 enable = true,
                 keymaps = {
@@ -33,7 +33,7 @@ return {
                     node_decremental = "<bs>",
                 },
             },
+            additional_vim_regex_highlighting = false,
         })
-    require('ts_context_commentstring').setup {}
     end,
 }

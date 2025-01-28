@@ -1,0 +1,57 @@
+format="""
+[](bg:none fg:{{colors.primary.default.hex}})\
+$username\
+[](bg:{{colors.primary.default.hex}} fg:{{colors.secondary.default.hex}})\
+$hostname\
+[](bg:{{colors.secondary.default.hex}} fg:{{colors.primary.default.hex}})\
+$directory\
+[](bg:{{colors.secondary.default.hex}} fg:{{colors.primary.default.hex}})\
+$git_branch\
+[](bg:{{colors.primary.default.hex}} fg:{{colors.secondary.default.hex}})\
+$cmd_duration\
+[](bg:none fg:{{colors.primary.default.hex}})\
+$line_break\
+$character\
+"""
+add_newline = false 
+
+# Prompt symbols 
+[character]
+success_symbol = "[]({{colors.primary.default.hex}})"
+error_symbol = "[]({{colors.secondary.default.hex}})"
+vicmd_symbol = "[]({{colors.secondary.default.hex}})"
+
+[username]
+disabled = true
+show_always = true
+format = "[  $user ](bg:{{colors.primary.default.hex}} fg:{{colors.on_primary.default.hex}} bold)"
+
+[hostname]
+disabled = true
+ssh_only = false
+format = "[ 󰌽 $hostname ]( bg:{{colors.secondary.default.hex}} fg:{{colors.on_secondary.default.hex}} bold)"
+
+[directory]
+disabled =false
+format = "[  $path ](bg:{{colors.primary.default.hex}} fg:{{colors.on_primary.default.hex}} bold)"
+truncation_length = 3
+truncate_to_repo=true
+
+[directory.substitutions]
+"Documents" = "󰈙"
+"Downloads" = ""
+"Music" = ""
+"Pictures" = ""
+"Videos" = ""
+"iso" = "󰌽"
+".config" = ""
+
+[git_branch]
+disabled =false
+format = '[  $branch ](bg:{{colors.secondary.default.hex}} fg:{{colors.on_secondary.default.hex}} bold)'
+
+[cmd_duration]
+min_time = 4
+show_milliseconds = false
+disabled = true
+format = '[ 󱑆 $duration ](bg:{{colors.primary.default.hex}} fg:{{colors.on_primary.default.hex}} bold)'

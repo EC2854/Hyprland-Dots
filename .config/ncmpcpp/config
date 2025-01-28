@@ -42,7 +42,7 @@ startup_screen = "playlist"
 # ---
 progressbar_look = "▪▪▪"
 #progressbar_look = "▃▃▃"
-progressbar_elapsed_color = "magenta"
+progressbar_elapsed_color = "blue"
 progressbar_color = "black"
 
 # UI VISIBILITY

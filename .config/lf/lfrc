@@ -7,7 +7,6 @@ set drawbox true
 set preview true
 set sixel true
 
-
 set previewer ~/.config/lf/lf_preview
 
 set shellopts '-eu'
@@ -15,18 +14,35 @@ set shellopts '-eu'
 set ifs "\n"
 set scrolloff 10
 
-cmd mk ${{
-    printf "Create: "
-    read ans
-    if [[ "$ans" == */ ]]; then
-        mkdir -p "$ans"
-
-    else
-        touch "$ans"
-    fi
+# Zoxide integration
+cmd z %{{
+    result="$(zoxide query --exclude "$PWD" "$@" | sed 's/\\/\\\\/g;s/"/\\"/g')"
+    lf -remote "send $id cd \"$result\""
 }}
-cmd fzf_jump ${{
-    res="$(find . -maxdepth 5 | fzf --reverse --header='Jump to location')"
+
+cmd zi ${{
+    result="$(zoxide query -i | sed 's/\\/\\\\/g;s/"/\\"/g')"
+    lf -remote "send $id cd \"$result\""
+}}
+
+cmd on-cd &{{
+    zoxide add "$PWD"
+}}
+
+# starship integration 
+cmd on-cd &{{
+    fmt="$(STARSHIP_SHELL= starship prompt | sed 's/\\/\\\\/g;s/"/\\"/g')"
+    lf -remote "send $id set promptfmt \"$fmt\""
+}}
+
+# Eza for a bottom line 
+cmd on-select &{{
+    lf -remote "send $id set statfmt \"$(eza -ld --color=always "$f" | sed 's/\\/\\\\/g;s/"/\\"/g')\""
+}}
+
+# fzf stuff
+cmd fzf-jump ${{
+    res="$(find . -maxdepth 5 | fzf --header='Jump to location' --preview='eza --icons=always --color=always --group-directories-first -1 {}')"
     if [ -f "$res" ]; then
         cmd="select"
     elif [ -d "$res" ]; then
@@ -34,13 +50,15 @@ cmd fzf_jump ${{
     fi
     lf -remote "send $id $cmd \"$res\""
 }}
-
-cmd open &{{
-    case $(file --mime-type -Lb $f) in
-        text/*) lf -remote "send $id \$$EDITOR \$fx";;
-        *) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
-    esac
+cmd fzf-search ${{
+    cmd="rg --column --line-number --no-heading --color=always --smart-case"
+    fzf --ansi --disabled --layout=reverse --header="Search in files" --delimiter=: \
+        --bind="start:reload([ -n {q} ] && $cmd -- {q} || true)" \
+        --bind="change:reload([ -n {q} ] && $cmd -- {q} || true)" \
+        --bind='enter:become(lf -remote "send $id select \"$(printf "%s" {1} | sed '\''s/\\/\\\\/g;s/"/\\"/g'\'')\"")' \
+        --preview='bat --color=always --paging=never --style=numbers --theme=base16 --wrap=auto  --highlight-line={2} -- {1}'
 }}
+# Change layouts
 cmd nnn-mode %{{
     if [ "$lf_preview" = true ]; then
         lf -remote "send $id :set preview false; set ratios 1"
@@ -55,6 +73,42 @@ cmd nnn-preview %{{
         lf -remote "send $id :set ratios 1:1; set preview true"
     fi
 }}
+
+# Custom stuff
+cmd mk ${{
+    printf "Create: "
+    read ans
+    if [[ "$ans" == */ ]]; then
+        mkdir -p "$ans"
+
+    else
+        touch "$ans"
+    fi
+}}
+cmd set-exec &{{
+    ls -l $fx | awk -F ' ' '{print $1 }' | grep x && chmod -x $fx || chmod +x $fx
+    lf -remote 'send reload'
+}}
+cmd unarchive ${{
+  case "$f" in
+      *.tar.gz|*.tgz) tar -xzvf "$f" ;;
+      *.tar.bz2|*.tbz2) tar -xjvf "$f" ;;
+      *.tar.xz|*.txz) tar -xJvf "$f" ;;
+      *.tar) tar -xvf "$f" ;;
+      *.zip) unzip "$f" ;;
+      *.xz) xz -dk "$f" ;;
+      *.gz) gzip -dk "$f" ;;
+      *.bz2) bzip2 -dk "$f" ;;
+      *) echo "Unsupported format" ;;
+  esac
+}}
+cmd open &{{
+    case $(file --mime-type -Lb $f) in
+        text/*) lf -remote "send $id \$$EDITOR \$fx";;
+        *) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
+    esac
+}}
+
 cmd bulk-rename ${{
     old="$(mktemp)"
     new="$(mktemp)"
@@ -78,6 +132,7 @@ cmd bulk-rename ${{
     rm -- "$old" "$new"
     lf -remote "send $id unselect"
 }}
+
 # There is a problem with copying images other than *.png
 cmd clipboard-copy &{{
     type=$(file -Lb --mime-type "$f")
@@ -97,27 +152,35 @@ cmd clipboard-paste &{{
     wl-paste > "pasted"
 }}
 
+cmd share $curl -F"file=@$fx" -Fexpires=4 https://0x0.st | wl-copy
+
 cmd set-wall &{{
-    ~/.config/hypr/scripts/changewall.sh "$f"
+    matugen image "$f"
 }}
+
+
 
 map R bulk-rename
 map s shell
 map . set hidden!
 map D delete
+map c clear
 map a mk
+map x set-exec
 map Y clipboard-copy
 map P clipboard-paste
 map w set-wall
+map u unarchive
 
-map n
-map nm nnn-mode
-map np nnn-preview
+map m
+map mm nnn-mode
+map mp nnn-preview
 
 map <enter> open
 map o open
 
-map f fzf_jump
+map f fzf-jump
+map gs fzf-search
 
 map gh cd ~
 map gm cd ~/Music 

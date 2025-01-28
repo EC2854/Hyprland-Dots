@@ -1,0 +1,9 @@
+(defwidget workspaces []
+    (eventbox :onhover "eww update window_rev=true" :onhoverlost '${window_stay ? "" : "eww update window_rev=false"}'  :onscroll "scripts/change_active_workspace.sh {} ${current_workspace}" :onrightclick "scripts/toggle_value.sh window_stay"
+        (box :orientation "h" :space-evenly false :class "workspaces" :hexpand true
+            (for workspace in workspaces
+                (button :class "workspace ${current_workspace == workspace.id ? "current" : ""}" :onclick "hyprctl dispatch workspace ${workspace.id}" "")
+            )
+        )
+    )
+)

@@ -25,12 +25,9 @@ return {
                 { "<leader>hh", "<cmd>Telescope help_tags<cr>", desc = "Find Help", nowait = true, remap = false },
 
                 { "<leader>t", group = "Toggle/Change", nowait = true, remap = false },
-                { "<leader>tM", "<cmd>lua MiniMap.toggle() <CR>", desc = "Toggle MiniMap", nowait = true, remap = false },
                 { "<leader>tc", "<cmd>Telescope colorscheme <CR>", desc = "Colorscheme", nowait = true, remap = false },
                 { "<leader>th", "<cmd>nohlsearch <CR>", desc = "No Highlight", nowait = true, remap = false },
                 { "<leader>tm", "<cmd>TableModeToggle <CR>", desc = "Toggle Table Mode", nowait = true, remap = false },
-                { "<leader>tn", "<cmd>NvimTreeToggle <CR>", desc = "Toggle NvimTree", nowait = true, remap = false },
-                { "<leader>tt", "<cmd>TroubleToggle <CR>", desc = "Toggle Trouble", nowait = true, remap = false },
                 { "<leader>tv", "<cmd>ToggleTerm <CR>", desc = "Toggle Terminal", nowait = true, remap = false },
 
                 { "<leader>w", group = "Windows", nowait = true, remap = false },

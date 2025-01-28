@@ -1,17 +1,23 @@
 # aliases for zsh and bash
 # this file in sourced in .zshrc and .bashrc
 
+alias t='tmux a || tmux'
+alias lfcd='cd "$(lf -print-last-dir)"'
+
 # misc
 alias v='nvim'
 alias s='sudo'
 alias rg='rg -p' 
 alias cls='clear'
-alias rm='rm -rf' # I know im a psychopath
+alias cp='cp -v'
+alias mv='mv -v'
+alias rm='rm -rfv' # I know im a psychopath
 
 # adding some colors :3
 alias ls='ls --color=always'
 alias grep='grep --color=always'
 alias ip='ip --color=always'
+alias diff='diff --color=always'
 
 # Faster movement
 alias ..='cd ..'
@@ -43,10 +49,14 @@ alias lt='eza --icons=always --color=always --group-directories-first -T'
 alias c='bat -P --color=always --style=plain --theme=base16 --wrap=auto'
 
 # Package Managment
-alias paru='paru --color=always'
-alias upd='paru -Syu --noconfirm --quiet --color=always'
-alias inst='paru -S --noconfirm --color=always'
-alias uninst='paru -Rns --noconfirm --color=always'
+alias ySyu='yay -Syu --noconfirm --quiet --color=always'
+alias yS='yay -S --noconfirm --color=always'
+alias yRns='yay -Rns --noconfirm --color=always'
+
+alias pSyu='sudo pacman -Syu'
+alias pS='sudo pacman -S'
+alias pRns='sudo pacman -Rns'
+
 alias rem='sudo pacman -Rns $(pacman -Qq | fzf -m) --color=always'
 alias cleanup='sudo pacman -Rns $(pacman -Qtdq) --color=always'
 

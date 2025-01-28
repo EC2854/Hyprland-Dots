@@ -1,11 +1,1 @@
-# acc
-# .config/zsh/fzf-settings/dynamic.zsh
-export FZF_DEFAULT_OPTS=" \
---color=bg+:#1e1e2e,bg:#1e1e2e,spinner:#CBA6F7,hl:#CBA6F7  \
---color=fg:#cdd6f4,header:#CBA6F7,info:#CBA6F7,pointer:#CBA6F7  \
---color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#CBA6F7,hl+:#CBA6F7 \
---no-scrollbar --no-hscroll \
---prompt ' ' --pointer '' --marker '' \
---ansi"
-
-
+export FZF_DEFAULT_OPTS="--color=bg+:#131318,bg:#131318,spinner:#c4c0ff,hl:#c7c4dc,fg:#e5e1e9,header:#2a292f,info:#c7c4dc,pointer:#c4c0ff,marker:#c4c0ff,fg+:#e5e1e9,prompt:#c4c0ff,hl+:#c4c0ff --no-scrollbar --no-hscroll --prompt ' ' --pointer '' --marker '' --ansi --reverse --tmux=80%"

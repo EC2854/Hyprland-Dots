@@ -1,7 +1,7 @@
 #!/bin/bash
 
-wallpaper=$(cat ~/.cache/wall/current_wall)
+wallpaper=$(cat ~/.cache/swww/"$(hyprctl -j monitors | jq -r '.[].name')")
 destination=~/.cache/hyprlock.png
 
-ffmpeg -y -v 0 -i $wallpaper $destination
+ffmpeg -y -v 0 -i "$wallpaper" "$destination"
 hyprlock

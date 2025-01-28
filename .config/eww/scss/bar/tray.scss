@@ -1,0 +1,23 @@
+.tray {
+    border-radius: 16px;
+    margin: 0 10px; 
+    padding: 6px 15px;
+    background-color: $surface;
+    & > * > * {
+        margin: 0 5px;
+        padding: 0 6px;
+        transition: 0.3s;
+        background-color: $surface_high;
+        border-radius: 50%;
+        color: $text;
+        &:hover {
+            background-color: $primary;
+            color: $primary_text;
+        }
+    }
+}
+.button_muted {
+    color: $error_text;
+    background-color: $error;
+}
+

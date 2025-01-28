@@ -1,0 +1,10 @@
+(include "variables.yuck")
+(include "windows.yuck")
+
+(include "modules/bar.yuck")
+
+(include "modules/bar/workspaces.yuck")
+(include "modules/bar/window.yuck")
+(include "modules/bar/music.yuck")
+(include "modules/bar/tray.yuck")
+(include "modules/bar/clock.yuck")

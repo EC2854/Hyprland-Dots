@@ -1,0 +1,13 @@
+(defwidget music[]
+    (eventbox :onhover "eww update music_rev=true" :onhoverlost "eww update music_rev=false" :onscroll "scripts/change_music.sh {}"
+        (box :class "music" :space-evenly "false" :orientation "h" :spacing "3" 
+            (revealer :transition "slideleft" :reveal music_rev :duration "350ms"
+                (button :class "music_control" :onclick "playerctl previous" "󰒮")
+            )
+            (button :class "music_title" :onclick "playerctl play-pause" music_title )
+            (revealer :transition "slideright" :reveal music_rev :duration "350ms"
+                (button :class "music_control" :onclick "playerctl next" "󰒭")
+            )
+        )
+    )
+)

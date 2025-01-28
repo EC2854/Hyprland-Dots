@@ -1,0 +1,18 @@
+.clock {
+    border-radius: 16px;
+    padding: 6px 20px;
+    background-color: $surface;
+    &_date {
+        color: $text;
+    }
+    &_hour {
+        color: $text;
+    }
+    &_sep {
+        color: $primary;
+        font-weight: bolder;
+    }
+    &_minute {
+        color: $text;
+    }
+}

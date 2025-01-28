@@ -1,0 +1,21 @@
+font = Meslo LGL Nerd Font 
+font-size = 16
+hide-cursor = true
+
+fuzzy-match=true
+
+corner-radius = 15
+outline-width = 0
+
+border-color = {{colors.primary.default.hex}}
+border-width = 2
+
+background-color = {{colors.surface.default.hex}}
+text-color = {{colors.on_surface.default.hex}}
+selection-color = {{colors.primary.default.hex}}
+
+prompt-color = {{colors.secondary.default.hex}} 
+prompt-text = "   "
+
+width = 640
+height = 480

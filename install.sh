@@ -1,28 +1,8 @@
-#!/bin/bash
-
-# ⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⣿⡿⠻⣟⣻⣻⠿⣿⣿⣿⣿⣿⣿⣿⣿  _____ ____ ____  ___ ____  _  _   
-# ⣿⣿⣿⣿⣿⣿⣿⢿⣿⣾⣿⣿⣿⣷⣜⢉⣟⣾⡷⣽⡻⣿⣿⣿⣿⣿ | ____/ ___|___ \( _ ) ___|| || |  
-# ⣿⣿⣿⣿⣿⡿⣡⣾⣿⣿⣿⣿⡿⢿⣿⣷⡩⡽⣛⢷⣿⡪⡻⣿⣿⣿ |  _|| |     __) / _ \___ \| || |_ 
-# ⣿⣿⣿⣿⡟⡾⡋⣼⣿⡿⠛⣩⣾⣿⡿⣫⣶⣿⡾⣿⣮⣿⡦⡙⣿⣿ | |__| |___ / __/ (_) |__) |__   _|
-# ⣿⣿⣿⣿⢁⠞⣼⡏⡷⣡⡬⡿⣹⡿⣹⣿⢹⣧⢿⢨⡹⢨⡺⢷⡹⣿ |_____\____|_____\___/____/   |_|  
-# ⣿⣿⣿⡟⢪⣸⣿⠸⣉⡟⠜⡵⡟⣼⣿⡇⣿⣿⣿⢸⡍⣔⢸⣸⢷⢹ -----------------------------------
-# ⣿⣿⣿⣷⣎⠟⢸⣸⣭⠁⡞⣁⡇⣿⡿⣹⣿⣿⡻⠀⡇⣿⠎⢼⠺⢸ Ewa (EC2854)
-# ⣿⣿⣿⣿⡛⠸⡇⢹⡏⠀⠈⠭⠘⡘⢣⠟⢡⠃⠑⠀⢸⠏⠚⠘⡆⣸ https://github.com/EC2854
-# ⣿⣿⣿⣿⣷⡀⠩⡸⠁⢲⣤⣼⣷⠃⣀⡄⣠⣀⣸⠆⠀⠀⡄⣸⣷⣿ https://www.reddit.com/user/EC2854
-# ⣿⣿⣿⣿⣿⣿⡦⠀⠨⡂⠨⣛⣧⣾⣯⢾⣿⣛⠁⠀⠀⠀⣿⣿⣿⣿ -----------------------------------
-# ⣿⣿⣿⣿⣿⡿⣡⣶⣿⣷⣶⡌⣙⣛⣓⣾⡭⠁⠀⠀⢠⢰⣿⣿⣿⣿ Install script for https://github.com/EC2854/Hyprland-Dots
-# ⣿⣿⣿⡿⢏⣾⣿⣿⣿⣿⣿⣷⠘⠿⣻⣥⡀⣀⣴⣧⣿⣿⣿⣿⣿⣿
-# ⣿⣟⣽⠊⣾⠟⠀⢀⢹⣿⣿⣿⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-# ⡿⠾⠇⠀⣿⡐⣨⣧⣾⣿⣿⡇⠈⢻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-# ⡗⡟⠀⠀⣿⣿⣾⣿⣿⣿⠉⢰⡄⠘⢷⣮⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-
+#!/usr/bin/env bash
 not_arch_btw=false # variable to skip installing packages 
 packages_to_install=( # list of packages to install
-    "hyprland" "mpvpaper" "swww" "hyprpicker-git" "avizo" "polkit-gnome" "aylurs-gtk-shell-git" "anyrun-git" "cpio" "bc" "wget" # important stuff
-    "bibata-cursor-theme" # Themes
-    "loupe" "nautilus" # Gnome Stuff
-    "zsh" "eza" "bat" "fzf" "lf" "foot" "neovim" "fastfetch" "starship" # terminal stuff
-    "pavucontrol" 
+    "hyprland" "mpvpaper" "swww" "mako" "polkit-gnome" "eww" "tofi" "hyprwayland-scanner" "hypridle" "hyprlock" # important stuff
+    "zsh" "eza" "fzf" "lf" "foot" "neovim" "fastfetch" "starship" "tmux" # terminal stuff
 ) 
 
 # Print Functions
@@ -71,28 +51,6 @@ copy() {
     print_info "Copying files from $source to $destination"
     cp -rf "$source" "$destination" && print_success "Files copied successfully to $destination" || print_error "Error while copying to $destination"
 }
-# Install Hyprland Plugins
-install_plugin() {
-    local name=$1
-    hyprpm add $name && print_success "$name installed successfully" || print_error "Error while installing $name"
-}
-
-install_icons() {
-    wget -qO- https://git.io/papirus-icon-theme-install | env DESTDIR="$HOME/.local/share/icons" sh
-    rm -r ~/.local/share/icons/Papirus-Dark ~/.local/share/icons/Papirus-Light ~/.local/share/icons/ePapirus*
-    cat_folder=$(mktemp -d /tmp/cat-folder.XXXXXX)
-    clone_repository https://github.com/catppuccin/papirus-folders "$cat_folder"
-    [ -z $cat_folder ] && exit 1
-    for icon in $(ls $cat_folder/src/); do
-         rm ${cat_folder}/src/${icon}/places/*latte*
-         rm ${cat_folder}/src/${icon}/places/*frappe*
-         rm ${cat_folder}/src/${icon}/places/*macchiato*
-    done
-    cp -r ${cat_folder}/src/* ~/.local/share/icons/Papirus
-    curl -Lo ~/.local/share/icons/papirus-folders https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-folders/master/papirus-folders 
-    chmod +100 ~/.local/share/icons/papirus-folders
-    rm -r $cat_folder
-}
 
 # confirmation
 ask_for_confirmation() {
@@ -140,35 +98,11 @@ copy ./.config ~/ &
 # Copy .zshrc
 copy ./.zshrc ~/ &
 # Copy Bashrc
-copy ./.bashrc ~/ &
-
-# install zsh plugins
-clone_repository https://github.com/Aloxaf/fzf-tab ~/.config/zsh/fzf-tab &
-clone_repository https://github.com/zsh-users/zsh-autosuggestions.git ~/.config/zsh/zsh-autosuggestions &
-clone_repository https://github.com/zsh-users/zsh-history-substring-search.git ~/.config/zsh/zsh-history-substring-search &
-clone_repository https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.config/zsh/zsh-syntax-highlighting &
 
 # Clone Wallpapers
 clone_repository https://github.com/EC2854/wallpapers ~/Pictures/Wallpapers &
 
-# install gtk themes
-clone_repository https://github.com/EC2854/catppuccin-mocha-gtk ~/.local/share/themes
-
-
-# Install icons
-install_icons
-
-# set temporary gtk theme
-ln -sf ~/.local/share/themes/catppuccin-mocha-mauve-Dark/gtk-4.0 ~/.config/gtk-4.0
-
-# Hyprland Plugins
-# print_info "Plugins time!"
-# print_warning "this part can fail. i don't know what to do about it."
-# print_info "if it will fail install hyprland-plugins and Hyprspace plugins manually (or rerun script inside hyprland)"
-
-# install_plugin https://github.com/hyprwm/hyprland-plugins
-# install_plugin https://github.com/KZDKM/Hyprspace
-
+# Hyprland Plugin
 # Final message
 print_info "That's it!"
 print_info "Reboot ur system :3"

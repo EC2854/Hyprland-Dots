@@ -1,0 +1,11 @@
+@import "scss/colors.scss";
+* {
+    all: unset;
+    font-weight: bold;
+}
+@import "scss/bar.scss";
+@import "scss/bar/workspaces.scss";
+@import "scss/bar/window.scss";
+@import "scss/bar/music.scss";
+@import "scss/bar/tray.scss";
+@import "scss/bar/clock.scss";

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 file=$1
 w=$2
@@ -24,7 +24,7 @@ show_image() {
     chafa -f sixel -s "${w}x${h}" --animate off --polite on "$1"
 }
 show_code() {
-    timeout $timeout_duration bat --paging=never --style=numbers --theme=base16 --wrap=auto ==terminal-width "$((w-5))" -f "$1" | head -n $max_lines
+    timeout $timeout_duration bat --paging=never --style=numbers --theme=base16 --wrap=auto --terminal-width "$((w-5))" -f "$1" | head -n $max_lines
     # timeout $timeout_duration head -n $max_lines $1
 }
 
@@ -35,7 +35,7 @@ show_pdf_tar_zip() {
         application/zip) command="unzip -l '$1'";; 
         application/x*) command="tar -tf '$1'";;
     esac
-    eval timeout $timeout_duration $command | head -n $max_lines
+    eval timeout $timeout_duration "$command" | head -n $max_lines
 }
 
 # Check the MIME type

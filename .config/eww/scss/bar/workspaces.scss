@@ -1,0 +1,20 @@
+.workspaces {
+    border-radius: 16px;
+    padding: 6px 20px;
+    background-color: $surface;
+}
+
+.workspace {
+    border-radius: 16px;
+    background-color: $surface_high;
+    margin: 0 3px;
+    padding: 0 10px;
+    transition: 0.3s;
+    &.current {
+        background-color: $primary;
+        padding: 0 16px;
+    }
+    &:hover {
+        background-color: $secondary;
+  }
+}

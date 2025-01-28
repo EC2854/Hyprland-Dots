@@ -1,0 +1,17 @@
+(defwidget bar []
+    (box :class "bar-widget" :orientation "h" :space-evenly true
+        (box :orientation "h" :space-evenly false :halign "start"
+            (workspaces)
+            (window)
+        )
+        (box :orientation "h" :space-evenly false :halign "center"
+            (music)
+        )
+        (box :orientation "h" :space-evenly false :halign "end"
+            (tray)
+            (clock)
+        )
+
+    )
+    
+)
