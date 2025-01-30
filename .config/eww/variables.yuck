@@ -1,20 +1,16 @@
 (deflisten current_workspace :initial "1" "scripts/get_active_workspace.sh")
-(deflisten workspaces "scripts/workspaces.sh")
 
 (defvar window_rev false)
 (defvar window_stay false)
 (defpoll window_title :interval "2s" "hyprctl activewindow -j | jq -r '.title | if length > 60 then .[:60] + \"…\" else . end'")
 
 (defvar music_rev false)
-(deflisten music_title :initial ""
-  "playerctl --follow metadata --format '{{ title }}' || true")
+(deflisten music_title :initial "" "playerctl --follow metadata --format '{{ title }}' || true")
 
 (defvar volume_muted false)
 (defpoll volume_icon :interval "2s" "scripts/volume_icon.sh")
 (defvar mic_muted false)
 (defpoll mic_icon :interval "1s" "scripts/mic_icon.sh")
-
-(defpoll network_icon :interval "1s" "scripts/network_icon.sh")
 
 (defvar clock_rev false)
 (defvar clock_stay false)

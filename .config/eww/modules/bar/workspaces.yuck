@@ -1,9 +1,12 @@
 (defwidget workspaces []
     (eventbox :onhover "eww update window_rev=true" :onhoverlost '${window_stay ? "" : "eww update window_rev=false"}'  :onscroll "scripts/change_active_workspace.sh {} ${current_workspace}" :onrightclick "scripts/toggle_value.sh window_stay"
         (box :orientation "h" :space-evenly false :class "workspaces" :hexpand true
-            (for workspace in workspaces
-                (button :class "workspace ${current_workspace == workspace.id ? "current" : ""}" :onclick "hyprctl dispatch workspace ${workspace.id}" "")
-            )
+            (button :class "workspace ${current_workspace == 1 ? "current" : ""}" :onclick "hyprctl dispatch workspace 1" "")
+            (button :class "workspace ${current_workspace == 2 ? "current" : ""}" :onclick "hyprctl dispatch workspace 2" "")
+            (button :class "workspace ${current_workspace == 3 ? "current" : ""}" :onclick "hyprctl dispatch workspace 3" "")
+            (button :class "workspace ${current_workspace == 4 ? "current" : ""}" :onclick "hyprctl dispatch workspace 4" "")
+            (button :class "workspace ${current_workspace == 5 ? "current" : ""}" :onclick "hyprctl dispatch workspace 5" "")
+            (button :class "workspace ${current_workspace == 6 ? "current" : ""}" :onclick "hyprctl dispatch workspace 6" "")
         )
     )
 )
