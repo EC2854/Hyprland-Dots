@@ -1,11 +1,12 @@
 .window {
     border-radius: 16px;
-    margin: 0 10px; 
-    padding: 6px 10px;
+    margin: 0 0.625rem; 
+    padding: 0.375rem 1rem;
     background-color: $surface;
 }
+
 .close_button {
-    padding: 0 10px;
+    padding: 0 0.5rem;
     transition: 0.3s;
     border-radius: 16px;
     color: $text;
@@ -14,3 +15,4 @@
         color: $error_text;
     }
 }
+
