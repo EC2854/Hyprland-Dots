@@ -73,15 +73,6 @@ alias tobash="sudo chsh $USER -s /bin/bash && bash"
 alias tozsh="sudo chsh $USER -s /bin/zsh && zsh"
 alias tofish="sudo chsh $USER -s /bin/fish && fish"
 
-# Systemctl 
-alias ss="sudo systemctl"
-alias sss="sudo systemctl status"
-alias ssr="sudo systemctl restart"
-
-alias us="systemctl --user"
-alias uss="systemctl --user status"
-alias usr="sudo systemctl --user restart"
-
 # Toggle Starship Modules
 alias toggle-user='starship toggle username'
 alias toggle-host='starship toggle hostname'
@@ -94,13 +85,7 @@ alias chprompt='~/.config/zsh/scripts/changeprompt.sh'
 alias commit='git add . && git commit -m $1'
 alias push='git push -u origin main'
 
-# Run Amberol
-alias amb="nohup amberol . > /dev/null 2>&1 &"
-
 # Silly
 alias fucking='sudo'
 alias okpa='systemctl poweroff'
-alias nekofetch="fastfetch --logo-height 6 --sixel ~/.config/fastfetch/nyarch.png"
-alias susefetch="fastfetch --logo-height 6 --sixel ~/Pictures/gigaroman.png"
-alias shork="~/blahaj/display3d ~/blahaj/blahaj.obj -t 0,0,6"
 

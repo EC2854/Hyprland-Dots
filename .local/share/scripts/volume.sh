@@ -1,15 +1,14 @@
-#!/bin/bash
+#!/usr/bin/env bash
 ICON_DIR="/home/Ewa/.config/mako/icons/"
 generate_bar() {
     local filled=$(($1 / 5))
-    local empty=$((total - filled))
 
     local bar="["
     for i in {1..20}; do
-        if [ $i -lt $filled ]; then
+        if [ "$i" -lt "$filled" ]; then
             bar+="-"
-        elif [ $i -eq $filled ]; then
-            [ $filled -eq 20 ] && {
+        elif [ "$i" -eq "$filled" ]; then
+            [ "$filled" -eq 20 ] && {
                 bar+="-"
             } || {
                 [ $((i%2)) -eq 0 ] && {
@@ -33,10 +32,10 @@ notify-vol() {
     local message="$1"
     local source="$2"
     local icon="$3"
-    wpctl get-volume $source | grep "MUTED" && {
+    wpctl get-volume "$source" | grep "MUTED" && {
         grep "SINK" <<< "$source" && local icon="${ICON_DIR}vol-mute.png"  || local icon="${ICON_DIR}mic-mute.png"
     }
-    local precent=$(wpctl get-volume $source | awk '{print int($2 * 100)}')
+    local precent=$(wpctl get-volume "$source" | awk '{print int($2 * 100)}')
     notify-send "$message ${precent}%" "$(generate_bar $precent )" -c volume -u low -i "$icon"
 
 }
@@ -86,13 +85,13 @@ sel() {
 
     case "$action" in
         up)
-            ${source}_up
+            "${source}"_up
         ;;
         down)
-            ${source}_down
+            "${source}"_down
         ;;
         mute)
-            ${source}_mute
+            "${source}"_mute
         ;;
     esac
 }

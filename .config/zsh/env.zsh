@@ -1,6 +1,6 @@
 # variables for zsh and bash
 # this file in sourced in .zshrc and .bashrc
-export PATH="$PATH:/home/Ewa/.local/share/scripts"
+export PATH="$PATH:/home/$USER/.local/share/scripts"
 
 #fzf settings 
 source ~/.config/zsh/fzf-style.zsh

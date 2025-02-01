@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 wall=$(cat ~/.cache/wall/current_wall)
 type=$(file -Lb --mime-type $wall)
 

@@ -95,9 +95,9 @@ ask_for_confirmation
 
 # Copy files to ~/.config directory
 copy ./.config ~/ &
+copy ./.local ~/ &
 # Copy .zshrc
 copy ./.zshrc ~/ &
-# Copy Bashrc
 
 # Clone Wallpapers
 clone_repository https://github.com/EC2854/wallpapers ~/Pictures/Wallpapers &

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 wallpaper=$(cat ~/.cache/swww/"$(hyprctl -j monitors | jq -r '.[].name')")
 destination=~/.cache/hyprlock.png
