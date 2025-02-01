@@ -1,8 +1,16 @@
 # aliases for zsh and bash
 # this file in sourced in .zshrc and .bashrc
 
+# lf stuff
+alias lf=lfwrapper.sh
+lfcd() {
+    dir="$(lf -print-last-dir "$@")"
+    while ! cd "$dir" 2>/dev/null; do
+        dir="$(dirname -- "$dir")"
+    done
+}
+
 alias t='tmux a || tmux'
-alias lfcd='cd "$(lf -print-last-dir)"'
 
 # misc
 alias v='nvim'

@@ -75,8 +75,7 @@ cmd nnn-preview %{{
 }}
 
 # Custom stuff
-cmd mk ${{
-    printf "Create: "
+cmd mk %{{
     read ans
     if [[ "$ans" == */ ]]; then
         mkdir -p "$ans"
@@ -108,6 +107,10 @@ cmd open &{{
         *) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
     esac
 }}
+cmd trash %{{
+    trash-put -- $fx
+}}
+
 
 cmd bulk-rename ${{
     old="$(mktemp)"
@@ -157,13 +160,21 @@ cmd share $curl -F"file=@$fx" -Fexpires=4 https://0x0.st | wl-copy
 cmd set-wall &{{
     matugen image "$f"
 }}
-
+cmd mount-drive ${{
+    ~/.local/share/scripts/mount_removable.sh
+}}
+cmd mount-archive ${{
+    mntdir="$f.mnt"
+    mkdir -p -- "$mntdir"
+    archivemount "$f" "$mntdir"
+    lf -remote "send $id cd \"$(printf '%s' "$mntdir" | sed 's/\\/\\\\/g;s/"/\\"/g')\""
+}}
 
 
 map R bulk-rename
 map s shell
 map . set hidden!
-map D delete
+map D trash
 map c clear
 map a mk
 map x set-exec
@@ -171,8 +182,12 @@ map Y clipboard-copy
 map P clipboard-paste
 map w set-wall
 map u unarchive
+map um mount
 
 map m
+map md mount-drive
+map ma mount-archive
+
 map mm nnn-mode
 map mp nnn-preview
 
@@ -193,4 +208,6 @@ map gr cd ~/Repos
 map gc cd ~/.config 
 map ga cd ~/.cache 
 map gl cd ~/.local/share
+map gt cd ~/.local/share/Trash/files
+map gm ${{ lf -remote "send $id cd /run/media/$USER" }} 
 

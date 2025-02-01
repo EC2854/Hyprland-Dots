@@ -21,7 +21,7 @@ generate_spectogram() {
 }
 
 show_image() {
-    chafa -f sixel -s "${w}x${h}" --animate off --polite on "$1"
+    chafa -f sixel -s "${w}x${h}" --animate off --polite on "$1" &
 }
 show_code() {
     timeout $timeout_duration bat --paging=never --style=numbers --theme=base16 --wrap=auto --terminal-width "$((w-5))" -f "$1" | head -n $max_lines
