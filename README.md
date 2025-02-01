@@ -23,12 +23,12 @@
 
 # Installation
 > [!WARNING]
-> Install script will probably fail use at ur own risk
+> Install script is untested so use at ur own risk
 ``` sh
 git clone https://github.com/EC2854/Hyprland-Dots.git Dots && cd Dots && ./install.sh
 ```
 # Thank You
-- [flick0](https://github.com/flick0) for inspiration
+- [flick0](https://github.com/flickowoa) for inspiration
 - [SolDoesTech](https://github.com/SolDoesTech) for starting this all
 
 > Made with <3 by [Ewa (EC2854)](https://github.com/EC2854)
