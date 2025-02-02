@@ -66,6 +66,15 @@ output_path = '~/.config/qt5ct/colors/matugen.conf'
 input_path = '~/.local/share/matugen/templates/qtct.conf'
 output_path = '~/.config/qt6ct/colors/matugen.conf'
 
+[templates.mpv_modernz]
+input_path = '~/.local/share/matugen/templates/modernz.conf'
+output_path = '~/.config/mpv/script-opts/modernz.conf'
+
+[templates.mpv]
+input_path = '~/.local/share/matugen/templates/mpv.conf'
+output_path = '/tmp/mpv.conf'
+post_hook = 'awk "NR==1 {printf \"background-color=%.2f/%.2f/%.2f\n\", (strtonum(\"0x\" substr(\$0,1,2)))/255, (strtonum(\"0x\" substr(\$0,3,2)))/255, (strtonum(\"0x\" substr(\$0,5,2)))/255; next} 1" /tmp/mpv.conf > ~/.config/mpv/mpv.conf && rm /tmp/mpv.conf'
+
 [templates.tty]
 input_path = '~/.local/share/matugen/templates/cmdline.conf'
 output_path = '/tmp/cmdline_colors.conf'

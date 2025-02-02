@@ -209,5 +209,5 @@ map gc cd ~/.config
 map ga cd ~/.cache 
 map gl cd ~/.local/share
 map gt cd ~/.local/share/Trash/files
-map gm ${{ lf -remote "send $id cd /run/media/$USER" }} 
+map gM ${{ lf -remote "send $id cd /run/media/$USER" }} 
 
