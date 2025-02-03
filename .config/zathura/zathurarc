@@ -1,0 +1,48 @@
+set notification-error-bg       "rgba(19, 19, 24, 1.0)"
+set notification-error-fg       "rgba(255, 180, 171, 1.0)"
+
+set notification-warning-bg     "rgba(19, 19, 24, 1.0)"
+set notification-warning-fg     "rgba(196, 193, 158, 1)"
+
+set notification-bg             "rgba(19, 19, 24, 1.0)"
+set notification-fg             "rgba(196, 192, 255, 1.0)"
+
+set completion-bg               "rgba(42, 41, 47, 1.0)"
+set completion-fg               "rgba(229, 225, 233, 1.0)"
+
+set completion-group-bg         "rgba(42, 41, 47, 1.0)"
+set completion-group-fg         "rgba(200, 197, 208, 1.0)"
+
+set completion-highlight-bg     "rgba(196, 192, 255, 1.0)"
+set completion-highlight-fg     "rgba(44, 41, 96, 1.0)"
+
+# Define the color in index mode
+set index-bg                    "rgba(42, 41, 47, 1.0)"
+set index-fg                    "rgba(229, 225, 233, 1.0)"
+
+set index-active-bg             "rgba(196, 192, 255, 1.0)"
+set index-active-fg             "rgba(44, 41, 96, 1.0)"
+
+set inputbar-bg                 "rgba(19, 19, 24, 1.0)"
+set inputbar-fg                 "rgba(229, 225, 233, 1.0)"
+
+set statusbar-bg                "rgba(42, 41, 47, 1.0)"
+set statusbar-fg                "rgba(229, 225, 233, 1.0)"
+
+set default-bg                  "rgba(19, 19, 24, 1.0)"
+set default-fg                  "rgba(229, 225, 233, 1.0)"
+
+set render-loading              true
+set render-loading-bg           "rgba(19, 19, 24, 1.0)"
+set render-loading-fg           "rgba(229, 225, 233, 1.0)"
+
+set recolor-lightcolor          "rgba(19, 19, 24, 1.0)"
+set recolor-darkcolor           "rgba(229, 225, 233, 1.0)"
+
+set recolor                     "true"
+set recolor-keephue             "true"
+
+set guioptions                  "none"
+
+map b toggle_statusbar
+map t set recolor

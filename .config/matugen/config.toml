@@ -75,6 +75,14 @@ input_path = '~/.local/share/matugen/templates/mpv.conf'
 output_path = '/tmp/mpv.conf'
 post_hook = 'awk "NR==1 {printf \"background-color=%.2f/%.2f/%.2f\n\", (strtonum(\"0x\" substr(\$0,1,2)))/255, (strtonum(\"0x\" substr(\$0,3,2)))/255, (strtonum(\"0x\" substr(\$0,5,2)))/255; next} 1" /tmp/mpv.conf > ~/.config/mpv/mpv.conf && rm /tmp/mpv.conf'
 
+[templates.imv]
+input_path = '~/.local/share/matugen/templates/imv'
+output_path = '~/.config/imv/config'
+
+[templates.zathura]
+input_path = '~/.local/share/matugen/templates/zathurarc'
+output_path = '~/.config/zathura/zathurarc'
+
 [templates.tty]
 input_path = '~/.local/share/matugen/templates/cmdline.conf'
 output_path = '/tmp/cmdline_colors.conf'

@@ -1,0 +1,48 @@
+set notification-error-bg       "{{colors.surface.default.rgba}}"
+set notification-error-fg       "{{colors.error.default.rgba}}"
+
+set notification-warning-bg     "{{colors.surface.default.rgba}}"
+set notification-warning-fg     "rgba(196, 193, 158, 1)"
+
+set notification-bg             "{{colors.surface.default.rgba}}"
+set notification-fg             "{{colors.primary.default.rgba}}"
+
+set completion-bg               "{{colors.surface_container_high.default.rgba}}"
+set completion-fg               "{{colors.on_surface.default.rgba}}"
+
+set completion-group-bg         "{{colors.surface_container_high.default.rgba}}"
+set completion-group-fg         "{{colors.on_surface_variant.default.rgba}}"
+
+set completion-highlight-bg     "{{colors.primary.default.rgba}}"
+set completion-highlight-fg     "{{colors.on_primary.default.rgba}}"
+
+# Define the color in index mode
+set index-bg                    "{{colors.surface_container_high.default.rgba}}"
+set index-fg                    "{{colors.on_surface.default.rgba}}"
+
+set index-active-bg             "{{colors.primary.default.rgba}}"
+set index-active-fg             "{{colors.on_primary.default.rgba}}"
+
+set inputbar-bg                 "{{colors.surface.default.rgba}}"
+set inputbar-fg                 "{{colors.on_surface.default.rgba}}"
+
+set statusbar-bg                "{{colors.surface_container_high.default.rgba}}"
+set statusbar-fg                "{{colors.on_surface.default.rgba}}"
+
+set default-bg                  "{{colors.surface_dim.default.rgba}}"
+set default-fg                  "{{colors.on_surface.default.rgba}}"
+
+set render-loading              true
+set render-loading-bg           "{{colors.surface.default.rgba}}"
+set render-loading-fg           "{{colors.on_surface.default.rgba}}"
+
+set recolor-lightcolor          "{{colors.surface.default.rgba}}"
+set recolor-darkcolor           "{{colors.on_surface.default.rgba}}"
+
+set recolor                     "true"
+set recolor-keephue             "true"
+
+set guioptions                  "none"
+
+map b toggle_statusbar
+map t set recolor
