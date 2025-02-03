@@ -5,7 +5,7 @@
     background-color: $surface;
 }
 .button {
-    margin: 0 0.5rem;
+    margin: 0 0.2rem 0 0.5rem;
     padding: 0 0.55rem;
     transition: 0.3s;
     background-color: $surface_high;
@@ -20,4 +20,15 @@
         background-color: $error;
     }
 }
-
+.value {
+    margin: 0;
+    padding: 0 0.55rem;
+    transition: 0.3s;
+    background-color: $surface_high;
+    border-radius: 16px;
+    color: $text;
+    &:hover {
+        background-color: $primary;
+        color: $primary_text;
+    }
+}

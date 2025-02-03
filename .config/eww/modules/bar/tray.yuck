@@ -1,11 +1,20 @@
 (defwidget tray[]
     (box :class "tray" :space-evenly "false" :orientation "h" :spacing "3" 
-        (eventbox :onscroll "scripts/change_volume.sh {} SINK"
-            (button :onclick "wpctl set-mute @DEFAULT_SINK@ toggle" :class 'button ${volume_muted ? "muted" : ""}' volume_icon)
+        (eventbox :onscroll "scripts/change_volume.sh {} SINK" :onhover "eww update volume_rev=true" :onhoverlost '${volume_stay ? "" : "eww update volume_rev=false"}' :onrightclick "scripts/toggle_value.sh volume_stay"
+            (box :space-evenly "false" :orientation "h" :spacing "3"
+                (button :onclick "wpctl set-mute @DEFAULT_SINK@ toggle" :class 'button ${volume_muted ? "muted" : ""}' "${AUDIO.volume_icon}")
+                (revealer :transition "slideleft" :reveal volume_rev :duration "350ms"
+                    (button :onclick "wpctl set-mute @DEFAULT_SINK@ toggle" :class 'value' "${AUDIO.volume_value}%")
+                )
+            )
         )
-        (eventbox :onscroll "scripts/change_volume.sh {} SOURCE"
-            (button :onclick "wpctl set-mute @DEFAULT_SOURCE@ toggle" :class 'button ${mic_muted ? "muted" : ""}' mic_icon )
+        (eventbox :onscroll "scripts/change_volume.sh {} SOURCE" :onhover "eww update mic_rev=true" :onhoverlost '${mic_stay ? "" : "eww update mic_rev=false"}' :onrightclick "scripts/toggle_value.sh mic_stay"
+            (box :space-evenly "false" :orientation "h" :spacing "3"
+                (button :onclick "wpctl set-mute @DEFAULT_SOURCE@ toggle" :class 'button ${mic_muted ? "muted" : ""}' "${AUDIO.mic_icon}")
+                (revealer :transition "slideleft" :reveal mic_rev :duration "350ms"
+                    (button :onclick "wpctl set-mute @DEFAULT_SOURCE@ toggle" :class 'value' "${AUDIO.mic_value}%")
+                )
+            )
         )
     )
-
 )

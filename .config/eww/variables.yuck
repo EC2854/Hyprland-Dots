@@ -7,10 +7,16 @@
 (defvar music_rev false)
 (deflisten music_title :initial "" "playerctl --follow metadata --format '{{ title }}' || true")
 
+(deflisten AUDIO :initial "{}" "~/.config/eww/scripts/get_audio.sh")
+
+(defvar volume_rev false)
+(defvar volume_stay false)
+
+(defvar mic_rev false)
+(defvar mic_stay false)
+
 (defvar volume_muted false)
-(defpoll volume_icon :interval "2s" "scripts/volume_icon.sh")
 (defvar mic_muted false)
-(defpoll mic_icon :interval "1s" "scripts/mic_icon.sh")
 
 (defvar clock_rev false)
 (defvar clock_stay false)
