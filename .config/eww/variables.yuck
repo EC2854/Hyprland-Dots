@@ -18,6 +18,15 @@
 (defvar volume_muted false)
 (defvar mic_muted false)
 
+;; (defpoll BATTERY :interval "2s" "~/.config/eww/scripts/get_battery.sh")
+;; (defvar battery_rev false)
+;; (defvar battery_stay false)
+;; (defvar battery_low false)
+;;
+;; (deflisten BRIGHTNESS :initial "{}" "~/.config/eww/scripts/get_brightness.sh")
+;; (defvar brightness_rev false)
+;; (defvar brightness_stay false)
+
 (defvar clock_rev false)
 (defvar clock_stay false)
 (defpoll clock_date :interval "10h" "date '+%a %b %d '")

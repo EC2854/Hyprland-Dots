@@ -16,5 +16,21 @@
                 )
             )
         )
+        ;; (eventbox :onhover "eww update battery_rev=true" :onhoverlost '${battery_stay ? "" : "eww update battery_rev=false"}' :onrightclick "scripts/toggle_value.sh battery_stay"
+        ;;     (box :space-evenly "false" :orientation "h" :spacing "3"
+        ;;         (label :class 'button ${battery_low ? "muted" : ""}' :text "${BATTERY.icon}")
+        ;;         (revealer :transition "slideleft" :reveal battery_rev :duration "350ms"
+        ;;             (label :class 'value' :text "${BATTERY.value}%")
+        ;;         )
+        ;;     )
+        ;; )
+        ;; (eventbox :onhover "eww update brightness_rev=true" :onhoverlost '${brightness_stay ? "" : "eww update brightness_rev=false"}' :onrightclick "scripts/toggle_value.sh brightness_stay"
+        ;;     (box :space-evenly "false" :orientation "h" :spacing "3"
+        ;;         (label :class 'button' :text "${BRIGHTNESS.icon}")
+        ;;         (revealer :transition "slideleft" :reveal brightness_rev :duration "350ms"
+        ;;             (label :class 'value' :text "${BRIGHTNESS.value}%")
+        ;;         )
+        ;;     )
+        ;; )
     )
 )

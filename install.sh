@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 not_arch_btw=false # variable to skip installing packages 
 packages_to_install=( # list of packages to install
-    "hyprland" "mpvpaper" "swww" "mako" "polkit-kde-agent" "eww" "tofi" "hyprwayland-scanner" "hypridle" "hyprlock" # important stuff
+    "hyprland" "mpvpaper" "swww" "mako" "polkit-kde-agent" "eww" "tofi" "hyprwayland-scanner" "hypridle" "hyprlock" "jq" # important stuff
     "zsh" "eza" "fzf" "lf" "foot" "neovim" "fastfetch" "starship" "tmux" # terminal stuff
+    "acpi" "inotify-tools" # optional - for laptop eww
 ) 
 
 # Print Functions
@@ -32,7 +33,7 @@ print_info() {
 # Install programs (Arch linux only)
 install_packages() {
     print_info "installing packages"
-    paru -S --noconfirm ${packages_to_install[@]}
+    paru -S --noconfirm "${packages_to_install[@]}"
 }
 
 # clone function

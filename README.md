@@ -14,8 +14,7 @@
 - font - [Meslo LGL Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Meslo.zip)
 
 # Laptops 
-> [!WARNING]
-> There is no indicator for brightness and battery % right now. 
+For battery and brightness indicators uncomment lines (eww comments starts with `;;`) in `.config/eww/variables.yuck` and `.config/eww/tray.yuck`. 
 
 # Screenshots
 ![screenshot](./screenshots/purple.png) 
@@ -24,6 +23,7 @@
 # Installation
 > [!WARNING]
 > Install script is untested so use at ur own risk
+
 ``` sh
 git clone https://github.com/EC2854/Hyprland-Dots.git Dots && cd Dots && ./install.sh
 ```
