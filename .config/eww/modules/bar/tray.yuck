@@ -24,7 +24,7 @@
         ;;         )
         ;;     )
         ;; )
-        ;; (eventbox :onhover "eww update brightness_rev=true" :onhoverlost '${brightness_stay ? "" : "eww update brightness_rev=false"}' :onrightclick "scripts/toggle_value.sh brightness_stay"
+        ;; (eventbox :onscroll "scripts/change_brightness.sh {}" :onhover "eww update brightness_rev=true" :onhoverlost '${brightness_stay ? "" : "eww update brightness_rev=false"}' :onrightclick "scripts/toggle_value.sh brightness_stay"
         ;;     (box :space-evenly "false" :orientation "h" :spacing "3"
         ;;         (label :class 'button' :text "${BRIGHTNESS.icon}")
         ;;         (revealer :transition "slideleft" :reveal brightness_rev :duration "350ms"
