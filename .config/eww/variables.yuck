@@ -2,7 +2,7 @@
 
 (defvar window_rev false)
 (defvar window_stay false)
-(defpoll window_title :interval "2s" "hyprctl activewindow -j | jq -r '.title | if length > 60 then .[:60] + \"…\" else . end'")
+(defpoll window_title :interval "2s" "hyprctl activewindow -j | jq -r '.title | if length > 45 then .[:45] + \"…\" else . end'")
 
 (defvar music_rev false)
 (deflisten music_title :initial "" "playerctl --follow metadata --format '{{ title }}' || true")
