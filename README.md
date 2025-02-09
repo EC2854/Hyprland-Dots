@@ -3,27 +3,29 @@
 </div>
 
 <div align="center">
+
 ![GitHub last commit](https://img.shields.io/github/last-commit/EC2854/Hyprland-Dots?style=for-the-badge&labelColor=313244&color=f5c2e7)
 ![GitHub repo size](https://img.shields.io/github/repo-size/EC2854/Hyprland-Dots?style=for-the-badge&labelColor=313244&color=74c7ec)
 ![GitHub repo stars](https://img.shields.io/github/stars/EC2854/Hyprland-Dots?style=for-the-badge&labelColor=313244&color=cdd6f4)
 </div>
 
 <details>
-    <summary><h2>Programs I use</h2></summary>
-    - Window Manager - [Hyprland](https://github.com/hyprwm/Hyprland)
-    - Material Color Generation - [Matugen](https://github.com/InioX/matugen)
-    - Panel - [eww](https://github.com/elkowar/eww)
-    - Launcher - [tofi](https://github.com/philj56/tofi)
-    - Shell - [zsh](https://zsh.org)
-    - Prompt - [starship](https://github.com/starship/starship)
-    - Terminal - [foot](https://codeberg.org/dnkl/foot)
-    - File Manager - [lf](https://github.com/gokcehan/lf)
-    - IDE - [neovim](https://github.com/neovim/neovim)
-    - Browser - [librewolf](https://librewolf.net)  + [ShyFox](https://github.com/Naezr/ShyFox)
-    - Music Player - [kew](https://github.com/ravachol/kew)
-    - Wallpaper daemon - [swww](https://github.com/LGFae/swww)
-    - Wallpapers - [Here :3](https://github.com/EC2854/wallpapers)
-    - font - [Meslo LGL Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Meslo.zip)
+<summary><h2>Programs I use</h2></summary>
+
+- Window Manager - [Hyprland](https://github.com/hyprwm/Hyprland)
+- Material Color Generation - [Matugen](https://github.com/InioX/matugen)
+- Panel - [eww](https://github.com/elkowar/eww)
+- Launcher - [tofi](https://github.com/philj56/tofi)
+- Shell - [zsh](https://zsh.org)
+- Prompt - [starship](https://github.com/starship/starship)
+- Terminal - [foot](https://codeberg.org/dnkl/foot)
+- File Manager - [lf](https://github.com/gokcehan/lf)
+- IDE - [neovim](https://github.com/neovim/neovim)
+- Browser - [librewolf](https://librewolf.net)  + [ShyFox](https://github.com/Naezr/ShyFox)
+- Music Player - [kew](https://github.com/ravachol/kew)
+- Wallpaper daemon - [swww](https://github.com/LGFae/swww)
+- Wallpapers - [Here :3](https://github.com/EC2854/wallpapers)
+- font - [Meslo LGL Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Meslo.zip)
 </details>
 
 ## Laptops 
@@ -31,7 +33,7 @@ For battery and brightness indicators uncomment lines in:
 - `.config/eww/variables.yuck`
 - `.config/eww/tray.yuck`
 
-*(Eww comments start with ;; :3)*
+*(Eww comments start with `;;` :3)*
 
 ## Screenshots
 ![screenshot](./screenshots/purple.png) 
