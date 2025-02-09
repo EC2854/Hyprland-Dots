@@ -1,8 +1,7 @@
-(deflisten current_workspace :initial "1" "scripts/get_active_workspace.sh")
+(deflisten HYPRLAND :initial "{ \"workspace\": \"1\", \"title\": \"\" }" "scripts/get_hyprland.sh")
 
 (defvar window_rev false)
 (defvar window_stay false)
-(defpoll window_title :interval "2s" "hyprctl activewindow -j | jq -r '.title | if length > 45 then .[:45] + \"…\" else . end'")
 
 (defvar music_rev false)
 (deflisten music_title :initial "" "playerctl --follow metadata --format '{{ title }}' || true")
@@ -29,6 +28,6 @@
 
 (defvar clock_rev false)
 (defvar clock_stay false)
-(defpoll clock_date :interval "10h" "date '+%a %b %d '")
-(defpoll clock_hour :interval "5m" "date +%H")
+(defpoll clock_date :interval "10m" "date '+%a %b %d '")
+(defpoll clock_hour :interval "10s" "date +%H")
 (defpoll clock_minute :interval "5s" "date +%M")

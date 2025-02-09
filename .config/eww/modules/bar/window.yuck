@@ -2,7 +2,7 @@
     (eventbox :onhover "eww update window_rev=true" :onhoverlost '${window_stay ? "" : "eww update window_rev=false"}' :onrightclick "scripts/toggle_value.sh window_stay" 
         (revealer :transition "slideleft" :reveal window_rev :duration "350ms"
             (box :class "window" :space-evenly "false" :orientation "h" :spacing "3" 
-                (button :class "close_button" :onclick "hyprctl dispatch killactive" window_title)
+                (button :class "close_button" :onclick "hyprctl dispatch killactive" "${HYPRLAND.title}")
             )
         )
     )
