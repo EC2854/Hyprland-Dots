@@ -32,5 +32,7 @@
 (defpoll clock_hour :interval "10s" "date +%H")
 (defpoll clock_minute :interval "5s" "date +%M")
 
+(defpoll uptime :interval "2m" "uptime -p | sed -e 's/up //;s/ hours,/h/;s/ minutes/m/'")
+(defvar power_rev false)
 (defpoll NETWORK :interval "1m" "~/.config/eww/scripts/get_network.sh")
 (defpoll BLUETOOTH :interval "10s" "~/.config/eww/scripts/get_bluetooth.sh")

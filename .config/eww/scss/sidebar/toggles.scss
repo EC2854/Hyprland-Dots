@@ -3,7 +3,23 @@
     border-radius: 16px;
     border: solid 2px $surface_high;
     padding: 1rem 0.5rem;
+    &_top {
+        margin: 0rem 0.6rem;
+    }
 }
+.power_button {
+    padding: 0.3rem 0.9rem;
+    transition: 0.3s;
+    background-color: $surface_high;
+    border-radius: 50%;
+    color: $text;
+    margin-left: 0.35rem;
+    &:hover {
+        background-color: $error;
+        color: $error_text;
+    }
+}
+
 .toggle {
     background-color: $surface_high;
     color: $text;

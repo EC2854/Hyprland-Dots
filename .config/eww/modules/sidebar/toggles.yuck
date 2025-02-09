@@ -1,6 +1,27 @@
 (defwidget toggles[]
-    (box :class "toggles" :space-evenly "yes" :orientation "h" :spacing "0" :halign "center"
-        (button :onclick "hyprctl dispatch exec 'foot -T impala-float impala'" :class 'toggle ${NETWORK.status == "yes" ? "powered" : ""}' "${NETWORK.icon} ${NETWORK.name}")
-        (button :onclick "hyprctl dispatch exec 'foot -T bluetui-float bluetui'" :onrightclick "scripts/toggle_bluetooth.sh" :class 'toggle ${BLUETOOTH.powered == "yes" ? "powered" : ""}' "󰂯 ${BLUETOOTH.name}")
+    (box :class "toggles" :orientation "v" :space-evenly false
+        (box :space-evenly true :orientation "h" :spacing "0"  :class "toggles_top"
+            (box :halign "start" :orientation "h" :space-evenly false
+                (label :text "Uptime: ${uptime}")
+            )
+            (box :halign "end" :orientation "h"
+                (eventbox :onhover "eww update power_rev=true" :onhoverlost '${mic_stay ? "" : "eww update power_rev=false"}'
+                    (box :space-evenly "false" :orientation "h"
+                        (revealer :transition "slideleft" :reveal power_rev :duration "350ms"
+                            (box
+                                (button :onclick "hyprctl dispatch exec '~/.local/share/scripts/hyprlock.sh'" :class 'power_button' "󰌾")
+                                (button :onclick "hyprctl dispatch exec 'systemctl suspend'" :class 'power_button' "")
+                                (button :onclick "hyprctl dispatch exec 'systemctl reboot'" :class 'power_button' "")
+                            )
+                        )
+                        (button :onclick "systemctl poweroff" :class 'power_button' "󰐥")
+                    )
+                )
+            )
+        )
+        (box :space-evenly true :orientation "h" :spacing "0" :halign "center"
+            (button :onclick "hyprctl dispatch exec 'foot -T impala-float impala'" :class 'toggle ${NETWORK.status == "yes" ? "powered" : ""}' "${NETWORK.icon} ${NETWORK.name}")
+            (button :onclick "hyprctl dispatch exec 'foot -T bluetui-float bluetui'" :onrightclick "scripts/toggle_bluetooth.sh" :class 'toggle ${BLUETOOTH.powered == "yes" ? "powered" : ""}' "󰂯 ${BLUETOOTH.name}")
+        )
     )
 )
