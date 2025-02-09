@@ -9,12 +9,12 @@
                     (box :space-evenly "false" :orientation "h"
                         (revealer :transition "slideleft" :reveal power_rev :duration "350ms"
                             (box
-                                (button :onclick "hyprctl dispatch exec '~/.local/share/scripts/hyprlock.sh'" :class 'power_button' "󰌾")
-                                (button :onclick "hyprctl dispatch exec 'systemctl suspend'" :class 'power_button' "")
+                                (button :onclick "systemctl poweroff" :class 'power_button' "󰐥")
                                 (button :onclick "hyprctl dispatch exec 'systemctl reboot'" :class 'power_button' "")
+                                (button :onclick "hyprctl dispatch exec 'systemctl suspend'" :class 'power_button' "")
                             )
                         )
-                        (button :onclick "systemctl poweroff" :class 'power_button' "󰐥")
+                        (button :onclick "hyprctl dispatch exec '~/.local/share/scripts/hyprlock.sh'" :class 'power_button' "󰌾")
                     )
                 )
             )
