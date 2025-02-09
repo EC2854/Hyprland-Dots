@@ -60,4 +60,5 @@ git clone https://github.com/EC2854/Hyprland-Dots.git Dots && cd Dots && ./insta
 </a>
 
 > If you like my work, You could gift me something from my [Bandcamp wishlist](https://bandcamp.com/ec2854/wishlist)
+
 > Made with <3 by [Ewa (EC2854)](https://github.com/EC2854)
