@@ -4,8 +4,8 @@
 
 <div align="center">
 
-![GitHub last commit](https://img.shields.io/github/last-commit/EC2854/Hyprland-Dots?style=for-the-badge&labelColor=313244&color=f5c2e7)
 ![GitHub repo size](https://img.shields.io/github/repo-size/EC2854/Hyprland-Dots?style=for-the-badge&labelColor=313244&color=74c7ec)
+![GitHub last commit](https://img.shields.io/github/last-commit/EC2854/Hyprland-Dots?style=for-the-badge&labelColor=313244&color=f5c2e7)
 ![GitHub repo stars](https://img.shields.io/github/stars/EC2854/Hyprland-Dots?style=for-the-badge&labelColor=313244&color=cdd6f4)
 </div>
 
@@ -59,4 +59,5 @@ git clone https://github.com/EC2854/Hyprland-Dots.git Dots && cd Dots && ./insta
     </picture>
 </a>
 
+> If you like my work, You could gift me something from my [Bandcamp wishlist](https://bandcamp.com/ec2854/wishlist)
 > Made with <3 by [Ewa (EC2854)](https://github.com/EC2854)
