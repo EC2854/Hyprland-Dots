@@ -1,5 +1,5 @@
 (defwidget clock[]
-    (eventbox :onhover "eww update clock_rev=true" :onhoverlost '${clock_stay ? "" : "eww update clock_rev=false"}' :onrightclick "scripts/toggle_value.sh clock_stay"
+    (eventbox :onhover "eww update clock_rev=true" :onhoverlost '${clock_stay ? "" : "eww update clock_rev=false"}' :onclick "scripts/toggle_window.sh sidebar" :onrightclick "scripts/toggle_value.sh clock_stay"
         (box :class "clock" :space-evenly "false" :orientation "h" :spacing "3" 
             (revealer :transition "slideleft" :reveal clock_rev :duration "350ms"
                 (label :class "clock_date" :text clock_date)

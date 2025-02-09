@@ -21,7 +21,7 @@ get_icons() {
 }
 # "", "", "", "", "", "", "", "", ""
 
-notify_brightness_change() {
+handle() {
     brightness_level="$(get_brightness_level)"
   
     icon=$(get_icons "$brightness_level")
@@ -30,7 +30,7 @@ notify_brightness_change() {
 
 
 
-notify_brightness_change
+handle
 inotifywait -m -e modify "$BRIGHTNESS_FILE" 2>/dev/null | while read -r _; do
-    notify_brightness_change
+    handle
 done

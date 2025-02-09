@@ -1,0 +1,19 @@
+.toggles {
+    background-color: $surface;
+    border-radius: 16px;
+    border: solid 2px $surface_high;
+    padding: 1rem 0.5rem;
+}
+.toggle {
+    background-color: $surface_high;
+    color: $text;
+    padding: 1rem 0;
+    min-width: 11rem;
+    margin: 0.5rem;
+    border-radius: 2rem;
+    transition: 0.5s;
+    &.powered, &:hover {
+        color: $primary_text;
+        background-color: $primary;
+    }
+}

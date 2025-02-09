@@ -1,0 +1,6 @@
+(defwidget toggles[]
+    (box :class "toggles" :space-evenly "yes" :orientation "h" :spacing "0" :halign "center"
+        (button :onclick "hyprctl dispatch exec 'foot -T impala-float impala'" :class 'toggle ${NETWORK.status == "yes" ? "powered" : ""}' "${NETWORK.icon} ${NETWORK.name}")
+        (button :onclick "hyprctl dispatch exec 'foot -T bluetui-float bluetui'" :onrightclick "scripts/toggle_bluetooth.sh" :class 'toggle ${BLUETOOTH.powered == "yes" ? "powered" : ""}' "󰂯 ${BLUETOOTH.name}")
+    )
+)

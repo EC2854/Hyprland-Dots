@@ -45,28 +45,19 @@ function get_mic_icon() {
     fi
 }
 
-
-
-function audio_state() {
-    echo "{ \"volume_icon\": \"$1\", \"volume_value\": \"$2\", \"mic_icon\" : \"$3\", \"mic_value\" : \"$4\" }"
-}
-
-
-
-notify_ui() {
+handle() {
     volume=$(wpctl get-volume @DEFAULT_SINK@)
     mic=$(wpctl get-volume @DEFAULT_SOURCE@)
     volume_power=$(get_volume)
     volume_icon=$(get_volume_icon "$volume_power")
     mic_icon=$(get_mic_icon)
     mic_power=$(get_mic)
-    audio_state "$volume_icon" "$volume_power" "$mic_icon" "$mic_power"
+    echo "{ \"volume_icon\": \"$volume_icon\", \"volume_value\": \"$volume_power\", \"mic_icon\" : \"$mic_icon\", \"mic_value\" : \"$mic_power\" }"
 }
 
-notify_ui
-
+handle
 pactl subscribe | grep --line-buffered "sink\|source" | while read -r _; do
-    notify_ui
+    handle
 done
 
 

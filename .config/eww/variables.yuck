@@ -1,4 +1,4 @@
-(deflisten HYPRLAND :initial "{ \"workspace\": \"1\", \"title\": \"\" }" "scripts/get_hyprland.sh")
+(deflisten HYPRLAND :initial "{}" "scripts/get_hyprland.sh")
 
 (defvar window_rev false)
 (defvar window_stay false)
@@ -31,3 +31,6 @@
 (defpoll clock_date :interval "10m" "date '+%a %b %d '")
 (defpoll clock_hour :interval "10s" "date +%H")
 (defpoll clock_minute :interval "5s" "date +%M")
+
+(defpoll NETWORK :interval "1m" "~/.config/eww/scripts/get_network.sh")
+(defpoll BLUETOOTH :interval "10s" "~/.config/eww/scripts/get_bluetooth.sh")
