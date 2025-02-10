@@ -1,13 +1,13 @@
 .tray {
     border-radius: 16px;
-    padding: 0.375rem 0.75rem;
-    margin: 0 1rem;
+    padding: .375em .75em;
+    margin: 0 1em;
     background-color: $surface;
 }
 .button {
-    margin: 0 0.2rem 0 0.5rem;
-    padding: 0 0.55rem;
-    transition: 0.3s;
+    margin: 0 .2em 0 .5em;
+    padding: 0 .55em;
+    transition: .3s;
     background-color: $surface_high;
     border-radius: 50%;
     color: $text;
@@ -22,7 +22,7 @@
 }
 .value {
     margin: 0;
-    padding: 0 0.55rem;
+    padding: 0 .55em;
     transition: 0.3s;
     background-color: $surface_high;
     border-radius: 16px;

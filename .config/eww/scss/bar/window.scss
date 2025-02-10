@@ -1,13 +1,13 @@
 .window {
     border-radius: 16px;
-    margin: 0 0.625rem; 
-    padding: 0.375rem 1rem;
+    margin: 0 .625em; 
+    padding: .375em 1em;
     background-color: $surface;
 }
 
 .close_button {
-    padding: 0 0.5rem;
-    transition: 0.3s;
+    padding: 0 .5em;
+    transition: .3s;
     border-radius: 16px;
     color: $text;
     &:hover {

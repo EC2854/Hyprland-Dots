@@ -3,6 +3,9 @@
 WIRELESS_NAME="wlan"
 WIRED_NAME="enp"
 
+DOMAINS=("amazon.com" "github.com" "gnu.org" "archlinux.org" "duckduckgo.com" "youtube.com" "nhentai.net" "wikipedia.org" "google.com" "reddit.com" "cloudflare.com" "spotify.com" "mozilla.org")
+DOMAIN=$(printf "%s\n" "${DOMAINS[@]}" | shuf -n 1)
+
 interfaces=$(ip -j link | jq -r '.[] | select((.flags | index("UP")) and (.flags | index("LOWER_UP")) and (.link_type != "loopback")) | .ifname')
 
 
@@ -17,7 +20,7 @@ else
     name="Network"
 fi
 
-if ping -c 1 1.1.1.1 > /dev/null ; then
+if resolvectl query --cache no "$DOMAIN" &>/dev/null; then
     status=yes
 else 
     status=no
