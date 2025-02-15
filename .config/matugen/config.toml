@@ -3,10 +3,10 @@ command = "swww"
 arguments = ["img", "-t", "wave", "--transition-duration=3"]
 set = true
 
-[templates.pywalfox]
-input_path = '~/.local/share/matugen/templates/pywalfox.json'
-output_path = '~/.cache/wal/colors.json'
-post_hook = 'pywalfox update'
+[templates.firefox]
+input_path = '~/.local/share/matugen/templates/firefox-theme.css'
+output_path = '~/.cache/firefox-theme.css'
+post_hook = 'ln -f ~/.cache/firefox-theme.css ~/.var/app/io.gitlab.librewolf-community/.librewolf/*.default-release/chrome/firefox-gnome-theme/theme/colors/dark.css'
 
 [templates.foot]
 input_path = '~/.local/share/matugen/templates/foot.ini'

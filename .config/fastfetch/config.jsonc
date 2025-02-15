@@ -20,15 +20,15 @@
         },
         {
             "type": "kernel",
-            "key": "\u001b[35m󰌽"
+            "key": "\u001b[34m󰌽"
         },
         {
             "type": "packages",
-            "key": "\u001b[37m"
+            "key": "\u001b[34m"
         },
         {
             "type": "shell",
-            "key": "\u001b[35m"
+            "key": "\u001b[34m"
         },
         {
             "type": "wm",

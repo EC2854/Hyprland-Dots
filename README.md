@@ -21,12 +21,17 @@
 - Terminal - [foot](https://codeberg.org/dnkl/foot)
 - File Manager - [lf](https://github.com/gokcehan/lf)
 - IDE - [neovim](https://github.com/neovim/neovim)
-- Browser - [librewolf](https://librewolf.net)  + [ShyFox](https://github.com/Naezr/ShyFox)
+- Browser - [librewolf](https://librewolf.net) + [Firefox gnome theme](https://github.com/rafaelmardojai/firefox-gnome-theme)
 - Music Player - [kew](https://github.com/ravachol/kew)
 - Wallpaper daemon - [swww](https://github.com/LGFae/swww)
 - Wallpapers - [Here :3](https://github.com/EC2854/wallpapers)
 - font - [Meslo LGL Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Meslo.zip)
+
+> [!NOTE]
+> I install GUI apps via Flatpak, so some configs/scripts expect Flatpak instead of native packages. 
+
 </details>
+
 
 ## Laptops 
 For battery and brightness indicators uncomment lines in:
@@ -46,6 +51,8 @@ For battery and brightness indicators uncomment lines in:
 ``` sh
 git clone https://github.com/EC2854/Hyprland-Dots.git Dots && cd Dots && ./install.sh
 ```
+
+
 ## Thank You
 - [flick0](https://github.com/flickowoa) for inspiration
 - [SolDoesTech](https://github.com/SolDoesTech) for starting this all

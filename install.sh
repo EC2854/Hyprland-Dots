@@ -2,7 +2,7 @@
 not_arch_btw=false # variable to skip installing packages 
 packages_to_install=( # list of packages to install
     "hyprland" "mpvpaper" "swww" "mako" "polkit-kde-agent" "eww" "tofi" "hyprwayland-scanner" "hypridle" "hyprlock" "jq" # important stuff
-    "zsh" "eza" "fzf" "lf" "foot" "neovim" "fastfetch" "starship" "tmux" "kew" # terminal stuff
+    "zsh" "eza" "fzf" "lf" "foot" "neovim" "fastfetch" "starship" "tmux" "kew" "zoxide" # terminal stuff
     "acpi" "inotify-tools" # optional - for laptop eww
 ) 
 
@@ -84,7 +84,7 @@ ping -q -c 1 -W 1 github.com &>/dev/null || {
 }
 
 # Check Folder
-ls $(pwd)/install.sh &>/dev/null || { 
+ls "$(pwd)"/install.sh &>/dev/null || { 
     print_error "Please open folder with this script before running it" 
     exit 1 
 }
@@ -103,8 +103,5 @@ copy ./.zshrc ~/ &
 # Clone Wallpapers
 clone_repository https://github.com/EC2854/wallpapers ~/Pictures/Wallpapers &
 
-# Hyprland Plugin
-# Final message
 print_info "That's it!"
 print_info "Reboot ur system :3"
-# print_warning "Run 'hyprpm enable Hyprspace' after installation"
