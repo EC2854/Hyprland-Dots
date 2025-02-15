@@ -27,9 +27,7 @@
 - Wallpapers - [Here :3](https://github.com/EC2854/wallpapers)
 - font - [Meslo LGL Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Meslo.zip)
 
-> [!NOTE]
-> I install GUI apps via Flatpak, so some configs/scripts expect Flatpak instead of native packages. 
-
+I install GUI apps via Flatpak, so some configs/scripts expect Flatpak instead of native packages. 
 </details>
 
 
