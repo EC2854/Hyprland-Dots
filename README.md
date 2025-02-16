@@ -27,7 +27,6 @@
 - Wallpapers - [Here :3](https://github.com/EC2854/wallpapers)
 - font - [Meslo LGL Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Meslo.zip)
 
-I install GUI apps via Flatpak, so some configs/scripts expect Flatpak instead of native packages. 
 </details>
 
 
@@ -41,6 +40,10 @@ For battery and brightness indicators uncomment lines in:
 ## Screenshots
 ![screenshot](./screenshots/purple.png) 
 ![screenshot](./screenshots/red.png) 
+
+## Important Notes
+- This setup uses [uwsm](https://github.com/Vladimir-csp/uwsm) to manage the Hyprland session. So make sure to start the session with **uwsm**.  Refer to the [Hyprland Wiki](https://wiki.hyprland.org/Useful-Utilities/Systemd-start/#launching-hyprland-with-uwsm) for more details.   
+- I install GUI apps via **Flatpak**, so some configs/scripts expect Flatpak instead of native packages.
 
 ## Installation
 > [!WARNING]

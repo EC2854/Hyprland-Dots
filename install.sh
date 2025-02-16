@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 not_arch_btw=false # variable to skip installing packages 
 packages_to_install=( # list of packages to install
-    "hyprland" "mpvpaper" "swww" "mako" "polkit-kde-agent" "eww" "tofi" "hyprwayland-scanner" "hypridle" "hyprlock" "jq" # important stuff
+    "hyprland" "mpvpaper" "swww" "mako" "polkit-kde-agent" "eww" "tofi" "hyprwayland-scanner" "hypridle" "hyprlock" "jq" "uwsm" # important stuff
     "zsh" "eza" "fzf" "lf" "foot" "neovim" "fastfetch" "starship" "tmux" "kew" "zoxide" # terminal stuff
     "acpi" "inotify-tools" # optional - for laptop eww
 ) 

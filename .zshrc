@@ -34,10 +34,17 @@ FZF_ALT_C_COMMAND=
 FZF_CTRL_T_COMMAND= 
 source <(fzf --zsh)
 
+case ${TERM} in 
+    linux*|tmux*)
+        PROMPT="%B%F{magenta}[%f%b%B%F{blue}%n%f%b%B@%b%B%F{blue}%m%f%b%B%F{magenta}] [%f%b%B%F{blue}%~%f%b%B%F{magenta}]%f%b%B%F{magenta}
+> %f%b"
+    ;;
+    *)
+        eval "$(starship init zsh)"
+    ;;
+
+esac
 # Starship prompt
-eval "$(starship init zsh)"
-# PROMPT="%B%F{magenta}[%f%b%B%F{blue}%n%f%b%B@%b%B%F{blue}%m%f%b%B%F{magenta}] [%f%b%B%F{blue}%~%f%b%B%F{magenta}]%f%b%B%F{magenta}
-# > %f%b"
 
 # Fastfetch with random image
 # fastfetch --logo-height 6 --sixel "$(find ~/Pictures/menhera-chan -type f | shuf -n 1)"
@@ -110,7 +117,6 @@ zstyle ':fzf-tab:*' popup-min-size 80 12
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --icons=always --color=always --group-directories-first -a -1 $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza --icons=always --color=always --group-directories-first -a -1 $realpath'
 
-# lfcd with ctrl-o and lf select with alt-o
 bindkey -s '^o' 'lfcd\n'
 
 # Edit line in Vim with ctrl-e
