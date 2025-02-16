@@ -31,7 +31,7 @@ output_path = '~/.config/hypr/colors.conf'
 
 [templates.mako]
 input_path = '~/.local/share/matugen/templates/mako.conf'
-output_path = '~/.config/mako/mako.conf'
+output_path = '~/.config/mako/config'
 post_hook = 'makoctl reload'
 
 [templates.slurp]
