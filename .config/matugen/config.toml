@@ -52,11 +52,11 @@ output_path = '~/.config/zsh/fzf-style.zsh'
 
 [templates.gtk3]
 input_path = '~/.local/share/matugen/templates/gtk.css'
-output_path = '~/.config/gtk-3.0/colors.css'
+output_path = '~/.config/gtk-3.0/gtk.css'
 
 [templates.gtk4]
 input_path = '~/.local/share/matugen/templates/gtk.css'
-output_path = '~/.config/gtk-4.0/colors.css'
+output_path = '~/.config/gtk-4.0/gtk.css'
 
 [templates.qt5ct]
 input_path = '~/.local/share/matugen/templates/qtct.conf'
