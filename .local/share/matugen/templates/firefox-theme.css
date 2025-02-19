@@ -26,14 +26,14 @@
         --gnome-menu-background: {{colors.surface_container_highest.default.hex}};
 
         /* Header bar */
-        --gnome-headerbar-background: {{colors.surface_container.default.hex}};
-        --gnome-headerbar-shade-color: {{colors.surface_container_high.default.hex}};
+        --gnome-headerbar-background: {{colors.surface.default.hex}};
+        --gnome-headerbar-shade-color: {{colors.surface.default.hex}};
 
         /* Toolbars */
         --gnome-toolbar-icon-fill: {{colors.on_surface_variant.default.hex}};
 
         /* Tabs */
-        --gnome-tabbar-tab-hover-background: {{colors.surface_container_low.default.hex}};
+        --gnome-tabbar-tab-hover-background: {{colors.surface_container_high.default.hex}};
         --gnome-tabbar-tab-active-background: {{colors.surface_container_high.default.hex}};
         --gnome-tabbar-tab-active-background-contrast: {{colors.secondary.default.hex}};
         --gnome-tabbar-tab-active-hover-background: {{colors.surface_container_highest.default.hex}};

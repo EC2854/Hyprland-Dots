@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-not_arch_btw=false # variable to skip installing packages 
 packages_to_install=( # list of packages to install
     "hyprland" "mpvpaper" "swww" "mako" "polkit-kde-agent" "eww" "tofi" "hyprwayland-scanner" "hypridle" "hyprlock" "jq" "uwsm" # important stuff
     "zsh" "eza" "fzf" "lf" "foot" "neovim" "fastfetch" "starship" "tmux" "kew" "zoxide" # terminal stuff
@@ -31,30 +30,45 @@ print_info() {
     print_message 36 "INFO" "$1"  # Cyan color for general messages (36)
 }
 
-# Install programs (Arch linux only)
-install_packages() {
-    print_info "installing packages"
-    paru -S --noconfirm "${packages_to_install[@]}"
+check_aur() {
+    if command -v paru &>/dev/null; then
+        aur_helper=paru
+        print_info "Using paru as the AUR helper."
+    elif command -v yay &>/dev/null; then
+        aur_helper=yay
+        print_info "Using yay as the AUR helper."
+    else
+        print_warning "No AUR helper found. The script will continue, but it won't install packages."
+    fi
 }
 
-# clone function
 clone_repository() {
     local repository_url="$1"
     local destination="$2"
 
     print_info "Cloning $repository_url"
     git clone --quiet "$repository_url" "$destination" && print_success "Cloned $destination successfully" || print_error "Error cloning $repository_url to $destination"
-    ls $destination/.git >/dev/null 2>&1 && rm -rf $destination/.git
+    ls "$destination"/.git &>/dev/null && rm -rf "$destination"/.git
 }
-# copy function
 copy() {
     local source=$1 
     local destination="$2"
+
     print_info "Copying files from $source to $destination"
+    if ls "$destination" &> /dev/null; then
+        mv "$destination" "$destination.bak"
+        print_info "Moved existing $destination to $destination.bak"
+    fi
     cp -rf "$source" "$destination" && print_success "Files copied successfully to $destination" || print_error "Error while copying to $destination"
 }
-
-# confirmation
+install_modernz() {
+    mpv_dir=$(mktemp -d) &&
+    clone_repository https://github.com/Samillion/ModernZ "$mpv_dir" &&
+    cp "$mpv_dir/modernz.lua" ~/.config/mpv/scripts &&
+    cp "$mpv_dir/fluent-system-icons.ttf" ~/.config/mpv/fonts &&
+    rm -rf "$mpv_dir" &&
+    print_success "Successfully installed mpv theme"
+}
 ask_for_confirmation() {
     print_warning "Caution: This script overwrites config files. Change resolution in ./config/hypr/hyprland.conf. RTFM: https://wiki.hyprland.org/Configuring/Monitors/"
     read -p "Do you want to continue? (y/n): " choice
@@ -69,40 +83,36 @@ ask_for_confirmation() {
 # Check Distro
 command -v  pacman &>/dev/null || { 
     print_warning "This script is intended for Arch Linux. You can still run this script, but it won't install any packages." 
-    not_arch_btw=true 
-}
-
-# Check for paru
-command -v paru &>/dev/null || { 
-    print_warning "paru not found. You can still run this script, but it won't install any packages." 
-    not_arch_btw=true 
 }
 
 # Check for internet connection
-ping -q -c 1 -W 1 github.com &>/dev/null || {
+ping -q -c 1 github.com &>/dev/null || {
     print_error "No internet connection. Exiting..." 
     exit 1 
 }
-
 # Check Folder
 ls "$(pwd)"/install.sh &>/dev/null || { 
     print_error "Please open folder with this script before running it" 
     exit 1 
 }
-
-# Ask for confirmation before continuing
+check_aur
 ask_for_confirmation
 
-[[ $not_arch_btw == false ]] && install_packages
+[ -z "$aur_helper" ] && {
+    print_info "Starting package installation..."
+    $aur_helper -S --noconfirm "${packages_to_install[@]}"
+}
 
-# Copy files to ~/.config directory
-copy ./.config ~/ &
-copy ./.local ~/ &
-# Copy .zshrc
-copy ./.zshrc ~/ &
-
-# Clone Wallpapers
+# copy files
+for file in .config/*; do
+   copy "$file" ~/"$file"
+done
+copy .local/share/matugen ~/.local/share/matugen &
+copy .local/share/scripts ~/.local/share/matugen &
+copy .zshrc ~/.zshrc &
+install_modernz &
 clone_repository https://github.com/EC2854/wallpapers ~/Pictures/Wallpapers &
 
+wait
 print_info "That's it!"
 print_info "Reboot ur system :3"

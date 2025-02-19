@@ -17,9 +17,9 @@ add_newline = false
 
 # Prompt symbols 
 [character]
-success_symbol = "[]({{colors.primary.default.hex}})"
-error_symbol = "[]({{colors.secondary.default.hex}})"
-vicmd_symbol = "[]({{colors.secondary.default.hex}})"
+success_symbol = "[]({{colors.primary.default.hex}})"
+error_symbol = "[]({{colors.secondary.default.hex}})"
+vicmd_symbol = "[]({{colors.secondary.default.hex}})"
 
 [username]
 disabled = true

@@ -17,9 +17,9 @@ add_newline = false
 
 # Prompt symbols 
 [character]
-success_symbol = "[](#c4c0ff)"
-error_symbol = "[](#c7c4dc)"
-vicmd_symbol = "[](#c7c4dc)"
+success_symbol = "[](#c4c0ff)"
+error_symbol = "[](#c7c4dc)"
+vicmd_symbol = "[](#c7c4dc)"
 
 [username]
 disabled = true
