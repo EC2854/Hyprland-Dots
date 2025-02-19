@@ -64,6 +64,8 @@ copy() {
 install_modernz() {
     mpv_dir=$(mktemp -d) &&
     clone_repository https://github.com/Samillion/ModernZ "$mpv_dir" &&
+    mkdir ~/.config/mpv/scripts &&
+    mkdir ~/.config/mpv/fonts &&
     cp "$mpv_dir/modernz.lua" ~/.config/mpv/scripts &&
     cp "$mpv_dir/fluent-system-icons.ttf" ~/.config/mpv/fonts &&
     rm -rf "$mpv_dir" &&
