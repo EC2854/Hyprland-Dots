@@ -8,6 +8,7 @@
                 )
             )
         )
+        (box :class "tray_spacer")
         (eventbox :onscroll "scripts/change_volume.sh {} SOURCE" :onhover "eww update mic_rev=true" :onhoverlost '${mic_stay ? "" : "eww update mic_rev=false"}' :onrightclick "scripts/toggle_value.sh mic_stay"
             (box :space-evenly "false" :orientation "h"
                 (button :onclick "wpctl set-mute @DEFAULT_SOURCE@ toggle" :class 'tray_button ${mic_muted ? "muted" : ""}' "${AUDIO.mic_icon}")
@@ -16,6 +17,7 @@
                 )
             )
         )
+        ;; (box :class "tray_spacer")
         ;; (eventbox :onscroll "scripts/change_brightness.sh {}" :onhover "eww update brightness_rev=true" :onhoverlost '${brightness_stay ? "" : "eww update brightness_rev=false"}' :onrightclick "scripts/toggle_value.sh brightness_stay"
         ;;     (box :space-evenly "false" :orientation "h"
         ;;         (label :class 'tray_button' :text "${BRIGHTNESS.icon}")
@@ -24,6 +26,7 @@
         ;;         )
         ;;     )
         ;; )
+        ;; (box :class "tray_spacer")
         ;; (eventbox :onhover "eww update battery_rev=true" :onhoverlost '${battery_stay ? "" : "eww update battery_rev=false"}' :onrightclick "scripts/toggle_value.sh battery_stay"
         ;;     (box :space-evenly "false" :orientation "h"
         ;;         (label :class 'tray_button ${battery_low ? "muted" : ""}' :text "${BATTERY.icon}")
