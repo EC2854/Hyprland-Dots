@@ -111,14 +111,14 @@ install_font() {
     print_success "Successfully downloaded nerd font"
 }
 ask_for_confirmation() {
-    print_warning "Check monitor config in ./config/hypr/hyprland.conf before running the script. RTFM: https://wiki.hyprland.org/Configuring/Monitors/"
     read -p "Do you want to continue? (y/n): " choice
     case "$choice" in 
-        y|Y ) return 0 ;; # Continue
-        n|N ) exit 0 ;;   # Exit script
+        y|Y ) return 0 ;;
+        n|N ) exit 0 ;;
         * ) 
             echo "Invalid choice. Please enter 'y' or 'n'."
-            ask_for_confirmation ;;
+            ask_for_confirmation 
+        ;;
     esac
 }
 # Check Distro
@@ -134,14 +134,17 @@ ping -q -c 1 github.com &>/dev/null || {
     exit 1 
 }
 # Check Folder
-ls "$(pwd)"/install.sh &>/dev/null || { 
+cd "$(dirname "$(realpath "$0")")" || { 
     print_error "Please open folder with this script before running it" 
     exit 1 
 }
+
 if [[ $not_arch_btw = false ]]; then
     check_needed
     check_aur
 fi
+
+print_warning "Check monitor config in ./config/hypr/hyprland.conf before running the script. RTFM: https://wiki.hyprland.org/Configuring/Monitors/"
 ask_for_confirmation
 
 [ -z "$aur_helper" ] && {
@@ -153,11 +156,14 @@ ask_for_confirmation
 for file in .config/*; do
    copy "$file" ~/"$file"
 done
+
 copy .local/share/matugen ~/.local/share/matugen &
 copy .local/share/scripts ~/.local/share/matugen &
 copy .zshrc ~/.zshrc &
+
 install_modernz &
 install_font &
+
 clone_repository https://github.com/EC2854/wallpapers ~/Pictures/Wallpapers &
 
 wait
