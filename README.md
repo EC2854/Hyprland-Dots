@@ -25,7 +25,7 @@
 - Music Player - [kew](https://github.com/ravachol/kew)
 - Wallpaper daemon - [swww](https://github.com/LGFae/swww)
 - Wallpapers - [Here :3](https://github.com/EC2854/wallpapers)
-- font - [Meslo LGL Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Meslo.zip)
+- font - [Meslo LGL Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Meslo.tar.xz)
 
 </details>
 
@@ -46,9 +46,6 @@ For battery and brightness indicators uncomment lines in:
 - I install GUI apps via **Flatpak**, so some configs/scripts expect Flatpak instead of native packages.
 
 ## Installation
-> [!WARNING]
-> Install script is untested so use at ur own risk
-
 ``` sh
 git clone https://github.com/EC2854/Hyprland-Dots.git Dots && cd Dots && ./install.sh
 ```
@@ -66,7 +63,5 @@ git clone https://github.com/EC2854/Hyprland-Dots.git Dots && cd Dots && ./insta
         <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=EC2854/Hyprland-Dots&type=Date" />
     </picture>
 </a>
-
-> If you like my work, You could gift me something from my [Bandcamp wishlist](https://bandcamp.com/ec2854/wishlist)
 
 > Made with <3 by [Ewa (EC2854)](https://github.com/EC2854)

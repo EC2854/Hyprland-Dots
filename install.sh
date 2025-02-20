@@ -80,24 +80,34 @@ copy() {
     cp -rf "$source" "$destination" && print_success "Files copied successfully to $destination" || print_error "Error while copying to $destination"
 }
 install_modernz() {
-    print_info "Installing mpv theme"
+    local mpv_dir
     mpv_dir=$(mktemp -d) &&
-    clone_repository https://github.com/Samillion/ModernZ "$mpv_dir" &&
-    mkdir ~/.config/mpv/scripts &&
-    mkdir ~/.config/mpv/fonts &&
-    cp "$mpv_dir/modernz.lua" ~/.config/mpv/scripts &&
-    cp "$mpv_dir/fluent-system-icons.ttf" ~/.config/mpv/fonts &&
-    rm -rf "$mpv_dir" &&
+
+    print_info "Installing mpv theme"
+    clone_repository https://github.com/Samillion/ModernZ "$mpv_dir" 
+
+    mkdir -p ~/.config/mpv/scripts
+    mkdir -p ~/.config/mpv/fonts
+
+    mv "$mpv_dir/modernz.lua" ~/.config/mpv/scripts
+    mv "$mpv_dir/fluent-system-icons.ttf" ~/.config/mpv/fonts
+    rm -rf "$mpv_dir"
+
     print_success "Successfully installed mpv theme"
 }
 install_font() {
+    local fonts_dir="$HOME/.local/share/fonts"
+    local font_dir
+    font_dir=$(mktemp -d)
+
     print_info "Downloading nerd font"
-    font_dir=$(mktemp -d) &&
-    curl -s -o "$font_dir"/Meslo.tar.xz -L "$FONT" &&
+    curl -s -o "$font_dir"/Meslo.tar.xz -L "$FONT" 
     tar xJf "$font_dir/Meslo.tar.xz" -C "$font_dir"
-    mkdir -p ~/.local/share/fonts/ &&
-    mv "$font_dir"/MesloLGLNerdFont* ~/.local/share/fonts/ &&
-    rm -rf "$mpv_dir" &&
+
+    mkdir -p "$fonts_dir"
+    mv "$font_dir"/MesloLGLNerdFont* "$fonts_dir/"
+    rm -rf "$font_dir"
+
     print_success "Successfully downloaded nerd font"
 }
 ask_for_confirmation() {
