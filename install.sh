@@ -122,7 +122,7 @@ ask_for_confirmation() {
     esac
 }
 # Check Distro
-command -v  pacman &>/dev/null || { 
+command -v pacman &>/dev/null || { 
     print_warning "This script is intended for Arch Linux. You can still run this script, but it won't install any packages." 
     not_arch_btw=true
 }

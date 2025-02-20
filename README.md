@@ -9,8 +9,15 @@
 ![GitHub repo stars](https://img.shields.io/github/stars/EC2854/Hyprland-Dots?style=for-the-badge&labelColor=313244&color=cdd6f4)
 </div>
 
+## Screenshots
+![screenshot](./screenshots/1.png) 
+![screenshot](./screenshots/2.png) 
+![screenshot](./screenshots/3.png) 
+![screenshot](./screenshots/4.png) 
+![screenshot](./screenshots/5.png) 
+
 <details>
-<summary><h2>Programs I use</h2></summary>
+<summary><h2>Stuff i use</h2></summary>
 
 - Window Manager - [Hyprland](https://github.com/hyprwm/Hyprland)
 - Material Color Generation - [Matugen](https://github.com/InioX/matugen)
@@ -37,9 +44,6 @@ For battery and brightness indicators uncomment lines in:
 
 *(Eww comments start with `;;` :3)*
 
-## Screenshots
-![screenshot](./screenshots/purple.png) 
-![screenshot](./screenshots/red.png) 
 
 ## Important Notes
 - This setup uses [uwsm](https://github.com/Vladimir-csp/uwsm) to manage the Hyprland session. So make sure to start the session with **uwsm**.  Refer to the [Hyprland Wiki](https://wiki.hyprland.org/Useful-Utilities/Systemd-start/#launching-hyprland-with-uwsm) for more details.   

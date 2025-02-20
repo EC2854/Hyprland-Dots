@@ -1,13 +1,10 @@
 .music {
-    border-radius: 16px;
-    padding: .375em .625em;
-    background-color: $surface;
-
+    padding-left: 1em;
+    padding-right: 1em;
     &_title {
-        padding: 0 0.625em;
+        padding: 0 .625em;
         border-radius: 16px;
-        transition: 0.3s;
-        color: $text;
+        transition: .3s;
         &:hover {
             background-color: $primary;
             color: $primary_text;
@@ -20,7 +17,6 @@
         transition: .3s;
         background-color: $surface_high;
         border-radius: 50%;
-        color: $text;
         &:hover {
             background-color: $primary;
             color: $primary_text;

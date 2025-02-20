@@ -1,0 +1,5 @@
+(defwidget launcher[]
+        (box :class "bean launcher"
+            (button :onclick "killall tofi-drun || uwsm app -- $(tofi-drun)" :class "launcher_button" "  ")
+        )
+)

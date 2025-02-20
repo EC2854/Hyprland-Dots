@@ -5,11 +5,9 @@
     font-size: 14px;
 }
 @import "scss/bar.scss";
+@import "scss/bar/launcher.scss";
 @import "scss/bar/workspaces.scss";
 @import "scss/bar/window.scss";
 @import "scss/bar/music.scss";
 @import "scss/bar/tray.scss";
 @import "scss/bar/clock.scss";
-
-@import "scss/sidebar.scss";
-@import "scss/sidebar/toggles.scss";

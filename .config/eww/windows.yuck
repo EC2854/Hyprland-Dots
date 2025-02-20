@@ -5,11 +5,3 @@
     :namespace "eww"
     (bar)
 )
-
-(defwindow sidebar
-    :monitor 0
-    :geometry (geometry :height "96%" :anchor "top right")
-    :halign "end"
-    :namespace "eww"
-    (sidebar)
-)

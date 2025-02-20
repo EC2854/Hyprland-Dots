@@ -1,0 +1,16 @@
+.launcher {
+    margin-left: 0;
+    padding-left: 1em;
+    padding-right: 1em;
+    &_button {
+        padding: 0 .8em;
+        transition: .3s;
+        border-radius: 16px;
+        color: $text;
+        &:hover {
+            background-color: $primary;
+            color: $primary_text;
+        }
+    }
+}
+

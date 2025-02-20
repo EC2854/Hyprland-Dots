@@ -1,21 +1,18 @@
 .workspaces {
-    border-radius: 16px;
-    padding: .375em 1.25em;
-    background-color: $surface;
-}
+    &_button {
+        border-radius: 1em;
+        background-color: $surface_high;
+        margin: 0 .2em;
+        padding: 0 .8em;
+        transition: .3s;
+        &.current {
+            background-color: $primary;
+            padding: 0 1.2em;
+        }
+        &:hover {
+            background-color: $secondary;
+        }
+    }
 
-.workspace {
-    border-radius: 1em;
-    background-color: $surface_high;
-    margin: 0 .2em;
-    padding: 0 .8em;
-    transition: .3s;
-    &.current {
-        background-color: $primary;
-        padding: 0 1.2em;
-    }
-    &:hover {
-        background-color: $secondary;
-    }
 }
 

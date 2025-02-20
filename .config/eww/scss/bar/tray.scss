@@ -1,34 +1,28 @@
 .tray {
-    border-radius: 16px;
-    padding: .375em .75em;
-    margin: 0 1em;
-    background-color: $surface;
-}
-.button {
-    margin: 0 .2em 0 .5em;
-    padding: 0 .55em;
-    transition: .3s;
-    background-color: $surface_high;
-    border-radius: 50%;
-    color: $text;
-    &:hover {
-        background-color: $primary;
-        color: $primary_text;
+    &_button {
+        margin: 0 .25em;
+        padding: 0 .55em;
+        transition: .3s;
+        background-color: $surface_high;
+        border-radius: 50%;
+        &:hover {
+            background-color: $primary;
+            color: $primary_text;
+        }
+        &.muted {
+            color: $error_text;
+            background-color: $error;
+        }
     }
-    &.muted {
-        color: $error_text;
-        background-color: $error;
-    }
-}
-.value {
-    margin: 0;
-    padding: 0 .55em;
-    transition: 0.3s;
-    background-color: $surface_high;
-    border-radius: 16px;
-    color: $text;
-    &:hover {
-        background-color: $primary;
-        color: $primary_text;
+    &_value {
+        margin: 0 .25em;
+        padding: 0 .55rem;
+        transition: .3s;
+        background-color: $surface_high;
+        border-radius: 16px;
+        &:hover {
+            background-color: $primary;
+            color: $primary_text;
+        }
     }
 }

@@ -1,34 +1,34 @@
 (defwidget tray[]
-    (box :class "tray" :space-evenly "false" :orientation "h" :spacing "3" 
+    (box :class "bean tray" :space-evenly "false" :orientation "h" :spacing "3" 
         (eventbox :onscroll "scripts/change_volume.sh {} SINK" :onhover "eww update volume_rev=true" :onhoverlost '${volume_stay ? "" : "eww update volume_rev=false"}' :onrightclick "scripts/toggle_value.sh volume_stay"
-            (box :space-evenly "false" :orientation "h" :spacing "3"
-                (button :onclick "wpctl set-mute @DEFAULT_SINK@ toggle" :class 'button ${volume_muted ? "muted" : ""}' "${AUDIO.volume_icon}")
+            (box :space-evenly "false" :orientation "h"
+                (button :onclick "wpctl set-mute @DEFAULT_SINK@ toggle" :class 'tray_button ${volume_muted ? "muted" : ""}' "${AUDIO.volume_icon}")
                 (revealer :transition "slideright" :reveal volume_rev :duration "350ms"
-                    (button :onclick "wpctl set-mute @DEFAULT_SINK@ toggle" :class 'value' "${AUDIO.volume_value}%")
+                    (button :onclick "wpctl set-mute @DEFAULT_SINK@ toggle" :class 'tray_value' "${AUDIO.volume_value}%")
                 )
             )
         )
         (eventbox :onscroll "scripts/change_volume.sh {} SOURCE" :onhover "eww update mic_rev=true" :onhoverlost '${mic_stay ? "" : "eww update mic_rev=false"}' :onrightclick "scripts/toggle_value.sh mic_stay"
-            (box :space-evenly "false" :orientation "h" :spacing "3"
-                (button :onclick "wpctl set-mute @DEFAULT_SOURCE@ toggle" :class 'button ${mic_muted ? "muted" : ""}' "${AUDIO.mic_icon}")
+            (box :space-evenly "false" :orientation "h"
+                (button :onclick "wpctl set-mute @DEFAULT_SOURCE@ toggle" :class 'tray_button ${mic_muted ? "muted" : ""}' "${AUDIO.mic_icon}")
                 (revealer :transition "slideright" :reveal mic_rev :duration "350ms"
-                    (button :onclick "wpctl set-mute @DEFAULT_SOURCE@ toggle" :class 'value' "${AUDIO.mic_value}%")
+                    (button :onclick "wpctl set-mute @DEFAULT_SOURCE@ toggle" :class 'tray_value' "${AUDIO.mic_value}%")
                 )
             )
         )
         ;; (eventbox :onscroll "scripts/change_brightness.sh {}" :onhover "eww update brightness_rev=true" :onhoverlost '${brightness_stay ? "" : "eww update brightness_rev=false"}' :onrightclick "scripts/toggle_value.sh brightness_stay"
-        ;;     (box :space-evenly "false" :orientation "h" :spacing "3"
-        ;;         (label :class 'button' :text "${BRIGHTNESS.icon}")
+        ;;     (box :space-evenly "false" :orientation "h"
+        ;;         (label :class 'tray_button' :text "${BRIGHTNESS.icon}")
         ;;         (revealer :transition "slideright" :reveal brightness_rev :duration "350ms"
-        ;;             (button :class 'value' "${BRIGHTNESS.value}%")
+        ;;             (button :class 'tray_value' "${BRIGHTNESS.value}%")
         ;;         )
         ;;     )
         ;; )
         ;; (eventbox :onhover "eww update battery_rev=true" :onhoverlost '${battery_stay ? "" : "eww update battery_rev=false"}' :onrightclick "scripts/toggle_value.sh battery_stay"
-        ;;     (box :space-evenly "false" :orientation "h" :spacing "3"
-        ;;         (label :class 'button ${battery_low ? "muted" : ""}' :text "${BATTERY.icon}")
+        ;;     (box :space-evenly "false" :orientation "h"
+        ;;         (label :class 'tray_button ${battery_low ? "muted" : ""}' :text "${BATTERY.icon}")
         ;;         (revealer :transition "slideright" :reveal battery_rev :duration "350ms"
-        ;;             (label :class 'value' :text "${BATTERY.value}%")
+        ;;             (label :class 'tray_value' :text "${BATTERY.value}%")
         ;;         )
         ;;     )
         ;; )

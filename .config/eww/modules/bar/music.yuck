@@ -1,6 +1,6 @@
 (defwidget music[]
     (eventbox :onhover "eww update music_rev=true" :onhoverlost "eww update music_rev=false" :onscroll "scripts/change_music.sh {}" :visible "${music_title == '' ? false : true}"
-        (box :class "music" :space-evenly "false" :orientation "h" :spacing "3" 
+        (box :class "bean music" :space-evenly "false" :orientation "h" :spacing "3" 
             (revealer :transition "slideleft" :reveal music_rev :duration "350ms"
                 (button :class "music_control" :onclick "playerctl previous" "󰒮")
             )
