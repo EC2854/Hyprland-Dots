@@ -28,6 +28,7 @@ output_path = '~/.var/app/dev.vencord.Vesktop/config/vesktop/settings/quickCss.c
 [templates.hyprland]
 input_path = '~/.local/share/matugen/templates/hyprland.conf'
 output_path = '~/.config/hypr/colors.conf'
+post_hook = 'hyprctl reload config-only'
 
 [templates.mako]
 input_path = '~/.local/share/matugen/templates/mako.conf'
@@ -53,6 +54,7 @@ output_path = '~/.config/zsh/fzf-style.zsh'
 [templates.gtk3]
 input_path = '~/.local/share/matugen/templates/gtk.css'
 output_path = '~/.config/gtk-3.0/gtk.css'
+post_hook = 'systemctl --user restart xdg-desktop-portal-gtk.service'
 
 [templates.gtk4]
 input_path = '~/.local/share/matugen/templates/gtk.css'
@@ -65,6 +67,7 @@ output_path = '~/.config/qt5ct/colors/matugen.conf'
 [templates.qt6ct]
 input_path = '~/.local/share/matugen/templates/qtct.conf'
 output_path = '~/.config/qt6ct/colors/matugen.conf'
+post_hook = 'systemctl --user restart plasma-polkit-agent.service'
 
 [templates.mpv_modernz]
 input_path = '~/.local/share/matugen/templates/modernz.conf'
