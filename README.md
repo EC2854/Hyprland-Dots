@@ -25,7 +25,7 @@
 - Music Player - [kew](https://github.com/ravachol/kew)
 - Wallpaper daemon - [swww](https://github.com/LGFae/swww)
 - Wallpapers - [Here :3](https://github.com/EC2854/wallpapers)
-- font - [Meslo LGL Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Meslo.zip)
+- font - [Meslo LGL Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Meslo.zip)
 
 </details>
 

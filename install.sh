@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
-packages_to_install=( # list of packages to install
-    "hyprland" "mpvpaper" "swww" "mako" "polkit-kde-agent" "eww" "tofi" "hyprwayland-scanner" "hypridle" "hyprlock" "jq" "uwsm" # important stuff
+
+FONT="https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Meslo.tar.xz"
+
+not_arch_btw=false
+
+packages_needed=(
+    "git" "curl" # Bloated script XD
+)
+packages_to_install=(
+    "hyprland" "mpvpaper" "swww" "mako" "polkit-kde-agent" "eww" "tofi" "hyprwayland-scanner" "hypridle" "hyprlock" "jq" "uwsm" "xdg-desktop-portal-hyprland" "xdg-desktop-portal-gtk" # important stuff
     "zsh" "eza" "fzf" "lf" "foot" "neovim" "fastfetch" "starship" "tmux" "kew" "zoxide" # terminal stuff
     "noto-fonts-cjk" "ttf-noto-emoji-monochrome" # non nerd fonts
     "acpi" "inotify-tools" # optional - for laptop eww
@@ -29,7 +37,18 @@ print_success() {
 print_info() {
     print_message 36 "INFO" "$1"  # Cyan color for general messages (36)
 }
+check_needed() {
+    local installed
+    installed=$(pacman -Qq)
+    for package in "${packages_needed[@]}"; do
+        grep -q "$package" <<< "$installed" || {
+            print_info "Installing dependencies for install script..."
+            sudo pacman -S --noconfirm --needed "${packages_needed[@]}" 
+            return
+        }
+    done
 
+}
 check_aur() {
     if command -v paru &>/dev/null; then
         aur_helper=paru
@@ -41,7 +60,6 @@ check_aur() {
         print_warning "No AUR helper found. The script will continue, but it won't install packages."
     fi
 }
-
 clone_repository() {
     local repository_url="$1"
     local destination="$2"
@@ -62,6 +80,7 @@ copy() {
     cp -rf "$source" "$destination" && print_success "Files copied successfully to $destination" || print_error "Error while copying to $destination"
 }
 install_modernz() {
+    print_info "Installing mpv theme"
     mpv_dir=$(mktemp -d) &&
     clone_repository https://github.com/Samillion/ModernZ "$mpv_dir" &&
     mkdir ~/.config/mpv/scripts &&
@@ -71,8 +90,18 @@ install_modernz() {
     rm -rf "$mpv_dir" &&
     print_success "Successfully installed mpv theme"
 }
+install_font() {
+    print_info "Downloading nerd font"
+    font_dir=$(mktemp -d) &&
+    curl -s -o "$font_dir"/Meslo.tar.xz -L "$FONT" &&
+    tar xJf "$font_dir/Meslo.tar.xz" -C "$font_dir"
+    mkdir -p ~/.local/share/fonts/ &&
+    mv "$font_dir"/MesloLGLNerdFont* ~/.local/share/fonts/ &&
+    rm -rf "$mpv_dir" &&
+    print_success "Successfully downloaded nerd font"
+}
 ask_for_confirmation() {
-    print_warning "Caution: This script overwrites config files. Change resolution in ./config/hypr/hyprland.conf. RTFM: https://wiki.hyprland.org/Configuring/Monitors/"
+    print_warning "Check monitor config in ./config/hypr/hyprland.conf before running the script. RTFM: https://wiki.hyprland.org/Configuring/Monitors/"
     read -p "Do you want to continue? (y/n): " choice
     case "$choice" in 
         y|Y ) return 0 ;; # Continue
@@ -85,7 +114,9 @@ ask_for_confirmation() {
 # Check Distro
 command -v  pacman &>/dev/null || { 
     print_warning "This script is intended for Arch Linux. You can still run this script, but it won't install any packages." 
+    not_arch_btw=true
 }
+
 
 # Check for internet connection
 ping -q -c 1 github.com &>/dev/null || {
@@ -97,7 +128,10 @@ ls "$(pwd)"/install.sh &>/dev/null || {
     print_error "Please open folder with this script before running it" 
     exit 1 
 }
-check_aur
+if [[ $not_arch_btw = false ]]; then
+    check_needed
+    check_aur
+fi
 ask_for_confirmation
 
 [ -z "$aur_helper" ] && {
@@ -105,7 +139,7 @@ ask_for_confirmation
     $aur_helper -S --noconfirm "${packages_to_install[@]}"
 }
 
-# copy files
+# copy configs
 for file in .config/*; do
    copy "$file" ~/"$file"
 done
@@ -113,6 +147,7 @@ copy .local/share/matugen ~/.local/share/matugen &
 copy .local/share/scripts ~/.local/share/matugen &
 copy .zshrc ~/.zshrc &
 install_modernz &
+install_font &
 clone_repository https://github.com/EC2854/wallpapers ~/Pictures/Wallpapers &
 
 wait
