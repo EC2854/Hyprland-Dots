@@ -158,7 +158,7 @@ for file in .config/*; do
 done
 
 copy .local/share/matugen ~/.local/share/matugen &
-copy .local/share/scripts ~/.local/share/matugen &
+copy .local/share/scripts ~/.local/share/scripts &
 copy .zshrc ~/.zshrc &
 
 install_modernz &
