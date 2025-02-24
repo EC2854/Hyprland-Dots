@@ -15,6 +15,7 @@
 ![screenshot](./screenshots/3.png) 
 ![screenshot](./screenshots/4.png) 
 ![screenshot](./screenshots/5.png) 
+![screenshot](./screenshots/6.png) 
 
 <details>
 <summary><h2>Stuff i use</h2></summary>
