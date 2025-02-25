@@ -16,23 +16,23 @@
     "modules": [
         {
             "type": "os",
-            "key": "\u001b[34m"
+            "key": "\u001b[34m󰗮"
         },
         {
             "type": "kernel",
-            "key": "\u001b[34m󰌽"
+            "key": "\u001b[34m"
         },
         {
             "type": "packages",
-            "key": "\u001b[34m"
+            "key": "\u001b[34m"
         },
         {
             "type": "shell",
-            "key": "\u001b[34m"
+            "key": "\u001b[34m"
         },
         {
             "type": "wm",
-            "key": "\u001b[34m"
+            "key": "\u001b[34m"
         },
         {
             "key": " ",
