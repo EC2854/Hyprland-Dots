@@ -16,7 +16,7 @@
     "modules": [
         {
             "type": "os",
-            "key": "\u001b[34m󰗮"
+            "key": "\u001b[34m"
         },
         {
             "type": "kernel",
