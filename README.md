@@ -29,7 +29,7 @@
 - Terminal - [foot](https://codeberg.org/dnkl/foot)
 - File Manager - [lf](https://github.com/gokcehan/lf)
 - IDE - [neovim](https://github.com/neovim/neovim)
-- Browser - [librewolf](https://librewolf.net) + [Firefox gnome theme](https://github.com/rafaelmardojai/firefox-gnome-theme)
+- Browser - [Zen](https://zen-browser.app)
 - Music Player - [kew](https://github.com/ravachol/kew)
 - Wallpaper daemon - [swww](https://github.com/LGFae/swww)
 - Wallpapers - [Here :3](https://github.com/EC2854/wallpapers)

@@ -3,10 +3,15 @@ command = "swww"
 arguments = ["img", "-t", "wave", "--transition-duration=3"]
 set = true
 
-[templates.firefox]
-input_path = '~/.local/share/matugen/templates/firefox-theme.css'
-output_path = '~/.cache/firefox-theme.css'
-post_hook = 'ln -f ~/.cache/firefox-theme.css ~/.var/app/io.gitlab.librewolf-community/.librewolf/*.default-release/chrome/firefox-gnome-theme/theme/colors/dark.css'
+[templates.zenChrome]
+input_path = '~/.local/share/matugen/templates/zenChrome.css'
+output_path = '~/.cache/zenChrome.css'
+post_hook = 'ln -f ~/.cache/zenChrome.css ~/.var/app/app.zen_browser.zen/.zen/*release*/chrome/userChrome.css'
+
+[templates.zenContent]
+input_path = '~/.local/share/matugen/templates/zenContent.css'
+output_path = '~/.cache/zenContent.css'
+post_hook = 'ln -f ~/.cache/zenChrome.css ~/.var/app/app.zen_browser.zen/.zen/*release*/chrome/userContent.css'
 
 [templates.foot]
 input_path = '~/.local/share/matugen/templates/foot.ini'
