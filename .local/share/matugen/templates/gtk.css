@@ -58,15 +58,15 @@
 */
 
 :root {
-    --accent-blue: #64b5f6;
-    --accent-teal: #4db6ac;
-    --accent-green: #81c784;
-    --accent-yellow: #fff176;
-    --accent-orange: #ffb74d;
-    --accent-red: #e57373;
-    --accent-pink: #f06292;
-    --accent-purple: #ba68c8;
-    --accent-slate: #6f8396;
+    --accent-blue: #89b4fa;
+    --accent-teal: #94e2d5;
+    --accent-green: #a6e3a1;
+    --accent-yellow: #f9e2af;
+    --accent-orange: #fab387;
+    --accent-red: #f38ba8;
+    --accent-pink: #f5c2e7;
+    --accent-purple: #cba6f7;
+    --accent-slate: #cdd6f4;
 
     --accent-bg-color: @accent_bg_color;
     --accent-fg-color: @accent_fg_color;

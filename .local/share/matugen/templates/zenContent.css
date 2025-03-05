@@ -56,7 +56,7 @@
     }
 
     .compact-cards .card-outer .card-context .card-context-icon.icon-download {
-      fill: #3a944a !important;
+      fill: #a6e3a1 !important;
     }
   }
 
@@ -86,45 +86,38 @@
       background-color: {{colors.surface_dim.default.hex}} !important;
     }
   .identity-color-blue {
-    --identity-tab-color: #64b5f6 !important;
-    --identity-icon-color: #64b5f6 !important;
+    --identity-tab-color: #89b4fa !important;
+    --identity-icon-color: #89b4fa !important;
   }
-
   .identity-color-turquoise {
-    --identity-tab-color: #4db6ac !important;
-    --identity-icon-color: #4db6ac !important;
+    --identity-tab-color: #94e2d5 !important;
+    --identity-icon-color: #94e2d5 !important;
   }
-
   .identity-color-green {
-    --identity-tab-color: #81c784 !important;
-    --identity-icon-color: #81c784 !important;
+    --identity-tab-color: #a6e3a1 !important;
+    --identity-icon-color: #a6e3a1 !important;
   }
-
   .identity-color-yellow {
-    --identity-tab-color: #fff176 !important;
-    --identity-icon-color: #fff176 !important;
+    --identity-tab-color: #f9e2af !important;
+    --identity-icon-color: #f9e2af !important;
   }
-
   .identity-color-orange {
-    --identity-tab-color: #ffb74d !important;
-    --identity-icon-color: #ffb74d !important;
+    --identity-tab-color: #fab387 !important;
+    --identity-icon-color: #fab387 !important;
   }
-
   .identity-color-red {
-    --identity-tab-color: #e57373 !important;
-    --identity-icon-color: #e57373 !important;
+    --identity-tab-color: #f38ba8 !important;
+    --identity-icon-color: #f38ba8 !important;
   }
-
   .identity-color-pink {
-    --identity-tab-color: #f06292 !important;
-    --identity-icon-color: #f06292 !important;
+    --identity-tab-color: #f5c2e7 !important;
+    --identity-icon-color: #f5c2e7 !important;
   }
-
   .identity-color-purple {
-    --identity-tab-color: #ba68c8 !important;
-    --identity-icon-color: #ba68c8 !important;
+    --identity-tab-color: #cba6f7 !important;
+    --identity-icon-color: #cba6f7 !important;
   }
-  }
+}
 
   /* Variables and styles specific to about:addons */
   @-moz-document url-prefix("about:addons") {
