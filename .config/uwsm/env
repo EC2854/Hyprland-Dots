@@ -1,5 +1,5 @@
 export QT_QPA_PLATFORM=wayland;xcb
 export QT_QPA_PLATFORMTHEME=qt6ct
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
-export XCURSOR_SIZE=20
+export XCURSOR_SIZE=24
 export XCURSOR_THEME=Bibata-Modern-Classic
