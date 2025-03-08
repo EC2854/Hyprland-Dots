@@ -6,19 +6,19 @@
  https://github.com/lassekongo83/adw-colors/blob/main/HOWTO.md
 */
 
-@define-color window_bg_color #101418;
-@define-color window_fg_color #e0e2e8;
-@define-color view_bg_color #101418;
+@define-color window_bg_color #131318;
+@define-color window_fg_color #e5e1e9;
+@define-color view_bg_color #131318;
 @define-color view_fg_color @window_fg_color;
-@define-color accent_bg_color #9dcafc;
-@define-color accent_fg_color #001d34;
+@define-color accent_bg_color #c4c0ff;
+@define-color accent_fg_color #17134a;
 @define-color accent_color @accent_bg_color;
 @define-color headerbar_bg_color @window_bg_color;
 @define-color headerbar_fg_color @window_fg_color;
 @define-color headerbar_backdrop_color @window_bg_color;
 @define-color headerbar_border_color @window_bg_color;
 @define-color headerbar_shade_color @window_bg_color;
-@define-color card_bg_color #101418;
+@define-color card_bg_color #131318;
 @define-color card_fg_color @window_fg_color;
 @define-color card_shade_color rgba(0, 0, 0, 0.07);
 @define-color popover_bg_color @window_bg_color;
@@ -35,15 +35,15 @@
 @define-color secondary_sidebar_shade_color rgba(0,0,0,0.25);
 @define-color secondary_sidebar_border_color @window_bg_color;
 
-@define-color warning_bg_color #514060;
-@define-color warning_fg_color #f0dbff;
-@define-color warning_color #d5bee5;
+@define-color warning_bg_color #603b4f;
+@define-color warning_fg_color #ffd8ea;
+@define-color warning_color #eab9d1;
 @define-color error_bg_color #93000a;
 @define-color error_fg_color #ffdad6;
 @define-color error_color #ffb4ab;
-@define-color success_bg_color #3b4857;
-@define-color success_fg_color #d6e4f7;
-@define-color success_color #bac8da;
+@define-color success_bg_color #464559;
+@define-color success_fg_color #e3e0f9;
+@define-color success_color #c7c4dc;
 @define-color destructive_bg_color #93000a;
 @define-color destructive_fg_color #ffdad6;
 @define-color destructive_color #ffb4ab;
@@ -58,15 +58,15 @@
 */
 
 :root {
-    --accent-blue: #3584e4;
-    --accent-teal: #2190a4;
-    --accent-green: #3a944a;
-    --accent-yellow: #c88800;
-    --accent-orange: #ed5b00;
-    --accent-red: #e62d42;
-    --accent-pink: #d56199;
-    --accent-purple: #9141ac;
-    --accent-slate: #6f8396;
+    --accent-blue: #89b4fa;
+    --accent-teal: #94e2d5;
+    --accent-green: #a6e3a1;
+    --accent-yellow: #f9e2af;
+    --accent-orange: #fab387;
+    --accent-red: #f38ba8;
+    --accent-pink: #f5c2e7;
+    --accent-purple: #cba6f7;
+    --accent-slate: #cdd6f4;
 
     --accent-bg-color: @accent_bg_color;
     --accent-fg-color: @accent_fg_color;
